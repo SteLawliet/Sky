@@ -21,12 +21,12 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="openwrt ipk 软件包安装教程转载 2018年02月27日 16:11:11  标签： openwrt   378  转载自：http://www.openwrt.org.cn/bbs/thread-3238-1-1.html 方法一、web安装系统－－》软件包先点更新软件包清单 填入软件包网址，然后点ok 方法二、ssh连接路由命令安装 或者用ssh软件PuTTY连接路由器 PuTTY下">
+    <meta name="description" content="openwrt ipk 软件包安装教程转载 2018年02月27日 16:11:11  标签： openwrt   378  转载自：http://www.openwrt.org.cn/bbs/thread-3238-1-1.html 方法一、web安装">
 <meta property="og:type" content="article">
 <meta property="og:title" content="No title">
 <meta property="og:url" content="http://yoursite.com/2018/03/31/openwrt/本地安装/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="openwrt ipk 软件包安装教程转载 2018年02月27日 16:11:11  标签： openwrt   378  转载自：http://www.openwrt.org.cn/bbs/thread-3238-1-1.html 方法一、web安装系统－－》软件包先点更新软件包清单 填入软件包网址，然后点ok 方法二、ssh连接路由命令安装 或者用ssh软件PuTTY连接路由器 PuTTY下">
+<meta property="og:description" content="openwrt ipk 软件包安装教程转载 2018年02月27日 16:11:11  标签： openwrt   378  转载自：http://www.openwrt.org.cn/bbs/thread-3238-1-1.html 方法一、web安装">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://openwrt.org.cn/bbs/attachments/month_1012/1012302040467688ad15142da1.jpg">
 <meta property="og:image" content="http://openwrt.org.cn/bbs/attachments/month_1012/10123020432106f9d791e0c629.jpg">
@@ -40,7 +40,7 @@
 <meta property="og:updated_time" content="2018-03-31T16:08:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="openwrt ipk 软件包安装教程转载 2018年02月27日 16:11:11  标签： openwrt   378  转载自：http://www.openwrt.org.cn/bbs/thread-3238-1-1.html 方法一、web安装系统－－》软件包先点更新软件包清单 填入软件包网址，然后点ok 方法二、ssh连接路由命令安装 或者用ssh软件PuTTY连接路由器 PuTTY下">
+<meta name="twitter:description" content="openwrt ipk 软件包安装教程转载 2018年02月27日 16:11:11  标签： openwrt   378  转载自：http://www.openwrt.org.cn/bbs/thread-3238-1-1.html 方法一、web安装">
 <meta name="twitter:image" content="http://openwrt.org.cn/bbs/attachments/month_1012/1012302040467688ad15142da1.jpg">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -212,7 +212,19 @@
 <li>378</li>
 </ul>
 <p>转载自：<a href="http://www.openwrt.org.cn/bbs/thread-3238-1-1.html" target="_blank" rel="noopener">http://www.openwrt.org.cn/bbs/thread-3238-1-1.html</a></p>
-<p>方法一、web安装<br><img src="http://openwrt.org.cn/bbs/attachments/month_1012/1012302040467688ad15142da1.jpg" alt="img"><br>系统－－》软件包<br>先点更新软件包清单<br><img src="http://openwrt.org.cn/bbs/attachments/month_1012/10123020432106f9d791e0c629.jpg" alt="img"></p>
+<p>方法一、web安装<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://openwrt.org.cn/bbs/attachments/month_1012/1012302040467688ad15142da1.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>系统－－》软件包<br>先点更新软件包清单<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://openwrt.org.cn/bbs/attachments/month_1012/10123020432106f9d791e0c629.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
 <p>填入软件包网址，然后点ok</p>
 <p>方法二、ssh连接路由命令安装</p>
 <p>或者用ssh软件PuTTY连接路由器</p>
@@ -242,12 +254,36 @@
 <p><strong>第一步：工作环境准备</strong><br>1.1、Linkit Smart 7688上安装lks7688固件。这个固件是官网提供的。版本号v0.9.4 。lks7688固件是运行在openwrt系统的。这个不展开，不是主题。<br>1.2、Linkit Smart 7688扩充底板和电脑连上网线。我这里是有开发板和扩充底板的，有些人估计没有扩充底板，这种可能就需要用笔记本这种有无线网卡的电脑，可以连上Linkit Smart 7688的AP网络，或者sta模式下连接同一个AP。不过没有试过，不知道可不可以。理论上应该是电脑和设备在局域网下就是可以的吧。</p>
 <p><strong>第二步：把helloworld.ipk上传到openwrt上。</strong></p>
 <p>使用Winscp来上传helloworld.ipk到openwrt上：<br>1.1、打开Winscp，按照下面这样设置：<br>1.1.1、文件协议：SCP<br>1.1.2、主机名：就是Linkit Smart 7688的IP地址。<a href="http://www.21ic.com/eva/MCU/201605/676931.htm" target="_blank" rel="noopener">这里是一个对Linkit Smart 7688评测，里写的很停清楚的。root和密码设置什么的</a></p>
-<p><img src="../../ipc/SouthEast.png" alt="这里写图片描述"></p>
-<p>登录后：<img src="../../ipc/SouthEasssst.png" alt="这里写图片描述"></p>
-<p>左边是本地文件，可以看到有个helloworld_1.0_ramips_24kec.ipk，找到你的ipk软件包就好了。<br>右边是openwrt的系统目录了。我直接就放在root下了。<br>左边选中helloworld_1.0_ramips_24kec.ipk，点击上传。<br>右边就会看到helloworld_1.0_ramips_24kec.ipk，重命名一下helloworld.ipk。也可以不改名字，随你。<br><img src="../../ipc/sxdas.png" alt="这里写图片描述"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/SouthEast.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure>
+<p>登录后：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/SouthEasssst.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>左边是本地文件，可以看到有个helloworld_1.0_ramips_24kec.ipk，找到你的ipk软件包就好了。<br>右边是openwrt的系统目录了。我直接就放在root下了。<br>左边选中helloworld_1.0_ramips_24kec.ipk，点击上传。<br>右边就会看到helloworld_1.0_ramips_24kec.ipk，重命名一下helloworld.ipk。也可以不改名字，随你。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/sxdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
 <p><strong>第三步：把helloworld.ipk上传到openwrt上。</strong>.</p>
 <p>这里其实我试过Putty的，登录上去了。但是不知道为什么安装不了。</p>
-<p>打开：SecureCRT。这个应该会用吧。不清楚百度吧。就是用硬件就是串口接到Linkit Smart 7688的调试口上。<br>启动后的界面如下：<br><img src="../../ipc/asdasdas.png" alt="这里写图片描述"></p>
+<p>打开：SecureCRT。这个应该会用吧。不清楚百度吧。就是用硬件就是串口接到Linkit Smart 7688的调试口上。<br>启动后的界面如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/asdasdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
 <p>输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
 <p>可以看到helloworld.ipk，就是我们上传上去的。</p>
@@ -262,11 +298,29 @@
 <p>所以就以跑lks7688固件为例：</p>
 <p>串口还是用SecureCRT打开，运行系统。<br>网卡肯定要接上的：<br>电脑的IP需要和Linkit7688的开发板需要在同一个网段。要么路由器设置为192.168.100.x，要么电脑和开发板直连吧。<br>Linkit7688的开发板默认是192.168.100.1.可以使用</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
-<p>命令在操作台上查看，<br><img src="../../ipc/dasdas.png" alt="这里写图片描述"></p>
+<p>命令在操作台上查看，<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/dasdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
 <p>这样在window上打开我的电脑/计算机，输入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\\192.168.100.1</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
-<p>回车就可以看到/Media<br><img src="../../ipc/asdas.png" alt="这里写图片描述"></p>
-<p>然后就可以把这个文件夹映射上来，以后就直接打开就好了：<br><img src="../../ipc/dasd.png" alt="这里写图片描述"></p>
+<p>回车就可以看到/Media<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/asdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>然后就可以把这个文件夹映射上来，以后就直接打开就好了：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/dasd.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
 <p>这里打开/Media文件夹后你发现不能复制文件到里面。那是因为没有修改权限，在SecureCRT上输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /Media</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
 <p>这样/Media的文件夹就可读可写。把xxx.ipk复制到这个文件夹下面。</p>
