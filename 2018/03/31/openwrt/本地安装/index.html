@@ -213,7 +213,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Hexo">
-    <meta name="msapplication-starturl" content="http://yoursite.com/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2018/03/31/openwrt/本地安装/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Hexo">
@@ -228,7 +228,7 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/">
+    <meta property="og:url" content="http://yoursite.com/2018/03/31/openwrt/本地安装/">
     <meta property="og:type" content="blog">
     <meta property="og:title" content="Hexo">
     <meta property="og:image" content="/img/favicon.png">
@@ -236,41 +236,52 @@
     
 
     
+        <meta property="article:published_time" content="Sat Mar 31 2018 23:53:18 GMT+0800">
+        <meta property="article:modified_time" content="Sun Apr 01 2018 00:08:40 GMT+0800">
+    
 
     <!-- The Twitter Card protocol -->
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com" />
+        <link rel="canonical" href="http://yoursite.com/2018/03/31/openwrt/本地安装/index.html" />
     
 
     <!-- Structured-data for SEO -->
     
         
+
+
 <script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "Website",
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2018/03/31/openwrt/本地安装/index.html",
+    "headline": "",
+    "datePublished": "Sat Mar 31 2018 23:53:18 GMT+0800",
+    "dateModified": "Sun Apr 01 2018 00:08:40 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "John Doe",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
     "publisher": {
         "@type": "Organization",
         "name": "Hexo",
-        "logo": "/img/favicon.png"
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
     },
-    "url": "http://yoursite.com",
-    "image": {
-        "@type": "ImageObject",
-        "url": "/img/favicon.png"
-    },
-    "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "http://yoursite.com"
-    },
-    "description": ""
+    "keywords": "",
+    "description": "",
 }
 </script>
-
-
 
 
     
@@ -304,558 +315,290 @@
                         </button>
                     
 
-                    <!-- Index Module -->
-<div class="material-index mdl-grid">
+                    <!-- Post TOC -->
+
     
-        <!-- Paradox Header -->
-        <!-- Daily pic -->
-<div class="mdl-card mdl-shadow--2dp daily-pic mdl-cell mdl-cell--8-col index-top-block">
-
-    <!-- Pic & Slogan -->
-    <div class="mdl-card__media mdl-color-text--grey-50" style="background-image:url(/img/daily_pic.png)">
-        <p class="index-top-block-slogan"><a href="#">
-        
-            
-                Hi, nice to meet you
-            
-        
-        </a></p>
-    </div>
-
-    <!-- Avatar & Name -->
-    <div class="mdl-card__supporting-text meta mdl-color-text--grey-600">
-        <!-- Author Avatar -->
-        <div id="author-avatar">
-            <img src="/img/avatar.png" width="32px" height="32px" alt="avatar">
-        </div>
-        <div>
-            <strong>John Doe</strong>
-        </div>
-    </div>
-</div>
-
-        <!-- Blog info -->
-<div class="mdl-card mdl-shadow--2dp something-else mdl-cell mdl-cell--8-col mdl-cell--4-col-desktop index-top-block">
-
-    <!-- Search -->
-    
-    <!-- Google -->
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" method="post" action="">
-        <label id="search-label" class="mdl-button mdl-js-ripple-effect mdl-js-button mdl-button--fab mdl-color--accent mdl-shadow--4dp" for="search">
-            <i class="material-icons mdl-color-text--white" role="presentation">search</i>
-        </label>
-
-        <form autocomplete="off" id="search-form" method="get" action="//google.com/search" accept-charset="UTF-8" class="mdl-textfield__expandable-holder" target="_blank">
-            <input class="mdl-textfield__input search-input" type="search" name="q" id="search" placeholder="">
-            <label id="search-form-label" class="mdl-textfield__label" for="search"></label>
-
-            <input type="hidden" name="sitesearch" value="http://yoursite.com">
-        </form>
-    </div>
-
-
-
-
-
-
-
-    <!-- LOGO -->
-    <div class="something-else-logo mdl-color--white mdl-color-text--grey-600">
-        <a href="#" target="_blank">
-            <img src="/img/logo.png" alt="logo" />
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
         </a>
     </div>
+    -->
 
-    <!-- Infomation -->
-    <div class="mdl-card__supporting-text meta meta--fill mdl-color-text--grey-600">
-        <!-- Blog Title -->
-        <div>
-            <strong>Hexo</strong>
-        </div>
-        <div class="section-spacer"></div>
 
-        <!-- Pages -->
-        <button id="show-pages-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">view_carousel</i>
-            <span class="visuallyhidden">Pages</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="show-pages-button">
-            
-        </ul>
-
-        <!-- Menu -->
-        <button id="menubtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
-            <i class="material-icons" role="presentation">more_vert</i>
-            <span class="visuallyhidden">show menu</span>
-        </button>
-        <ul class="mdl-menu mdl-js-menu mdl-menu--bottom-right" for="menubtn">
-            
-
-            
-
-            
-                <a class="index_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hexo&url=http://yoursite.com&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        شارك على Weibo
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://twitter.com/intent/tweet?text=Hexo&url=http://yoursite.com&via=John Doe" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        شارك على Twitter
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        شارك على Facebook
-                    </li>
-                </a>
-            
-
-            
-                <a class="index_share-link" href="https://plus.google.com/share?url=http://yoursite.com" target="_blank">
-                    <li class="mdl-menu__item mdl-js-ripple-effect">
-                        شارك على Google+
-                    </li>
-                </a>
-            
-
-            
-
-            
-
-            
-        </ul>
-    </div>
-</div>
-
+    <!-- Left aligned menu below button -->
     
-    <div class="locate-thumbnail-symbol"></div>
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
 
-    <!-- Pin on top -->
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#openwrt-ipk-软件包安装教程"><span class="post-toc-number">1.</span> <span class="post-toc-text">openwrt ipk 软件包安装教程</span></a></li></ol>
+    </ul>
     
 
-    <!-- Normal Post -->
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
     
         
             <!-- Random Thumbnail -->
             <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
 
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/05/26/hello-world/">Hello World</a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            Welcome to Hexo
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/05/26/hello-world/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="John Doe's avatar">
-            </div>
-            <div>
-                <strong>John Doe</strong>
-                <span>May 26, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/05/19/firewall/"></a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            firewall-cmd –permanent –zone=public –add-rich-rule=”rule family=”ipv4” so...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/05/19/firewall/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="John Doe's avatar">
-            </div>
-            <div>
-                <strong>John Doe</strong>
-                <span>May 19, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/04/01/openwrt/各种插件/"></a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/04/01/openwrt/各种插件/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="John Doe's avatar">
-            </div>
-            <div>
-                <strong>John Doe</strong>
-                <span>Apr 01, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/03/31/openwrt/本地安装/"></a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/03/31/openwrt/本地安装/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="John Doe's avatar">
-            </div>
-            <div>
-                <strong>John Doe</strong>
-                <span>Mar 31, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/03/31/openwrt/sas/"></a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            潘多拉 路由器安装 SSR 方...
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/03/31/openwrt/sas/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="John Doe's avatar">
-            </div>
-            <div>
-                <strong>John Doe</strong>
-                <span>Mar 31, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/03/31/openwrt/yuan/"></a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            四、一些资源
-1）
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/03/31/openwrt/yuan/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="John Doe's avatar">
-            </div>
-            <div>
-                <strong>John Doe</strong>
-                <span>Mar 31, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-        
-            
-                <!-- Paradox Thumbnail -->
-                <div class="post_entry-module mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col fade out">
-    <!-- Post Thumbnail -->
-    
-        
-            <!-- Random Thumbnail -->
-            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
-        
-    
-
-        <!-- Post Title -->
-        <p class="article-headline-p"><a href="/2018/03/31/openwrt/WIFI中继/"></a></p>
-    </div>
-
-    <!-- Post Excerpt -->
-    <div class="mdl-color-text--grey-600 mdl-card__supporting-text post_entry-content">
-        
-            设置开始：首先：192.168.1.1 登陆管理界面，密码：admin
-        
-        &nbsp;&nbsp;&nbsp;
-        <span>
-            <a href="/2018/03/31/openwrt/WIFI中继/" target="_self">واصل القراءة</a>
-        </span>
-    </div>
-    <!-- Post_entry Info-->
-    <div id="post_entry-info">
-        <div id="post_entry-left-info" class="mdl-card__supporting-text meta mdl-color-text--grey-600 ">
-            <!-- Author Avatar -->
-            <div id="author-avatar">
-                <img src="/img/avatar.png" width="44px" height="44px" alt="John Doe's avatar">
-            </div>
-            <div>
-                <strong>John Doe</strong>
-                <span>Mar 31, 2018</span>
-            </div>
-        </div>
-        <div id="post_entry-right-info">
-          
-
-            
-
-            
-
-            <!-- Post Views -->
-            <span class="post_entry-views">
-            </span>
-        </div>
-    </div>
-</div>
-
-            
-            
-        
-    
-
-    
-
-    
-        <script type="text/ls-javascript" id="thumbnail-script">
-    var randomNum;
-
-    var locatePost = $('.locate-thumbnail-symbol').next();
-    for(var i = 0; i < 10; i++) {
-        randomNum = Math.floor(Math.random() * 19 + 1);
-
-        locatePost.children('.post_thumbnail-random').attr('id', 'random_thumbnail-'+randomNum);
-        locatePost.children('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
     $('.post_thumbnail-random').addClass('lazy');
-
-        locatePost = locatePost.next();
-    }
 </script>
 
+        
+    
+            <p class="article-headline-p">
+                
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>John Doe</strong>
+        <span>Mar 31, 2018</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=&url=http://yoursite.com/2018/03/31/openwrt/本地安装/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                شارك على Weibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=&url=http://yoursite.com/2018/03/31/openwrt/本地安装/index.html&via=John Doe" target="_blank">
+            <li class="mdl-menu__item">
+                شارك على Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/03/31/openwrt/本地安装/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                شارك على Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2018/03/31/openwrt/本地安装/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                شارك على Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
     
 </div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="openwrt-ipk-软件包安装教程"><a href="#openwrt-ipk-软件包安装教程" class="headerlink" title="openwrt ipk 软件包安装教程"></a>openwrt ipk 软件包安装教程</h1><p>转载 2018年02月27日 16:11:11</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=openwrt&amp;t=blog" target="_blank" rel="noopener">openwrt</a></li>
+</ul>
+<ul>
+<li>378</li>
+</ul>
+<p>转载自：<a href="http://www.openwrt.org.cn/bbs/thread-3238-1-1.html" target="_blank" rel="noopener">http://www.openwrt.org.cn/bbs/thread-3238-1-1.html</a></p>
+<p>方法一、web安装<br><img src="http://openwrt.org.cn/bbs/attachments/month_1012/1012302040467688ad15142da1.jpg" alt="img"><br>系统－－》软件包<br>先点更新软件包清单<br><img src="http://openwrt.org.cn/bbs/attachments/month_1012/10123020432106f9d791e0c629.jpg" alt="img"></p>
+<p>填入软件包网址，然后点ok</p>
+<p>方法二、ssh连接路由命令安装</p>
+<p>或者用ssh软件PuTTY连接路由器</p>
+<p>PuTTY下载地址:</p>
+<p><a href="http://openwrt.8800.org:82/PuTTY_SSH_Telnet程序.rar" target="_blank" rel="noopener">http://openwrt.8800.org:82/PuTTY_SSH_Telnet程序.rar</a></p>
+<p>opkg update</p>
+<p>opkg install 软件包网址</p>
+<p>或者用winscp连接路由 然后上传包到/tmp/下</p>
+<p>opkg update</p>
+<p>opkg install /tmp/xxx.ipk</p>
+<p>winscp（用于管理路由上的文件 类似FTP）OpenWrt+Linkit Smart 7688：在openwrt上用opkg安装本地ipk软件包</p>
+<p>原创 2017年04月11日 16:15:25</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=openwrt&amp;t=blog" target="_blank" rel="noopener">openwrt</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=opkg&amp;t=blog" target="_blank" rel="noopener">opkg</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=ipk&amp;t=blog" target="_blank" rel="noopener">ipk</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=mt7688&amp;t=blog" target="_blank" rel="noopener">mt7688</a></li>
+</ul>
+<ul>
+<li>2454</li>
+</ul>
+<p>硬件平台：<a href="https://labs.mediatek.com/zh-cn/platform/linkit-smart-7688" target="_blank" rel="noopener">Linkit Smart 7688 套件</a><br>软件平台：OpenWrt 15.05<br>安装工具：Winscp，SecureCRT<br>操作系统：win7 64位<br>ipk软件包：helloworld.ipk</p>
+<p>这里对自己在win7上对openwrt上安装opk软件包的过程做一个记录，为什么做记录，因为根据网上的资料安装不进去。综合了一些资料，找出可以用的。也给大家一个参考。</p>
+<p>Linkit Smart 7688上运行的是<a href="https://docs.labs.mediatek.com/resource/linkit-smart-7688/zh_cn" target="_blank" rel="noopener">MTK官网（7688）</a>针对Linkit Smart 7688的固件（lks7688）。</p>
+<p>这里我就不介绍helloworld.ipk是怎么来的了，写一个helloworld的程序网络上很多。</p>
+<p><strong>第一步：工作环境准备</strong><br>1.1、Linkit Smart 7688上安装lks7688固件。这个固件是官网提供的。版本号v0.9.4 。lks7688固件是运行在openwrt系统的。这个不展开，不是主题。<br>1.2、Linkit Smart 7688扩充底板和电脑连上网线。我这里是有开发板和扩充底板的，有些人估计没有扩充底板，这种可能就需要用笔记本这种有无线网卡的电脑，可以连上Linkit Smart 7688的AP网络，或者sta模式下连接同一个AP。不过没有试过，不知道可不可以。理论上应该是电脑和设备在局域网下就是可以的吧。</p>
+<p><strong>第二步：把helloworld.ipk上传到openwrt上。</strong></p>
+<p>使用Winscp来上传helloworld.ipk到openwrt上：<br>1.1、打开Winscp，按照下面这样设置：<br>1.1.1、文件协议：SCP<br>1.1.2、主机名：就是Linkit Smart 7688的IP地址。<a href="http://www.21ic.com/eva/MCU/201605/676931.htm" target="_blank" rel="noopener">这里是一个对Linkit Smart 7688评测，里写的很停清楚的。root和密码设置什么的</a></p>
+<p><img src="../../ipc/SouthEast.png" alt="这里写图片描述"></p>
+<p>登录后：<img src="../../ipc/SouthEasssst.png" alt="这里写图片描述"></p>
+<p>左边是本地文件，可以看到有个helloworld_1.0_ramips_24kec.ipk，找到你的ipk软件包就好了。<br>右边是openwrt的系统目录了。我直接就放在root下了。<br>左边选中helloworld_1.0_ramips_24kec.ipk，点击上传。<br>右边就会看到helloworld_1.0_ramips_24kec.ipk，重命名一下helloworld.ipk。也可以不改名字，随你。<br><img src="../../ipc/sxdas.png" alt="这里写图片描述"></p>
+<p><strong>第三步：把helloworld.ipk上传到openwrt上。</strong>.</p>
+<p>这里其实我试过Putty的，登录上去了。但是不知道为什么安装不了。</p>
+<p>打开：SecureCRT。这个应该会用吧。不清楚百度吧。就是用硬件就是串口接到Linkit Smart 7688的调试口上。<br>启动后的界面如下：<br><img src="../../ipc/asdasdas.png" alt="这里写图片描述"></p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>可以看到helloworld.ipk，就是我们上传上去的。</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg install helloworld.ipk</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>就开始安装了。安装成功直接就输出了helloworld的字符了。</p>
+<p>卸载就是输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg remove helloworld</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>好了。安装和卸载过程就是这个样了。</p>
+<p><strong>第二种方法：</strong><br>这种方法是我经常使用的，需要一个串口和网卡。如果你是开发板应该都有的。</p>
+<p>开发板跑的是lks7688固件,其实不一定要他的固件，也可以是自己的编译出来的固件。根据MTK官网的说明编译出来的固件。为什么一定要这种固件呢。因为里面的写好了一个共享文件夹：/Media，在window下是可以直接访问的。</p>
+<p>所以就以跑lks7688固件为例：</p>
+<p>串口还是用SecureCRT打开，运行系统。<br>网卡肯定要接上的：<br>电脑的IP需要和Linkit7688的开发板需要在同一个网段。要么路由器设置为192.168.100.x，要么电脑和开发板直连吧。<br>Linkit7688的开发板默认是192.168.100.1.可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>命令在操作台上查看，<br><img src="../../ipc/dasdas.png" alt="这里写图片描述"></p>
+<p>这样在window上打开我的电脑/计算机，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\\192.168.100.1</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>回车就可以看到/Media<br><img src="../../ipc/asdas.png" alt="这里写图片描述"></p>
+<p>然后就可以把这个文件夹映射上来，以后就直接打开就好了：<br><img src="../../ipc/dasd.png" alt="这里写图片描述"></p>
+<p>这里打开/Media文件夹后你发现不能复制文件到里面。那是因为没有修改权限，在SecureCRT上输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /Media</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>这样/Media的文件夹就可读可写。把xxx.ipk复制到这个文件夹下面。</p>
+<p>在SecureCRT上输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls /Media</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>这样就能看到xxx.ipk文件了。也可以复制其他如音频.文本等你需要复制到上面的文件。</p>
+<p>那就执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg install /Media/xxx.ipk</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>就可以了安装成功了</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2018/04/01/openwrt/各种插件/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            أحدث
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/03/31/openwrt/sas/" id="post_nav-older" class="next-content">
+            أقدم
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
 
 
                     
@@ -1147,12 +890,6 @@ It will not impact the appearance and can give developers a lot of support :)
 
 
 
-
-    <!-- Swiftye -->
-    
-
-    <!-- Local Search-->
-    
 
 
 <!-- UC Browser Compatible -->
