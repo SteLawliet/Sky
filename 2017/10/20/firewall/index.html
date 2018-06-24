@@ -14,32 +14,25 @@
     
     
     
-    <title>No title | Sky</title>
+    <title>firewall-cmd命令记 | Sky</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="设置开始：首先：192.168.1.1 登陆管理界面，密码：admin                                                                                             img">
+    <meta name="keywords" content="linux,firewall-cmd,vps">
+    <meta name="description" content="打开tcp传输的8080端口，--permanent重启也有效1firewall-cmd --permanent --zone=public --add-port=8080/tcp 显示以配置的端口1firewall-cmd --list-port 重载配置1firewall-cmd --reload firewall-cmd –permanent –zone=public –add-rich-r">
+<meta name="keywords" content="linux,firewall-cmd,vps">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
-<meta property="og:url" content="http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/index.html">
+<meta property="og:title" content="firewall-cmd命令记">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/20/firewall/index.html">
 <meta property="og:site_name" content="Sky">
-<meta property="og:description" content="设置开始：首先：192.168.1.1 登陆管理界面，密码：admin                                                                                             img">
+<meta property="og:description" content="打开tcp传输的8080端口，--permanent重启也有效1firewall-cmd --permanent --zone=public --add-port=8080/tcp 显示以配置的端口1firewall-cmd --list-port 重载配置1firewall-cmd --reload firewall-cmd –permanent –zone=public –add-rich-r">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://io.stelawliet.top/2018/03/31/ipc/56206efdfc03924570750b7d8094a4c27f1e25eb.jpg">
-<meta property="og:image" content="http://io.stelawliet.top/2018/03/31/ipc/561351039245d68873c258d6a3c27d1ed01b24eb.jpg">
-<meta property="og:image" content="http://io.stelawliet.top/2018/03/31/ipc/69ed3f45d688d43f2f697b807a1ed21b0cf43beb.jpg">
-<meta property="og:image" content="http://io.stelawliet.top/2018/03/31/ipc/07ab7b88d43f87940d3fa25cd51b0ef419d53aeb.jpg">
-<meta property="og:image" content="http://io.stelawliet.top/2018/03/31/ipc/4366793f8794a4c2d7e30d5909f41bd5af6e39eb.jpg">
-<meta property="og:image" content="http://io.stelawliet.top/2018/03/31/ipc/41d12a94a4c27d1e79e6d1b61cd5ad6edfc438eb.jpg">
-<meta property="og:image" content="http://io.stelawliet.top/2018/03/31/ipc/127a09c27d1ed21ba209c497aa6eddc453da3feb.jpg">
-<meta property="og:updated_time" content="2018-03-31T15:29:42.000Z">
+<meta property="og:updated_time" content="2018-06-24T15:36:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="设置开始：首先：192.168.1.1 登陆管理界面，密码：admin                                                                                             img">
-<meta name="twitter:image" content="http://io.stelawliet.top/2018/03/31/ipc/56206efdfc03924570750b7d8094a4c27f1e25eb.jpg">
+<meta name="twitter:title" content="firewall-cmd命令记">
+<meta name="twitter:description" content="打开tcp传输的8080端口，--permanent重启也有效1firewall-cmd --permanent --zone=public --add-port=8080/tcp 显示以配置的端口1firewall-cmd --list-port 重载配置1firewall-cmd --reload firewall-cmd –permanent –zone=public –add-rich-r">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
@@ -132,13 +125,13 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis"></div>
+        <div class="flex-col header-title ellipsis">firewall-cmd命令记</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="搜尋">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -154,13 +147,15 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title"></h1>
+        <h1 class="title">firewall-cmd命令记</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-03-31T14:42:19.000Z" itemprop="datePublished" class="page-time">
-  2018-03-31
+                <time datetime="2017-10-20T15:01:31.000Z" itemprop="datePublished" class="page-time">
+  2017-10-20
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
 
             
         </h5>
@@ -175,15 +170,17 @@
 <div class="container body-wrap">
     
 
-<article id="post-openwrt/WIFI中继"
+<article id="post-firewall"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title"></h1>
+        <h1 class="post-card-title">firewall-cmd命令记</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-03-31 22:42:19" datetime="2018-03-31T14:42:19.000Z"  itemprop="datePublished">2018-03-31</time>
+            <time class="post-time" title="2017-10-20 23:01:31" datetime="2017-10-20T15:01:31.000Z"  itemprop="datePublished">2017-10-20</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a></li></ul>
+
 
 
             
@@ -194,52 +191,12 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>设置开始：<br>首先：192.168.1.1 登陆管理界面，密码：admin<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="../../ipc/56206efdfc03924570750b7d8094a4c27f1e25eb.jpg" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure></p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="../../ipc/561351039245d68873c258d6a3c27d1ed01b24eb.jpg" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure>
-<p>按下图做，点搜索。已经测试，虽然5G信号也能搜索到，但是无法连接，原因不明，所以楼主还是中继了2.4G信号，有些遗憾~<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="../../ipc/69ed3f45d688d43f2f697b807a1ed21b0cf43beb.jpg" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure><br>找到你要中继的路由器<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="../../ipc/07ab7b88d43f87940d3fa25cd51b0ef419d53aeb.jpg" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure><br>按下图设置，然后提交，提交完毕了再点”应用保存“<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="../../ipc/4366793f8794a4c2d7e30d5909f41bd5af6e39eb.jpg" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure><br>再次回到无线界面，看到如下信息没？就是你刚刚添加的中继路由<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="../../ipc/41d12a94a4c27d1e79e6d1b61cd5ad6edfc438eb.jpg" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure><br>再看看你的路由器有没有得到主路由DHCP来的ip地址。 刚好潘多拉和小云os 1.6.1.5 不在一个网段~（我多余改成了192.168.88.1）<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="../../ipc/127a09c27d1ed21ba209c497aa6eddc453da3feb.jpg" alt="img" title="">
-                </div>
-                <div class="image-caption">img</div>
-            </figure><br>好了~这样就设置完毕了~还是非常简单的`~</p>
-<p>本教程适合新鸟，老鸟忽略即可~</p>
+            <p>打开tcp传输的8080端口，<code>--permanent重启也有效</code><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --add-port=8080/tcp</span><br></pre></td></tr></table></figure></p>
+<p>显示以配置的端口<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-port</span><br></pre></td></tr></table></figure></p>
+<p>重载配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure></p>
+<p>firewall-cmd –permanent –zone=public –add-rich-rule=”rule family=”ipv4” source address=”180.151.83.30/24” service name=”ssh” reject” </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --add-rich-rule=&quot;rule family=&apos;ipv4&apos; </span><br><span class="line">source address=&apos;180.151.83.30/24&apos; port port=80 protocol=tcp reject&quot;</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p><code>##重新加载防火墙配置，不然firewall-cmd --list-all-zones不会显示刚加上的规则</code></p>
 
         </div>
 
@@ -248,12 +205,12 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-03-31T15:29:42.000Z" itemprop="dateUpdated">2018-03-31 23:29:42</time>
+    最後更新時間：<time datetime="2018-06-24T15:36:33.000Z" itemprop="dateUpdated">2018-06-24 23:36:33</time>
 </span><br>
 
 
         
-        ;<a href="/2018/03/31/openwrt/WIFI中继/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/</a>
+        ;<a href="/2017/10/20/firewall/" target="_blank" rel="external">http://io.stelawliet.top/2017/10/20/firewall/</a>
         
     </div>
     
@@ -270,6 +227,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/firewall-cmd/">firewall-cmd</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vps/">vps</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -278,7 +237,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/&title=Sky&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/20/firewall/&title=《firewall-cmd命令记》 — Sky&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -288,22 +247,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/&title=Sky&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/20/firewall/&title=《firewall-cmd命令记》 — Sky&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/20/firewall/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=Sky&url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《firewall-cmd命令记》 — Sky&url=http://io.stelawliet.top/2017/10/20/firewall/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/20/firewall/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -326,20 +285,13 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/31/openwrt/yuan/" id="post-prev" class="post-nav-link">
+      <a href="/2018/06/24/hello-world/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">[no title]</h4>
+        <h4 class="title">Hello World</h4>
       </a>
     </div>
   
 
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2017/10/20/welcome/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">我发布的第一篇文章</h4>
-      </a>
-    </div>
   
 </nav>
 
@@ -408,7 +360,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>本部落格係採用<a rel="license" href="https://creativecommons.org/licenses/by/4.0/deed.zh_TW">創用 CC 姓名標示 4.0 國際 授權條款授權</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -430,7 +382,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/&title=《No title》 — Sky&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/20/firewall/&title=《firewall-cmd命令记》 — Sky&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -440,22 +392,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/&title=《No title》 — Sky&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/20/firewall/&title=《firewall-cmd命令记》 — Sky&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/20/firewall/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — Sky&url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《firewall-cmd命令记》 — Sky&url=http://io.stelawliet.top/2017/10/20/firewall/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/31/openwrt/WIFI中继/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/20/firewall/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -466,7 +418,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3awY7CMAxFUf7/pzvSrJAYmvvsgqbOzQpVJfR0YezYjwdex+96/vx85fX66z2v9/OdL1syZMi4LeM4Xe9+7N13+Z7pK1vsI0OGjA0YaSg8f6B0T/LKFvvLkCFDBiDVwisnyZAhQ0YtRTt/oPRXvvq/IUOGjBsySBFLALXAze+5oBaXIUPGDRm1xsB3Pn+8vyFDhox/zzjC1WlA8kQzfioZMmSMZpAy8qokr3+QtwjHMmTIGMoggbVzhQ+QcUaQGsqQIWME4/xAn4xTpCGyM8CBYDJkyBjHIEE23TpNEGsvQoYMGXsy+jG7s0NnOEOGDBkyOg2D/tE/anbKkCFjG0aaxqUJX1rQ8ueRIUPGbEZnGIKUuzV8rbUpQ4aMHRhx6YhJPIx2xjJkyJCxGyNtDPCVDlIUX4EMGTLGMXgw5Udm6WjFBUWvDBkyhjJqCV/KS9sM5Lt/NAZkyJAxlEEKTnKUdlWwTtNTGTJk7MwgqV7nqK7TWlgMh8mQIWMcgydh/ZYAObbjJDR5IUOGjEEMEi7TwQsSLvkIxaLElSFDxmgGSQ1Js5OPf3UapfFxmwwZMkYwasf0fOSr09oMmpoyZMgYzeiMc/H7O8dztYaBDBky5jE6A179cpQkncF0mwwZMkYz0oEJ3qSsheM46MuQIUMGeNBak+Cq+2XIkCGDjD7UhjP48MeCJ0OGjA0YnaKUp5JpyzNor8qQIWM0Iy0g08ELAk7bmUWMDBky7sf4AeDHslC2so9yAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aO3LDMAxFUe9/00qbRsx9gJSE4GXlsT0SDwsMPvx88Lq+LfKfu7V+JnlLa8mQIWNbBnnxekPrTZDn8O9v9yBDhowDGHfbuvvPOlCmYXTNWO9NhgwZMlIGAaRHIEOGDBkpY72tNJgSpAwZMmTwIjZ9DU/4SFr5WC0uQ4aMDRm86/77n1+Zb8iQIWMrxhUuMoBMt3W1lwwZMmYzeIDrX5jgo4LifmTIkDGa8WwiyDdKjuDPSlYZMmT8GwYJjuvv+Tml7bzgAocMGTJGM9KX1dr6/IoGvxbWOjMZMmRsxeClaTryJIkgORoU4mXIkHEwgxecneKWF7EoEZQhQ8ZQxnvlaGe0ELxLhgwZoxn8ukOnA9+/uoHabTJkyBjNSDf0Ka3aRh+4ZiFDhowRDB5k1wye0vVvTciQIeNMRu1SxVMJH78i9kOGK0OGjKGMtCmfhsU07KZjVBkyZMxm9DdUG1g+28KTIUPGbEYnRescAW/2pYNSGTJkTGWsQ1st/NWK2xpShgwZ5zDWja1OlcxHArV2ngwZMs5h8FEiCYvpfzoDThkyZMxmXOHqJ4XpYRXrbxkyZAxi8EWSM/IrL4zJ5xgmQ4aMbRm18WSH3QnlqBaXIUPGUEYt8BFkrelPniZDhgwZaYqWXhRLy2bUdJMhQ4aMFzpdtVL5gYArQ4aMDRkkdKbts/TJ/OBkyJBxGoOHyxdL0FLIliFDxgGML9a+S6nJ/oCQAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
