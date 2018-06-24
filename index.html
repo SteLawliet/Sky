@@ -186,8 +186,16 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Qu...
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
     
 
         <a href="/2018/05/26/hello-world/" class="post-more waves-effect waves-button">
@@ -226,8 +234,10 @@ Qu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        firewall-cmd –permanent –zone=public –add-rich-rule=”rule family=”ipv4” source address=”180.151.83.30/24” service name=”ssh” reject” 
-123firewall-cmd --permanent --zone=public --add-rich-rule=&quot...
+        <p>firewall-cmd –permanent –zone=public –add-rich-rule=”rule family=”ipv4” source address=”180.151.83.30/24” service name=”ssh” reject” </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=public --add-rich-rule=&quot;rule family=&apos;ipv4&apos; source address=&apos;180.151.83.30/24&apos; port port=80 protocol=tcp reject&quot;</span><br><span class="line"></span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p><code>`</code>##重新加载防火墙配置，不然firewall-cmd –list-all-zones不会显示刚加上的规则`</p>
+
     
 
         <a href="/2018/05/19/firewall/" class="post-more waves-effect waves-button">
@@ -266,20 +276,147 @@ Qu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        个人用的潘多拉大杂烩插件教程转载 2017年05月03日 19:42:40
+        <h1 id="个人用的潘多拉大杂烩插件教程"><a href="#个人用的潘多拉大杂烩插件教程" class="headerlink" title="个人用的潘多拉大杂烩插件教程"></a>个人用的潘多拉大杂烩插件教程</h1><p>转载 2017年05月03日 19:42:40</p>
+<ul>
+<li>2039</li>
+</ul>
+<p>1.<strong>装adbyby</strong></p>
+<p><strong>本地上传法：</strong></p>
+<p><strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/103019mav7itpamzivt7vl.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></strong></p>
+<p><strong>主机（路由器ip地址），账户（默认root)，密码(路由器管理密码），按照实际填写，可参考我的格式</strong></p>
+<p><strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/103137gjpwhumgzlm2r2lu.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></strong></p>
+<p><strong>完了就是登陆呗！路由器的IP地址，用户名，密码亲要是再不知道，就不用往下看了！<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/103324ax9fvqo4tfvz94xf.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></strong> </p>
+<p>登陆成功！<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/103421dgb20gwjtzggb8bx.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>右边是路由器的文件，左边是我电脑的东西，具体你们自己依照实际情况而定！<br>毕竟软件版本各有不同，我也是第一次用，不敢妄加评论！<br>点击右边的根目录，就会进入路由器主文件目录，<br>个人觉得，但凡内存卡经常倒数据的机油，应该对文件夹<br>不陌生吧？哈哈！<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/103953ulxwsc7eoa6e7ioc.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>找到tmp文件夹，打开它<br>然后将路由器插件（2个ipk文件）拽到tmp文件夹里面即可，我是拖拽过去的，一样！<br>切记是2个啊，别落下了！放在tmp文件夹里面，不要放在tmp文件夹里面的文件夹的里面！<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/104445vnx86bf8f6z8886x.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>这三个搞进去了，就OK了，暂且把它最小化。<br>第二步骤，搞掂！<br>使用putty依次安装组件<br>请下载后打开putty软件，别打开错了哈！<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/110630o9vvrvvr5775rbkj.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>键入IP地址后，点击打开<br>出现这个黑色背景，绿色光标界面！<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/110636tay2p3o3xxtbpysp.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>重点来了：一定要稍等几秒，3五秒左右，会出现提示<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/110638jlzaulgkzls3asfg.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>此时，请键入用户名root，<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/110856qzx778gdnwdbpdlx.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>敲回车<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/111023xnoqthttdtn1ko1o.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>出现此提示，是让你输入密码，就是路由器密码<br>我键入密码后（无提示），切记，无任何显示！！你输入你的，输对就行，然后敲回车<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://www.newbandeng.com/data/attachment/forum/201506/06/111136vk61g22ljz6y2kso.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>出现此界面，说明正确了<br>然后，依次安装组件：<br>第一步  opkg –force-depends  –force-overwrite install /tmp/3.ipk<br>第二部    opkg –force-depends  –force-overwrite install /tmp/2.ipk<br>切记，这是2个ipk组件，需要按照顺序进行，先复制第一个，然后只需单击右键即可粘贴，<br>然后，敲回车，等待两秒，出现提示，再粘贴第二个，再敲回车，都要有提示，后敲回车！</p>
+<p><strong>不用putty安装方法</strong></p>
+<p> <strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.csdn.net/qq_38633921/article/details/71144008" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></strong></p>
+<p>默默打开软件包找到<strong>adbyby</strong></p>
+<p><strong>然后点安装。。</strong></p>
+<p><strong>之后在启动项里找到adbyby点击启动</strong></p>
+<p><strong>之后底部输入代码</strong></p>
+<p><strong>cd binchmod 777 adbyby（改权限的）iptables -t nat -A PREROUTING -p tcp –dport 80 -j REDIRECT –to-ports 8118/bin/./adbyby&amp;（开机自启用的）exit 0</strong></p>
+<p><strong>直接网络下载法：</strong></p>
+<p><strong>利用webshell傻瓜下载</strong></p>
+<p><strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.csdn.net/qq_38633921/article/details/71144008" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></strong></p>
+<p><strong>wget http://…</strong></p>
+<p><strong>下载完之后直接搜索软件包安装，按照上面教程在启动项后面加传代码</strong></p>
+<p><strong>2 用SS教程</strong></p>
+<p>有了SS账号后，如下图打开路由后台地址（192.168.1.1），用户名root密码admin，点击【系统】-【服务】-【shad0ws0cks】填入对应的服务器地址、服务器端口、密码、选择对应加密方式。<br>Sock5代理勾选启动、本地端口1080<br>透明代理勾选启动、透明代理本地端口1081、不选忽略内网ip列表、勾选Ip白名单、底下输入框填入对应ip（这个ip名单下载地址后面有）<br>点击“保存&amp;应用”<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img-blog.csdn.net/20160929083938848" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>2、如下图，点击【系统】-【服务】-【ChinaDns-c】，上游DNS服务器为114.114.114.114,8.8.4.4 端口1053<br>中国路由表的内容和第1步中的Ip白名单内容一致，复制粘贴过来即可<br>点击“保存&amp;应用”<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img-blog.csdn.net/20160929084002421" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>3、如下图，点击【网络】-【DNS/DHCP】-【一般设置】，DNS转发填入 127.0.0.1#1053<br>…【DNS/DHCP】-【HOSTS和解析文件】，勾选忽略解析文件<br>点击“保存&amp;应用”<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img-blog.csdn.net/20160929084028334" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img-blog.csdn.net/20160929084041312" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>4、将电脑的DNS 设置为自动获取。并重启k1路由（【系统】-【重启】-执行重启）<br>5、此时再进入路由器后台，【系统】-【服务】-【shad0ws0cks】，会看到页面内有文字提示：shad0ws0cks 运行中，说明已经配置成功！</p>
+<p>安装SS</p>
+<p>用winscp上传shadowsocks.tar.gz到路由的tmp目录下。<br>用putty或xshell登录路由<br>执行命令<br>cd /tmp<br>gunzip shadowsocks.tar.gz<br>tar xvf shadowsocks.tar -C /<br>rm shadowsocks.tar<br>至此Shadowsocks安装完成，输入ss-local命令看是否有输出，如果看到帮助信息说明安装成功。</p>
+<p>配置Shadowsocks账号<br>用winscp登录路由，编辑/etc/shadowsocks.json 文件，修改里面的IP等信息<br>{<br>      “server”: “服务器IP”,<br>      “server_port”: “服务器端口”,<br>      “password”: “密码”,<br>      “local_port”: “本地端口”,<br>      “method”: “aes-256-cfb”,<br>      “timeout”: “600”<br>}<br>测试Shadowsocks<br>输入下面的命令<br>ss-local -c /etc/shadowsocks.json<br>启动shadowsocks客户端<br>好了，你现在可以在你的电脑浏览器用socks5方式代理上网了，代理IP要设置成你路由器的IP。端口设为本地端口比如1080，与上面的设置保持一致就行。<br>设置路由器开机启动shadowsocks<br>命令/etc/init.d/shadowsocks enable</p>
+<p>还有一种最小白的安装方式，搜索软件包安装即可</p>
 
-2039
-
-1.装adbyby
-本地上传法：
-
-                
-                    
-                    
-                
-                img
-            
-主机（路由器ip地址），账户（默认root)，密码...
     
 
         <a href="/2018/04/01/openwrt/各种插件/" class="post-more waves-effect waves-button">
@@ -318,20 +455,134 @@ Qu...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        openwrt ipk 软件包安装教程转载 2018年02月27日 16:11:11
+        <h1 id="openwrt-ipk-软件包安装教程"><a href="#openwrt-ipk-软件包安装教程" class="headerlink" title="openwrt ipk 软件包安装教程"></a>openwrt ipk 软件包安装教程</h1><p>转载 2018年02月27日 16:11:11</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=openwrt&amp;t=blog" target="_blank" rel="noopener">openwrt</a></li>
+</ul>
+<ul>
+<li>378</li>
+</ul>
+<p>转载自：<a href="http://www.openwrt.org.cn/bbs/thread-3238-1-1.html" target="_blank" rel="noopener">http://www.openwrt.org.cn/bbs/thread-3238-1-1.html</a></p>
+<p>方法一、web安装<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://openwrt.org.cn/bbs/attachments/month_1012/1012302040467688ad15142da1.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>系统－－》软件包<br>先点更新软件包清单<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://openwrt.org.cn/bbs/attachments/month_1012/10123020432106f9d791e0c629.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>填入软件包网址，然后点ok</p>
+<p>方法二、ssh连接路由命令安装</p>
+<p>或者用ssh软件PuTTY连接路由器</p>
+<p>PuTTY下载地址:</p>
+<p><a href="http://openwrt.8800.org:82/PuTTY_SSH_Telnet程序.rar" target="_blank" rel="noopener">http://openwrt.8800.org:82/PuTTY_SSH_Telnet程序.rar</a></p>
+<p>opkg update</p>
+<p>opkg install 软件包网址</p>
+<p>或者用winscp连接路由 然后上传包到/tmp/下</p>
+<p>opkg update</p>
+<p>opkg install /tmp/xxx.ipk</p>
+<p>winscp（用于管理路由上的文件 类似FTP）OpenWrt+Linkit Smart 7688：在openwrt上用opkg安装本地ipk软件包</p>
+<p>原创 2017年04月11日 16:15:25</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=openwrt&amp;t=blog" target="_blank" rel="noopener">openwrt</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=opkg&amp;t=blog" target="_blank" rel="noopener">opkg</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=ipk&amp;t=blog" target="_blank" rel="noopener">ipk</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=mt7688&amp;t=blog" target="_blank" rel="noopener">mt7688</a></li>
+</ul>
+<ul>
+<li>2454</li>
+</ul>
+<p>硬件平台：<a href="https://labs.mediatek.com/zh-cn/platform/linkit-smart-7688" target="_blank" rel="noopener">Linkit Smart 7688 套件</a><br>软件平台：OpenWrt 15.05<br>安装工具：Winscp，SecureCRT<br>操作系统：win7 64位<br>ipk软件包：helloworld.ipk</p>
+<p>这里对自己在win7上对openwrt上安装opk软件包的过程做一个记录，为什么做记录，因为根据网上的资料安装不进去。综合了一些资料，找出可以用的。也给大家一个参考。</p>
+<p>Linkit Smart 7688上运行的是<a href="https://docs.labs.mediatek.com/resource/linkit-smart-7688/zh_cn" target="_blank" rel="noopener">MTK官网（7688）</a>针对Linkit Smart 7688的固件（lks7688）。</p>
+<p>这里我就不介绍helloworld.ipk是怎么来的了，写一个helloworld的程序网络上很多。</p>
+<p><strong>第一步：工作环境准备</strong><br>1.1、Linkit Smart 7688上安装lks7688固件。这个固件是官网提供的。版本号v0.9.4 。lks7688固件是运行在openwrt系统的。这个不展开，不是主题。<br>1.2、Linkit Smart 7688扩充底板和电脑连上网线。我这里是有开发板和扩充底板的，有些人估计没有扩充底板，这种可能就需要用笔记本这种有无线网卡的电脑，可以连上Linkit Smart 7688的AP网络，或者sta模式下连接同一个AP。不过没有试过，不知道可不可以。理论上应该是电脑和设备在局域网下就是可以的吧。</p>
+<p><strong>第二步：把helloworld.ipk上传到openwrt上。</strong></p>
+<p>使用Winscp来上传helloworld.ipk到openwrt上：<br>1.1、打开Winscp，按照下面这样设置：<br>1.1.1、文件协议：SCP<br>1.1.2、主机名：就是Linkit Smart 7688的IP地址。<a href="http://www.21ic.com/eva/MCU/201605/676931.htm" target="_blank" rel="noopener">这里是一个对Linkit Smart 7688评测，里写的很停清楚的。root和密码设置什么的</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/SouthEast.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure>
+<p>登录后：<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/SouthEasssst.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>左边是本地文件，可以看到有个helloworld_1.0_ramips_24kec.ipk，找到你的ipk软件包就好了。<br>右边是openwrt的系统目录了。我直接就放在root下了。<br>左边选中helloworld_1.0_ramips_24kec.ipk，点击上传。<br>右边就会看到helloworld_1.0_ramips_24kec.ipk，重命名一下helloworld.ipk。也可以不改名字，随你。<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/sxdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p><strong>第三步：把helloworld.ipk上传到openwrt上。</strong>.</p>
+<p>这里其实我试过Putty的，登录上去了。但是不知道为什么安装不了。</p>
+<p>打开：SecureCRT。这个应该会用吧。不清楚百度吧。就是用硬件就是串口接到Linkit Smart 7688的调试口上。<br>启动后的界面如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/asdasdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>可以看到helloworld.ipk，就是我们上传上去的。</p>
+<p>输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg install helloworld.ipk</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>就开始安装了。安装成功直接就输出了helloworld的字符了。</p>
+<p>卸载就是输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg remove helloworld</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>好了。安装和卸载过程就是这个样了。</p>
+<p><strong>第二种方法：</strong><br>这种方法是我经常使用的，需要一个串口和网卡。如果你是开发板应该都有的。</p>
+<p>开发板跑的是lks7688固件,其实不一定要他的固件，也可以是自己的编译出来的固件。根据MTK官网的说明编译出来的固件。为什么一定要这种固件呢。因为里面的写好了一个共享文件夹：/Media，在window下是可以直接访问的。</p>
+<p>所以就以跑lks7688固件为例：</p>
+<p>串口还是用SecureCRT打开，运行系统。<br>网卡肯定要接上的：<br>电脑的IP需要和Linkit7688的开发板需要在同一个网段。要么路由器设置为192.168.100.x，要么电脑和开发板直连吧。<br>Linkit7688的开发板默认是192.168.100.1.可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>命令在操作台上查看，<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/dasdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>这样在window上打开我的电脑/计算机，输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\\192.168.100.1</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>回车就可以看到/Media<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/asdas.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>然后就可以把这个文件夹映射上来，以后就直接打开就好了：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/dasd.png" alt="这里写图片描述" title="">
+                </div>
+                <div class="image-caption">这里写图片描述</div>
+            </figure></p>
+<p>这里打开/Media文件夹后你发现不能复制文件到里面。那是因为没有修改权限，在SecureCRT上输入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 /Media</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>这样/Media的文件夹就可读可写。把xxx.ipk复制到这个文件夹下面。</p>
+<p>在SecureCRT上输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ls /Media</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>这样就能看到xxx.ipk文件了。也可以复制其他如音频.文本等你需要复制到上面的文件。</p>
+<p>那就执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">opkg install /Media/xxx.ipk</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>就可以了安装成功了</p>
 
-标签：
-openwrt
-
-
-378
-
-转载自：http://www.openwrt.org.cn/bbs/thread-3238-1-1.html
-方法一、web安装
-                
-                    
-                    
-          ...
     
 
         <a href="/2018/03/31/openwrt/本地安装/" class="post-more waves-effect waves-button">
@@ -370,13 +621,33 @@ openwrt
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        潘多拉 路由器安装 SSR 方法
-ON SEPTEMBER 3, 2017 BY ISTARBUCKSIN SSR
-路由器安装 SSR 方法
-作者：admin • 2017年05月23日
-简介：
-注：本文中的路由器型号为优酷L1，主控型号为MT7620a，固件为PandoraBox，安装过程中确保路由器能够联网。
-软件包包含 shadowsocksr-libev 的可执行文件,以及luci控...
+        <p><strong>潘多拉</strong> <strong>路由器安装</strong> <strong>SSR</strong> <strong>方法</strong></p>
+<p><strong>ON</strong> <a href="https://istarbucks.wordpress.com/2017/09/03/%e6%bd%98%e5%a4%9a%e6%8b%89-%e8%b7%af%e7%94%b1%e5%99%a8%e5%ae%89%e8%a3%85-ssr-%e6%96%b9%e6%b3%95/" target="_blank" rel="noopener"><strong>SEPTEMBER 3, 2017</strong></a> <strong>BY</strong> <a href="https://istarbucks.wordpress.com/author/istarbucks/" target="_blank" rel="noopener"><strong>ISTARBUCKS</strong></a><strong>IN</strong> <a href="https://istarbucks.wordpress.com/category/ssr/" target="_blank" rel="noopener"><strong>SSR</strong></a></p>
+<p><a href="https://www.freess.win/index.php/archives/14.html" target="_blank" rel="noopener"><strong>路由器安装</strong> <strong>SSR</strong> <strong>方法</strong></a></p>
+<p>作者：<a href="https://www.freess.win/index.php/author/1/" target="_blank" rel="noopener">admin</a> • 2017年05月23日</p>
+<p>简介：</p>
+<p>注：本文中的路由器型号为优酷L1，主控型号为MT7620a，固件为<a href="https://www.freess.win/usr/uploads/2017/ssr/PandoraBox-ralink-mt7620-yk1-squashfs-sysupgrade-r1024-20150609.bin" target="_blank" rel="noopener">PandoraBox</a>，安装过程中确保路由器能够联网。</p>
+<p>软件包包含 shadowsocksr-libev 的可执行文件,以及luci控制界面 支持SSR客户端、服务端模式（服务端支持部分混淆模式、支持多端口） 支持自动分流，国内IP不走代理，国外IP段走透明代理，不需要再安装chnroute等软件 支持本地域名污染情况下的远程服务器解析，多数情况下无需对dns进行处理 可以和Shadowsocks共存，在openwrt可以通过luci界面切换使用Shadowsocks或ShadowsocksR 集成KcpTun加速，此功能对路由器性能要求较高，需下载对应的二进制文件到路由器指定目录，请酌情使用 客户端兼容运行SS或SSR的服务器，使用SS服务器时，传输协议需设置为origin，混淆插件需设置为plain 所有进程自动守护，崩溃后自动重启！首先使用浏览器登录路由器控制界面，依次找到：系统–软件包–配置，将原配置删除，填写以下配置并保存应用！<br>（注：此配置仅适用于路由器主控为MT7620a/PandoraBox系列的固件！<br>如果使用的是其他固件，请参考 <a href="https://www.freess.win/index.php/archives/19.html" target="_blank" rel="noopener"><strong>这里</strong></a> 核对相应的软件源。）</p>
+<p>dest root /</p>
+<p>dest ram /tmp</p>
+<p>lists_dir ext /var/opkg-lists</p>
+<p>option overlay_root /overlay</p>
+<p>src/gz r2_base <a href="http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/base" target="_blank" rel="noopener">http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/base</a></p>
+<p>src/gz r2_management <a href="http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/management" target="_blank" rel="noopener">http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/management</a></p>
+<p>src/gz r2_oldpackages <a href="http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/oldpackages" target="_blank" rel="noopener">http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/oldpackages</a></p>
+<p>src/gz r2_packages <a href="http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/packages" target="_blank" rel="noopener">http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/packages</a></p>
+<p>src/gz r2_routing <a href="http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/routing" target="_blank" rel="noopener">http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/routing</a></p>
+<p>src/gz r2_telephony <a href="http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/telephony" target="_blank" rel="noopener">http://downloads.openwrt.org.cn/PandoraBox/ralink/packages/telephony</a></p>
+<p>src/gz r2_oldpackages2 <a href="http://downloads.openwrt.org.cn/PandoraBox/ralink/mt7620_old/packages" target="_blank" rel="noopener">http://downloads.openwrt.org.cn/PandoraBox/ralink/mt7620_old/packages</a></p>
+<p>src/gz 16.10_base <a href="http://downloads.pandorabox.com.cn/pandorabox/packages/mt7620/packages/base" target="_blank" rel="noopener">http://downloads.pandorabox.com.cn/pandorabox/packages/mt7620/packages/base</a></p>
+<p>src/gz 16.10_luci <a href="http://downloads.pandorabox.com.cn/pandorabox/packages/mt7620/packages/luci" target="_blank" rel="noopener">http://downloads.pandorabox.com.cn/pandorabox/packages/mt7620/packages/luci</a></p>
+<p>src/gz 16.10_packages <a href="http://downloads.pandorabox.com.cn/pandorabox/packages/mt7620/packages/packages" target="_blank" rel="noopener">http://downloads.pandorabox.com.cn/pandorabox/packages/mt7620/packages/packages</a></p>
+<p>最新版SSR下载地址：<a href="https://github.com/ywb94/openwrt-ssr/releases" target="_blank" rel="noopener">https://github.com/ywb94/openwrt-ssr/releases</a> （全部），或<a href="https://www.freess.win/usr/uploads/2017/ssr/luci-app-shadowsocksR_1.2.1_all.ipk" target="_blank" rel="noopener">点此下载</a> （仅限MT7620）<br>下载后打开压缩包，将压缩包内的文件/ramips/luci-app-shadowsocksR_版本号_all.ipk 提取到U盘根目录，然后将U盘插到路由器的USB接口；<br>使用Telnet或SSH进入路由器(命令中的192.168.10.1为此路由器IP地址)：<br>开始–运行，输入cmd并回车，输入：telnet 192.168.10.1，按提示输入用户名和密码后进入命令行终端模式：（注：如果提示“telnet不是内部或外部命令”，请查询 <a href="https://www.freess.win/index.php/archives/9.html" target="_blank" rel="noopener"><strong>此网页</strong></a> 的图10和图11）</p>
+<p>echo “nameserver 114.114.114.114”&gt;/tmp/resolv.conf</p>
+<p>rm -f /var/lock/opkg.lock &amp;&amp; opkg update</p>
+<p>opkg install /mnt/sda1/luci-app-shadowsocksR_*_all.ipk     (or URL of IPK)</p>
+<p>安装完成后在浏览器登录路由器并设置SS或SSR帐号即可使用！<br>注意：可以让SS和SSR同时运行，但是要注意使用的Socks5代理端口不能相同，并且最多只能有一个启用透明代理！</p>
+
     
 
         <a href="/2018/03/31/openwrt/sas/" class="post-more waves-effect waves-button">
@@ -415,12 +686,28 @@ ON SEPTEMBER 3, 2017 BY ISTARBUCKSIN SSR
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        四、一些资源
-1）360p2用breed     文件名：“breed-mt7628-hiwifi-hc5661a.bin”
-2）360p2潘多拉固件+一些插件
-潘多拉群：【PandoraBox VIP玩家交流群】固件链接：http://downloads.pandorabox.com.cn/
-搜索安装插件小技巧
-进入putty1、先更新源opkg update2、按照关键字搜索软件包名称替...
+        <p>四、一些资源</p>
+<p>1）<a href="http://www.right.com.cn/forum/thread-161906-1-1.html" target="_blank" rel="noopener">360p2用breed</a>     文件名：“breed-mt7628-hiwifi-hc5661a.bin”</p>
+<p>2）360p2潘多拉固件+一些插件</p>
+<p>潘多拉群：【<a href="http://jq.qq.com/?_wv=1027&amp;k=2ImWYQv" target="_blank" rel="noopener">PandoraBox VIP玩家交流群】</a>固件链接：<a href="http://downloads.pandorabox.com.cn/" target="_blank" rel="noopener">http://downloads.pandorabox.com.cn/</a></p>
+<p>搜索安装插件小技巧</p>
+<p>进入putty<br>1、先更新源<br>opkg update<br>2、按照关键字搜索软件包名称<br>替换命令中<strong><em>为你的关键字，命令已经忽略大小写<br>opkg list |awk ‘BEGIN{IGNORECASE=1}/</em></strong>/{print $1}’<br>比如搜索s-s<br>opkg list |awk ‘BEGIN{IGNORECASE=1}/s-s/{print $1}’<br>3、你所熟知的opkg install <em>.ipk了</em>复制代码*<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/112123l3x0xtpw6zxrx0yz.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>3）<a href="http://www.right.com.cn/forum/thread-161324-1-1.html" target="_blank" rel="noopener">360p2 改华硕老毛子固件</a>，记住选则文件名“RT-AC1200-GPIO-38-7628”的固件</p>
+<p><a href="https://eyun.baidu.com/s/3kV0JV19" target="_blank" rel="noopener">https://eyun.baidu.com/s/3kV0JV19</a></p>
+<p>新软件源</p>
+<p>src/gz 17.09_core <a href="http://pandorabox.beyang.cc/pandorabox/17.11/targets/ralink/mt7621/packages" target="_blank" rel="noopener">http://pandorabox.beyang.cc/pandorabox/17.11/targets/ralink/mt7621/packages</a></p>
+<p>src/gz 17.09_base <a href="http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/base" target="_blank" rel="noopener">http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/base</a></p>
+<p>src/gz 17.09_lafite <a href="http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/lafite" target="_blank" rel="noopener">http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/lafite</a></p>
+<p>src/gz 17.09_luci <a href="http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/luci" target="_blank" rel="noopener">http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/luci</a></p>
+<p>src/gz 17.09_mtkdrv <a href="http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/mtkdrv" target="_blank" rel="noopener">http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/mtkdrv</a></p>
+<p>src/gz 17.09_newifi <a href="http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/newifi" target="_blank" rel="noopener">http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/newifi</a></p>
+<p>src/gz 17.09_packages <a href="http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/packages" target="_blank" rel="noopener">http://pandorabox.beyang.cc/pandorabox/17.11/packages/mipsel_1004kc_dsp/packages</a>    使用方法：系统–软件包–配置–自定义软件源–粘帖以上内容–提交</p>
+
     
 
         <a href="/2018/03/31/openwrt/yuan/" class="post-more waves-effect waves-button">
@@ -459,17 +746,53 @@ ON SEPTEMBER 3, 2017 BY ISTARBUCKSIN SSR
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        设置开始：首先：192.168.1.1 登陆管理界面，密码：admin
-                
-                    
-                    
-                
-                img
-            
+        <p>设置开始：<br>首先：192.168.1.1 登陆管理界面，密码：admin<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/56206efdfc03924570750b7d8094a4c27f1e25eb.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/561351039245d68873c258d6a3c27d1ed01b24eb.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>按下图做，点搜索。已经测试，虽然5G信号也能搜索到，但是无法连接，原因不明，所以楼主还是中继了2.4G信号，有些遗憾~<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/69ed3f45d688d43f2f697b807a1ed21b0cf43beb.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>找到你要中继的路由器<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/07ab7b88d43f87940d3fa25cd51b0ef419d53aeb.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>按下图设置，然后提交，提交完毕了再点”应用保存“<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/4366793f8794a4c2d7e30d5909f41bd5af6e39eb.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>再次回到无线界面，看到如下信息没？就是你刚刚添加的中继路由<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/41d12a94a4c27d1e79e6d1b61cd5ad6edfc438eb.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>再看看你的路由器有没有得到主路由DHCP来的ip地址。 刚好潘多拉和小云os 1.6.1.5 不在一个网段~（我多余改成了192.168.88.1）<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="../../ipc/127a09c27d1ed21ba209c497aa6eddc453da3feb.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure><br>好了~这样就设置完毕了~还是非常简单的`~</p>
+<p>本教程适合新鸟，老鸟忽略即可~</p>
 
-                
-                    
-             ...
     
 
         <a href="/2018/03/31/openwrt/WIFI中继/" class="post-more waves-effect waves-button">
@@ -508,7 +831,7 @@ ON SEPTEMBER 3, 2017 BY ISTARBUCKSIN SSR
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        人生不只眼前的苟且，还有诗和远方。
+        <p>人生不只眼前的苟且，还有诗和远方。</p>
 
     
 
