@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="IntelliJ IDEA单元测试入门转载 2016年08月09日 20:10:17  **17701  参考文章地址地址：JUnit4单元测试入门教程 ​                                IDEA单元测试及代码覆盖率 ​                                                IDEA添加jar包的三种方式 本文按以下顺序讲解J">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="IntelliJ IDEA单元测试入门转载 2016年08月09日 20:10:17  **17701  参考文章地址地址：JUnit4单元测试入门教程 ​                                IDEA单元测试及代码覆盖率 ​                                                IDEA添加jar包的三种方式 本文按以下顺序讲解J">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://blog.csdn.net/u011138533/article/details/52165577">
+<meta property="og:image" content="http://img.blog.csdn.net/20160809195601239?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810092946082">
+<meta property="og:image" content="http://blog.csdn.net/u011138533/article/details/52165577">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810093003987">
+<meta property="og:image" content="http://blog.csdn.net/u011138533/article/details/52165577">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810093145820">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810093809928">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810093826658">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810094526165">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810095859000">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810101924258">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810101959290">
+<meta property="og:image" content="http://img.blog.csdn.net/20160810102044790">
+<meta property="og:updated_time" content="2017-10-28T10:55:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="IntelliJ IDEA单元测试入门转载 2016年08月09日 20:10:17  **17701  参考文章地址地址：JUnit4单元测试入门教程 ​                                IDEA单元测试及代码覆盖率 ​                                                IDEA添加jar包的三种方式 本文按以下顺序讲解J">
+<meta name="twitter:image" content="http://blog.csdn.net/u011138533/article/details/52165577">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-28T10:53:38.000Z" itemprop="datePublished" class="page-time">
+  2017-10-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IntelliJ-IDEA单元测试入门"><span class="post-toc-number">1.</span> <span class="post-toc-text">IntelliJ IDEA单元测试入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下载jar包"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">下载jar包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单元测试初体验"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">单元测试初体验</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#执行顺序"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">执行顺序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Test的属性"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">@Test的属性</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Idea配置JUnit4单元测试入门"><span class="post-toc-number">2.</span> <span class="post-toc-text">Idea配置JUnit4单元测试入门</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/idea/IDEA单元测试入门"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-28 18:53:38" datetime="2017-10-28T10:53:38.000Z"  itemprop="datePublished">2017-10-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="IntelliJ-IDEA单元测试入门"><a href="#IntelliJ-IDEA单元测试入门" class="headerlink" title="IntelliJ IDEA单元测试入门"></a>IntelliJ IDEA单元测试入门</h1><p>转载 2016年08月09日 20:10:17</p>
+<ul>
+<li>**17701</li>
+</ul>
+<p>参考文章地址地址：<a href="http://www.jianshu.com/p/7088822e21a3" target="_blank" rel="noopener">JUnit4单元测试入门教程</a></p>
+<p>​                                <a href="http://jingyan.baidu.com/article/9faa72315be0ef473d28cb64.html" target="_blank" rel="noopener">IDEA单元测试及代码覆盖率</a></p>
+<p>​                                                <a href="http://zyjustin9.iteye.com/blog/2172445" target="_blank" rel="noopener">IDEA添加jar包的三种方式</a></p>
+<p>本文按以下顺序讲解JUnit4的使用</p>
+<ul>
+<li>下载jar包</li>
+<li>单元测试初体验</li>
+<li>自动生成测试类</li>
+<li>执行顺序</li>
+<li>@Test的属性</li>
+<li>代码覆盖率</li>
+</ul>
+<h2 id="下载jar包"><a href="#下载jar包" class="headerlink" title="下载jar包"></a>下载jar包</h2><p>在github上，把以下两个jar包都下载下来。下载地址：<a href="https://github.com/junit-team/junit4/wiki/Download-and-Install" target="_blank" rel="noopener">点击打开链接</a></p>
+<p>下载junit-4.12.jar，junit-4.12-javadoc.jar（文档），junit-4.12-sources.jar（源码）。</p>
+<p>下载hamcrest-core-1.3.jar，hamcrest-core-1.3-javadoc.jar（文档），hamcrest-core-1.3-sources.jar（源码）。</p>
+<p>最前面那个pom是Maven的配置文件，如果你需要的话也下载下来。</p>
+<p>## </p>
+<h2 id="单元测试初体验"><a href="#单元测试初体验" class="headerlink" title="单元测试初体验"></a>单元测试初体验</h2><p>先创建个简单的项目体验下单元测试是怎么一回事吧。</p>
+<p>我创建一个项目叫JUnit4Demo，刚创建好的工程目录如下图，然后在External Libraries中导入刚下载的那两个jar包。</p>
+<p>​                       <img src="http://blog.csdn.net/u011138533/article/details/52165577" alt="img"> </p>
+<p>通过Libraries添加Jar包</p>
+<p>1.打开 File -&gt; Project Structure -&gt;Modules-&gt; 在Dependencies 下添加jar包</p>
+<p>​              <img src="http://img.blog.csdn.net/20160809195601239?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt="img"></p>
+<p>2、+ -&gt; Library… -&gt; java -&gt; 选择jar的路径添加。   添加jar包后如下图所示。</p>
+<p>​                   <img src="http://img.blog.csdn.net/20160810092946082" alt="img"><img src="http://blog.csdn.net/u011138533/article/details/52165577" alt="img"></p>
+<p>3、创建一个类com.hera.util.Math，然后输入一个求阶乘的方法：</p>
+<p>​                    <img src="http://img.blog.csdn.net/20160810093003987" alt="img"><img src="http://blog.csdn.net/u011138533/article/details/52165577" alt="img"></p>
+<p>4、创建一个队Math方法的单元测试：</p>
+<p>​        创建一个和src同级别的文件夹叫test(逻辑代码放src里，测试代码放test里是个好习惯)。<br>​        接着在IntelliJ IDEA里还要把这个test文件夹要设置成测试文件的根目录，右键选中<br>​        Mark Directory As - Test Sources Root。</p>
+<p>​                    <img src="http://img.blog.csdn.net/20160810093145820" alt="img"><br>​           创建一个测试类：</p>
+<p>​            IntelliJ IDEA提供了一个快捷操作Cmd + Shift + T作为类和测试之间的导航。同时允许用户在那里创建一个测试类。IntelliJ IDEA提供了一个快捷操作Cmd + Shift + T作为类和测试之间的导航。同时允许用户在那里创建一个测试类。</p>
+<p>​          为测试类MathTest添加测试方法：</p>
+<p>​              <img src="http://img.blog.csdn.net/20160810093809928" alt="img"></p>
+<p>​                 <img src="http://img.blog.csdn.net/20160810093826658" alt="img"></p>
+<p>​                运行： run MathTest 。右下方一条绿色条说明测试通过，如果把120改成别的数字那么就会测试不通过显色红色条。JUnit4有一句话叫：“keeps the bar green to keep the code clean”。</p>
+<p>​        解释一下MathTest，就六个地方要讲：<br>​                  第一，导入了org.junit.Test;和org.junit.Assert.*;这两个包，注意后者是静态导入import static。<br>​                  第二，testFactorial是在要测试的方法名Factorial前加个test（这也是个好习惯）。<br>​                  第三，所有测试方法返回类型必须为void且无参数。<br>​                  第四，一个测试方法之所以是个测试方法是因为@Test这个注解。<br>​                  第五，assertEquals的作用是判断两个参数是否相等，例子中120是预期结果，new Math().factorial(5)是实                              际结果。但是通常不应该只比较一个值，要测试多几个特殊值，特别是临界值。</p>
+<p>​                            例如Math().factorial(0)和Math().factorial(-1)等。<br>​                 第六，assertEquals除了比较两个int，还重载了好多次可以比较很多种类型的参数。而且JUnit4包含一堆                                assertXX方法，assertEquals只是其中之一，这些assertXX统称为断言。刚不是下载了junit-4.12-                                 javadoc.jar这个文档吗，解压后打开index.html如下图还有一堆断言。</p>
+<p>​                   <img src="http://img.blog.csdn.net/20160810094526165" alt="img"></p>
+<p>​      </p>
+<h2 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h2><p>JUnit4利用JDK5的新特性Annotation，使用注解来定义测试规则。<br>这里讲一下以下几个常用的注解：</p>
+<ul>
+<li>@Test：把一个方法标记为测试方法</li>
+<li>@Before：每一个测试方法执行前自动调用一次</li>
+<li>@After：每一个测试方法执行完自动调用一次</li>
+<li>@BeforeClass：所有测试方法执行前执行一次，在测试类还没有实例化就已经被加载，所以用static修饰</li>
+<li>@AfterClass：所有测试方法执行完执行一次，在测试类还没有实例化就已经被加载，所以用static修饰</li>
+<li>@Ignore：暂不执行该测试方法</li>
+</ul>
+<p>我们来试验一下，我新建一个测试类AnnotationTest，然后每个注解都用了，其中有两个用@Test标记的方法分别是test1和test2，还有一个用@Ignore标记的方法test3。然后我还创建了一个构造方法，这个构造方法很重要一会会引出一个问题。<br>具体代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">package com.xuhongchuan.util;</span><br><span class="line"></span><br><span class="line">import org.junit.*;</span><br><span class="line">import static org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * Created by xuhongchuan on 2015/7/18.</span><br><span class="line"> */</span><br><span class="line">public class AnnotationTest &#123;</span><br><span class="line"></span><br><span class="line">    public AnnotationTest() &#123;</span><br><span class="line">        System.out.println(&quot;构造方法&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @BeforeClass</span><br><span class="line">    public static void setUpBeforeClass() &#123;</span><br><span class="line">        System.out.println(&quot;BeforeClass&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @AfterClass</span><br><span class="line">    public static void tearDownAfterClass() &#123;</span><br><span class="line">        System.out.println(&quot;AfterClass&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Before</span><br><span class="line">    public void setUp() &#123;</span><br><span class="line">        System.out.println(&quot;Before&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @After</span><br><span class="line">    public void tearDown() &#123;</span><br><span class="line">        System.out.println(&quot;After&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void test1() &#123;</span><br><span class="line">        System.out.println(&quot;test1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void test2() &#123;</span><br><span class="line">        System.out.println(&quot;test2&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Ignore</span><br><span class="line">    public void test3() &#123;</span><br><span class="line">        System.out.println(&quot;test3&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BeforeClass</span><br><span class="line">构造方法</span><br><span class="line">Before</span><br><span class="line">test1</span><br><span class="line">After</span><br><span class="line">构造方法</span><br><span class="line">Before</span><br><span class="line">test2</span><br><span class="line">After</span><br><span class="line">AfterClass</span><br></pre></td></tr></table></figure>
+<p>​        解释一下：@BeforeClass和@AfterClass在类被实例化前（构造方法执行前）就被调用了，而且只执行一次，通常用来初始化和关闭资源。@Before和@After和在每个@Test执行前后都会被执行一次。@Test标记一个方法为测试方法没什么好说的，被@Ignore标记的测试方法不会被执行，例如这个模块还没完成或者现在想测试别的不想测试这一块。</p>
+<p>​       以上有一个问题，构造方法居然被执行了两次。所以我这里要说明一下，JUnit4为了保证每个测试方法都是单元测试，是独立的互不影响。所以每个测试方法执行前都会重新实例化测试类。</p>
+<p>​      我再给你看一个实验：</p>
+<p>​      添加一个成员变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int i = 0;</span><br></pre></td></tr></table></figure>
+<p>然后把test1改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i++;</span><br><span class="line">System.out.println(&quot;test1的i为&quot; + i);</span><br></pre></td></tr></table></figure>
+<p>test2改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">i++;</span><br><span class="line">System.out.println(&quot;test2的i为&quot; + i);</span><br></pre></td></tr></table></figure>
+<p>执行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BeforeClass</span><br><span class="line">构造方法</span><br><span class="line">Before</span><br><span class="line">test1的i为1</span><br><span class="line">After</span><br><span class="line">构造方法</span><br><span class="line">Before</span><br><span class="line">test2的i为1</span><br><span class="line">After</span><br><span class="line">AfterClass</span><br></pre></td></tr></table></figure>
+<p>​       可以看到test1和test2的i都只自增了一次，所以test1的执行不会影响test2，因为执行test2时又把测试类重新实例化了一遍。如果你希望test2的执行受test1的影响怎么办呢？把int i改为static的呗。</p>
+<p>​        最后关于这些注解还有一个要说明的就是，你可以把多个方法标记为@BeforeClass、@AfterClass、@Before、@After。他们都会在相应阶段被执行。</p>
+<h2 id="Test的属性"><a href="#Test的属性" class="headerlink" title="@Test的属性"></a>@Test的属性</h2><p>最后来说一下@Test的两个属性</p>
+<ul>
+<li>excepted</li>
+<li>timeout<br>excepted属性是用来测试异常的，我们回到Math类，拿其中的求阶乘方法factorial()来说。如果传进来一个负数我们是希望抛出异常的，那要测试会不会抛异常怎么办呢？<br>我在测试类MathTest添加一个测试方法：    </li>
+<li>​               <img src="http://img.blog.csdn.net/20160810095859000" alt="img"></li>
+</ul>
+<p>​          这个方法就是(expected = Exception.class)和fail(“factorial参数为负数没有抛出异常”);之间的配合。就是这个测试方法会检查是否抛出Exception异常（当然也可以检测是否抛出其它异常），如果抛出了异常那么测试通过（因为你的预期就是传进负数会抛出异常）。没有抛出异常则测试不通过执行fail(“factorial参数为负数没有抛出异常”);</p>
+<p>​         然后说下timeout属性，这个是用来测试性能的，就是测试一个方法能不能在规定时间内完成。<br>回到Math类，我创建一个数组排序的方法，用的是冒泡排序。</p>
+<p>​        </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public void sort(int[] arr) &#123;</span><br><span class="line">    //冒泡排序</span><br><span class="line">    for (int i = 0; i &lt; arr.length - 1; i++) &#123; //控制比较轮数</span><br><span class="line"></span><br><span class="line">        for (int j = 0; j &lt; arr.length - i - 1; j++) &#123; //控制每轮的两两比较次数</span><br><span class="line">            if (arr[j] &gt; arr[j + 1]) &#123;</span><br><span class="line">                int temp = arr[j];</span><br><span class="line">                arr[j] = arr[j + 1];</span><br><span class="line">                arr[j + 1] = temp;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​      然后偶在测试类MathTest创建测试方法，随机生成一个长度为50000的数组然后测试排序所用时间。timeout的值为2000，单位和毫秒，也就是说超出2秒将视为测试不通过。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Test(timeout = 2000)</span><br><span class="line">public void testSort() throws Exception &#123;</span><br><span class="line">    int[] arr = new int[50000]; //数组长度为50000</span><br><span class="line">    int arrLength = arr.length;</span><br><span class="line">    //随机生成数组元素</span><br><span class="line">    Random r = new Random();</span><br><span class="line">    for (int i = 0; i &lt; arrLength; i++) &#123;</span><br><span class="line">        arr[i] = r.nextInt(arrLength);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    new Math().sort(arr);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果测试不通过，且提示TestTimedOutException。</p>
+<p>​      那怎么办，修改代码提升性能呗。回到Math方法改为下sort()。这次我用快速排序，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">public void sort(int[] arr) &#123;</span><br><span class="line">    //快速排序</span><br><span class="line">    if (arr.length &lt;= 1) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        partition(arr, 0, arr.length - 1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static void partition(int[] arr, int left, int right) &#123;</span><br><span class="line">    int i = left;</span><br><span class="line">    int j = right;</span><br><span class="line">    int pivotKey = arr[left]; //基准数</span><br><span class="line"></span><br><span class="line">    while (i &lt; j) &#123;</span><br><span class="line">        while (i &lt; j &amp;&amp; arr[j] &gt;= pivotKey) &#123;</span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        while (i &lt; j &amp;&amp; arr[i] &lt;= pivotKey) &#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if (i &lt; j) &#123;</span><br><span class="line">            int temp = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (i != left) &#123;</span><br><span class="line">        arr[left] = arr[i];</span><br><span class="line">        arr[i] = pivotKey;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (i - left &gt; 1) &#123;</span><br><span class="line">        partition(arr, left, i - 1);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (right - j &gt; 1) &#123;</span><br><span class="line">        partition(arr, j + 1, right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​         然后再运行一下测试类MathTest，绿色条出现了，测试通过妥妥的。</p>
+<p>编辑测试设置</p>
+<p>​       我们可以通过Run → Edit Configurations或工具栏上的标签来调整我们的测试运行配置。</p>
+<p>​        <img src="http://img.blog.csdn.net/20160810101924258" alt="img"></p>
+<p>​       在Configuration选项卡,用户可以选择需要运行的测试。例如,您可以从一个类、程序包、测试套件或甚至模式中运行所有的测试。这里的Fork模式让用户在一个单独的进程运行每个测试。</p>
+<p>​        在代码覆盖标签你可以调整覆盖率设置。目前IntelliJ IDEA支持两种测量覆盖率引擎。默认情况下它使用自己的引擎，当然用户也可以选择JaCoCo引擎。用户也可以在这里选择覆盖率模式。Tracing{span{ mode模式会增加消耗,但测量会更精确。</p>
+<p>​             <img src="http://img.blog.csdn.net/20160810101959290" alt="img">    </p>
+<p><strong>运行覆盖</strong></p>
+<p>​         收集覆盖率,用户需要通过Run → Run ‘MyClassTest’ with Coverage或工具栏上的选项运行特定模式的测试。</p>
+<p>​        当覆盖模式运行至少一个测试之后,IDE将会在Project工具窗口显示每个程序包、类的覆盖率数据，同时在Coverage工具窗和编辑器中也会显示。</p>
+<p>​         <img src="http://img.blog.csdn.net/20160810102044790" alt="img"></p>
+<p><strong>编辑器中的覆盖率</strong></p>
+<p>如果用户添加另一个方法到MyClass，并运行覆盖率测MyClass,就会发现,没有被测试覆盖到的代码都将高亮显示为红色。覆盖的代码颜色则是绿色。如果一些代码是只覆盖部分,那没将显示为黄色。</p>
+<h1 id="Idea配置JUnit4单元测试入门"><a href="#Idea配置JUnit4单元测试入门" class="headerlink" title="Idea配置JUnit4单元测试入门"></a>Idea配置JUnit4单元测试入门</h1><p>原创 2017年01月07日 13:48:20</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=junit&amp;t=blog" target="_blank" rel="noopener">junit</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=idea&amp;t=blog" target="_blank" rel="noopener">idea</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95&amp;t=blog" target="_blank" rel="noopener">单元测试</a></li>
+</ul>
+<ul>
+<li>**1679</li>
+</ul>
+<p><strong>pom.xml文件配置</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;123456</span><br></pre></td></tr></table></figure>
+<p>然后创建一个和src同级别的文件夹叫test(逻辑代码放src里，测试代码放test里是个好习惯)。<br>接着在IntelliJ IDEA里还要把这个test文件夹要设置成测试文件的根目录,右键选中 <code>Mark Directory As -&gt; Test Sources Root</code>。<br>然后创建测试类(包名一致，类名在要测试的类名后加上Test也是个好习惯)。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public class IndexBuilderTest &#123;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void testStart() throws Exception &#123;</span><br><span class="line">        System.out.println(&quot;---testStrat()----&quot;);</span><br><span class="line">        IndexBuilder indexBuilder=new IndexBuilder();</span><br><span class="line">        indexBuilder.start();</span><br><span class="line">//        assertEquals(true,false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;12345678910</span><br></pre></td></tr></table></figure>
+<p>然后选中MathTest类ctrl + shift + F10运行一下。</p>
+<p>JUnit4利用JDK5的新特性Annotation，使用注解来定义测试规则。<br>这里讲一下以下几个常用的注解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Test：把一个方法标记为测试方法</span><br><span class="line">@Before：每一个测试方法执行前自动调用一次</span><br><span class="line">@After：每一个测试方法执行完自动调用一次</span><br><span class="line">@BeforeClass：所有测试方法执行前执行一次，在测试类还没有实例化就已经被加载，所以用static修饰</span><br><span class="line">@AfterClass：所有测试方法执行完执行一次，在测试类还没有实例化就已经被加载，所以用static修饰</span><br><span class="line">@Ignore：暂不执行该测试方法</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-28T10:55:21.000Z" itemprop="dateUpdated">2017-10-28 18:55:21</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/28/MD/idea/IDEA单元测试入门/" target="_blank" rel="external">http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/28/MD/idea/ JRebel热部署/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/28/MD/Java/JavaEE/Java框架/spring/SSH框架总结/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/28/MD/idea/IDEA单元测试入门/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aQW4jMQwEwPz/09nrAo7tblEMHKDmFGQ9Y9UsIDFNfn3F1/d/1+Pvn/38eFf+mWfX18aFh4eHN1h68pWPC80/8/qTr595+Arw8PDw1njPFpEvNNn0J8dPvh48PDy8z+Tlm3iLyUt2PDw8vL/CS2BtgZ6X3Xh4eHifw0sWlBwS+b3JcpNvuZa14OHh4S10kT7n55X+Hh4eHt64q352SCRHRRtefB9deHh4eBu8tpzNY4g8dMiL8sN14uHh4S3w8rZW28jPhwzO2MldeHh4eHd5r4va12V0/pvkOfPIOMqn8fDw8Ma8vGjOC+uNV5O/oDcnHh4eHt6YdxbRng1atUtvC/E35x4eHh7eGq/d1s8ig9dtszwUrg8GPDw8vKu8JB691dZqq/58QKHIWvDw8PAGvHZZk2bY61fTvuI3a8DDw8Nb4E2WmN/bBhDzoS48PDy8bV5+GJwV39tbf/TK8PDw8NZ4bZM+Z7eDBWcRc5Gg4OHh4Y15bQk7afyfNc/ycQQ8PDy8Pd4krk0Ak39tS/MfnoaHh4e3wDtbej4IlSwlP5bachwPDw9vm3d2890Yoo16o6EEPDw8vDVe0YYfhxfz1loxsIWHh4d3lZdvzUkRPBmxyovp4vl4eHh4C7yzkaYiCIijjfw4qQcO8PDw8NZ4eVO/3dzbWDb/3qgcx8PDw1vmtQFBvolP2lrtS3/zdwMeHh7eVV4eld4KDuatr6K/h4eHhzfmTVpTbXiRF/FtnPH0CXh4eHgLvLNtd764tj91azALDw8P7xbvsCV/9Arawam2iMfDw8P7TV4SPbQDAe3WfxaR1O8MDw8P79d5Z+NQyaLzYykpzfHw8PA+h3dWFidRb94kK0Yc8PDw8NZ47eDUGazNWi/8N+Dh4eEt8ObbfRso5Jgirr0bWODh4eH9fP0DaPG7YMAy0aUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

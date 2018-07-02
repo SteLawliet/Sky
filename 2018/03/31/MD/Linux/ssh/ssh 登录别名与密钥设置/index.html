@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="SSH别名原创  2015年05月31日 00:07:20 在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="SSH别名原创  2015年05月31日 00:07:20 在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-12T15:53:45.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="SSH别名原创  2015年05月31日 00:07:20 在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-31T05:09:56.000Z" itemprop="datePublished" class="page-time">
+  2018-03-31
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SSH别名"><span class="post-toc-number">1.</span> <span class="post-toc-text">SSH别名</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SSH公钥和密钥"><span class="post-toc-number">2.</span> <span class="post-toc-text">SSH公钥和密钥</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用场景？"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">使用场景？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ssh有啥？"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">ssh有啥？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#linux-无密login"><span class="post-toc-number">2.0.3.</span> <span class="post-toc-text">linux 无密login</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/Linux/ssh/ssh 登录别名与密钥设置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-31 13:09:56" datetime="2018-03-31T05:09:56.000Z"  itemprop="datePublished">2018-03-31</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="SSH别名"><a href="#SSH别名" class="headerlink" title="SSH别名"></a>SSH别名</h1><p>原创  2015年05月31日 00:07:20</p>
+<p>在Mac OS的终端(terminal)中，可以使用命令<code>ssh user@host</code>的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下<code>~/.ssh/config</code>这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式添加内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 服务器1</span><br><span class="line">Host 别名</span><br><span class="line">    HostName IP地址</span><br><span class="line">    Port 22</span><br><span class="line">    User 用户名</span><br><span class="line"># 服务器2</span><br><span class="line">Host 别名</span><br><span class="line">    HostName IP地址</span><br><span class="line">    Port 22</span><br><span class="line">    User 用户名</span><br><span class="line">更多的服务器...1234567891011</span><br></pre></td></tr></table></figure>
+<p>添加完以上内容后，就可以使用命令<code>ssh 服务器别名</code>来连接服务器了，是不是方便很多了？</p>
+<p>另外，如果想查看当前有哪些配置了别名的服务器，可以使用命令<code>cat ~/.ssh/config | grep &quot;Host&quot;</code>来查看</p>
+<h1 id="SSH公钥和密钥"><a href="#SSH公钥和密钥" class="headerlink" title="SSH公钥和密钥"></a>SSH公钥和密钥</h1><h3 id="使用场景？"><a href="#使用场景？" class="headerlink" title="使用场景？"></a>使用场景？</h3><ol>
+<li>linux 无密login</li>
+<li>git 无密push</li>
+</ol>
+<h3 id="ssh有啥？"><a href="#ssh有啥？" class="headerlink" title="ssh有啥？"></a>ssh有啥？</h3><p>ssh中，有两个钥匙：<strong>公钥</strong>、<strong>私钥</strong> ,公钥主要是用于对一些敏感信息进行加密 ， 私钥是用于对解密 。<br> ssh的文件都存在于机器的~/.ssh中。</p>
+<ul>
+<li>客户机端：id_rsa(私钥)  、 id_rsa.pub(公钥)  、 known_hosts(已知远程主机)</li>
+<li>服务器端：authorized_keys(验证过的公钥列表)  、 sshd_config(ssh配置文件)</li>
+</ul>
+<h3 id="linux-无密login"><a href="#linux-无密login" class="headerlink" title="linux 无密login"></a>linux 无密login</h3><p>linux的远程登录默认是需要密码的，但是我们可以通过ssh通道，进行无密登录，也就是说每次登录只需要  ssh username@host 就能成功登录远程机器。</p>
+<p>*下面是无密登录的完整过程：</p>
+<ol>
+<li>客户机使用ssh-keygen生成密钥对（私密id_rsa、公密id_rsa.pub）。</li>
+<li>复制公密id_rsa.pub的内容</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ pbcopy &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<ol>
+<li>使用ssh登录到远程机器（这次需要密码）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@host  //root：帐号  ， host ：服务器IP地址</span><br></pre></td></tr></table></figure>
+<ol>
+<li>把剪切版的内容粘贴到~/.ssh/authorized_keys中，退出登录</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ exit</span><br></pre></td></tr></table></figure>
+<ol>
+<li>，基础已经搭建完了，使用ssh无密登录（不需要密码）</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; 如果发现无法自动登录，请修改</span><br></pre></td></tr></table></figure>
+<p>$ vi /etc/ssh/sshd_config<br> RSAAuthentication yes　　<br> PubkeyAuthentication yes　　<br> AuthorizedKeysFile .ssh/authorized_keys<br> 把以上的最前面的＃去掉 。<br> $ service ssh restart<br> $ exit<br> 重新登录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ ssh root@192.168.1.1</span><br><span class="line">The authenticity of host &apos;192.168.1.1 (192.168.1.1)&apos; can&apos;t be established.</span><br><span class="line">ECDSA key fingerprint is SHA256:8bZUeFxyoxL9oYhc5aAZjgSZ5CT1oGYEYoehN/OLEYY.</span><br><span class="line">Are you sure you want to continue connecting (yes/no)?</span><br></pre></td></tr></table></figure>
+<p>因为这是第一次登录，ssh无法判断远程的服务端是否是正确的，在这里如果有人中间截获了你的登录请求，并且模拟ssh服务端的话，你的密码就会泄漏（中间人攻击），所以ssh会询问你：远程服务端的指纹是：xxxx，是不是确定登录。</p>
+<p>选择yes，ssh会把该服务端的信息存到本地的~/.ssh/known_hosts文件中，那么下次登录就不会再询问了。</p>
+<ol>
+<li>这时候服务端会使用公钥对A字符串加密，然后传输到客户端，客户端使用私钥进行解密，得到的A字符串，然后对A字符串进行md5加密，服务端判断传回来的字符串是否正确，如果正确，直接登录。</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-05-12T15:53:45.000Z" itemprop="dateUpdated">2018-05-12 23:53:45</time>
+</span><br>
+
+
+        
+        <a href="/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/31/MD/Linux/ssh/mac ssh设置/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/30/MD/Linux/shdaowsocks/kcp-server/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/31/MD/Linux/ssh/ssh 登录别名与密钥设置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3awW7rMAwEwPz/T7fAu77aXZKi68P4FDiJpXEAS1ny84mPr3/H/2eqx/13k7E+GwceHh5ea+q9Ia/OXGGSOeTXv58zHh4e3jbvfjG4H37+yavJ5bf78jweHh7en/KSDfcvj+niRjm5TXh4eHhv5lWDgzxESD6Ph4eH9zbeJHjdg1Xng4eHh/cMr1oAe8PrxfoeHh4e3qCqPokV8nJaNeQtzBYPDw9vgZe3BUy2v/mNqIYg0bKBh4eHt8CbxwTVaDX/Vh6RJD8PHh4e3pyX/+3vhbanGL1Z4eHh4W3w8oEnzVi9RaXaTICHh4f3JC9qXWptmueLQR5YNKt5eHh4eEVeNUpIgoD8lp3tgLjsJsPDw8Nb4E0uPcFXN83lwhgeHh7eAi+53GSKVXwyVk7Fw8PD2+Dl2+KzJa5ThbTot8LDw8M7yssj1+pUqlvkJEMYrXV4eHh4h3h5o1WvbbRaPDvVeoWHh4e3zZs/+qstp73rl8tpeHh4eAu8+4+eLYblV5gsML/0R+Dh4eGNefnjuzfReSjci3Qv1z08PDy8Ma9XyD81uTw9qIYXeHh4eM/wqkP2Hv3JjfiKjyiqwMPDwzvKS4bP/9f3zveWpXJ9Dw8PD2+BVy3V541Qe9RCPo2Hh4e3wJuXxKohRS/+KMS7eHh4eAu8PBo4uzAUJhe/29xY4+Hh4RV5yQM3aRHobcer+968TeGHzgg8PDy8ZV5ScJqUzXqb4/J88PDw8BZ41QUgeTdv1apulJNR8PDw8J7hVRubepvg5HE/L7zh4eHhPck7G+/2ymO9BQAPDw/vzbwcP4kkqgWz5r8BPDw8vBfwqtvrKi+Pdy+brvDw8PCO8npFr/xbpx79ORUPDw9vjzffl06CiTykWKns4eHh4dV439G6P6SNzNY5AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

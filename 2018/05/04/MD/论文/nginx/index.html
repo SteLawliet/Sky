@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Nginx是一个高性能的HTTP和反向代理服务器，也是一个 IMAP/POP3/SMTP代理服务器。Nginx的影响力可以同Apache匹敌是有它的实力的：超强的稳定性、丰富的功能集、示例配置文件和低系统资源消耗是让它远近闻名的最大特点。因为它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。选择Nginx做静态资源服务器的几点原因： 1)   更快，请求会得到更快的响应，并发数以万计">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/05/04/MD/论文/nginx/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="Nginx是一个高性能的HTTP和反向代理服务器，也是一个 IMAP/POP3/SMTP代理服务器。Nginx的影响力可以同Apache匹敌是有它的实力的：超强的稳定性、丰富的功能集、示例配置文件和低系统资源消耗是让它远近闻名的最大特点。因为它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。选择Nginx做静态资源服务器的几点原因： 1)   更快，请求会得到更快的响应，并发数以万计">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-06T17:38:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Nginx是一个高性能的HTTP和反向代理服务器，也是一个 IMAP/POP3/SMTP代理服务器。Nginx的影响力可以同Apache匹敌是有它的实力的：超强的稳定性、丰富的功能集、示例配置文件和低系统资源消耗是让它远近闻名的最大特点。因为它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。选择Nginx做静态资源服务器的几点原因： 1)   更快，请求会得到更快的响应，并发数以万计">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-04T15:30:27.000Z" itemprop="datePublished" class="page-time">
+  2018-05-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-更快，请求会得到更快的响应，并发数以万计的请求，Nginx也可以比其他服务器更快地作出响应。"><span class="post-toc-number">1.</span> <span class="post-toc-text">1)   更快，请求会得到更快的响应，并发数以万计的请求，Nginx也可以比其他服务器更快地作出响应。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-高延展性，Nginx的设计极具扩展性，它的设计是由多个不同功能、不同层次、不同类型且耦合度极低的模块组成。这种低耦合度的优秀设计，造就了Nginx庞大的第三方模块，当然，公开的第三方模块也如官方发布的模块一样容易使用。"><span class="post-toc-number">2.</span> <span class="post-toc-text">2)   高延展性，Nginx的设计极具扩展性，它的设计是由多个不同功能、不同层次、不同类型且耦合度极低的模块组成。这种低耦合度的优秀设计，造就了Nginx庞大的第三方模块，当然，公开的第三方模块也如官方发布的模块一样容易使用。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-高可靠性：用于反向代理，宕机的概率微乎其微，高可靠性是我们选择Nginx的最基本条件。"><span class="post-toc-number">3.</span> <span class="post-toc-text">3)   高可靠性：用于反向代理，宕机的概率微乎其微，高可靠性是我们选择Nginx的最基本条件。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-低内存消耗一般情况下，10-000个非活跃的HTTP-Keep-Alive连接在Nginx中仅消耗2-5MB的内存，这是Nginx支持高并发连接的基础。"><span class="post-toc-number">4.</span> <span class="post-toc-text">4)   低内存消耗一般情况下，10 000个非活跃的HTTP Keep-Alive连接在Nginx中仅消耗2.5MB的内存，这是Nginx支持高并发连接的基础。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-单机支持10万以上的并发连接这是一个非常重要的性能指标。"><span class="post-toc-number">5.</span> <span class="post-toc-text">5)   单机支持10万以上的并发连接这是一个非常重要的性能指标。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-最自由的BSD许可协议，这是Nginx可以快速发展的强大动力。BSD许可协议下用户不仅可以免费的使用Nginx，用户还可以在自己的项目中根据自己的需求来修改Nginx源码，达到不同场景的需求，这许可协议使许多开发者协同开发为Nginx开源项目贡献自己的代码，不断完善Nginx。"><span class="post-toc-number">6.</span> <span class="post-toc-text">6)   最自由的BSD许可协议，这是Nginx可以快速发展的强大动力。BSD许可协议下用户不仅可以免费的使用Nginx，用户还可以在自己的项目中根据自己的需求来修改Nginx源码，达到不同场景的需求，这许可协议使许多开发者协同开发为Nginx开源项目贡献自己的代码，不断完善Nginx。</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/论文/nginx"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-04 23:30:27" datetime="2018-05-04T15:30:27.000Z"  itemprop="datePublished">2018-05-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Nginx是一个高性能的HTTP和反向代理服务器，也是一个 IMAP/POP3/SMTP代理服务器。Nginx的影响力可以同Apache匹敌是有它的实力的：超强的稳定性、丰富的功能集、示例配置文件和低系统资源消耗是让它远近闻名的最大特点。因为它的稳定性、丰富的功能集、示例配置文件和低系统资源的消耗而闻名。选择Nginx做静态资源服务器的几点原因：</p>
+<h4 id="1-更快，请求会得到更快的响应，并发数以万计的请求，Nginx也可以比其他服务器更快地作出响应。"><a href="#1-更快，请求会得到更快的响应，并发数以万计的请求，Nginx也可以比其他服务器更快地作出响应。" class="headerlink" title="1)   更快，请求会得到更快的响应，并发数以万计的请求，Nginx也可以比其他服务器更快地作出响应。"></a>1)   更快，请求会得到更快的响应，并发数以万计的请求，Nginx也可以比其他服务器更快地作出响应。</h4><h4 id="2-高延展性，Nginx的设计极具扩展性，它的设计是由多个不同功能、不同层次、不同类型且耦合度极低的模块组成。这种低耦合度的优秀设计，造就了Nginx庞大的第三方模块，当然，公开的第三方模块也如官方发布的模块一样容易使用。"><a href="#2-高延展性，Nginx的设计极具扩展性，它的设计是由多个不同功能、不同层次、不同类型且耦合度极低的模块组成。这种低耦合度的优秀设计，造就了Nginx庞大的第三方模块，当然，公开的第三方模块也如官方发布的模块一样容易使用。" class="headerlink" title="2)   高延展性，Nginx的设计极具扩展性，它的设计是由多个不同功能、不同层次、不同类型且耦合度极低的模块组成。这种低耦合度的优秀设计，造就了Nginx庞大的第三方模块，当然，公开的第三方模块也如官方发布的模块一样容易使用。"></a>2)   高延展性，Nginx的设计极具扩展性，它的设计是由多个不同功能、不同层次、不同类型且耦合度极低的模块组成。这种低耦合度的优秀设计，造就了Nginx庞大的第三方模块，当然，公开的第三方模块也如官方发布的模块一样容易使用。</h4><h4 id="3-高可靠性：用于反向代理，宕机的概率微乎其微，高可靠性是我们选择Nginx的最基本条件。"><a href="#3-高可靠性：用于反向代理，宕机的概率微乎其微，高可靠性是我们选择Nginx的最基本条件。" class="headerlink" title="3)   高可靠性：用于反向代理，宕机的概率微乎其微，高可靠性是我们选择Nginx的最基本条件。"></a>3)   高可靠性：用于反向代理，宕机的概率微乎其微，高可靠性是我们选择Nginx的最基本条件。</h4><h4 id="4-低内存消耗一般情况下，10-000个非活跃的HTTP-Keep-Alive连接在Nginx中仅消耗2-5MB的内存，这是Nginx支持高并发连接的基础。"><a href="#4-低内存消耗一般情况下，10-000个非活跃的HTTP-Keep-Alive连接在Nginx中仅消耗2-5MB的内存，这是Nginx支持高并发连接的基础。" class="headerlink" title="4)   低内存消耗一般情况下，10 000个非活跃的HTTP Keep-Alive连接在Nginx中仅消耗2.5MB的内存，这是Nginx支持高并发连接的基础。"></a>4)   低内存消耗一般情况下，10 000个非活跃的HTTP Keep-Alive连接在Nginx中仅消耗2.5MB的内存，这是Nginx支持高并发连接的基础。</h4><h4 id="5-单机支持10万以上的并发连接这是一个非常重要的性能指标。"><a href="#5-单机支持10万以上的并发连接这是一个非常重要的性能指标。" class="headerlink" title="5)   单机支持10万以上的并发连接这是一个非常重要的性能指标。"></a>5)   单机支持10万以上的并发连接这是一个非常重要的性能指标。</h4><h4 id="6-最自由的BSD许可协议，这是Nginx可以快速发展的强大动力。BSD许可协议下用户不仅可以免费的使用Nginx，用户还可以在自己的项目中根据自己的需求来修改Nginx源码，达到不同场景的需求，这许可协议使许多开发者协同开发为Nginx开源项目贡献自己的代码，不断完善Nginx。"><a href="#6-最自由的BSD许可协议，这是Nginx可以快速发展的强大动力。BSD许可协议下用户不仅可以免费的使用Nginx，用户还可以在自己的项目中根据自己的需求来修改Nginx源码，达到不同场景的需求，这许可协议使许多开发者协同开发为Nginx开源项目贡献自己的代码，不断完善Nginx。" class="headerlink" title="6)   最自由的BSD许可协议，这是Nginx可以快速发展的强大动力。BSD许可协议下用户不仅可以免费的使用Nginx，用户还可以在自己的项目中根据自己的需求来修改Nginx源码，达到不同场景的需求，这许可协议使许多开发者协同开发为Nginx开源项目贡献自己的代码，不断完善Nginx。"></a>6)   最自由的BSD许可协议，这是Nginx可以快速发展的强大动力。BSD许可协议下用户不仅可以免费的使用Nginx，用户还可以在自己的项目中根据自己的需求来修改Nginx源码，达到不同场景的需求，这许可协议使许多开发者协同开发为Nginx开源项目贡献自己的代码，不断完善Nginx。</h4>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-05-06T17:38:08.000Z" itemprop="dateUpdated">2018-05-07 01:38:08</time>
+</span><br>
+
+
+        
+        <a href="/2018/05/04/MD/论文/nginx/" target="_blank" rel="external">http://io.stelawliet.top/2018/05/04/MD/论文/nginx/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/04/MD/论文/tomcat/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/04/MD/论文/webpack/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/04/MD/论文/nginx/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aQXKDMAwF0Nz/0vQAKfRLgk5iP1aZCRg/FhpJ1usVX8fb9f7v9Z3vT10/+3riwsDA+FrGcXld35OsnKxQfe8vb8fAwNiAkWwi+TcJsnlAT/aGgYGBkSdw+f1J8MXAwMCYB9w8EFdTPQwMDIxJEXu9uV6rrlf6YmBg7MbIi8z///3I+QYGBsZXMY7ilSR8Z+vPw+vprjAwMJZm5AFu1LIvJpe9/WBgYOzG6AXTZHgiH63IQzYGBsbajF4QLKRrMW90jIqBgbE0Y9JoS4rVvKGffIJH+oUYGBgfz5hklL3ELk8K80QWAwNjbUavsCwvXUzyegcMGBgYazOqbbJqiVstX3PG6cEABgbGcoxJIE6K1WopW10TAwMDI3ksP/LsnTw2s10MDIyFGNUtJsnZ0ykgBgbGPoxe26vaSsuHOXoDHxgYGHsykhStyuuF3ehAAgMDY2lGNVxOXlYNptWAjoGBsQ/jrvSuN6iRr3Bai2NgYGzASIYtqkMP+fp5sL5hZgQDA+MLGZOG180jEa3Qj4GBsQOjFxCTEvSuuY8/WoEYGBiLMo7ilYTafFy12sg7XQcDA2NpxjzYJa26/ABgMrqBgYGxNiMPstXjgUkIru4BAwNjB8akNK222yZp3+nnwMDAwLi1JZeH5mQdDAwMjOtN5MhqUlge18DAwNiAMTkMyAG9BlwExsDAWJrRS+wmx435J0iSSwwMjKUZP/682xndwp0IAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Intellij IDEA使用 JRebel 搭配 maven-jetty-plugin插件实现热部署1. 在pom.xml文件中依赖jetty在&amp;lt;build&amp;gt;标签的子标签&amp;lt;plugins&amp;gt;标签下加入以下内容: 1234567891011&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.eclipse.jetty&amp;lt;/groupId&amp;gt;">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="Intellij IDEA使用 JRebel 搭配 maven-jetty-plugin插件实现热部署1. 在pom.xml文件中依赖jetty在&amp;lt;build&amp;gt;标签的子标签&amp;lt;plugins&amp;gt;标签下加入以下内容: 1234567891011&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.eclipse.jetty&amp;lt;/groupId&amp;gt;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://img.blog.csdn.net/20161130215918247">
+<meta property="og:image" content="http://img.blog.csdn.net/20161130215952095">
+<meta property="og:image" content="http://img.blog.csdn.net/20161130220034049">
+<meta property="og:image" content="http://img.blog.csdn.net/20161130220249612">
+<meta property="og:image" content="http://img.blog.csdn.net/20161130220402910">
+<meta property="og:image" content="http://img.blog.csdn.net/20161130220436332">
+<meta property="og:image" content="http://img.blog.csdn.net/20161130220531709">
+<meta property="og:updated_time" content="2017-12-25T16:32:33.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Intellij IDEA使用 JRebel 搭配 maven-jetty-plugin插件实现热部署1. 在pom.xml文件中依赖jetty在&amp;lt;build&amp;gt;标签的子标签&amp;lt;plugins&amp;gt;标签下加入以下内容: 1234567891011&amp;lt;plugin&amp;gt;    &amp;lt;groupId&amp;gt;org.eclipse.jetty&amp;lt;/groupId&amp;gt;">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20161130215918247">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-28T11:12:37.000Z" itemprop="datePublished" class="page-time">
+  2017-10-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Intellij-IDEA使用-JRebel-搭配-maven-jetty-plugin插件实现热部署"><span class="post-toc-number">1.</span> <span class="post-toc-text">Intellij IDEA使用 JRebel 搭配 maven-jetty-plugin插件实现热部署</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-在pom-xml文件中依赖jetty"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1. 在pom.xml文件中依赖jetty</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-修改idea运行配置Run-Configuration"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2. 修改idea运行配置Run Configuration</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-安装JRebel热部署插件"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3. 安装JRebel热部署插件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-破解JRebel"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4. 破解JRebel</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-1-解压补丁，替换jar包与licence文件"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">4.1 解压补丁，替换jar包与licence文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-2-将补丁解压包里的文件分别覆盖一下文件-注意文件夹的名字哦"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">4.2 将补丁解压包里的文件分别覆盖一下文件,注意文件夹的名字哦</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-重启Idea使JRebel生效，并取消勾选汇报使用数据"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5. 重启Idea使JRebel生效，并取消勾选汇报使用数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-勾选需要监控的热部署的模块"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">6. 勾选需要监控的热部署的模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-通过JRebel来Debug运行项目"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">7. 通过JRebel来Debug运行项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-控制台打印如下输出表示配置成功"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">8. 控制台打印如下输出表示配置成功</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/idea/ JRebel热部署"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-28 19:12:37" datetime="2017-10-28T11:12:37.000Z"  itemprop="datePublished">2017-10-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Intellij-IDEA使用-JRebel-搭配-maven-jetty-plugin插件实现热部署"><a href="#Intellij-IDEA使用-JRebel-搭配-maven-jetty-plugin插件实现热部署" class="headerlink" title="Intellij IDEA使用 JRebel 搭配 maven-jetty-plugin插件实现热部署"></a>Intellij IDEA使用 JRebel 搭配 maven-jetty-plugin插件实现热部署</h1><h2 id="1-在pom-xml文件中依赖jetty"><a href="#1-在pom-xml文件中依赖jetty" class="headerlink" title="1. 在pom.xml文件中依赖jetty"></a>1. 在pom.xml文件中依赖jetty</h2><p>在<code>&lt;build&gt;</code>标签的子标签<code>&lt;plugins&gt;</code>标签下加入以下内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;plugin&gt;</span><br><span class="line">    &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;jetty-maven-plugin&lt;/artifactId&gt;</span><br><span class="line">    &lt;version&gt;9.3.11.v20160721&lt;/version&gt;</span><br><span class="line">    &lt;configuration&gt;</span><br><span class="line">        &lt;scanIntervalSeconds&gt;5&lt;/scanIntervalSeconds&gt;</span><br><span class="line">        &lt;httpConnector&gt;</span><br><span class="line">            &lt;port&gt;9999&lt;/port&gt;</span><br><span class="line">        &lt;/httpConnector&gt;</span><br><span class="line">    &lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br></pre></td></tr></table></figure>
+<p>其中port可以指定端口号,jetty访问默认不需要项目名,直接通过 localhost:9999访问即可</p>
+<h2 id="2-修改idea运行配置Run-Configuration"><a href="#2-修改idea运行配置Run-Configuration" class="headerlink" title="2. 修改idea运行配置Run Configuration"></a>2. 修改idea运行配置Run Configuration</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161130215918247" alt="修改idea运行配置Run Configuration" title="">
+                </div>
+                <div class="image-caption">修改idea运行配置Run Configuration</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161130215952095" alt="修改idea运行配置Run Configuration" title="">
+                </div>
+                <div class="image-caption">修改idea运行配置Run Configuration</div>
+            </figure>
+<h2 id="3-安装JRebel热部署插件"><a href="#3-安装JRebel热部署插件" class="headerlink" title="3. 安装JRebel热部署插件"></a>3. 安装JRebel热部署插件</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161130220034049" alt="安装JRebel热部署插件" title="">
+                </div>
+                <div class="image-caption">安装JRebel热部署插件</div>
+            </figure>
+<h2 id="4-破解JRebel"><a href="#4-破解JRebel" class="headerlink" title="4. 破解JRebel"></a>4. 破解JRebel</h2><p>首先下载<a href="http://download.csdn.net/detail/upshi/9698423" target="_blank" rel="noopener">破解文件</a></p>
+<h3 id="4-1-解压补丁，替换jar包与licence文件"><a href="#4-1-解压补丁，替换jar包与licence文件" class="headerlink" title="4.1 解压补丁，替换jar包与licence文件"></a>4.1 解压补丁，替换jar包与licence文件</h3><p>将本机 /Users/&lt;你的用户名&gt;/.jrebel/jrebel.lic替换为下载的jrebel.lic</p>
+<h3 id="4-2-将补丁解压包里的文件分别覆盖一下文件-注意文件夹的名字哦"><a href="#4-2-将补丁解压包里的文件分别覆盖一下文件-注意文件夹的名字哦" class="headerlink" title="4.2 将补丁解压包里的文件分别覆盖一下文件,注意文件夹的名字哦"></a>4.2 将补丁解压包里的文件分别覆盖一下文件,注意文件夹的名字哦</h3><p>/Users/&lt;你的用户名&gt;/IdeaIC2016.1/config/plugins/jr-ide-idea/lib/jrebel6/jrebel.jar<br>/Users/&lt;你的用户名&gt;/IdeaIC2016.1/config/plugins/jr-ide-idea/lib/jrebel/jrebel.jar </p>
+<h2 id="5-重启Idea使JRebel生效，并取消勾选汇报使用数据"><a href="#5-重启Idea使JRebel生效，并取消勾选汇报使用数据" class="headerlink" title="5. 重启Idea使JRebel生效，并取消勾选汇报使用数据"></a>5. 重启Idea使JRebel生效，并取消勾选汇报使用数据</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161130220249612" alt="重启Idea使JRebel生效，并取消勾选汇报使用数据" title="">
+                </div>
+                <div class="image-caption">重启Idea使JRebel生效，并取消勾选汇报使用数据</div>
+            </figure>
+<h2 id="6-勾选需要监控的热部署的模块"><a href="#6-勾选需要监控的热部署的模块" class="headerlink" title="6. 勾选需要监控的热部署的模块"></a>6. 勾选需要监控的热部署的模块</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161130220402910" alt="勾选需要监控的热部署的模块" title="">
+                </div>
+                <div class="image-caption">勾选需要监控的热部署的模块</div>
+            </figure>
+<h2 id="7-通过JRebel来Debug运行项目"><a href="#7-通过JRebel来Debug运行项目" class="headerlink" title="7. 通过JRebel来Debug运行项目"></a>7. 通过JRebel来Debug运行项目</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161130220436332" alt="通过JRebel来Debug运行项目" title="">
+                </div>
+                <div class="image-caption">通过JRebel来Debug运行项目</div>
+            </figure>
+<h2 id="8-控制台打印如下输出表示配置成功"><a href="#8-控制台打印如下输出表示配置成功" class="headerlink" title="8. 控制台打印如下输出表示配置成功"></a>8. 控制台打印如下输出表示配置成功</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://img.blog.csdn.net/20161130220531709" alt="控制台打印如下输出表示配置成功" title="">
+                </div>
+                <div class="image-caption">控制台打印如下输出表示配置成功</div>
+            </figure>
+<p>修改文件后按 <strong>Ctrl + (Shift) +F9</strong> 来Make项目，使得JRebel热部署最新代码</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-25T16:32:33.000Z" itemprop="dateUpdated">2017-12-26 00:32:33</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/28/MD/idea/ JRebel热部署/" target="_blank" rel="external">http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/29/MD/Java/JavaEE/java学习总论/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/28/MD/idea/IDEA单元测试入门/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/28/MD/idea/ JRebel热部署/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aMW7DMAwFUN//0u7SoUDg5JN0Clh6moKmtvw8MKTI44jX+Wddffv6n68rv/b4xsLAwHgsI9k4+XvvdVT3vdwRAwNjA0YSChPS1T3f75Lc88PdMDAwMOLPvYfIXwcGBgZGjzFP9ZJ9MTAwMPIULS9ck+O2vEi+rRbHwMB4ICM/Jvv/z1/pb2BgYDyKcRZXNZXMQ23veX6vxcDAWJqRB7i8edlrACR3+DD8gYGBsQGjeviVF6W9krU8zIGBgbEBY14nzmvM3sAHBgbG2ozqsNc8QE/uVjgLxMDAWJSRfJvw5gnobdMiGBgYSzDyY7UqbzIS8T4ol5uaGBgYizLmpWwvZaymj5dPi4GBsRxjEkB7x23VIBs1DDAwMJZm5JdNmpf5y8qHNgq/CRgYGEsw8nGHPBTm+MkrwMDAWJtx78MliWOyY3L/wrAFBgbGwxm9eJUni/mwRTUFxMDA2JmR9AQnYxPfaCRgYGDswKge0OeBMm8bVAvmqBbHwMBYiDE5FJsXokniGAV3DAyMbRh5q2B+ZFZtCWBgYGAkiWBvPGKSaJanRTAwMJZjnMVVDbLVIrZJxcDAWJqRryqpOZU2LnoxMDBWZdx1ZJaUvnkILr8UDAyMDRi9wDdvc1bTvvLMCAYGxpaM6sHcpBWaFL0YGBgY+fDWPDXMG5m3/W5gYGA8itE76J+njL02AAYGxm6MvHTsHe5HJWgx7DabmhgYGM9j/ABYTPoIlaXYWQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

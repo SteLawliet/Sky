@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="IntelliJ IDEA WEB项目的部署配置以下内容是我网上找的比较全面了，其中关于facets配置很多地方都没有说明，其实很重要，我加入了自己的理解。其他来自网络。在导入一个项目有问题时，建议先创建一个正确的web项目，然后对比配置项，一般就能找到导入项目的配置问题在哪里了。 [TOC] 1.前言​    虽说Intellij IDEA已经用了四个多月，里面大部分功能还是比较熟悉的，但是很多">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="IntelliJ IDEA WEB项目的部署配置以下内容是我网上找的比较全面了，其中关于facets配置很多地方都没有说明，其实很重要，我加入了自己的理解。其他来自网络。在导入一个项目有问题时，建议先创建一个正确的web项目，然后对比配置项，一般就能找到导入项目的配置问题在哪里了。 [TOC] 1.前言​    虽说Intellij IDEA已经用了四个多月，里面大部分功能还是比较熟悉的，但是很多">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1221/155409_QXuk_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1221/160141_Rrti_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1221/161345_q2rJ_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1221/161641_zsMN_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1221/162936_k7gc_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1222/214804_iWFu_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1222/220620_EONz_140593.jpg">
+<meta property="og:updated_time" content="2017-10-26T16:37:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="IntelliJ IDEA WEB项目的部署配置以下内容是我网上找的比较全面了，其中关于facets配置很多地方都没有说明，其实很重要，我加入了自己的理解。其他来自网络。在导入一个项目有问题时，建议先创建一个正确的web项目，然后对比配置项，一般就能找到导入项目的配置问题在哪里了。 [TOC] 1.前言​    虽说Intellij IDEA已经用了四个多月，里面大部分功能还是比较熟悉的，但是很多">
+<meta name="twitter:image" content="http://static.oschina.net/uploads/space/2013/1221/155409_QXuk_140593.jpg">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-26T09:39:29.000Z" itemprop="datePublished" class="page-time">
+  2017-10-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#IntelliJ-IDEA-WEB项目的部署配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">IntelliJ IDEA WEB项目的部署配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">1.前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-项目配置（Project-Structure）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">2.项目配置（Project Structure）</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-Project"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">2.1 Project</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-Modules"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2.2 Modules</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-3-Libraries"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">2.3 Libraries</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-4-Facts"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">2.4 Facts</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-5-Artifacts"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">2.5 Artifacts</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-非Maven项目的创建部署"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">3.非Maven项目的创建部署</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Maven项目的部署"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">4.Maven项目的部署</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-总结"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">5.总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#本文基本总结了intellij中web项目部署的问题，以及如何去配置。"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">本文基本总结了intellij中web项目部署的问题，以及如何去配置。</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/idea/Intellij_idea_配置"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-26 17:39:29" datetime="2017-10-26T09:39:29.000Z"  itemprop="datePublished">2017-10-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="IntelliJ-IDEA-WEB项目的部署配置"><a href="#IntelliJ-IDEA-WEB项目的部署配置" class="headerlink" title="IntelliJ IDEA WEB项目的部署配置"></a><a href="http://www.cnblogs.com/caryfang/p/5581513.html" target="_blank" rel="noopener">IntelliJ IDEA WEB项目的部署配置</a></h1><p><em>以下内容是我网上找的比较全面了，其中关于facets配置很多地方都没有说明，其实很重要，我加入了自己的理解。其他来自网络。在导入一个项目有问题时，建议先创建一个正确的web项目，然后对比配置项，一般就能找到导入项目的配置问题在哪里了。</em></p>
+<p>[TOC]</p>
+<h2 id="1-前言"><a href="#1-前言" class="headerlink" title="1.前言"></a>1.前言</h2><p>​    虽说Intellij IDEA已经用了四个多月，里面大部分功能还是比较熟悉的，但是很多细节地方还是搞不清楚，这几天公司另一个小组也换成了Intellij IDEA，帮他们迁移项目的时候，因为是非maven项目，遇到了很多问题，自己又研究了一番，下面整理一下</p>
+<h2 id="2-项目配置（Project-Structure）"><a href="#2-项目配置（Project-Structure）" class="headerlink" title="2.项目配置（Project Structure）"></a>2.项目配置（Project Structure）</h2><h3 id="2-1-Project"><a href="#2-1-Project" class="headerlink" title="2.1 Project"></a>2.1 Project</h3><p>project compliler output：配置的是项目中的默认编译输出总目录</p>
+<p>里面英文也说明了，每个模块可以自己设置特殊的输出目录   所以这个基本上没用</p>
+<h3 id="2-2-Modules"><a href="#2-2-Modules" class="headerlink" title="2.2 Modules"></a>2.2 Modules</h3><p>项目的模块，一个项目中可以有多个子项目，每个子项目相当于一个模块</p>
+<p>一般我们项目只是单独的一个，所以只需要配置一个模块，我们可以给模块添加框架</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1221/155409_QXuk_140593.jpg" alt="img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180046588-2086383898.png)" title="">
+                </div>
+                <div class="image-caption">img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180046588-2086383898.png)</div>
+            </figure></p>
+<p>根据我们项目中的使用到东西，添加对应的框架，并在框架里面确定一下相关的配置文件（因为不同IDE下，项目的文件结构可能不同 所以导入的项目我们要注意一下配置）</p>
+<p>模块配置根目下  分为了三个标签：Sources—— Paths—— Depedencies</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1221/160141_Rrti_140593.jpg" alt="img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180048682-1561762741.png)" title="">
+                </div>
+                <div class="image-caption">img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180048682-1561762741.png)</div>
+            </figure></p>
+<p>Sources标签下 主要显示项目的目录资源  那些是项目部署的时候需要的目录 有颜色提示</p>
+<p>（比如绿色是测试目录 橘色是target的目录 这些部署的时候都不需要  大红色是我的项目下没有的 蓝色是真正需要部署） </p>
+<p>Paths标签下 </p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1221/161345_q2rJ_140593.jpg" alt="img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180050604-223718264.png)" title="">
+                </div>
+                <div class="image-caption">img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180050604-223718264.png)</div>
+            </figure></p>
+<p>可以指定项目的编译输出目录 也就是项目类 和 测试类的编译输出地址（替换掉了Project的默认输出地址）</p>
+<p>Depedencies是项目的依赖</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1221/161641_zsMN_140593.jpg" alt="img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180052885-1152828564.png)" title="">
+                </div>
+                <div class="image-caption">img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180052885-1152828564.png)</div>
+            </figure></p>
+<p>我们可以点击右侧的+号  添加lib  比如tomcat的lib  默认加进来就是Provided </p>
+<p>（和maven的里面的jar依赖差不多）</p>
+<p>Provided 也就是项目部署的时候是忽略的 只是再编译项目的时候进行使用</p>
+<p>Compile 是跟随着项目部署的  Test也是不部署的</p>
+<h3 id="2-3-Libraries"><a href="#2-3-Libraries" class="headerlink" title="2.3 Libraries"></a>2.3 Libraries</h3><p>里面可以添加项目jar包 并且可以把多个jar放在一个组里面  类似于jar包整理</p>
+<p>这个下添加的jar 会在Depedencies中显示（反之不可以）</p>
+<h3 id="2-4-Facts"><a href="#2-4-Facts" class="headerlink" title="2.4 Facts"></a>2.4 Facts</h3><p>配置的是关于容器的配置文件，比如Tomcat要读取的web.xml和context.xml文件，就在这里指定和配置后，没有的会自动生产，尤其是外部导入的web项目一定要手动到这里配置下。</p>
+<h3 id="2-5-Artifacts"><a href="#2-5-Artifacts" class="headerlink" title="2.5 Artifacts"></a>2.5 Artifacts</h3><p>项目的打包部署设置，这个是项目配置里面比较关键的地方</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1221/162936_k7gc_140593.jpg" alt="img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180055292-261680886.png)" title="">
+                </div>
+                <div class="image-caption">img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180055292-261680886.png)</div>
+            </figure></p>
+<p>注意红框的地方</p>
+<p>第一个是我们需要添加项目的部署包 注意选择是exploded的war包</p>
+<p>第二个是项目的输出目录 非maven项目这个可以设置到任何地方 </p>
+<p>（ maven项目的需要特殊注意 这个后面再说）</p>
+<p>第三个是输出结构（output layout） 参考图中的几个文件 </p>
+<p>（maven项目如果不使用maven的打包编译  注意图中WEB-INF下的lib要有项目部署的jar）</p>
+<h2 id="3-非Maven项目的创建部署"><a href="#3-非Maven项目的创建部署" class="headerlink" title="3.非Maven项目的创建部署"></a>3.非Maven项目的创建部署</h2><p>创建File——New Project——Java——Web Application</p>
+<p>（注意New Project里面不是选择的web 而是java）</p>
+<p>intellij中web项目 默认网页根目录是web </p>
+<p>项目配置可参考2中的几个地方 根据自己的需求自己修改</p>
+<p>artifact中out directory 可以指定到任何地方 项目打包编译到指定的目录下  </p>
+<p>在intellij中启动tomcat  都会以对应war包out directory的设置的目录为工作空间</p>
+<p>tomcat配置请参考<a href="http://my.oschina.net/u/140593/blog/177042#OSC_h1_2" target="_blank" rel="noopener">http://my.oschina.net/u/140593/blog/177042#OSC_h1_2</a> 中的2-7</p>
+<h2 id="4-Maven项目的部署"><a href="#4-Maven项目的部署" class="headerlink" title="4.Maven项目的部署"></a>4.Maven项目的部署</h2><p>在intellij中 maven项目还是可以按照maven的打包编译 参考图中的几个生命周期 手动去执行</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1222/214804_iWFu_140593.jpg" alt="img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180058588-1093447979.png)" title="">
+                </div>
+                <div class="image-caption">img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180058588-1093447979.png)</div>
+            </figure></p>
+<p>因为maven项目的约定 是项目打包编译到 target目录下  </p>
+<p>所以我们在2中配置都应该去遵循maven的配置约定进行修改</p>
+<p>这样我们的项目在文件修改或者热部署的时候  intellij的编译才能和maven项目保持一致 </p>
+<p>（如果是在intellij中创建maven项目 那个intellij会给你配置好所有的配置  </p>
+<p>基本不用修改 我们可以创建一个springmvc的例子进行参考）</p>
+<p>需要注意的地方是：</p>
+<p>maven项目  artifact中out directory 的目录名 </p>
+<p>一定要和pom文件中build的finalName一致</p>
+<p>另外pom文件中 要配置\<packaging>war\</packaging></p>
+<p>比如pom中配置的项目bulid finalName叫做ROOT</p>
+<p>那么我们的out directory为  E:\项目积累\test1\target\ROOT </p>
+<p>通过maven编译以及打包项目后</p>
+<p>在服务器的配置中，可以去掉下图红色区域的两个选项，避免每次启动时都重新编译和打包 </p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1222/220620_EONz_140593.jpg" alt="img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180101495-1690615514.png)" title="">
+                </div>
+                <div class="image-caption">img](http://images2015.cnblogs.com/blog/762929/201606/762929-20160613180101495-1690615514.png)</div>
+            </figure></p>
+<h2 id="5-总结"><a href="#5-总结" class="headerlink" title="5.总结"></a>5.总结</h2><h2 id="本文基本总结了intellij中web项目部署的问题，以及如何去配置。"><a href="#本文基本总结了intellij中web项目部署的问题，以及如何去配置。" class="headerlink" title="本文基本总结了intellij中web项目部署的问题，以及如何去配置。"></a>本文基本总结了intellij中web项目部署的问题，以及如何去配置。</h2><p>来源： <a href="http://blog.csdn.net/z69183787/article/details/41416189" target="_blank" rel="noopener">http://blog.csdn.net/z69183787/article/details/41416189</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-26T16:37:02.000Z" itemprop="dateUpdated">2017-10-27 00:37:02</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/26/MD/idea/Intellij_idea_配置/" target="_blank" rel="external">http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/26/MD/tomcat的数据源/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/20/firewall/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">firewall-cmd命令记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_idea_配置/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3awWrDMBAE0Pz/T7fQU6HYzKwkJ5TnU3AdW8+FrJjd1ys+vn6Ov5+vrvl95ur8/Znk/tsOPDw8vNHSr471a5Iltt9N1oOHh4d3mpcUg8tbBNe0T7m/Z16c8PDw8N7Ly0n3i8431nh4eHj/g5eUh3yjnIcOeHh4eJ/GS4KGPC+dFYDZK96WteDh4eHFvJUG2Ls+P9Tfw8PDwyu76nmR2LV1vv9WvVo8PDy8A7yVqDTf4G5uaJUbejw8PLy9vF1LXGmAze6TFCo8PDy8E7y98US+xHzp+QtKmnN4eHh467w2aFgZL0gAeSOtqHt4eHh4W3krP9ArEUNbYNqCUTwADw8Pr+TNlpv8tR1BmDXAohgXDw8P7xFe3oiakWbPyocPLicj8PDw8Dbx2qi0jXr3lpMimMDDw8N7hJf84J4YHWgLQHQeDw8P7xFe/hO8svR8vGC27cbDw8N7krd3LCB5ZTm+XgMeHh7eI7y86TWLFc41xoq6h4eHh3eMl2yUZ69jFnxsa4Dh4eHhbeLdP2AWp7ZBQ94Mi/4xeHh4eAd4bTh7v+i2DdaGF8NhLDw8PLxHeLPWfntlu9zhSvDw8PCO8dohqrZgtKMDK2HEK8k28PDw8BZ4bQCx68Er5aFeFR4eHt4m3mwIoA5Sy8A3vyZqgOHh4eEd4+U/38nS14cPcvbl3fDw8PAO8GZt/lkJSaKNvMDMRhPw8PDw1nlf5bHe4E8KQL5xL+oeHh4e3iZefuSPabfLefi7Hi7j4eHh7eKtFIP8FcxGu5LXum3oCg8PD6/k5dvflUfmW/MoO2nzFTw8PLzHeXkQUDT4RyMCRQyBh4eH9wG8dlAgWXpehOpig4eHh3eMl4cRs6A2P783/MXDw8M7wZs1wGZ9tr1nht08PDw8vDnvG2n5DQH5PdDRAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

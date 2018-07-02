@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Intellij IDEA 的使用 前言： 为什么我要选择intellij idea呢？原因有三 1.以前公司的项目 在myeclipse10中不稳定 myeclipse说不定什么时候就崩溃卡死了  而intellij很稳定 2.界面高端洋气 用我朋友的话说 看着跟搞苹果开发一样 3.项目的支持上比较好 基本上web项目都可以导入进来  比如mybatis的官方项目 是maven的 在myecli">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="Intellij IDEA 的使用 前言： 为什么我要选择intellij idea呢？原因有三 1.以前公司的项目 在myeclipse10中不稳定 myeclipse说不定什么时候就崩溃卡死了  而intellij很稳定 2.界面高端洋气 用我朋友的话说 看着跟搞苹果开发一样 3.项目的支持上比较好 基本上web项目都可以导入进来  比如mybatis的官方项目 是maven的 在myecli">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/211301_8urh_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/215953_EwZ6_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/220341_QEII_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/220704_tiCN_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/221138_nJBq_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/223854_BGjU_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/221614_6XNH_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/221912_CWR3_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/222234_ZRmZ_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/222940_iXL7_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1117/230506_w3yy_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1118/205035_qE23_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1118/212325_kf2a_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1118/212353_MbXj_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1118/212904_1K4O_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1118/111345_pJGI_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1118/111438_j8jn_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1128/221127_Frni_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1128/221142_Yphm_140593.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/1128/221203_Gepp_140593.jpg">
+<meta property="og:updated_time" content="2017-11-03T08:20:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Intellij IDEA 的使用 前言： 为什么我要选择intellij idea呢？原因有三 1.以前公司的项目 在myeclipse10中不稳定 myeclipse说不定什么时候就崩溃卡死了  而intellij很稳定 2.界面高端洋气 用我朋友的话说 看着跟搞苹果开发一样 3.项目的支持上比较好 基本上web项目都可以导入进来  比如mybatis的官方项目 是maven的 在myecli">
+<meta name="twitter:image" content="http://static.oschina.net/uploads/space/2013/1117/211301_8urh_140593.jpg">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-26T14:00:22.000Z" itemprop="datePublished" class="page-time">
+  2017-10-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-黑色主题-中文乱码修改"><span class="post-toc-number">1.</span> <span class="post-toc-text">1.黑色主题 中文乱码修改</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-WEB项目的部署-以及自动编译"><span class="post-toc-number">2.</span> <span class="post-toc-text">2.WEB项目的部署 以及自动编译</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-多项目的同时部署"><span class="post-toc-number">3.</span> <span class="post-toc-text">3.多项目的同时部署</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-相关插件提高工作效率"><span class="post-toc-number">4.</span> <span class="post-toc-text">4.相关插件提高工作效率</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-JRebel插件-实现热部署"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">1.JRebel插件 实现热部署</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Tasks插件-集成任务管理"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">2.Tasks插件 集成任务管理</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#"><span class="post-toc-number">5.</span> <span class="post-toc-text">
+                
+                    
+                    
+                
+                img
+            </span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-其它的一些技巧配置（未完待续）"><span class="post-toc-number">6.</span> <span class="post-toc-text">5.其它的一些技巧配置（未完待续）</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/idea/Intellij_IDEA使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-26 22:00:22" datetime="2017-10-26T14:00:22.000Z"  itemprop="datePublished">2017-10-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Intellij IDEA 的使用</p>
+<p>前言：</p>
+<p>为什么我要选择intellij idea呢？原因有三</p>
+<p>1.以前公司的项目 在myeclipse10中不稳定 myeclipse说不定什么时候就崩溃卡死了  而intellij很稳定</p>
+<p>2.界面高端洋气 用我朋友的话说 看着跟搞苹果开发一样</p>
+<p>3.项目的支持上比较好 基本上web项目都可以导入进来 </p>
+<p>比如mybatis的官方项目 是maven的 在myeclipse中就不能直接导入</p>
+<p>intellij支持了 目前基本上所有的项目  尤其是maven项目</p>
+<p>推荐一下黄勇的这篇《使用 IDEA + Maven + Git 快速开发 Java Web 应用》<br><a href="http://my.oschina.net/huangyong/blog/175363" target="_blank" rel="noopener">http://my.oschina.net/huangyong/blog/175363</a></p>
+<p>下面步入正题：</p>
+<h1 id="1-黑色主题-中文乱码修改"><a href="#1-黑色主题-中文乱码修改" class="headerlink" title="1.黑色主题 中文乱码修改"></a>1.黑色主题 中文乱码修改</h1><p>修改黑色主题 Settings-&gt;Appearences -&gt;Themes-&gt;Darcula  系统提示重启加载主题</p>
+<p>重启后Settings-&gt;Appearences  -&gt;勾选Override default fonts by </p>
+<p><img src="http://static.oschina.net/uploads/space/2013/1117/211301_8urh_140593.jpg" alt="img"></p>
+<p> 出现这种情况 不用害怕  </p>
+<p> 只用随便选择一个乱码的   点击保存 中文汉字就出来了</p>
+<h1 id="2-WEB项目的部署-以及自动编译"><a href="#2-WEB项目的部署-以及自动编译" class="headerlink" title="2.WEB项目的部署 以及自动编译"></a><strong>2.WEB项目的部署 以及自动编译</strong></h1><p>Intellij中  web的程序 部署 不同于myeclipse和eclipse</p>
+<p>需要把项目打成一个Artifacts(成品包)的war包 然后在 配置的tomcat的Deployment中选择对应的war包</p>
+<p>具体的可以看下这个帖子 <a href="http://my.oschina.net/tsl0922/blog/94621" target="_blank" rel="noopener">http://my.oschina.net/tsl0922/blog/94621</a></p>
+<p>我要强调的是 非maven的项目  比如网上下载的eclipse或者myeclipse项目</p>
+<p>首选要检查项目设置  F4 或者 Ctrl+ALT+SHIFT+S 或者 快捷栏中 点项目设置</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/215953_EwZ6_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>以JFinal项目为例子  导入项目后 打开项目设置</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/220341_QEII_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>1.首先修改Modules  选择 SDK  也就是你系统上的JDK  然后把项目中的不支持红色的选项去掉</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/220704_tiCN_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>2.添加项目的类型 支持</p>
+<p> 比如你这个项目 是Spring的项目 可以加上Spring  以及在对应Spring的配置中 手中选中spring的配置文件</p>
+<p>加上Web项目的支持 制定web.xml的路径  以为web的目录 </p>
+<p><img src="http://static.oschina.net/uploads/space/2013/1117/221138_nJBq_140593.jpg" alt="img"></p>
+<p>如果是maven项目  这些都不用管  但是非maven项目 因为目录结构不同  IDEA默认找的 项目下的web目录 </p>
+<p>所以项目往往不能正确部署 或者部署不正确 都是这个地方的原因 </p>
+<p>这个Modules  设置正确后  就可以创建Artifaces了  IDEA右下角也会提示你的Create Artifaces</p>
+<p>3.添加项目的lib依赖</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/223854_BGjU_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>需要选择项目中的 web-inf中的lib   默认是不会自动加进来的  </p>
+<p>如果是maven项目 这个就不要管了 </p>
+<p>4.选择Artifaces的exploded war包  （如果是之前点击右下角系统的提示创建 就不用这样了）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/221614_6XNH_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure> 
+<p>5修改项目的输出目录</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/221912_CWR3_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>修改项目的编译输出目录  最好改为 jfinal_demo_for_jsp\target\ROOT（或者项目名）</p>
+<p>因为maven的编译目录就是target目录 所以我们最好也按照maven的规则</p>
+<p>6.项目 在服务器中的部署</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/222234_ZRmZ_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>选中我们的artifaces的war包  右边可以自定义项目的访问 名</p>
+<p>左下角是 我们的项目 在服务器第一次启动时 需要做的事情  1.编译java类 2.打包部署war</p>
+<p>这两个项目编译运行过 就可以给两个去掉了 以后我们再启动项目 就不用在去编译打包部署了</p>
+<p>7.项目的服务器配置</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/222940_iXL7_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>在服务器配置中 注意几个地方</p>
+<p>1.start browser  项目启动后 自动打开浏览器 访问对应的连接 </p>
+<p>2.on update action ：当发现更新时的操作   选择update classes and resources </p>
+<p>on frame deactivation: 当IDEA 切换时的操作 （比如缩下去 打开网页） 选择update classes and resources </p>
+<p>也就是 自动编译 自动部署的功能 很多人说Intellij IDEA 不能自动编译 就是这个这个地方没设置好</p>
+<p>3.可以选择端口 一个是jvm的端口 一个是tomcat的端口 如果我们同时运行多个项目 可以选择修改端口 就能直接同时运行多个项目</p>
+<p>4.项目运行后 这两个就不需要了  </p>
+<p>或者我们是maven项目 直接可以在maven中 packages 打包 编译 这两个也都不需要了</p>
+<p>然后启动项目  就会弹出我们的项目首页了</p>
+<p>总结一下 里面需要注意的几个地方</p>
+<p>1.modules里面 添加项目类型 以及配置文件是否指定正确</p>
+<p>2.lib文件的添加</p>
+<p>3.artifacts 选择exploded 的war包 选择编译目录</p>
+<p>4.服务起中 配置 热部署 端口 等</p>
+<h1 id="3-多项目的同时部署"><a href="#3-多项目的同时部署" class="headerlink" title="3.多项目的同时部署"></a>3.多项目的同时部署</h1><p>intellij中工作空间和项目的概念和 myeclipse稍微有点不同  这个大家可以查看相关资料 </p>
+<p>之前@黄勇 大哥发的java框架对比  就是一个项目中 有多个modules </p>
+<p>因为黄勇的项目 都是maven项目 就没有过多需要修改配置的地方</p>
+<p>当时modules和artifacts里面好像都没有修改  多个子项目 可以在tomcat的deployment 同时部署</p>
+<p>只用给每个项目 在右侧修改一下项目名字就OK了</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1117/230506_w3yy_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<h1 id="4-相关插件提高工作效率"><a href="#4-相关插件提高工作效率" class="headerlink" title="4.相关插件提高工作效率"></a>4.相关插件提高工作效率</h1><h2 id="1-JRebel插件-实现热部署"><a href="#1-JRebel插件-实现热部署" class="headerlink" title="1.JRebel插件 实现热部署"></a>1.JRebel插件 实现热部署</h2><p>可以集成JRebel   实现热部署  安装Tasks插件 集成JIRA等任务管理</p>
+<p>1.修改idea.properties   在intellij的安装目录  bin\目录下   </p>
+<p><img src="http://static.oschina.net/uploads/space/2013/1118/205035_qE23_140593.jpg" alt="img"></p>
+<p>修改到你的非C盘目录目录下  默认使用的 # idea.config.path=${user.home}/.IntelliJIdea/ </p>
+<p>这样的好处是 当你更换系统时 intellij的配置和插件都在  可以直接继续使用</p>
+<p>2.安装JRebel插件</p>
+<p>Settings - Plugins - Browse repositories…  搜索JRebel   然后右键 Download and Install</p>
+<p>里面其实有很多插件 具体插件的功能 可以去官网进行查看 <a href="http://plugins.jetbrains.com/?idea" target="_blank" rel="noopener">http://plugins.jetbrains.com/?idea</a></p>
+<p>插件会下载 安装在 E:.IntelliJIdea\config\plugins  也就是刚才配置的 config\plugins下</p>
+<p>3.JRebel 破解  需要替换E:.IntelliJIdea\config\plugins\jr-ide-idea\lib\jrebel  下的jrebel.jar</p>
+<p>以及在intellij中 指定对应的lrc文件</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1118/212325_kf2a_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1118/212353_MbXj_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>然后重启下intellij   JRebel就可以使用了  热部署效果非常的好</p>
+<p>修改东西都不用重启 而且项目在长期运行中也不会出现崩溃  （以前热部署遇到过session崩溃的问题）</p>
+<p>如果是maven项目 修改配置文件也都不用重启 比如mybatis的xml文件等</p>
+<p>除了web.xml修改好像需要</p>
+<p>4 如果JRebel不起作用 可以使用下面的方法</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1118/212904_1K4O_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>在Modules下 添加JRebel的支持 勾选  并点击后面的Generate rebel.xml</p>
+<p>在你项目的配置文件中找到生成的rebel.xml  你会发现 它里面有两个目录</p>
+<p>一个是java类的编译目录 一个是webroot的目录  </p>
+<p>也就是JRebel的监控目录 它会监控那个两个目录  如果发生文件变化 就在内存中重新加载对应的资源</p>
+<p>非maven项目的静态资源发生变化后 如果不能热部署  可能就是JRebel监控的目录不太对 </p>
+<p>可以自己指定一下正确的目录</p>
+<h2 id="2-Tasks插件-集成任务管理"><a href="#2-Tasks插件-集成任务管理" class="headerlink" title="2.Tasks插件 集成任务管理"></a>2.Tasks插件 集成任务管理</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1118/111345_pJGI_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<h1 id=""><a href="#" class="headerlink" title=""></a><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1118/111438_j8jn_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></h1><p># </p>
+<p>Intellij中可以安装task插件 与jira等任务跟踪管理系统进行集成<br>安装插件后  会在系统任务栏上显示  任务插件  显示当前的任务 以及最近的任务<br>每个任务 可以创建不同的视图<br>在不同视图下 会自动记录 当前任务下 修改过的页面<br>所以这个功能相当的棒  当我们有多个jira任务时  可以随时切换任务<br>任务完成后  我们可以根据任务对应的changelist  去提交当前任务下 修改过的文件</p>
+<p>破解文件的连接地址</p>
+<p> <a href="http://note.youdao.com/share/?id=33c21fb3c24e81c2781872525e22ade2&amp;type=note" target="_blank" rel="noopener">http://note.youdao.com/share/?id=33c21fb3c24e81c2781872525e22ade2&amp;type=note</a></p>
+<h1 id="5-其它的一些技巧配置（未完待续）"><a href="#5-其它的一些技巧配置（未完待续）" class="headerlink" title="5.其它的一些技巧配置（未完待续）"></a>5.其它的一些技巧配置（未完待续）</h1><p># </p>
+<p># </p>
+<p>PS:2013-11-28 Facets的作用</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1128/221127_Frni_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1128/221142_Yphm_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/1128/221203_Gepp_140593.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-11-03T08:20:21.000Z" itemprop="dateUpdated">2017-11-03 16:20:21</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/26/MD/idea/Intellij_IDEA使用/" target="_blank" rel="external">http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/27/MD/Java/JavaEE/MAVEN/ntelliJ IDEA 配置Maven/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/26/MD/tomcat的数据源/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/26/MD/idea/Intellij_IDEA使用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACo0lEQVR42u3aUW4iMRAEUO5/6ewBomWq2m4Wrd58oTAwfo5kN9V+veLrZ3RtfPa1ceHh4eFdHfrve95/z/v7f9/Tji0fMx4eHt42Lxnue8b7oSTTlLybjxkPDw/v23jtVtFS8fDw8P4n3vu/bBTTeHh4eN/Ja8viZCh5PNEOfSVrwcPDw4t5J+Xsv3q90t/Dw8PDWzgQkEeu7YCS76lHi4eHh7fAO2nhJwVuHiuctM0eJh0PDw/vKq8NEXLeSdCQN8wePoWHh4e3zGsj1/xTbQibN97qfBoPDw/vmJcsr+0Rq7YUPinBi/8hHh4e3iVe21KaLdxtLDt77lGKjIeHhzfitceh2kgiaZ61x7aK1hceHh7eJV7UHysb/Hm53AYZyXTXOxseHh5eycuX7xyWh79toVy32fDw8PAWeLcYScPsVvyRTygeHh7eBu98sZ4NdBZh1Hg8PDy8NV4SibblbHuQqw1EitAWDw8Pb4GXFMTtUt5OXAuLFHh4eHgf582OSbWhbV4617EIHh4e3hqv/cGfTEp7yCA/RJVvP3h4eHif5LVLdhK/5k2ydpP46/fg4eHhLfCSOOCnvGYR7Ul5/bAV4eHh4V3ltYVvUuDmE5RM6CyMwMPDw9vjtc2q2SGAdlnPl/5oi8LDw8Nb4+VxwHnL/3xC8xAEDw8Pb4/XDmW2cLeh8IWn4OHh4X2cN2vwJw8uFvfRdoWHh4e3wZs1t84HPWuDtROKh4eHt8FrF9wc2TarTl5fuPDw8PBKXr4ZzELV2RYy25Dw8PDwPslr2/l54Tvbo67tbHh4eHhfwDtpa82iitkxWTw8PLxv4yX3t2X6rLB+mGg8PDy8Nd5e0ysPJk5iiIeNAQ8PD+8qr/1FnwQT+VBODgpc7u/h4eHhPV9/AHFa5ClXi2zFAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

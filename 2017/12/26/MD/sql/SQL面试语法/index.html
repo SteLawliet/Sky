@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="DDL—数据定义语言(Create，Alter，Drop，DECLARE)  DML—数据操纵语言(Select，Delete，Update，Insert)  DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK) 首先,简要介绍基础语句：1、创建数据库Create DATABASE database-name2、删除数据库drop database dbname3、备份">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="DDL—数据定义语言(Create，Alter，Drop，DECLARE)  DML—数据操纵语言(Select，Delete，Update，Insert)  DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK) 首先,简要介绍基础语句：1、创建数据库Create DATABASE database-name2、删除数据库drop database dbname3、备份">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-26T07:18:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="DDL—数据定义语言(Create，Alter，Drop，DECLARE)  DML—数据操纵语言(Select，Delete，Update，Insert)  DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK) 首先,简要介绍基础语句：1、创建数据库Create DATABASE database-name2、删除数据库drop database dbname3、备份">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-26T07:17:26.000Z" itemprop="datePublished" class="page-time">
+  2017-12-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#本帖隐藏的内容"><span class="post-toc-number">1.</span> <span class="post-toc-text">本帖隐藏的内容</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/sql/SQL面试语法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-26 15:17:26" datetime="2017-12-26T07:17:26.000Z"  itemprop="datePublished">2017-12-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>DDL—数据定义语言(Create，Alter，Drop，DECLARE) </p>
+<p>DML—数据操纵语言(Select，Delete，Update，Insert) </p>
+<p>DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK)</p>
+<p>首先,简要介绍基础语句：<br>1、创建数据库<br>Create DATABASE database-name<br>2、删除数据库<br>drop database dbname<br>3、备份sql server<br>— 创建备份数据的 device<br>USE master<br>EXEC sp_addumpdevice ‘disk’, ‘testBack’, ‘c:\mssql7backup\MyNwind_1.dat’<br>— 开始备份<br>BACKUP DATABASE pubs TO testBack<br>4、创建新表<br>create table tabname(col1 type1 [not null] [primary key],col2 type2 [notnull],..)<br>根据已有的表创建新表：<br>A：create table tab_new like tab_old (使用旧表创建新表)<br>B：create table tab_new as select col1,col2… fromtab_old definition only<br>5、删除新表<br>drop table tabname<br>6、增加一个列<br>Alter table tabname add column col type<br>注：列增加后将不能删除。DB2中列加上后数据类型也不能改变，唯一能改变的是增加varchar类型<br>的长度。<br>7、添加主键： Alter table tabname add primary key(col)<br>说明：删除主键： Alter table tabname drop primary key(col)<br>8、创建索引：create [unique] index idxname on tabname(col….)<br>删除索引：drop index idxname<br>注：索引是不可更改的，想更改必须删除重新建。<br>9、创建视图：create view viewname as select statement<br>删除视图：drop view viewname<br>10、几个简单的基本的sql语句<br>选择：select <em> from table1 where 范围<br>插入：insert into table1(field1,field2) values(value1,value2)<br>删除：delete from table1 where 范围<br>更新：update table1 set field1=value1 where 范围<br>查找：select </em> from table1 where field1 like ’%value1%’ —like的语法很精妙，查资料!<br>排序：select * from table1 order by field1,field2 [desc]<br>总数：select count as totalcount from table1<br>求和：select sum(field1) as sumvalue from table1<br>平均：select avg(field1) as avgvalue from table1<br>最大：select max(field1) as maxvalue from table1<br>最小：select min(field1) as minvalue from table1<br>11、几个高级查询运算词</p>
+<h4 id="本帖隐藏的内容"><a href="#本帖隐藏的内容" class="headerlink" title="本帖隐藏的内容"></a>本帖隐藏的内容</h4><p>A： UNION 运算符<br>UNION 运算符通过组合其他两个结果表（例如 TABLE1 和 TABLE2）并消去表中任何重复行而派生<br>出一个结果表。当 ALL 随 UNION 一起使用时（即 UNION ALL），不消除重复行。两种情况下，派<br>生表的每一行不是来自 TABLE1 就是来自 TABLE2。<br>B： EXCEPT 运算符<br>EXCEPT 运算符通过包括所有在 TABLE1 中但不在 TABLE2 中的行并消除所有重复行而派生出一个<br>结果表。当 ALL 随 EXCEPT 一起使用时 (EXCEPT ALL)，不消除重复行。<br>C： INTERSECT 运算符<br>INTERSECT 运算符通过只包括 TABLE1 和 TABLE2 中都有的行并消除所有重复行而派生出一个结果<br>表。当 ALL 随 INTERSECT 一起使用时 (INTERSECT ALL)，不消除重复行。<br>注：使用运算词的几个查询结果行必须是一致的。</p>
+<p>12、使用外连接<br>A、left outer join：<br>左外连接（左连接）：结果集几包括连接表的匹配行，也包括左连接表的所有行。<br>sql: select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c<br>B：right outer join:<br>右外连接(右连接)：结果集既包括连接表的匹配连接行，也包括右连接表的所有行。<br>C：full outer join：<br>全外连接：不仅包括符号连接表的匹配行，还包括两个连接表中的所有记录。<br>13、复制表(只复制结构,源表名：a 新表名：b) (Access可用)<br>法一：select <em> into b from a where 1&lt;&gt;1<br>法二：select top 0 </em> into b from a<br>14、拷贝表(拷贝数据,源表名：a 目标表名：b) (Access可用)<br>insert into b(a, b, c) select d,e,f from b;<br>15、跨数据库之间表的拷贝(具体数据使用绝对路径) (Access可用)<br>insert into b(a, b, c) select d,e,f from b in ‘具体数据库’ where 条件<br>例子：..from b in’”&amp;Server.MapPath(“.”)&amp;”\data.mdb”&amp;”‘ where..<br>16、子查询(表名1：a 表名2：b)<br>select a,b,c from a where a IN (select d from b ) 或者: selecta,b,c from a where a IN<br>(1,2,3)<br>17、显示文章、提交人和最后回复时间<br>select a.title,a.username,b.adddate from table a,(select max(adddate) adddatefrom<br>table where table.title=a.title) b<br>18.外连接查询(表名1：a 表名2：b)<br>select a.a, a.b, a.c, b.c, b.d, b.f from a LEFT OUT JOIN b ON a.a = b.c<br>19、在线视图查询(表名1：a )<br>select <em> from (Select a,b,c FROM a) T where t.a &gt; 1;<br>20、between的用法,between限制查询数据范围时包括了边界值,not between不包括<br>select </em> from table1 where time between time1 and time2<br>select a,b,c, from table1 where a not between 数值1 and 数值2<br>21、：in 的使用方法<br>select <em> from table1 where a [not] in (‘值1’,’值2’,’值4’,’值6’)<br>22、：两张关联表，删除主表中已经在副表中没有的信息<br>delete from table1 where not exists ( select </em> from table2 where<br>table1.field1=table2.field1 )<br>23、四表联查问题：<br>select <em> from a left inner join b on a.a=b.b right inner join c on a.a=c.cinner join<br>d on a.a=d.d where …..<br>24、日程安排提前五分钟提醒<br>sql: select </em> from 日程安排 where datediff(‘minute’,f开始时间,getdate())&gt;5<br>25、一条sql 语句搞定数据库分页<br>select top 10 b.* from (select top 20 主键字段,排序字段 from 表名 order by 排序字段<br>desc) a,表名 b where b.主键字段 = a.主键字段 order by a.排序字段</p>
+<p>26、前10条记录<br>select top 10 * form table1 where 范围</p>
+<p>27、选择在每一组b值相同的数据中对应的a最大的记录的所有信息(类似这样的用法可以用<br>于论坛每月排行榜,每月热销产品分析,按科目成绩排名,等等.)<br>select a,b,c from tablename ta where a=(select max(a) from tablename tb where<br>tb.b=ta.b)</p>
+<p>28、包括所有在 TableA 中但不在 TableB和TableC 中的行并消除所有重复行而派生出一个<br>结果表<br>(select a from tableA ) except (select a from tableB) except (select a from tableC)</p>
+<p>29、随机取出10条数据<br>select top 10 * from tablename order by newid()</p>
+<p>30、随机选择记录<br>select newid()</p>
+<p>31、删除重复记录<br>Delete from tablename where id not in (select max(id) from tablename group by<br>col1,col2,…)</p>
+<p>32、列出数据库里所有的表名<br>select name from sysobjects where type=’U’ </p>
+<p>33、列出表里的所有的<br>select name from syscolumns where id=object_id(‘TableName’)</p>
+<p>34、列示type、vender、pcs字段，以type字段排列，case可以方便地实现多重选择，类似<br>select 中的case。<br>select type,sum(case vender when ‘A’ then pcs else 0 end),sum(case vender when ‘C’<br>then pcs else 0 end),sum(case vender when ‘B’ then pcs else 0 end) FROM tablename<br>group by type<br>显示结果：<br>type vender pcs<br>电脑 A 1<br>电脑 A 1<br>光盘 B 2<br>光盘 A 2<br>手机 B 3<br>手机 C 3</p>
+<p>35、初始化表</p>
+<p>table1<br>TRUNCATE TABLE table1</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-12-26T07:18:38.000Z" itemprop="dateUpdated">2017-12-26 15:18:38</time>
+</span><br>
+
+
+        
+        <a href="/2017/12/26/MD/sql/SQL面试语法/" target="_blank" rel="external">http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/26/MD/Java/JavaEE/DataSources数据库连接池/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/15/MD/Java/JavaEE/java1年经验之谈/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/12/26/MD/sql/SQL面试语法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aQU7EMAwFUO5/6UFih1DLt51BNHlZVaNMyZuFsWN/fMTr9bWunu/Xz2/dv/lq54KFgYHxWEbvEPd78v1XO/OzYWBgnMPohcL7EHn/huQnS96MgYGB8e50MCdhYGBgrA2XScJ3T8LAwMDoFbHVo1cD9x/V4hgYGA9kzBsD73v+0/4GBgbGv2S8iqtagk7+VuFUGBgYWzOSMjIvL+cDFknSeRmOMTAwNmVUr8mSz/OyNj/0L8kiBgbG1ozetVfC6xWrvfdjYGDszUiGvfIDTS7uqzwMDIzTGHkxmVyf5eXxJKCPamIMDIxHMapXb70EcTKikQd9DAyMXRl5Gjc5enVooxygMTAwtmZUm4hRzI5bDmtbmxgYGLsyViVt+WXZqvEODAyMcxjlrcWGZbVIHu3HwMDYlJE3HSfpY1LW5tdzhf8bGBgYWzCac2S3obbXDFjQNMXAwDiGUQ2OvbGw3k/wS+KIgYGxNSO/lM8bk/n+pFUwqsgxMDAezphc8a+9VuuNYmBgYJzDyIcqeoGymkq+pXzFwMB4LGNSxPYCcXVQrNCpxMDA2JTxKq7q4fLn6k/57RkDA2NrRjXY5Z9Mwm4VjIGBcQKjOpKVI/MmaN4oLbcHMDAwNmJMmprVQDlpZ0ZjFhgYGAcz8mK1euhqaMbAwMBIAlyVkSSavbEzDAyMcxjV8YhmArfouu0y4GJgYGzK6DUGqg3Iarm7qrGKgYHxcMYnSWuodhZHHJcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

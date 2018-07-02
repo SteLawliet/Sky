@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="1. Spring MVC 如何接受并处理一个请求的? 首先我们会在web.xml中注册一个DispatcherServlet，并令这个servlet接收所有的请求，项目启动后Spring会扫描配置文件，根据配置加载和实例化类，其中扫描到的带有@Controller或者@RestController注解的类则是请求要映射到的类，Spring MVC扫描里面所有和请求映射有关的注解， 如@Reque">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="1. Spring MVC 如何接受并处理一个请求的? 首先我们会在web.xml中注册一个DispatcherServlet，并令这个servlet接收所有的请求，项目启动后Spring会扫描配置文件，根据配置加载和实例化类，其中扫描到的带有@Controller或者@RestController注解的类则是请求要映射到的类，Spring MVC扫描里面所有和请求映射有关的注解， 如@Reque">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-03T09:07:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="1. Spring MVC 如何接受并处理一个请求的? 首先我们会在web.xml中注册一个DispatcherServlet，并令这个servlet接收所有的请求，项目启动后Spring会扫描配置文件，根据配置加载和实例化类，其中扫描到的带有@Controller或者@RestController注解的类则是请求要映射到的类，Spring MVC扫描里面所有和请求映射有关的注解， 如@Reque">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-03T08:40:56.000Z" itemprop="datePublished" class="page-time">
+  2018-04-03
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Spring-MVC-如何接受并处理一个请求的"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. Spring MVC 如何接受并处理一个请求的?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-AOP实现原理。"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. AOP实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-注解是怎么用的-为什么要使用注解"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 注解是怎么用的?为什么要使用注解?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-线程有几种状态-生命周期是怎样的"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 线程有几种状态?生命周期是怎样的?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-Java中如何实现同步。"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. Java中如何实现同步。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-HashMap与Hashtable的区别。"><span class="post-toc-number">6.</span> <span class="post-toc-text">6. HashMap与Hashtable的区别。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7-JVM是否了解"><span class="post-toc-number">7.</span> <span class="post-toc-text">7. JVM是否了解?</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-1-JVM的内存模型。"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">7.1. JVM的内存模型。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-2-常用的虚拟机参数。"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">7.2. 常用的虚拟机参数。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-3-垃圾回收算法。"><span class="post-toc-number">7.3.</span> <span class="post-toc-text">7.3. 垃圾回收算法。</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-4-类加载机制。"><span class="post-toc-number">7.4.</span> <span class="post-toc-text">7.4 类加载机制。</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8-MyBatis和Hibernate各有什么优缺点"><span class="post-toc-number">8.</span> <span class="post-toc-text">8. MyBatis和Hibernate各有什么优缺点?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9-MySQL平时是怎么分析效率和进行SQL优化的"><span class="post-toc-number">9.</span> <span class="post-toc-text">9. MySQL平时是怎么分析效率和进行SQL优化的?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#10-MySQL除了InnoDB还有哪些引擎，有什么区别"><span class="post-toc-number">10.</span> <span class="post-toc-text">10. MySQL除了InnoDB还有哪些引擎，有什么区别?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#11-如何动态改变页面上的元素"><span class="post-toc-number">11.</span> <span class="post-toc-text">11. 如何动态改变页面上的元素?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#12-分页的实现。"><span class="post-toc-number">12.</span> <span class="post-toc-text">12. 分页的实现。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#13-解释一下RESTful，平时是怎么用的"><span class="post-toc-number">13.</span> <span class="post-toc-text">13. 解释一下RESTful，平时是怎么用的</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#14-有没有抓过包-GET和POST格式是怎么样的"><span class="post-toc-number">14.</span> <span class="post-toc-text">14. 有没有抓过包?GET和POST格式是怎么样的?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#15-如果是上传文件的话又是怎样的-后端如何处理"><span class="post-toc-number">15.</span> <span class="post-toc-text">15. 如果是上传文件的话又是怎样的?后端如何处理?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#16-AJAX实现原理。"><span class="post-toc-number">16.</span> <span class="post-toc-text">16. AJAX实现原理。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#17-Linux下怎么查找一个文件"><span class="post-toc-number">17.</span> <span class="post-toc-text">17. Linux下怎么查找一个文件?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#18-Linux怎么查找一个进程"><span class="post-toc-number">18.</span> <span class="post-toc-text">18. Linux怎么查找一个进程?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#19-Linux下只知道文件所在目录和内容，如何查找文件"><span class="post-toc-number">19.</span> <span class="post-toc-text">19. Linux下只知道文件所在目录和内容，如何查找文件?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#20-Redis你用它来做什么"><span class="post-toc-number">20.</span> <span class="post-toc-text">20. Redis你用它来做什么?</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#21-Redis如果运行过程中崩溃了怎么办。"><span class="post-toc-number">21.</span> <span class="post-toc-text">21. Redis如果运行过程中崩溃了怎么办。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#22-Redis集群。"><span class="post-toc-number">22.</span> <span class="post-toc-text">22. Redis集群。</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#23-剩下的问题都是偏向个人的，没有什么通用性的回答，大概问了我"><span class="post-toc-number">23.</span> <span class="post-toc-text">23. 剩下的问题都是偏向个人的，没有什么通用性的回答，大概问了我:</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/studyo/java面试要点"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-03 16:40:56" datetime="2018-04-03T08:40:56.000Z"  itemprop="datePublished">2018-04-03</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="1-Spring-MVC-如何接受并处理一个请求的"><a href="#1-Spring-MVC-如何接受并处理一个请求的" class="headerlink" title="1. Spring MVC 如何接受并处理一个请求的?"></a>1. Spring MVC 如何接受并处理一个请求的?</h3><blockquote>
+<p>首先我们会在<code>web.xml</code>中注册一个<code>DispatcherServlet</code>，并令这个<code>servlet</code>接收所有的请求，项目启动后Spring会扫描配置文件，根据配置加载和实例化类，其中扫描到的带有<code>@Controller</code>或者<code>@RestController</code>注解的类则是请求要映射到的类，Spring MVC扫描里面所有和请求映射有关的注解， 如<code>@RequestMapping</code>、<code>@ResponseBody</code>、<code>@RequestParam</code>等。当接收到一个请求时，它会根据请求的url映射到对应的controler，并根据返回值判断是渲染jsp页面还是返回普通文本，亦或是返回json。</p>
+</blockquote>
+<h3 id="2-AOP实现原理。"><a href="#2-AOP实现原理。" class="headerlink" title="2. AOP实现原理。"></a>2. AOP实现原理。</h3><blockquote>
+<p>AOP是通过动态代理来实现的，有两种常用的技术，一是<code>JDK的动态代理</code>，二是<code>CGLIB</code>，而无论是前者还是后者，都是生成动态生成类的字节码来实现的。<code>JDK的动态代理只能处理接口实现的方法</code>，而CGLIB则没有这个限制。因为字节码是动态生成的，所以可以在生成的字节码当中，在目标方法前后插入定义好的方法的调用。</p>
+</blockquote>
+<h3 id="3-注解是怎么用的-为什么要使用注解"><a href="#3-注解是怎么用的-为什么要使用注解" class="headerlink" title="3. 注解是怎么用的?为什么要使用注解?"></a>3. 注解是怎么用的?为什么要使用注解?</h3><blockquote>
+<p>当在一个类、方法或者字段上标上注解后，可以通过<code>obj.getClass().isAnnotationPresent(..)</code>来判断一个目标是否被特定的注解标识，通过<code>obj.getClass().getAnnotation(..)</code>来获取标志是注解，以此获得注解上的信息。使用注解可以帮助我们在项目的编译期或运行时给类、方法或对象添加一个额外的信息，给编程增加了很大的灵活性。比如用<code>@Override</code>来标志这是重写父类的方法，那么编译器就可以在编译期检查该方法是否真的是重写父类的方法，将错误扼杀在编译器。</p>
+</blockquote>
+<h3 id="4-线程有几种状态-生命周期是怎样的"><a href="#4-线程有几种状态-生命周期是怎样的" class="headerlink" title="4. 线程有几种状态?生命周期是怎样的?"></a>4. 线程有几种状态?生命周期是怎样的?</h3><blockquote>
+<p>线程有五种状态:<code>创建</code>、<code>就绪</code>、<code>运行</code>、<code>阻塞</code>、<code>死亡</code>。<br>调用<code>start</code>方法时，线程就会进入就绪状态。<br>在线程得到<code>cpu时间片</code>时进入运行状态。<br>线程调用<code>yield</code>方法可以让出cpu时间回到就绪状态。<br>线程运行时可能由于<code>IO</code>、调用<code>sleep</code>、<code>wait</code>、<code>join</code>方法或者<code>无法获得同步锁</code>等原因进入阻塞状态。<br>当线程获得到等待的资源资源或者引起阻塞的条件得到满足时(调用<code>notify</code>或<code>notifyAll</code>)，会从阻塞状态进入就绪状态。<br>当线程的<code>run</code>方法执行结束或者调用<code>interrupt</code>方法时，线程就进入死亡状态。</p>
+</blockquote>
+<h3 id="5-Java中如何实现同步。"><a href="#5-Java中如何实现同步。" class="headerlink" title="5. Java中如何实现同步。"></a>5. Java中如何实现同步。</h3><blockquote>
+<p>Java实现同步的方法有:</p>
+<ol>
+<li>使用<code>synchronized</code>关键字为方法或代码块加锁。</li>
+<li>使用<code>volatile</code>修饰变量，但是<code>volatile不保证原子性</code>。</li>
+<li>使用<code>ReentrantLock</code>或者<code>ReentrantReadWriteLock</code>， 这种方法比<code>synchronized</code>更灵活。</li>
+<li>使用<code>Semaphore</code>，允许最多n个线程同时访问资源。</li>
+</ol>
+</blockquote>
+<h3 id="6-HashMap与Hashtable的区别。"><a href="#6-HashMap与Hashtable的区别。" class="headerlink" title="6. HashMap与Hashtable的区别。"></a>6. <code>HashMap</code>与<code>Hashtable</code>的区别。</h3><blockquote>
+<ol>
+<li><code>HashMap</code>是<code>线程不安全</code>的，<code>Hashtable</code>是线程安全的。</li>
+<li><code>HashMap</code>的key和value接受null，<code>Hashtable</code>不接受。</li>
+<li><code>HashMap</code>继承自<code>AbstractMap</code>，<code>Hashtable</code>继承自<code>Directory</code>。</li>
+</ol>
+</blockquote>
+<h3 id="7-JVM是否了解"><a href="#7-JVM是否了解" class="headerlink" title="7. JVM是否了解?"></a>7. JVM是否了解?</h3><p>这里我回答了最近正在看《深入理解Java虚拟机》一书，本想着这方面的问题能答上一些的，没想到面试官直接说<br>那看样子还不是很了解，就不问这块的问题了= =.. 心塞<br>但是我估摸着大概如果问的话会问:</p>
+<h4 id="7-1-JVM的内存模型。"><a href="#7-1-JVM的内存模型。" class="headerlink" title="7.1. JVM的内存模型。"></a>7.1. JVM的内存模型。</h4><blockquote>
+<p>JVM的内存一共分为5个部分:</p>
+<ol>
+<li><code>程序计数器</code>: 里面存放着线程执行的指令。</li>
+<li><code>方法区</code>: 存放类的信息，如:类名、方法、成员变量等，也存放着常量池。</li>
+<li><code>虚拟机栈</code>: 存放着局部变量表、操作数栈、方法出口信息等方法执行所需信息。</li>
+<li><code>本地方法栈</code>: 存放程序调用native方法的信息。</li>
+<li><code>堆</code>: 这五个部分中最大的，对象的内存分配都是在堆内存中。</li>
+</ol>
+</blockquote>
+<h4 id="7-2-常用的虚拟机参数。"><a href="#7-2-常用的虚拟机参数。" class="headerlink" title="7.2. 常用的虚拟机参数。"></a>7.2. 常用的虚拟机参数。</h4><blockquote>
+<ol>
+<li><code>-Xmx</code>: 指定最大堆内存</li>
+<li><code>-Xms</code>: 指定初始化堆内存大小。</li>
+<li><code>-Xmn</code>: 指定年轻代内存初始内存大小，同时也是最大内存大小。</li>
+<li><code>-XX:NewSize</code>: 指定年轻代内存大小。</li>
+<li><code>-XX:NewRatio</code>: 指定年轻代和老年代的内存比例。</li>
+<li><code>-XX:MaxHeapSize</code>: 指定程序最大内存。</li>
+<li><code>-XX:+PrintGC</code>: 打印GC日志。</li>
+<li><code>-XX:+PrintGCDetails</code>: 打印详细的GC日志。</li>
+<li><code>-Xloggc</code>: 打印GC日志保存位置。</li>
+</ol>
+</blockquote>
+<h4 id="7-3-垃圾回收算法。"><a href="#7-3-垃圾回收算法。" class="headerlink" title="7.3. 垃圾回收算法。"></a>7.3. 垃圾回收算法。</h4><blockquote>
+<ol>
+<li><code>引用计数算法</code>:</li>
+</ol>
+<blockquote>
+<p>该算法对每一个对象都有一个引用计数，没增加一次引用就+1，减少一次引用-1，在回收时将引用计数为0的对象清理掉。这种算法简单，但是无法解决循环引用的问题(比如: A引用B， B也引用A，但是A和B都没有被其它任何对象引用)。</p>
+</blockquote>
+<ol>
+<li><code>标记-清除算法</code>:</li>
+</ol>
+<blockquote>
+<p>该算法分为两个阶段， 第一阶段遍历找出所有需要被回收的对象，并做上标记，第二阶段对清理所有被标记的对象，这种算法效率比较低，并且会产生较多的内存碎片。</p>
+</blockquote>
+<ol>
+<li><code>标记-整理算法</code>:</li>
+</ol>
+<blockquote>
+<p>该算法的第一阶段和标记-清除算法是一样的，而第二阶段它不是直接清理掉垃圾对象，而且将存活的对象往同一侧移动，移动完成后清理掉另一侧所有的对象。这种算法不会产生内存碎片，但是效率低下。</p>
+</blockquote>
+<ol>
+<li><code>复制算法</code>:</li>
+</ol>
+<blockquote>
+<p>该算法将内存分为两个区域，进行垃圾回收时，就将还活着的对象复制到另一块内存区域中，然后再将整片内存区域清空。这种算法简单快速，而且不会产生内存碎片，但是因为将内存分成两块，所以可用的内存会少很多。</p>
+</blockquote>
+<ol>
+<li><code>分代收集算法</code>:</li>
+</ol>
+<blockquote>
+<p>将内存细分为多个区域，不同区域GC的频率，并对不同的区域采用适当的收集算法。如JVM将内存分为年轻代和老年代，普通对象最开始分配在年轻代(大对象会直接分配到老年代)，同一个对象在经过几次GC后还存活着，就认为这个对象的生命周期会比较长，将其移入老年代，GC主要发生在年轻代。</p>
+</blockquote>
+</blockquote>
+<h4 id="7-4-类加载机制。"><a href="#7-4-类加载机制。" class="headerlink" title="7.4 类加载机制。"></a>7.4 类加载机制。</h4><blockquote>
+<p>Java中主要有<code>Bootstrap类加载器</code>、<code>ExtClassLoader</code>、<code>AppClassLoader</code>，其中<code>Bootstrap类加载器</code>主要加载<code>JAVA_HOME/lib</code>目录下的类库，<code>ExtClassLoader</code>加载<code>JAVA_HOME/lib/ext</code>目录下的类库，<code>AppClassLoader</code>加载<code>classpath</code>指向目录下的类库。</p>
+<p>Java的类加载器使用<code>双亲委派模型</code>，除了顶层的<code>Bootstrap类加载器</code>外，其余的类加载器都有父类加载器，当一个类加载器要加载一个类时，它不会直接去加载，而是委托父类加载器尝试加载，父类加载器如果无法完成，则继续委托其父类加载器加载，如果在期间有某一个类加载器发现已经加载过这个类，则会将已经加载的类返回，子类不再加载。若所有的类加载器都未加载过这个类，那么最开始尝试加载的加载器才会去加载这个类。使用这样的加载机制的好处是: 对于同一个类，如: <code>java.lang.String</code>，能保证整个程序中都是使用的这一个类，否则如果用户在自己的项目中也写了一个<code>java.lang.String</code>类，那么项目中将存在两个String类，一个是java提供的String类，一个是用户自定义的String类，不仅使项目变得混乱，而且不安全。</p>
+</blockquote>
+<h3 id="8-MyBatis和Hibernate各有什么优缺点"><a href="#8-MyBatis和Hibernate各有什么优缺点" class="headerlink" title="8. MyBatis和Hibernate各有什么优缺点?"></a>8. MyBatis和Hibernate各有什么优缺点?</h3><p>我个人因为只简单接触过而没有实际应用过<code>Hibernate</code>，所以没能从比较好的角度来回答这个问题。</p>
+<blockquote>
+<p><code>Hibernate</code>的优点是它是一个完全的<code>ORM框架</code>，使用<code>Hibernate</code>可以做到不用手写SQL，而且无须关心使用何种数据库，可移植性较好，当需要更变数据库时需要做的修改很少甚至为0。其缺点是需要根据数据库的设计在实体进行又一次的配置，且帮程序员做了太多事，如果需要进行调优的话需要对<code>Hibernate</code>有比较深的了解。<br><code>MyBatis</code>的优缺点差不多和<code>Hibernate</code>相反，我们需要<code>手写SQL</code>语句和<code>配置结果集和实体类的映射</code>，即使是简单的单表操作也需要写SQL(可以通过<code>拦截器</code>来实现CommonMapper，或者可以使用生成器来生成代码)，因此<code>MyBatis</code>要进行SQL调优也简单直接。其次是<code>MyBatis</code>的<code>二级缓存</code>功能较弱，是针对<code>namespace</code>的。</p>
+</blockquote>
+<h3 id="9-MySQL平时是怎么分析效率和进行SQL优化的"><a href="#9-MySQL平时是怎么分析效率和进行SQL优化的" class="headerlink" title="9. MySQL平时是怎么分析效率和进行SQL优化的?"></a>9. MySQL平时是怎么分析效率和进行SQL优化的?</h3><blockquote>
+<p>较常使用的方法是<code>explain SQL</code>查看执行计划，根据查询计划可以知道是否使用了<code>索引</code>，是否进行来<code>全表扫描</code>以及查询的顺序，依此我们可以建立适当的索引和连接查询调优。<br>还有一个是开启慢查询记录执行时间长的SQL语句。</p>
+<ol>
+<li>通常会在<code>WHERE</code>、<code>JOIN ON</code>和<code>ORDER BY</code>使用到字段上加上索引。</li>
+<li>避免查询时判断<code>NULL</code>，否则可能会导致全表扫描。</li>
+<li>避免使用<code>OR</code>来连接查询条件，否则可能导致全表扫描，可以改用<code>UNION</code>或<code>UNION ALL</code>。</li>
+<li>避免<code>LIKE</code>查询，否则可能导致全表扫描。</li>
+<li>不使用<code>SELECT *</code>，只查询必须的字段，避免加载无用数据。</li>
+<li>能用<code>UNION ALL</code>的时候就不用<code>UNION</code>，<code>UNION</code>过滤重复数据要耗费更多的cpu资源。</li>
+</ol>
+</blockquote>
+<h3 id="10-MySQL除了InnoDB还有哪些引擎，有什么区别"><a href="#10-MySQL除了InnoDB还有哪些引擎，有什么区别" class="headerlink" title="10. MySQL除了InnoDB还有哪些引擎，有什么区别?"></a>10. MySQL除了InnoDB还有哪些引擎，有什么区别?</h3><blockquote>
+<p>因为平时都是用的<code>InnoDB</code>，对其它引擎的了解甚少，所以这个问题没答上= =，这里直接贴一个链接好了。<br>相关链接: <a href="http://www.jellythink.com/archives/640" target="_blank" rel="noopener">MySQL存储引擎介绍</a></p>
+</blockquote>
+<h3 id="11-如何动态改变页面上的元素"><a href="#11-如何动态改变页面上的元素" class="headerlink" title="11. 如何动态改变页面上的元素?"></a>11. 如何动态改变页面上的元素?</h3><blockquote>
+<ol>
+<li>使用<code>$(..).css({..})</code>来改变元素的样式。</li>
+<li>使用<code>$(..).attr(..)</code>改变元素的属性。</li>
+<li>使用<code>$(..).html(..)</code>改变元素的html内容。</li>
+<li>使用<code>$(..).text(..)</code>改变元素的文本内容。</li>
+<li>使用<code>$(..).remove(..)</code>删除元素。</li>
+<li>使用<code>$(..).append(..)</code>添加元素。</li>
+</ol>
+</blockquote>
+<h3 id="12-分页的实现。"><a href="#12-分页的实现。" class="headerlink" title="12. 分页的实现。"></a>12. 分页的实现。</h3><blockquote>
+<p>如果是使用<code>JSP</code>等后端模板的话，一般会将需要分页的<code>JSP代码</code>抽成一个单独的<code>JSP文件</code>，并在页面中动态计算分页按钮的展示方式，在母页中<code>include</code>该<code>JSP文件</code>，然后在前端点击分页按钮时，通过<code>AJAX</code>请求下一页的内容，服务器端将渲染后的<code>HTML</code>返回给前端，前端通过<code>$(..).html()</code>等方式替换展示内容。<br>如果是在前后端分离的项目中，一般会使用一些前端的框架，如: <code>React.js</code>、<code>Vue.js</code>等，每次只向后台请求分页的数据，一般数据交互格式使用<code>JSON</code>，并替换已有的数据，触发页面内容的改变。</p>
+</blockquote>
+<h3 id="13-解释一下RESTful，平时是怎么用的"><a href="#13-解释一下RESTful，平时是怎么用的" class="headerlink" title="13. 解释一下RESTful，平时是怎么用的"></a>13. 解释一下RESTful，平时是怎么用的</h3><blockquote>
+<p><code>RESTful</code>是无状态的，采用<code>URL</code>+<code>HTTP请求方法</code>来描述<code>资源</code>和<code>行为</code>。<br>一般在前后端分离的项目中，后端会提供<code>REST接口</code>给前端，其<code>HTTP请求方法</code>一般为:</p>
+<ol>
+<li><code>GET</code> : 获取资源。</li>
+<li><code>POST</code>: 更新资源。</li>
+<li><code>PUT</code>: 创建资源。</li>
+<li><code>DELETE</code>: 删除资源。</li>
+</ol>
+<p>其次，<code>RESTful</code>由于是无状态的，一般会采用<code>JWT</code>或<code>OAuth</code>的方式来认证一个用户，<code>Token</code>是保存在前端的，为了安全性一般会配合<code>HTTPS</code>使用。</p>
+</blockquote>
+<h3 id="14-有没有抓过包-GET和POST格式是怎么样的"><a href="#14-有没有抓过包-GET和POST格式是怎么样的" class="headerlink" title="14. 有没有抓过包?GET和POST格式是怎么样的?"></a>14. 有没有抓过包?GET和POST格式是怎么样的?</h3><blockquote>
+<p><code>HTTP请求</code>分为三部分: <code>请求行</code>、<code>请求头</code>、<code>请求体</code>:<br><code>请求行</code>: 第一行是<code>METHOD URL protocal</code>，如<code>GET http://abc.com HTTP/1.1</code>。<br><code>请求头</code>: 从第二行开始，每一行的内容都是一个请求头参数值，直到遇到一个<code>空行</code>为止。<br><code>请求体</code>: 请求头和请求体中间隔着一行<code>空行</code>作为分界，请求体包含着本次请求携带的内容。<br><code>GET</code>方式的请求没有请求体，其是将参数追加到<code>URL</code>后面，<code>URL</code>中<code>?</code>后面的内容为请求参数。<br><code>POST</code>方式则三部分都有，且<code>POST</code>的请求头应当包含<code>Content-Type</code>来指明请求体中内容的类型。</p>
+</blockquote>
+<h3 id="15-如果是上传文件的话又是怎样的-后端如何处理"><a href="#15-如果是上传文件的话又是怎样的-后端如何处理" class="headerlink" title="15. 如果是上传文件的话又是怎样的?后端如何处理?"></a>15. 如果是上传文件的话又是怎样的?后端如何处理?</h3><blockquote>
+<p>上传文件的话会设置<code>Content-Type</code>为<code>multipart/form-data</code>，并指定<code>boundary</code>的值来标识请求体中内容的分界，而在请求体中，不同的内容(如：文件A和文件B)之间使用<code>boundary</code>的值来标识分界，并且请求体中每部分内容都会有<code>Content-Disposition</code>和<code>Content-Type</code>来指明这部分内容的类型和信息。</p>
+<p>后端的话使用<code>ServletFileUpload</code>来解析请求，获得<code>FileItem</code>的<code>List</code>，遍历<code>Item</code>，然后通过<code>Item</code>获得输入流，从输入流中读取上传文件的数据，再构建<code>FileOutputStream</code>输出到磁盘中保存。<br>如果使用<code>Spring MVC</code>，则可以在接收请求的方法中接收<code>CommonsMultipartFile</code>，并使用<code>transferTo</code>方法保存到磁盘中。</p>
+</blockquote>
+<h3 id="16-AJAX实现原理。"><a href="#16-AJAX实现原理。" class="headerlink" title="16. AJAX实现原理。"></a>16. AJAX实现原理。</h3><p>这个也没答上来，平时都是使用<code>jQuery</code>封装的<code>AJAX</code>或者其他<code>AJAX</code>框架。</p>
+<blockquote>
+<p>AJAX是利用浏览器的AJAX引擎来实现的异步请求，通过<code>XMLHttpRequest</code>对象来发送请求，由AJAX引擎向服务器发送和接收响应，再回调给用户处理，达到不阻塞用户界面和无刷新的目的。<br>资料来源: <a href="http://www.cnblogs.com/SanMaoSpace/archive/2013/06/15/3137180.html" target="_blank" rel="noopener">AJAX工作原理及其优缺点</a>。</p>
+</blockquote>
+<h3 id="17-Linux下怎么查找一个文件"><a href="#17-Linux下怎么查找一个文件" class="headerlink" title="17. Linux下怎么查找一个文件?"></a>17. Linux下怎么查找一个文件?</h3><blockquote>
+<p>如果是查找二进制文件，可以使用<code>whereis</code>。<br>如果是查找命令，可以使用<code>which</code>。<br>如果是其他文件，可以使用<code>find</code>命令(其实什么都可以找), <code>-name</code>指定搜索的名称或者匹配串， <code>-maxdepth</code>指定搜索的深度。<br>也可以使用<code>locate</code>命令查找，但是最新变动的文件可能会找不到，因为该命令实际上是搜索数据库，该数据库每天自动更新，可以手动执行<code>updatedb</code>更新。</p>
+</blockquote>
+<h3 id="18-Linux怎么查找一个进程"><a href="#18-Linux怎么查找一个进程" class="headerlink" title="18. Linux怎么查找一个进程?"></a>18. Linux怎么查找一个进程?</h3><blockquote>
+<p>使用<code>ps</code>命令可以查看进程状态，<code>ps -ef</code>查看所有进程，配合<code>grep</code>命令可以进行筛选， 如查看<code>tomcat</code>进程的命令是: <code>ps -ef | grep tomcat</code>。</p>
+</blockquote>
+<h3 id="19-Linux下只知道文件所在目录和内容，如何查找文件"><a href="#19-Linux下只知道文件所在目录和内容，如何查找文件" class="headerlink" title="19. Linux下只知道文件所在目录和内容，如何查找文件?"></a>19. Linux下只知道文件所在目录和内容，如何查找文件?</h3><p>这题没也没答上= =</p>
+<blockquote>
+<p>使用<code>grep</code>命令可以实现:<br><code>grep -rn /path/to/target/dir -e &quot;pattern&quot;</code><br><code>-r</code>: 递归<br><code>-n</code>: 显示行数<br><code>-w</code>: 完全匹配<br>例子: <code>grep -rn. -e &quot;ERROR&quot;</code><br>输出: <code>./面试:143:输出: ./面试:144:上面的命令搜索当前目录及其子目录中的文件，并输出含有ERROR内容的行</code><br>详细答案及来源:<a href="http://stackoverflow.com/questions/16956810/how-to-find-all-files-containing-specific-text-on-linux" target="_blank" rel="noopener">How to find all files containing specific text on Linux?</a></p>
+</blockquote>
+<h3 id="20-Redis你用它来做什么"><a href="#20-Redis你用它来做什么" class="headerlink" title="20. Redis你用它来做什么?"></a>20. Redis你用它来做什么?</h3><blockquote>
+<p><code>Redis</code>在我接触过的项目中主要做了两件事:</p>
+<ol>
+<li><code>缓存</code>。</li>
+<li><code>存储需要计算的信息</code>。</li>
+</ol>
+<p><code>Redis</code>也可以用来做<code>消息订阅</code>、<code>队列</code>等。</p>
+</blockquote>
+<h3 id="21-Redis如果运行过程中崩溃了怎么办。"><a href="#21-Redis如果运行过程中崩溃了怎么办。" class="headerlink" title="21. Redis如果运行过程中崩溃了怎么办。"></a>21. Redis如果运行过程中崩溃了怎么办。</h3><p>这个问题我估摸着面试官想问的是<code>Redis</code>的数据保障的方法，不然崩溃了除了重启还能怎么办？</p>
+<blockquote>
+<p><code>Redis</code>有提供数据持久化的功能，一种是<code>快照</code>，一种是<code>AOF</code>。<br><code>快照</code>是在某一个时间点将所有数据写入到磁盘中，<code>AOF</code>是将被执行的命令复制到硬盘中，<code>快照</code>的文件体积要比<code>AOF</code>的文件体积小。前者在<code>恢复时速度</code>比后者快，但是因为是<code>间隔持久化</code>，所以会有一定量的<code>数据丢失</code>。后者因为是<code>实时写入</code>的，所以数据的完整性比较好，如果丢失的话一般也就丢失一秒的数据。</p>
+<p>其次需要做主从复制，这样一份数据可以保存在多台服务器上，且可以避免<code>Redis</code>崩溃到重启完成这段时间内无法提供正常服务，同时从服务器可以分担主服务器的读压力。</p>
+</blockquote>
+<h3 id="22-Redis集群。"><a href="#22-Redis集群。" class="headerlink" title="22. Redis集群。"></a>22. Redis集群。</h3><p>没配置过所以没答上= =</p>
+<blockquote>
+<p>相关连接: <a href="http://www.redis.cn/topics/cluster-tutorial.html" target="_blank" rel="noopener">Redis集群教程</a>。</p>
+</blockquote>
+<h3 id="23-剩下的问题都是偏向个人的，没有什么通用性的回答，大概问了我"><a href="#23-剩下的问题都是偏向个人的，没有什么通用性的回答，大概问了我" class="headerlink" title="23. 剩下的问题都是偏向个人的，没有什么通用性的回答，大概问了我:"></a>23. 剩下的问题都是偏向个人的，没有什么通用性的回答，大概问了我:</h3><blockquote>
+<ol>
+<li>前一家公司实习的时候主要做什么？</li>
+<li>讲一下做过的项目？</li>
+<li>项目中有没有遇到什么难点?怎么解决的？</li>
+<li>有没有做过什么有亮点的东西？<br>其中在问题3根据我的回答，继续将情况复杂化让我给出解决方案，一步一步问。</li>
+</ol>
+</blockquote>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-04-03T09:07:29.000Z" itemprop="dateUpdated">2018-04-03 17:07:29</time>
+</span><br>
+
+
+        
+        <a href="/2018/04/03/MD/studyo/java面试要点/" target="_blank" rel="external">http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/10/MD/JavaScript/Vue.js/生命周期/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/01/MD/Linux/openwrt/各种插件/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/04/03/MD/studyo/java面试要点/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aMXaEMAwFQO5/6aRNCuBLspIthoq3IeChsMS3rys+vm6O52t+/l49f/7l8IGHh4d3aOh3D0iQyS8JYD4ePDw8vD3e3YzaG+LLI+NnJecvFjw8PLwP4CWw5zs//1f1FeDh4eF9Pq86xGq4UA018PDw8P6Ll4QRye3y++SF5/maY1kLHh4eXj8ZOBwWbJyvrO/h4eHhjVfV88WnyUSfTOhfrQMPDw9vg5dPuJNlrWpEO78PHh4e3h4v/+CvxrvVeCL/Pd/WgIeHh7fHmyxQVYvHJK7N73Dlbw4PDw+vxeuVgfzVVJfEeqSXbwU8PDy8Q7xqW9y7vrexIAdfvaHg4eHhHeU1W9jiNZPYIlkYw8PDw9vjTeKJXvSQx7WHt2Th4eHhHeL1Pvuv1tErGL2EFg8PD2+PlzTWeVM7CSB6G1IjKh4eHt4CL1/+n8+9+f/2ChUeHh7eHi//sE+m4xxQLQYr3wp4eHh4R3lJqTgb0c5HEu0pw8PDwzvEq25pmmycyhfPJq35r5YaDw8Pb4GXf+pXi8EcXB3PSxiBh4eHN+blH/mTMCJ/Kc3sOdl2gIeHh3eIV212q5FE76iWk9u/4uHh4S3wCts9W0tQ1Yi2HDfkFQ8PDw/vKG/S+FZb3mqx6TXihTACDw8Pr8XLg4B8sSpa2o/Di3yjQ3P1DA8PD2/M64ULeZmZtMvlAoaHh4f3J7zJcJOmuYfJDzw8PLw93mTqT5LSXpdbjTNuSwseHh7eAq861U62RiURbd4o9woGHh4e3iledQvU83lzag6a7GocjIeHh7fNy1vk6uJ9b4o/Vtnw8PDwPoD3PGVXJ/rkbpMNB3h4eHifz+shJ8tpL608Hh4e3hovf8y8YJx6TVEIgoeHh7fA633RV4fe2wQw33CAh4eHd5T3DZ6BVLmTbv/WAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

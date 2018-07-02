@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="kcptun shadowsocks加速方案转载  2017年02月17日 11:42:59  标签： kcptun   9825  原文连接：https://blog.kuoruan.com/102.html Kcptun介绍 Kcptun 是一个非常简单和快速的，基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="kcptun shadowsocks加速方案转载  2017年02月17日 11:42:59  标签： kcptun   9825  原文连接：https://blog.kuoruan.com/102.html Kcptun介绍 Kcptun 是一个非常简单和快速的，基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun.png">
+<meta property="og:image" content="https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-1.jpg">
+<meta property="og:image" content="https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-windows.png">
+<meta property="og:image" content="https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_tools.png">
+<meta property="og:image" content="https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun-gui.png">
+<meta property="og:image" content="https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_ports.png">
+<meta property="og:updated_time" content="2018-03-28T05:29:40.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="kcptun shadowsocks加速方案转载  2017年02月17日 11:42:59  标签： kcptun   9825  原文连接：https://blog.kuoruan.com/102.html Kcptun介绍 Kcptun 是一个非常简单和快速的，基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP">
+<meta name="twitter:image" content="https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-28T05:29:40.000Z" itemprop="datePublished" class="page-time">
+  2018-03-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#kcptun-shadowsocks加速方案"><span class="post-toc-number">1.</span> <span class="post-toc-text">kcptun shadowsocks加速方案</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#相关项目"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">相关项目</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#部署Kcptun"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">部署Kcptun</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置客户端"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">配置客户端</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Shadowsocks-客户端配置"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">Shadowsocks 客户端配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#速度实测"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">速度实测</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多人同时使用"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">多人同时使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Android上使用"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">Android上使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在路由器上使用"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">在路由器上使用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/Linux/shdaowsocks/kcptun"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-28 13:29:40" datetime="2018-03-28T05:29:40.000Z"  itemprop="datePublished">2018-03-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="kcptun-shadowsocks加速方案"><a href="#kcptun-shadowsocks加速方案" class="headerlink" title="kcptun shadowsocks加速方案"></a>kcptun shadowsocks加速方案</h1><p>转载  2017年02月17日 11:42:59</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=kcptun&amp;t=blog" target="_blank" rel="noopener">kcptun</a></li>
+</ul>
+<ul>
+<li>9825</li>
+</ul>
+<p>原文连接：<a href="https://blog.kuoruan.com/102.html" target="_blank" rel="noopener">https://blog.kuoruan.com/102.html</a></p>
+<p>Kcptun介绍</p>
+<p>Kcptun 是一个非常简单和快速的，基于 KCP 协议的 UDP 隧道，它可以将 TCP 流转换为 KCP+UDP 流。而 KCP 是一个快速可靠协议，能以比 TCP 浪费10%-20%的带宽的代价，换取平均延迟降低 30%-40%，且最大延迟降低三倍的传输效果。</p>
+<p>Kcptun 是 KCP 协议的一个简单应用，可以用于任意 TCP 网络程序的传输承载，以提高网络流畅度，降低掉线情况。由于 Kcptun 使用 Go 语言编写，内存占用低（经测试，在64M内存服务器上稳定运行），而且适用于所有平台，甚至 Arm 平台。</p>
+<p>Kcptun 工作示意图：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun.png" alt="小内存福音，Kcptun Shadowsocks加速方案 - 第1张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-550x159.png)" title="">
+                </div>
+                <div class="image-caption">小内存福音，Kcptun Shadowsocks加速方案 - 第1张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-550x159.png)</div>
+            </figure></p>
+<p>KCP 协议：<a href="https://github.com/skywind3000/kcp" target="_blank" rel="noopener">https://github.com/skywind3000/kcp</a></p>
+<p>Kcptun 项目地址：<a href="https://github.com/xtaci/kcptun" target="_blank" rel="noopener">https://github.com/xtaci/kcptun</a></p>
+<p>2016.08.31 v20160831发布，新版支持配置文件！</p>
+<p>2016.08.29 新的客户端可视化配置工具可选</p>
+<p>2016.08.13 发布一键安装脚本 <a href="https://blog.kuoruan.com/110.html" target="_blank" rel="noopener">https://blog.kuoruan.com/110.html</a></p>
+<p>2016.08.06 添加Kcptun可视化运行工具和Android使用说明。</p>
+<p>2016.06.17 添加客户端开机自启批处理，重写软件启动vbs脚本。</p>
+<h2 id="相关项目"><a href="#相关项目" class="headerlink" title="相关项目"></a>相关项目</h2><p>以下为 Kcptun 的相关项目，如果有兴趣，可以了解一下。</p>
+<p>1.Kcp-server：<a href="https://github.com/clangcn/kcp-server" target="_blank" rel="noopener">https://github.com/clangcn/kcp-server</a></p>
+<p>Kcp-server 是在 Kcptun 的基础上，添加了配置文件的支持，并整合了一个socks5代理，可用不用配合其他软件单独使用，而原版 Kcptun 需要配合其他软件使用而不能单独使用。Kcp-server 简化了安装过程，一条命令即可配置完毕。</p>
+<p>2.Shadowsocks-Plus：<a href="https://github.com/shadowsocks-plus/shadowsocks-plus" target="_blank" rel="noopener">https://github.com/shadowsocks-plus/shadowsocks-plus</a></p>
+<p>基于 Shadowsocks Go 版本，加入了以下特性：</p>
+<ul>
+<li>启动后降低权限至 nobody , 增强安全性；</li>
+<li>与 kcptun 集成，配合相应客户端可加速传输；</li>
+<li>网页控制面板。</li>
+</ul>
+<h2 id="部署Kcptun"><a href="#部署Kcptun" class="headerlink" title="部署Kcptun"></a>部署Kcptun</h2><p>现在博主编写的一键安装脚本已公开发布测试，支持 Kcptun 一键安装、更新、卸载、配置，欢迎测试使用：<a href="https://blog.kuoruan.com/110.html" target="_blank" rel="noopener">Kcptun 服务端一键安装脚本</a></p>
+<p>点击这里查看手动配置方式</p>
+<p>响应速度：</p>
+<p>fast3 &gt; [fast2] &gt; fast &gt; normal &gt; default</p>
+<p>有效载荷比：</p>
+<p>default &gt; normal &gt; fast &gt; [fast2] &gt; fast3</p>
+<p>中间 mode 参数比较均衡，总之就是越快越浪费带宽（根据设置，可能会浪费数倍流量），请自行斟酌。推荐模式 fast2。</p>
+<p>可用的参数请使用 ./server_linux_amd64 -h 查看：</p>
+<table>
+<thead>
+<tr>
+<th>12345678910111213141516171819202122232425262728</th>
+<th>./server_linux_amd64-hNAME:  kcptun-kcptunserver USAGE:  server_darwin_amd64[globaloptions]command[commandoptions][arguments…] VERSION:  20160820 COMMANDS:    help,h  Showsalistofcommandsorhelpforonecommand GLOBALOPTIONS:  –listenvalue,-lvalue  kcpserverlistenaddress(default:”:29900”)  –targetvalue,-tvalue  targetserveraddress(default:”127.0.0.1:12948”)  –keyvalue              pre-sharedsecretforclientandserver(default:”it’s a secrect”)[$KCPTUN_KEY]  –cryptvalue            aes,aes-128,aes-192,salsa20,blowfish,twofish,cast5,3des,tea,xtea,xor,none(default:”aes”)  –modevalue              profiles:fast3,fast2,fast,normal(default:”fast”)  –mtuvalue              setmaximumtransmissionunitofUDPpackets(default:1350)  –sndwndvalue            setsendwindowsize(numofpackets)(default:1024)  –rcvwndvalue            setreceivewindowsize(numofpackets)(default:1024)  –datashardvalue        setreed-solomonerasurecoding-datashard(default:10)  –parityshardvalue      setreed-solomonerasurecoding-parityshard(default:3)  –dscpvalue              setDSCP(6bit)(default:0)  –nocomp                  disablecompression  –help,-h                showhelp  –version,-v            printtheversion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>更深层次的参数调整需要理解 KCP 协议，并通过“隐藏参数”调整。巭孬嫑乱动</p>
+<p>下面是作者给的配置参数样例，适用大部分ADSL接入（非对称上下行）的参数（实验环境电信100M ADSL）。其它带宽请按比例调整，比如 50M ADSL，把 CLIENT 的 -sndwnd -rcvwnd 减掉一半，SERVER 不变。</p>
+<table>
+<thead>
+<tr>
+<th>12</th>
+<th>服务端:  -mtu1400-sndwnd2048-rcvwnd2048-modefast2客户端:  -mtu1400-sndwnd256-rcvwnd2048-modefast2-dscp46</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>在不丢包的情况下，有最大-rcvwnd 个数据包在网络上正在向你传输，以平均数据包大小avgsize计算，在任意时刻，有：</p>
+<p>network_cap = rcvwnd*avgsize</p>
+<p>数据流向你，这个值再除以ping值(rtt)，等于最大带宽使用量。</p>
+<p>max_bandwidth = network_cap/rtt = rcvwnd*avgsize/rtt</p>
+<p>举例，设rcvwnd = 1024, avgsize = 1KB, rtt = 400ms，则：</p>
+<p>max_bandwidth = 1024 * 1KB / 400ms = 2.5MB/s ~= 25Mbps</p>
+<p>（注：以上计算不包括前向纠错的数据量）</p>
+<p>前向纠错是最大带宽量的一个固定比例增加：</p>
+<p>max_bandwidth_fec = max_bandwidth*(datashard+parityshard)/datashard</p>
+<p>举例，设datashard = 10 , partiyshard = 3，则：</p>
+<p>max_bandwidth_fec = max_bandwidth <em> (10 + 3) /10 = 1.3</em>max_bandwidth ＝ 1.3 * 25Mbps = 32.5Mbps</p>
+<p>看不懂？那就别管它，你只要会简易自我调优方法就够了：</p>
+<ol>
+<li>同时在两端逐步增大 client rcvwnd 和 server sndwnd;</li>
+<li>尝试下载，观察如果带宽利用率（服务器＋客户端两端都要观察）接近物理带宽则停止，否则跳转到第一步。</li>
+</ol>
+<p>基本原则：SERVER 的发送速率不能超过 ADSL 下行带宽，否则只会浪费您的服务器带宽。</p>
+<p>如果你有任何问题，欢迎加入我们的QQ群寻求帮助：43391448</p>
+<h2 id="配置客户端"><a href="#配置客户端" class="headerlink" title="配置客户端"></a>配置客户端</h2><p>首先下载 Kcptun 的客户端文件。</p>
+<p>请注意：客户端版本建议和服务端版本一致，有许多朋友没有检查两端造成无法连接！</p>
+<p>Windows 64位：</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th><a href="https://github.com/xtaci/kcptun/releases/download/v20161031/kcptun-windows-amd64-20161031.tar.gz" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases/download/v20161031/kcptun-windows-amd64-20161031.tar.gz</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Mac 64位：</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th><a href="https://github.com/xtaci/kcptun/releases/download/v20161031/kcptun-darwin-amd64-20161031.tar.gz" target="_blank" rel="noopener">https://github.com/xtaci/kcptun/releases/download/v20161031/kcptun-darwin-amd64-20161031.tar.gz</a></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<p>1.0830以后的版本不和之前的版本兼容，请确保两端使用相同的版本！</p>
+<p>2.下面的软件截图仅供选择软件时参考，请不要照着填写里边的参数！</p>
+<p>当前，Kcptun 已经有可视化配置工具了，你可以自行选择使用。如果不想用工具，可以往后翻，手动创建启动文件。</p>
+<p>1.Kcptun客户端配置管理工具，来自 @dfdragon</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-1.jpg" alt="小内存福音，Kcptun Shadowsocks加速方案 - 第3张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-1-550x330.jpg)" title="">
+                </div>
+                <div class="image-caption">小内存福音，Kcptun Shadowsocks加速方案 - 第3张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-1-550x330.jpg)</div>
+            </figure></p>
+<p>下载地址：<a href="https://github.com/dfdragon/kcptun_gclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_gclient/releases</a></p>
+<p>2.kcptun-gui-windows，来自 @GangZhuo</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-windows.png" alt="小内存福音，Kcptun Shadowsocks加速方案 - 第4张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-windows-550x403.png)" title="">
+                </div>
+                <div class="image-caption">小内存福音，Kcptun Shadowsocks加速方案 - 第4张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/kcptun-gui-windows-550x403.png)</div>
+            </figure></p>
+<p>下载地址：<a href="https://github.com/GangZhuo/kcptun-gui-windows/releases" target="_blank" rel="noopener">https://github.com/GangZhuo/kcptun-gui-windows/releases</a></p>
+<p>3.来自“逗比根据地”的 Kcptun tools。由于软件是易语言编写的，可能会被杀毒软件报毒，请各位自行查毒。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_tools.png" alt="小内存福音，Kcptun Shadowsocks加速方案 - 第5张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_tools.png)" title="">
+                </div>
+                <div class="image-caption">小内存福音，Kcptun Shadowsocks加速方案 - 第5张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_tools.png)</div>
+            </figure></p>
+<p>软件说明：<a href="http://www.dou-bi.com/ss-jc37/" target="_blank" rel="noopener">http://www.dou-bi.com/ss-jc37/</a></p>
+<p>软件下载地址：<a href="https://pan.baidu.com/s/1i5HdlVv" target="_blank" rel="noopener">https://pan.baidu.com/s/1i5HdlVv</a></p>
+<p>4.KcptunGUI，来自“诸神的黄昏”。</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun-gui.png" alt="小内存福音，Kcptun Shadowsocks加速方案 - 第6张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun-gui-550x280.png)" title="">
+                </div>
+                <div class="image-caption">小内存福音，Kcptun Shadowsocks加速方案 - 第6张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun-gui-550x280.png)</div>
+            </figure></p>
+<p>源码地址：<a href="https://git.oschina.net/ragnaroks/KcptunGUI" target="_blank" rel="noopener">https://git.oschina.net/ragnaroks/KcptunGUI</a></p>
+<p>软件下载：<a href="https://git.oschina.net/ragnaroks/KcptunGUI/releases" target="_blank" rel="noopener">https://git.oschina.net/ragnaroks/KcptunGUI/releases</a></p>
+<p>Mac 系统可以下载使用：<a href="https://github.com/dfdragon/kcptun_xclient/releases" target="_blank" rel="noopener">https://github.com/dfdragon/kcptun_xclient/releases</a></p>
+<p>注意：客户端和服务端参数必须一致的有:</p>
+<ul>
+<li>datashard</li>
+<li>parityshard</li>
+<li>nocomp</li>
+<li>key</li>
+<li>crypt</li>
+</ul>
+<p>点击查看手动创建启动文件的方法</p>
+<p>上面的配置过程中出现了多个端口，我在这里画个图，方便各位理解各端口的作用（点击看大图）：</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_ports.png" alt="小内存福音，Kcptun Shadowsocks加速方案 - 第7张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_ports.png)" title="">
+                </div>
+                <div class="image-caption">小内存福音，Kcptun Shadowsocks加速方案 - 第7张  | 扩软博客](https://blog.kuoruan.com/wp-content/uploads/2016/06/Kcptun_ports.png)</div>
+            </figure></p>
+<h2 id="Shadowsocks-客户端配置"><a href="#Shadowsocks-客户端配置" class="headerlink" title="Shadowsocks 客户端配置"></a>Shadowsocks 客户端配置</h2><p>在客户端中新建服务器：</p>
+<ul>
+<li>服务器 IP 填写本机：127.0.0.1</li>
+<li>服务器端口填写：12948</li>
+</ul>
+<p>正确填写你的 Shadowsocks 密码，加密方式，协议和混淆方式。</p>
+<p>切换到该服务器上，测试是否正确运行。</p>
+<h2 id="速度实测"><a href="#速度实测" class="headerlink" title="速度实测"></a>速度实测</h2><p>我用的服务器是搬瓦工 512M 内存，费利蒙机房，以此测试加速效果。</p>
+<ul>
+<li>按结论看，Kcptun 的加速效果略逊于 Finalspeed，估计需要细调配置。</li>
+<li>刚运行 Finalspeed 时，内存占用就达到了 9.1% 也就是接近 47M；而此时 Kcptun 占用 0.4%，也就是 2M左右。</li>
+<li>YouTube 1440p 满跑情况下，FInalspeed 最高内存占用 15.4%，接近 79M；而此时 Kcptun 占用 3% 左右，即 15.5M。</li>
+<li>速度方面，Finalspeed 最大速度达到了10000 Kbps +，Kcptun 6000+ Kbps。</li>
+</ul>
+<p>以上结论为本人测试所得，仅作为参考；实际情况请自行测试，如有纰漏，欢迎指出。</p>
+<h2 id="多人同时使用"><a href="#多人同时使用" class="headerlink" title="多人同时使用"></a>多人同时使用</h2><p>如果想多人使用同一个服务器并同时使用 Kcptun 加速，需要启动多个 Kcptun 进程：</p>
+<p>1.你使用的是本站的一键安装脚本，请使用命令：</p>
+<table>
+<thead>
+<tr>
+<th>1</th>
+<th>./kcptun.shadd</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>来添加一个新实例，新 Kcptun 实例使用的端口需要与其他实例不一致。</p>
+<p>2.你是自己创建的启动脚本：</p>
+<p>为了启动多个 Kcptun 服务端，你可以将 start.sh 拷贝一份，然后修改其中的 Kcptun 运行端口。</p>
+<h2 id="Android上使用"><a href="#Android上使用" class="headerlink" title="Android上使用"></a>Android上使用</h2><p>请看这篇文章：<a href="https://blog.kuoruan.com/111.html" target="_blank" rel="noopener">Shadowsocks-Android客户端上的KCP配置说明</a></p>
+<h2 id="在路由器上使用"><a href="#在路由器上使用" class="headerlink" title="在路由器上使用"></a>在路由器上使用</h2><p>如果需要在路由器上使用 Kcptun，首先你得有个智能路由器，然后能进入shell。</p>
+<p>编译好的客户端文件在这里下载：</p>
+<p><a href="https://github.com/bettermanbao/openwrt-kcptun/releases" target="_blank" rel="noopener">https://github.com/bettermanbao/openwrt-kcptun/releases</a></p>
+<p>小米路由器、极路由等一大批国产智能路由器都是 MT7620 的芯片，请下载 ramips 版本。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-03-28T05:29:40.000Z" itemprop="dateUpdated">2018-03-28 13:29:40</time>
+</span><br>
+
+
+        
+        <a href="/2018/03/28/MD/Linux/shdaowsocks/kcptun/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/28/MD/Linux/ftp实例/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/27/MD/Linux/muti/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/28/MD/Linux/shdaowsocks/kcptun/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3awW7bMBAE0Pz/T6eXHgoElmd2RcUFHk+B64h8DCCys/v1FY/vf8bPz39+5/rzdvyc6+aBh4eHt1h6ssRXkyXTb5abbxkeHh7eM7x2KZuX+/WM+WFzvWY8PDy8z+Qli0te7u1BgoeHh/c/8torcvvN683Cw8PD+wTeJkKdHRt5QPxQ1oKHh4cX82YR6u/+fKS+h4eHh7euqs+i2LYkdiIy/vsEPDw8vAO8tuR//cqetR0kF+J2Q/Hw8PCe4eVTtiWuNjKeRRIvfwsPDw/vVl7+ck8e3S5xFsUWbbJ4eHh4B3jtwbBpNt3PPvuT4OHh4d3Ly8v5++t126yQbHR07uHh4eHdyptNnFys84JWMnt+hLw5ivDw8PDWvPYi28YEbUNVe5V/8x08PDy8w7wivRgVqDafD8MLPDw8vAO8/KF54Sq/jrfpQbLFb8JcPDw8vDWvDUnzOCDZmvYq364TDw8P7wQveSlvgoM2UMgbFIqmKzw8PLxbebPgdXPN3ZTT2vYCPDw8vBO8tpS172tKjorNYRA9Ew8PD2/Byxub2iLZpskgf3KRteDh4eEd4G2i2LvaCPZbU5xReHh4eCNeMsEsrm1bAdotxsPDw/tdXl56z2PWWcFsX5zDw8PDe4bXlqNmxbNNyW0WlODh4eE9yWsv2e2UbXNAHnbUXQx4eHh4a14eEMw2Im87mF3iX2bVeHh4eAd4bflqtpT8wJi1f+Hh4eGd5n2Xo73mFpFBEOnmx0zUdIWHh4c34rUv3La41Ua0s59vGHh4eHglL78uzwpd7ZV6Fm28/Fc8PDy8Y7x9G9YmwL134OHh4X0mb/PKvjfeXdX38PDw8B7kJRHtHjNrWcDDw8N7hte2BeTRw71xQ10Yw8PDwzvAa/97n1x22+t1G3McTC/w8PDwrsYfVnRK35g3TNAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

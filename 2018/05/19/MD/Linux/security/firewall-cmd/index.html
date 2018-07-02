@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Fail2ban防御暴力破解密码fail2ban可以监视你的系统日志，然后匹配日志的错误信息（正则表达式匹配）执行相应的屏蔽动作（一般情况下是调用防火墙屏蔽）。比如有人在试探你的SSH、SMTP、FTP密码，只要达到你预设的次数，fail2ban就会调用防火墙屏蔽这个IP，而且可以发送e-mail通知系统管理员。  安装EPEL源   1yum -y install epel-release.no">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="Fail2ban防御暴力破解密码fail2ban可以监视你的系统日志，然后匹配日志的错误信息（正则表达式匹配）执行相应的屏蔽动作（一般情况下是调用防火墙屏蔽）。比如有人在试探你的SSH、SMTP、FTP密码，只要达到你预设的次数，fail2ban就会调用防火墙屏蔽这个IP，而且可以发送e-mail通知系统管理员。  安装EPEL源   1yum -y install epel-release.no">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T05:03:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Fail2ban防御暴力破解密码fail2ban可以监视你的系统日志，然后匹配日志的错误信息（正则表达式匹配）执行相应的屏蔽动作（一般情况下是调用防火墙屏蔽）。比如有人在试探你的SSH、SMTP、FTP密码，只要达到你预设的次数，fail2ban就会调用防火墙屏蔽这个IP，而且可以发送e-mail通知系统管理员。  安装EPEL源   1yum -y install epel-release.no">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-19T05:01:57.000Z" itemprop="datePublished" class="page-time">
+  2018-05-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Fail2ban防御暴力破解密码"><span class="post-toc-number">1.</span> <span class="post-toc-text">Fail2ban防御暴力破解密码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/Linux/security/firewall-cmd"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-19 13:01:57" datetime="2018-05-19T05:01:57.000Z"  itemprop="datePublished">2018-05-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Fail2ban防御暴力破解密码"><a href="#Fail2ban防御暴力破解密码" class="headerlink" title="Fail2ban防御暴力破解密码"></a>Fail2ban防御暴力破解密码</h1><p>fail2ban可以监视你的系统日志，然后匹配日志的错误信息（<a href="https://www.ifshow.com/regex-introduction/" target="_blank" rel="noopener">正则表达式</a>匹配）执行相应的屏蔽动作（一般情况下是调用防火墙屏蔽）。比如有人在试探你的SSH、SMTP、FTP密码，只要达到你预设的次数，fail2ban就会调用防火墙屏蔽这个IP，而且可以发送e-mail通知系统管理员。</p>
+<ol>
+<li>安装EPEL源</li>
+</ol>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install epel-release.noarch</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>安装支持firewalld的fail2ban</li>
+</ol>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install fail2ban-firewalld fail2ban-systemd</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>安装相关软件，让fail2ban可以通过postfix发送提醒邮件（可选）</li>
+</ol>
+<hr>
+<p><a href="https://www.ifshow.com/centos-7-install-postfix-for-sending-e-mail-alerts/" target="_blank" rel="noopener">安装配置postfix用于发送提醒邮件请点这里</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install postfix whois fail2ban-sendmail</span><br><span class="line">systemctl enable postfix</span><br><span class="line">systemctl start postfix</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>设定fail2ban</li>
+</ol>
+<hr>
+<p>新建配置文件jail.local</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/fail2ban/jail.local</span><br></pre></td></tr></table></figure>
+<p>输入以下内容后保存退出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[DEFAULT]</span><br><span class="line">bantime = 86400</span><br><span class="line">findtime = 300</span><br><span class="line">maxretry = 3</span><br><span class="line">sender = fail2ban@ifshow.com</span><br><span class="line">destemail = admin@ifshow.com</span><br><span class="line">action = %(action_mwl)s</span><br><span class="line">[sshd]</span><br><span class="line">enabled = true</span><br><span class="line">port = 2345</span><br><span class="line">[sshd-ddos]</span><br><span class="line">enabled = true</span><br><span class="line">port = 2345</span><br></pre></td></tr></table></figure>
+<p>bantime是被封IP禁止访问的时间，设定值为24小时，单位是秒。<br>findtime是检测时间，在此时间内超过规定的次数会激活fail2ban，单位是秒。<br>maxretry是允许错误登录的最大次数，和findtime配合使用。<br>sender为邮件发送者，destemail为接收通知邮箱。<br>action是触发fail2ban采取的动作，action_mwl为禁IP+发通知邮件+写入日志。<br>sshd区块的enabled = true开启对SSH服务的防护，port为SSH的自定义端口。<br>sshd-ddos区块的enabled = true开启SSH-DDOS防护，port为SSH的自定义端口。</p>
+<p>如果装有vsftpd，在配置文件最后加上以下内容（port为vsftpd的登录和数据端口）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[vsftpd]</span><br><span class="line">enabled = true</span><br><span class="line">port = 2121,2122</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>启用fail2ban并设为开机自启</li>
+</ol>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl enable fail2ban</span><br><span class="line">systemctl start fail2ban</span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>fail2ban常用命令</li>
+</ol>
+<hr>
+<p>查看SSH服务监护状态，能看到当前被禁IP。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fail2ban-client status sshd</span><br></pre></td></tr></table></figure>
+<p>在SSH监护服务忽略IP列表（白名单）中添加IP 192.168.111.111</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fail2ban-client set sshd addignoreip 192.168.111.111</span><br></pre></td></tr></table></figure>
+<p>在SSH监护服务忽略IP列表（白名单）中删除IP 192.168.111.111</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fail2ban-client set sshd delignoreip 192.168.111.111</span><br></pre></td></tr></table></figure>
+<p>查看fail2ban日志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail /var/log/fail2ban.log</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-05-19T05:03:16.000Z" itemprop="dateUpdated">2018-05-19 13:03:16</time>
+</span><br>
+
+
+        
+        <a href="/2018/05/19/MD/Linux/security/firewall-cmd/" target="_blank" rel="external">http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/19/MD/Linux/postfix mail/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/19/MD/Linux/firewall/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/19/MD/Linux/security/firewall-cmd/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3a0WrDMAwF0P3/T3ewpw7W5EqKmjKOn0qXpDoe2Irkr694PH7G8+fnkd97/LT8rosHHh4eXiv0VyO5JgEch5jHkF+Ph4eHt83rbQbJROTr9vGWkE8THh4e3ufwkoQ4+SZPrPHw8PD+B6+6fFe3irwggoeHh3cvLy8EJKH3piZJ3xdrLXh4eHgxb7Io3/V5vb+Hh4eH1+qqV1tc1WU6ScpH0eLh4eEt8PIUdrs9Ni9hFN4Y8PDw8Ma8ahG2etCqug0k01rdcvDw8PA2eJOlPw+6d2+1lIyHh4e3x+ttA73DWNVlvfe7v77Bw8PDW+NNgpgkx9d2qQrZNx4eHt6AlyPzH6tOSq8MkUSLh4eHt8FLFvfk0fmGMWll5U/Dw8PDu4vXa9sXdqRiebd8PR4eHt4yL09586NUvZJHdVpf3ouHh4e3zMvbTkl63ftrtT12slXg4eHhLfDy9lWefM8bY1XAyaTj4eHhLfPyV/28sFsdV5U/8PDw8DZ4+cKdL9bV41PzRtfLqPDw8PDWePkN1UMASWn4TbUWPDw8vIU6Z5LUVssWSSI+L16cRIiHh4e3wJuEkn9OigjVzQkPDw/v/bxeWJNAJw2tZAuJcnk8PDy8AS8vEEwKEPNybd70it4Y8PDw8Aa8/BDAvJ1ffU4+3VF/Dw8PD2+NN2845cv3cQI9edpllQ88PDy8YGWulifypLlXeqhuJHh4eHjbvEdx5KEnKXXyzN7xr5M3Bjw8PLwBLx/5UaqrCrUbhxLw8PDwruL1WvX58n3VEavm/wcPDw9vjderYSTJdDX5rh5WOEmp8fDw8G7l5aEkqXYeaJ7Q/3ElHh4e3gfzetlsrwlXKDrj4eHhrfEmzaekQJCXDyZNtfIBAjw8PLwWr1cL7YHn34z6eHh4eHhT3jecXnOopgMfYQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

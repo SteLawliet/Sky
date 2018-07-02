@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="MAVEN2的配置文件有两个settings.xml和pom.xml settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下 pom.xml：描述项目的配置文件，放在每个项目的根目录下 settings.xml localRepository：本地仓">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="MAVEN2的配置文件有两个settings.xml和pom.xml settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下 pom.xml：描述项目的配置文件，放在每个项目的根目录下 settings.xml localRepository：本地仓">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-24T08:11:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="MAVEN2的配置文件有两个settings.xml和pom.xml settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下 pom.xml：描述项目的配置文件，放在每个项目的根目录下 settings.xml localRepository：本地仓">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-03-24T08:10:23.000Z" itemprop="datePublished" class="page-time">
+  2018-03-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-MD/Java/JavaEE/MAVEN/Maven配置详解"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-03-24 16:10:23" datetime="2018-03-24T08:10:23.000Z"  itemprop="datePublished">2018-03-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>MAVEN2的配置文件有两个settings.xml和pom.xml</p>
+<p>settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下</p>
+<p>pom.xml：描述项目的配置文件，放在每个项目的根目录下</p>
+<p><strong>settings.xml</strong></p>
+<p>localRepository：本地仓库位置，默认在.m2/repository/，可以人为更改</p>
+<p>offline：离线开关，是否每次构建都从远程仓库下载，默认false</p>
+<p>servers：对应POM文件的distributionManagement元素里定义id,和登陆服务器的用户名、密码</p>
+<p>mirrors：定义仓库镜像，将仓库地址指向自定义仓库地址(id：新的镜像ID，name：镜像名称，url：镜像地址，mirrorOf：以那个地址做镜像，默认为central)</p>
+<p>proxies：设置HTTP代理</p>
+<p>parent     给出父项目的位置，如果存在上一级父项目的话。如果没有特别指出的话，值就是父项目对于当前项目而言。位置是一个 as a group ID, artifact ID 和version元素的组合。<br>modelVersion     描述这个POM文件遵从哪个版本的项目描述符.<br>groupId     针对一个项目的普遍唯一识别符。通常用一个完全正确的包的名字来与其他项目的类似名字来进行区分（比如：org.apache.maven)<br>artifactId     在给定groupID 的group里面为artifact 指定的标识符是唯一的 artifact 代表的是被制作或者被一个project应用的组件。对于Maven项目的artifact 的例子包括：一些JARs, 原代码以及二进制的发布以及WARs.<br>packaging     这个项目生产出来的artifact 类型，举个例子 jar war  pom Plugins 能够创建他们自己的包，包括包的类型，所以这个列表不可能包含所有可能的类型<br>name     当前项目的全称<br>version     当前项目产生的artifact的当前版本<br>description     当前项目的一个细节描述，当需要描述这个项目的时候被Maven所用，比如在web 站点中。 这个元素能够被指定为CDATA 类型，允许在描述器中HTML的tags, 并不鼓励用空白文本来表示。 如果你需要去修改生成的web 站点的索引页，你能够用你自己的索引来代替自动生成的文本。<br>url     当前项目的主页的URL<br>prerequisites     描述当前项目的编译环境的先决条件<br>issueManagement     当前项目的发布管理信息。<br>ciManagement     当前项目的连续集成信息。<br>inceptionYear     当前项目开始的年份, 用4位数字描述. 涉及到介绍情况时用作提供版权信息<br>mailingLists     包含的信息包括邮件列表<br>developers     描述当前的项目的开发人员的信息<br>contributors     描述对当前项目有贡献的人员的信息，不特指开发人员<br>licenses     这个元素描述了当前项目的所有的许可文件。每一个许可文件用一个许可元素来描述，然后描述额外的元素. 通常只列出适用于这个项目的许可文件以及适用于 依赖的非licenses。如果多个licenses都列出来了，那么假设这个用户选择其中的所需的，而不是接受所有的许可文件。<br>scm     指定当前项目中的版本控制工具，比如CVS, Subversion, 等等。<br>organization     这个元素描述这个项目所属组织的各种属性的描述。这些属性应用于文档创建的时候 (版权通知和链接).<br>build     创建项目时必须的信息。<br>profiles     本地项目编译档案文件时的列表，被激活时会修改build的过程<br>modules     模块 (有时被叫做子项目)作为当前项目的一部分.每一个被列出来的子模块都指向包含这个模块的目录文件的相对路径<br>repositories     发现依赖和扩展的远程资源库<br>pluginRepositories     发现plugins 的远程资源库的列表，主要是为了编译和报告<br>dependencies     这个元素描述了所有与当前项目相关的依赖.这些依赖被用作创建一个编译时的路径. 他们被自动的从资源库中下在下来依据当前项目的定义。如需更多信息，参看 the dependency mechanism<br>reports     Deprecated.禁止适用。现在的版本中被 Maven所忽略掉。<br>reporting     这个元素包括报告的plugins 的指定，用作Maven生成站点的自动生成报告.这些报告将会运行当用户执行mvn site. 所有的报告将会包括在浏览器的导航栏中。<br>dependencyManagement     缺省的依赖信息将会从这个元素中继承。这些依赖在这一部分中被不立刻被解决的。当一个源于这个POM的元素描述了一个依赖根据匹配的 groupId 和artifactId,这个部分的版本和其他值用作那些还没有指定的依赖。<br>distributionManagement     对于一个项目分配的信息允许对于远程web服务器和资源库的site和artifacts配置。</p>
+<p>-——————————————————————————————————-</p>
+<p>什么是pom?<br>​    pom作为项目对象模型。通过xml表示maven项目，使用pom.xml来实现。主要描述了项目：包括配置文件；开发者需要遵循的规则，缺陷管理系统，组织和licenses，项目的url，项目的依赖性，以及其他所有的项目相关因素。<br>快速察看：</p>
+<p>xml 代码</p>
+<p><project></project></p>
+<p><modelversion>4.0.0modelVersion&gt;</modelversion></p>
+<p><groupid>…<groupid></groupid></groupid></p>
+<p><artifactid>…<artifactid></artifactid></artifactid></p>
+<p><version>…<version></version></version></p>
+<p><packaging>…<packaging></packaging></packaging></p>
+<p><dependencies>…<dependencies></dependencies></dependencies></p>
+<p><parent>…<parent></parent></parent></p>
+<p><dependencymanagement>…<dependencymanagement></dependencymanagement></dependencymanagement></p>
+<p><modules>…<modules></modules></modules></p>
+<p><properties>…<properties></properties></properties></p>
+<p><build>…<build></build></build></p>
+<p><reporting>…<reporting></reporting></reporting></p>
+<p><name>…<name></name></name></p>
+<p><description>…<description></description></description></p>
+<p><url>…<url></url></url></p>
+<p><inceptionyear>…<inceptionyear></inceptionyear></inceptionyear></p>
+<p><licenses>…<licenses></licenses></licenses></p>
+<p><organization>…<organization></organization></organization></p>
+<p><developers>…<developers></developers></developers></p>
+<p><contributors>…<contributors></contributors></contributors></p>
+<p><issuemanagement>…<issuemanagement></issuemanagement></issuemanagement></p>
+<p><cimanagement>…<cimanagement></cimanagement></cimanagement></p>
+<p><mailinglists>…<mailinglists></mailinglists></mailinglists></p>
+<p><scm>…<scm></scm></scm></p>
+<p><prerequisites>…<prerequisites></prerequisites></prerequisites></p>
+<p><repositories>…<repositories></repositories></repositories></p>
+<p><pluginrepositories>…<pluginrepositories></pluginrepositories></pluginrepositories></p>
+<p><distributionmanagement>…<distributionmanagement></distributionmanagement></distributionmanagement></p>
+<p><profiles>…<profiles></profiles></profiles></p>
+<project>
+
+<p>基本内容：<br>POM包括了所有的项目信息。<br>maven 相关：<br>pom定义了最小的maven2元素，允许groupId,artifactId,version。所有需要的元素</p>
+<p>groupId:项目或者组织的唯一标志，并且配置时生成的路径也是由此生成，如org.codehaus.mojo生成的相对路径为：/org/codehaus/mojo<br>artifactId: 项目的通用名称<br>version:项目的版本<br>packaging: 打包的机制，如pom, jar, maven-plugin, ejb, war, ear, rar, par<br>classifier: 分类</p>
+<p><strong>POM关系</strong>：<br>主要为依赖，继承，合成<br>依赖关系：<br>xml 代码</p>
+<p><dependencies><br>​    <dependency><br>​      <groupid>junit<groupid><br>​      <artifactid>junit<artifactid><br>​      <version>4.0<version><br>​      <type>ja<rtype><br>​      <scope>test<scope><br>​      <optional>true<optional><br>​    <dependency><br>​    …</dependency></optional></optional></scope></scope></rtype></type></version></version></artifactid></artifactid></groupid></groupid></dependency></dependencies></p>
+<dependencies>
+
+<p>groupId, artifactId, version:描述了依赖的项目唯一标志<br>可以通过以下方式进行安装：</p>
+<p>使用以下的命令安装：<br>mvn install:install-file –Dfile=non-maven-proj.jar –DgroupId=some.group –DartifactId=non-maven-proj –Dversion=1<br>创建自己的库,并配置，使用deploy:deploy-file<br>设置此依赖范围为system，定义一个系统路径。不提倡。<br>type:相应的依赖产品包形式，如jar，war<br>scope:用于限制相应的依赖范围，包括以下的几种变量：<br>compile ：默认范围，用于编译<br>provided：类似于编译，但支持你期待jdk或者容器提供，类似于classpath<br>runtime:在执行时，需要使用<br>test:用于test任务时使用<br>system:需要外在提供相应得元素。通过systemPath来取得<br>systemPath: 仅用于范围为system。提供相应的路径<br>optional: 标注可选，当项目自身也是依赖时。用于连续依赖时使用<br><strong>独占性</strong>外在告诉maven你只包括指定的项目，不包括相关的依赖。此因素主要用于解决版本冲突问题</p>
+<p>xml 代码</p>
+<p><dependencies><br>​    <dependency><br>​      <groupid>org.apache.maven<groupid><br>​      <artifactid>maven-embedder<artifactid><br>​      <version>2.0<version><br>​      <exclusions><br>​        <exclusion><br>​          <groupid>org.apache.maven<groupid><br>​          <artifactid>maven-core<artifactid><br>​        <exclusion><br>​      <exclusions><br>​    <dependency></dependency></exclusions></exclusion></artifactid></artifactid></groupid></groupid></exclusion></exclusions></version></version></artifactid></artifactid></groupid></groupid></dependency></dependencies></p>
+<dependencies>
+
+<p>表示项目maven-embedder需要项目maven-core，但我们不想引用maven-core</p>
+<p><strong>继承关系</strong><br>另一个强大的变化,maven带来的是项目继承。主要的设置：<br>定义父项目</p>
+<p>xml 代码</p>
+<p><project></project></p>
+<p><modelversion>4.0.0<modelversion></modelversion></modelversion></p>
+<p><groupid>org.codehaus.mojo<groupid></groupid></groupid></p>
+<p><artifactid>my-parent<artifactid></artifactid></artifactid></p>
+<p><version>2.0version&gt;</version></p>
+<p><packaging>pom<packaging></packaging></packaging></p>
+<project>
+
+<p>packaging 类型，需要pom用于parent和合成多个项目。我们需要增加相应的值给父pom，用于子项目继承。主要的元素如下：</p>
+<p>依赖型<br>开发者和合作者<br>插件列表<br>报表列表<br>插件执行使用相应的匹配ids<br>插件配置<br>子项目配置<br>xml 代码</p>
+<p><project></project></p>
+<p><modelversion>4.0.0<modelversion></modelversion></modelversion></p>
+<p><parent><br>​    <groupid>org.codehaus.mojo<groupid><br>​    <artifactid>my-parent<artifactid><br>​    <version>2.0<version><br>​    <relativepath>../my-parent<relativepath></relativepath></relativepath></version></version></artifactid></artifactid></groupid></groupid></parent></p>
+<p><parent></parent></p>
+<p><artifactid>my-project<artifactid></artifactid></artifactid></p>
+<project>
+
+<p>relativePath可以不需要，但是用于指明parent的目录，用于快速查询。</p>
+<p>dependencyManagement：<br>用于父项目配置共同的依赖关系，主要配置依赖包相同因素，如版本，scope。</p>
+<p><strong>合成（或者多个模块）</strong><br>​    一个项目有多个模块，也叫做多重模块，或者合成项目。<br>如下的定义：</p>
+<p>xml 代码</p>
+<p><project></project></p>
+<p><modelversion>4.0.0<modelversion></modelversion></modelversion></p>
+<p><groupid>org.codehaus.mojo<groupid></groupid></groupid></p>
+<p><artifactid>my-parent<artifactid></artifactid></artifactid></p>
+<p><version>2.0<version></version></version></p>
+<p><modules><br>​    <module>my-project1<module><br>​    <module>my-project2<module></module></module></module></module></modules></p>
+<p><modules></modules></p>
+<project>
+
+<p>build 设置<br>​    主要用于编译设置，包括两个主要的元素，build和report<br>build<br>​    主要分为两部分，基本元素和扩展元素集合<br>注意：包括项目build和profile build</p>
+<p>xml 代码</p>
+<project>
+
+<p><build>…<build></build></build></p>
+<p><profiles><br>​    <profile></profile></profiles></p>
+<p>​      <build>…<build><br>​    <profile></profile></build></build></p>
+<p><profiles></profiles></p>
+<project>
+
+<p><strong>基本元素</strong></p>
+<p>xml 代码</p>
+<p><build></build></p>
+<p><defaultgoal>install<defaultgoal></defaultgoal></defaultgoal></p>
+<p><directory>${basedir}/targetdirectory&gt;</directory></p>
+<p><finalname>${artifactId}-${version}finalName&gt;</finalname></p>
+<p><filters><br>​    <filter>filters/filter1.properties<filter></filter></filter></filters></p>
+<p><filters><br>…</filters></p>
+<build>
+
+<p>defaultGoal: 定义默认的目标或者阶段。如install<br>directory: 编译输出的目录<br>finalName: 生成最后的文件的样式<br>filter: 定义过滤，用于替换相应的属性文件，使用maven定义的属性。设置所有placehold的值</p>
+<p><strong>资源(resources)</strong><br>​    你项目中需要指定的资源。如spring配置文件,log4j.properties</p>
+<p>xml 代码</p>
+<p><project></project></p>
+<p><build><br>​    …<br>​    <resources><br>​      <resource><br>​        <targetpath>META-INF/plexus<targetpath><br>​        <filtering>falsefiltering&gt;<br>​        <directory>${basedir}/src/main/plexus<directory><br>​        <includes><br>​          <include>configuration.xml<include><br>​        <includes><br>​        <excludes><br>​          <exclude>*<em>/</em>.properties<exclude><br>​        <excludes><br>​      <resource><br>​    <resources><br>​    <testresources><br>​      …<br>​    <testresources><br>​    …</testresources></testresources></resources></resource></excludes></exclude></exclude></excludes></includes></include></include></includes></directory></directory></filtering></targetpath></targetpath></resource></resources></build></p>
+<p><build></build></p>
+<project>
+
+
+
+<p>resources: resource的列表，用于包括所有的资源<br>targetPath: 指定目标路径，用于放置资源，用于build<br>filtering: 是否替换资源中的属性placehold<br>directory: 资源所在的位置<br>includes: 样式，包括那些资源<br>excludes: 排除的资源<br>testResources: 测试资源列表<br><strong>插件</strong><br>在build时，执行的插件，比较有用的部分，如使用jdk 5.0编译等等</p>
+<p>xml 代码</p>
+<p><project></project></p>
+<p><build><br>​    …<br>​    <plugins><br>​      <plugin><br>​        <groupid>org.apache.maven.plugins<groupid><br>​        <artifactid>maven-jar-plugin<artifactid><br>​        <version>2.0<version><br>​        <extensions>false<extensions><br>​        <inherited>true<inherited><br>​        <configuration><br>​          <classifier>test<classifier><br>​        <configuration><br>​        <dependencies>…<dependencies><br>​        <executions>…<executions><br>​      <plugin><br>​    <plugins></plugins></plugin></executions></executions></dependencies></dependencies></configuration></classifier></classifier></configuration></inherited></inherited></extensions></extensions></version></version></artifactid></artifactid></groupid></groupid></plugin></plugins></build></p>
+<p><build></build></p>
+<project>
+
+<p>extensions: true or false，是否装载插件扩展。默认false<br>inherited: true or false，是否此插件配置将会应用于poms，那些继承于此的项目<br>configuration: 指定插件配置<br>dependencies: 插件需要依赖的包<br>executions: 用于配置execution目标，一个插件可以有多个目标。<br>如下：</p>
+<p>xml 代码</p>
+<plugin><br>​        <artifactid>maven-antrun-plugin<artifactid><br><br>​        <executions><br>​          <execution><br>​            <id>echodirid&gt;<br>​            <goals><br>​              <goal>run<goal><br>​            <phase>verify<phase><br>​            <inherited>false<inherited><br>​            <configuration><br>​              <tasks><br>​                <echo>Build Dir: ${project.build.directory}<echo><br>​              <tasks><br>​            <configuration><br>​          <execution><br>​        <executions><br>​     <plugin><br><br>说明：<br><br>id:规定execution 的唯一标志<br>goals: 表示目标<br>phase: 表示阶段，目标将会在什么阶段执行<br>inherited: 和上面的元素一样，设置false maven将会拒绝执行继承给子插件<br>configuration: 表示此执行的配置属性<br><br><strong>插件管理</strong>    pluginManagement：插件管理以同样的方式包括插件元素，用于在特定的项目中配置。所有继承于此项目的子项目都能使用。主要定义插件的共同元素<br><br>扩展元素集合<br>主要包括以下的元素：<br>Directories<br>用于设置各种目录结构，如下：<br><br>xml 代码<br><br><build><br>​    <sourcedirectory>${basedir}/src/main/java<sourcedirectory><br>​    <scriptsourcedirectory>${basedir}/src/main/scripts<scriptsourcedirectory><br>​    <testsourcedirectory>${basedir}/src/test/java<testsourcedirectory><br>​    <outputdirectory>${basedir}/target/classes<outputdirectory><br>​    <testoutputdirectory>${basedir}/target/test-classes<testoutputdirectory><br>​    …<br><build><br><br><strong>Extensions</strong><br><br>表示需要扩展的插件，必须包括进相应的build路径。<br><br>xml 代码<br><br><project><br><build><br>​    …<br>​    <extensions><br>​      <extension><br>​        <groupid>org.apache.maven.wagon<groupid><br>​        <artifactid>wagon-ftp<artifactid><br>​        <version>1.0-alpha-3<version><br>​      <extension><br>​    <extensions><br>​    …<br><build><br><project><br><br><strong>Reporting</strong><br>​    用于在site阶段输出报表。特定的maven 插件能输出相应的定制和配置报表。<br><br>xml 代码<br><br><reporting><br>​    <plugins><br>​      <plugin><br>​        <outputdirectory>${basedir}/target/siteoutputDirectory&gt;<br>​        <artifactid>maven-project-info-reports-pluginartifactId&gt;<br>​        <reportsets><br>​          <reportset>reportSet&gt;<br>​        reportSets&gt;<br>​      plugin&gt;<br>​    plugins&gt;<br>reporting&gt;<br><br><strong>Report Sets</strong><br>​    用于配置不同的目标，应用于不同的报表<br><br>xml 代码<br><br><reporting><br>​    <plugins><br>​      <plugin><br>​        …<br>​        <reportsets><br>​          <reportset><br>​            <id>sunlinkid&gt;<br>​            <reports><br>​              <report>javadoc<report><br>​            <inherited>truei<nherited><br>​            <configuration><br>​              <links><br>​                <link><a href="http://java.sun.com/j2se/1.5.0/docs/api/" target="_blank" rel="noopener">http://java.sun.com/j2se/1.5.0/docs/api/</a><link><br>​            <configuration><br>​          <reportset><br>​        <reportsets><br>​      <plugin><br>​    <plugins><br><reporting><br><br>name:项目除了artifactId外，可以定义多个名称<br>description: 项目描述<br>url: 项目url<br>inceptionYear:创始年份<br>Licenses<br><br>xml 代码<br><br><licenses><br><license><br>​    <name>Apache 2name&gt;<br>​    <url><a href="http://www.apache.org/licenses/LICENSE-2.0.txt" target="_blank" rel="noopener">http://www.apache.org/licenses/LICENSE-2.0.txt</a><url><br>​    <distribution>repodistribution&gt;<br>​    <comments>A business-friendly OSS license<comments><br><license><br><licenses><br><br><strong>Organization配置组织信息</strong><br><br>xml 代码<br><br><organization><br>​    <name>Codehaus Mojoname&gt;<br>​    <url><a href="http://mojo.codehaus.org" target="_blank" rel="noopener">http://mojo.codehaus.org</a><url><br>organization&gt;<br><br><strong>Developers配置开发者信息</strong><br><br>xml 代码<br><br><developers><br>​    <developer><br>​      <id>eric<id><br>​      <name>Eric<name><br>​      <email><a href="mailto:eredmond@codehaus.org" target="_blank" rel="noopener">eredmond@codehaus.org</a><email><br>​      <url><a href="http://eric.propellors.net" target="_blank" rel="noopener">http://eric.propellors.net</a><url><br>​      <organization>Codehausorganization&gt;<br>​      <organizationurl><a href="http://mojo.codehaus.orgorganization" target="_blank" rel="noopener">http://mojo.codehaus.orgorganization</a><url><br>​      <roles><br>​        <role>architect<role><br>​        <role>developer<role><br>​      <roles><br>​      <timezone>-6timezone&gt;<br>​      <properties><br>​        <picurl><a href="http://tinyurl.com/prv4tpic" target="_blank" rel="noopener">http://tinyurl.com/prv4tpic</a><url><br>​      <properties><br>​    <developer><br><developers><br><br>Contributors<br><br>xml 代码<br><br><contributors><br>   <contributor><br>​     <name>Noelle<name><br>​     <email><a href="mailto:some.name@gmail.com" target="_blank" rel="noopener">some.name@gmail.com</a><email><br>​     <url><a href="http://noellemarie.com" target="_blank" rel="noopener">http://noellemarie.com</a><url><br>​     <organization>Noelle Marie<organization><br>​     <organizationurl><a href="http://noellemarie.com" target="_blank" rel="noopener">http://noellemarie.com</a><organizationurl><br>​     <roles><br>​       <role>tester<role><br>​     <roles><br>​     <timezone>-5<timezone><br>​     <properties><br>​       <gtalk><a href="mailto:some.name@gmail.com" target="_blank" rel="noopener">some.name@gmail.com</a><gtalk><br>​     <properties><br>   <contributor><br><contributors><br><br><strong>环境设置</strong><br><br><strong>Issue Management</strong><br>​    定义相关的bug跟踪系统，如bugzilla,testtrack,clearQuest等<br><br>xml 代码<br><br><issuemanagement><br>​    <system>Bugzilla<system><br>​    <url><a href="http://127.0.0.1/bugzillau" target="_blank" rel="noopener">http://127.0.0.1/bugzillau</a><rl><br><issuemanagement><br><br><strong>Continuous Integration Management连续整合管理，基于triggers或者timings</strong><br><br>xml 代码<br><br><cimanagement><br>   <system>continuum<system><br>   <url><a href="http://127.0.0.1:8080/continuum" target="_blank" rel="noopener">http://127.0.0.1:8080/continuum</a><url><br>   <notifiers><br>​     <notifier><br>​       <type>mail<type><br>​       <sendonerror>true<sendonerror><br>​       <sendonfailure>true<sendonfailure><br>​       <sendonsuccess>false<sendonsuccess><br>​       <sendonwarning>false<sendonwarning><br>​       <configuration><address><a href="mailto:continuum@127.0.0.1" target="_blank" rel="noopener">continuum@127.0.0.1</a><address><configuration><br>​     <notifier><br>   <notifiers><br><cimanagement><br><br><strong>Mailing Lists</strong><br><br>xml 代码<br><br><mailinglists><br>   <mailinglist><br>​     <name>User List<name><br>​     <subscribe><a href="mailto:user-subscribe@127.0.0.1" target="_blank" rel="noopener">user-subscribe@127.0.0.1</a><subscribe><br>​     <unsubscribe><a href="mailto:user-unsubscribe@127.0.0.1un" target="_blank" rel="noopener">user-unsubscribe@127.0.0.1un</a><subscribe><br>​     <post><a href="mailto:user@127.0.0.1" target="_blank" rel="noopener">user@127.0.0.1</a><post><br>​     <archive><a href="http://127.0.0.1/user/" target="_blank" rel="noopener">http://127.0.0.1/user/</a><archive><br>​     <otherarchives><br>​       <otherarchive><a href="http://base.google.com/base/1/127.0.0.1" target="_blank" rel="noopener">http://base.google.com/base/1/127.0.0.1</a><otherarchive><br>​     <otherarchives><br>   <mailinglist><br><mailinglists><br><br><strong>SCM软件配置管理，如cvs 和svn</strong><br><br>xml 代码<br><br><scm><br>​    <connection>scm:svn:<a href="http://127.0.0.1/svn/my-project" target="_blank" rel="noopener">http://127.0.0.1/svn/my-project</a><connection><br>​    <developerconnection>scm:svn:<a href="https://127.0.0.1/svn/my-project" target="_blank" rel="noopener">https://127.0.0.1/svn/my-project</a><developerconnection><br>​    <tag>HEAD<tag><br>​    <url><a href="http://127.0.0.1/websvn/my-project" target="_blank" rel="noopener">http://127.0.0.1/websvn/my-project</a><url><br><scm><br><br><strong>Repositories</strong><br><br>配置同setting.xml中的开发库<br><br>Plugin Repositories<br>配置同 repositories<br><br>Distribution Management<br>用于配置分发管理，配置相应的产品发布信息,主要用于发布，在执行mvn deploy后表示要发布的位置<br><strong>1 配置到文件系统</strong><br><br>xml 代码<br><br><distributionmanagement><br><repository><br><id>proficio-repository<id><br><name>Proficio Repository<name><br><url>file://${basedir}/target/deploy<url><br><repository><br><distributionmanagement><br><br><strong>2 使用ssh2配置</strong><br><br>xml 代码<br><br><distributionmanagement><br><repository><br><id>proficio-repository<id><br><name>Proficio Repository<name><br><url>scp://sshserver.yourcompany.com/deploy<url><br><repository><br><distributionmanagement><br><br><strong>3 使用sftp配置</strong><br><br>xml 代码<br><br><distributionmanagement><br><repository><br><id>proficio-repositoryi<d><br><name>Proficio Repository<name><br><url>s<a href="ftp://ftpserver.yourcompany.com/deploy" target="_blank" rel="noopener">ftp://ftpserver.yourcompany.com/deploy</a><url><br><repository><br><distributionmanagement><br><br><strong>4 使用外在的ssh配置</strong><br>​    编译扩展用于指定使用wagon外在ssh提供，用于提供你的文件到相应的远程服务器。<br><br>xml 代码<br><br><distributionmanagement><br><repository><br><id>proficio-repository<id><br><name>Proficio Repository<name><br><url>scpexe://sshserver.yourcompany.com/deploy<url><br><repository><br><distributionmanagement><br><build><br><extensions><br><extension><br><groupid>org.apache.maven.wagon<groupid><br><artifactid>wagon-ssh-external<artifactid><br><version>1.0-alpha-6<version><br><extension><br><extensions><br><build><br><br><strong>5 使用ftp配置</strong><br><br>xml 代码<br><br><distributionmanagement><br><repository><br><id>proficio-repository<id><br><name>Proficio Repository<name><br><url><a href="ftp://ftpserver.yourcompany.com/deploy" target="_blank" rel="noopener">ftp://ftpserver.yourcompany.com/deploy</a><url><br><repository><br><distributionmanagement><br><build><br><extensions><br><extension><br><groupid>org.apache.maven.wagongroupId&gt;<br><artifactid>wagon-ftpartifactId&gt;<br><version>1.0-alpha-6version&gt;<br><extension><br><extensions><br><build><br><br>repository 对应于你的开发库，用户信息通过settings.xml中的server取得<br><br><strong>Profiles</strong>类似于settings.xml中的profiles，增加了几个元素，如下的样式：<br><br>xml 代码<br><br><profiles><br>​    <profile><br>​      <id>test<id><br>​      <activation>…<activation><br>​      <build>…<build><br>​      <modules>…<modules><br>​      <repositories>…<repositories><br>​      <pluginrepositories>…<pluginrepositories><br>​      <dependencies>…<dependencies><br>​      <reporting>…r<eporting><br>​      <dependencymanagement>…<dependencymanagement><br>​      <distributionmanagement>…<distributionmanagement><br>​    <profile><br><profiles><br><br><br><br><br><br>设置项目主函数：<br><br><plugin><br>​                <groupid>org.apache.maven.plugins</groupid><br>​                <artifactid>maven-shade-plugin</artifactid><br>​                <version>1.2.1</version><br>​                <executions><br>​                    <execution><br>​                        <phase>package</phase><br>​                        <goals><br>​                            <goal>shade</goal><br>​                        </goals><br>​                        <configuration><br>​                            <transformers><br>​                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"><br>​                                    <mainclass>cn.vicky.mainapp.App</mainclass><br>​                                </transformer><br>​                            </transformers><br>​                        </configuration><br>​                    </execution><br>​                </executions><br>​            </plugin>
+
+</profiles></profile></distributionmanagement></distributionmanagement></dependencymanagement></dependencymanagement></eporting></reporting></dependencies></dependencies></pluginrepositories></pluginrepositories></repositories></repositories></modules></modules></build></build></activation></activation></id></id></profile></profiles></build></extensions></extension></version></artifactid></groupid></extension></extensions></build></distributionmanagement></repository></url></url></name></name></id></id></repository></distributionmanagement></build></extensions></extension></version></version></artifactid></artifactid></groupid></groupid></extension></extensions></build></distributionmanagement></repository></url></url></name></name></id></id></repository></distributionmanagement></distributionmanagement></repository></url></url></name></name></d></id></repository></distributionmanagement></distributionmanagement></repository></url></url></name></name></id></id></repository></distributionmanagement></distributionmanagement></repository></url></url></name></name></id></id></repository></distributionmanagement></scm></url></url></tag></tag></developerconnection></developerconnection></connection></connection></scm></mailinglists></mailinglist></otherarchives></otherarchive></otherarchive></otherarchives></archive></archive></post></post></subscribe></unsubscribe></subscribe></subscribe></name></name></mailinglist></mailinglists></cimanagement></notifiers></notifier></configuration></address></address></configuration></sendonwarning></sendonwarning></sendonsuccess></sendonsuccess></sendonfailure></sendonfailure></sendonerror></sendonerror></type></type></notifier></notifiers></url></url></system></system></cimanagement></issuemanagement></rl></url></system></system></issuemanagement></contributors></contributor></properties></gtalk></gtalk></properties></timezone></timezone></roles></role></role></roles></organizationurl></organizationurl></organization></organization></url></url></email></email></name></name></contributor></contributors></developers></developer></properties></url></picurl></properties></timezone></roles></role></role></role></role></roles></url></organizationurl></organization></url></url></email></email></name></name></id></id></developer></developers></url></url></name></organization></licenses></license></comments></comments></distribution></url></url></name></license></licenses></reporting></plugins></plugin></reportsets></reportset></configuration></links></configuration></nherited></inherited></report></report></reports></id></reportset></reportsets></plugin></plugins></reporting></reportset></reportsets></artifactid></outputdirectory></plugin></plugins></reporting></project></build></extensions></extension></version></version></artifactid></artifactid></groupid></groupid></extension></extensions></build></project></build></testoutputdirectory></testoutputdirectory></outputdirectory></outputdirectory></testsourcedirectory></testsourcedirectory></scriptsourcedirectory></scriptsourcedirectory></sourcedirectory></sourcedirectory></build></plugin></executions></execution></configuration></tasks></echo></echo></tasks></configuration></inherited></inherited></phase></phase></goal></goal></goals></id></execution></executions></artifactid></artifactid></plugin></project></project></build></project></project></project></project></project></dependencies></dependencies></project>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-03-24T08:11:21.000Z" itemprop="dateUpdated">2018-03-24 16:11:21</time>
+</span><br>
+
+
+        
+        <a href="/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/03/24/MD/Java/JavaEE/远程web管理tomcat部署/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/03/21/MD/Java/JavaEE/Java框架/spring/spring-aop注解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/24/MD/Java/JavaEE/MAVEN/Maven配置详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACxElEQVR42u3aQW4CMQwFUO5/aSp11QWT+bYTqNo3K0RhJi+V4vCdxyO+nt9X/vrnO1fvX30rGcPmCw8PD6819Ktr/Zn1oNefyUeyvv96VHh4eHjneEkxSAZ39fnkKXmBye+Gh4eH91ne1aKcDGtSSPDw8PD+Bq8aRiSlpReI4OHh4X2KNw8C1uFCdRtdLU4bshY8PDy8mHeiAXb69Yf7e3h4eP+Y9yxe1XtWjwLkZSYaLR4eHt4B3iQqTSLa+T2rkxX9YsDDw8PbyuuFsPPmVnVqkvgYDw8P7wSv2uzvhReTUCPfpl/+YsDDw8M7xsu3s+uFu7qZnje3osKAh4eHt4lXDRcmC3fy3WTiys/Fw8PD28rLt6rJdyd3y/9aoOLh4eEd4BU2pq3BVTfWvaJSaIPh4eHhjXnrZT0PHapN/aS51Ys5XtQ9PDw8vAO8fLj50ah8qz0pJzfv4+Hh4R3g5XHDZCKSRtckrr2ZDjw8PLw38vIgoPngmF0tIXh4eHjv4eXHniZHB6pxcLUk3EQSeHh4eGNeftAqLwm9qGJXGPGiAYaHh4e3lZcsx8lQqgFEr2D02mN4eHh4e3nVOZgcI8gLxmSCXmyp8fDw8Lby1l/uxal5fDC5f6HxhoeHh7eVlwevyUDzmHXDL4BqScDDw8PbxKs2++fLfXU73gtwL5F4eHh4Y1611TTh5Qt6HkbcTBYeHh7eYV4ereYHAsqRa/FAwM2/Bw8PD+8Ar5D1xsv0ZCJ6BaY8rXh4eHgD3rN4zRv8ydY5eW40xXh4eHgHeJOwoBdhVO+TB8qTKAQPDw+vyqsWg16kWy0kvYbZozcgPDw8vBavuv3Njzr1woVJEIyHh4f3e3jVgCDfNB88soCHh4f3i3m9Nbl6rKo8Hjw8PLxjvHnTK490e59pjgEPDw/vAK+Xhfa2wpN35sez8PDw8Ma8Lyi2pkvNPZWZAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

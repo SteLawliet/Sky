@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="从javascript发展说到vue  收藏;) goodman_fz  发表于 10个月前   阅读 812   收藏 41   点赞 4   评论 3    Vue是基于javascript的一套MVVC前端框架，在介绍vue之前有必要先大体介绍下javascript产生背景及发展的历史痕迹、前端MVVC模式等，以便于大家更好的理解为什么会有vue/react等框架的出现。 1.1 javas">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/05/04/MD/论文/vue1/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="从javascript发展说到vue  收藏;) goodman_fz  发表于 10个月前   阅读 812   收藏 41   点赞 4   评论 3    Vue是基于javascript的一套MVVC前端框架，在介绍vue之前有必要先大体介绍下javascript产生背景及发展的历史痕迹、前端MVVC模式等，以便于大家更好的理解为什么会有vue/react等框架的出现。 1.1 javas">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://my.oschina.net/img/hot3.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/05/04/MD/论文/vue1/103633_tiZw_125977.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/05/04/MD/论文/vue1/103659_CacO_125977.png">
+<meta property="og:updated_time" content="2018-05-04T15:44:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="从javascript发展说到vue  收藏;) goodman_fz  发表于 10个月前   阅读 812   收藏 41   点赞 4   评论 3    Vue是基于javascript的一套MVVC前端框架，在介绍vue之前有必要先大体介绍下javascript产生背景及发展的历史痕迹、前端MVVC模式等，以便于大家更好的理解为什么会有vue/react等框架的出现。 1.1 javas">
+<meta name="twitter:image" content="https://my.oschina.net/img/hot3.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-04T15:44:12.000Z" itemprop="datePublished" class="page-time">
+  2018-05-04
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-MD/论文/vue1"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-04 23:44:12" datetime="2018-05-04T15:44:12.000Z"  itemprop="datePublished">2018-05-04</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>从javascript发展说到vue</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"> 收藏</a>;)</p>
+<p><a href="https://my.oschina.net/u/125977/home" target="_blank" rel="noopener">goodman_fz</a></p>
+<ul>
+<li><p>发表于 10个月前</p>
+</li>
+<li></li>
+<li><p>阅读 812</p>
+</li>
+<li></li>
+<li><p>收藏 41</p>
+</li>
+<li></li>
+<li><p>点赞 4</p>
+</li>
+<li></li>
+<li><p><a href="https://my.oschina.net/u/125977/blog/1052931#comment-list" target="_blank" rel="noopener">评论 3</a></p>
+<p><img src="https://my.oschina.net/img/hot3.png" alt="img"></p>
+</li>
+</ul>
+<p>Vue是基于javascript的一套MVVC前端框架，在介绍vue之前有必要先大体介绍下javascript产生背景及发展的历史痕迹、前端MVVC模式等，以便于大家更好的理解为什么会有vue/react等框架的出现。</p>
+<p><strong>1.1 javascript发展概要及MVVC模式</strong></p>
+<p>【Web刚起步阶段】</p>
+<p>那会，只有可怜的HTML（超文本标记语言（HyerText Markup Language）），浏览器请求某个URL时，web服务器就把对应的html文件返回给浏览器，浏览器做解析后展示给用户。随着时间推移，为了给能不同用户展示不同的页面信息，就慢慢发展出来基于服务器的可动态生成html的语言，比如asp、php、jsp等。</p>
+<p>但是，当浏览器接收到一个html后，如果要更新页面的内容，就只能重新向服务器请求获取一份新的html文件，即刷新页面。在那古老的2G的流量珍贵的年代，这种体验是很容易让人奔溃的，而且还浪费流量。</p>
+<p>【进入javascript阶段】</p>
+<p>还好，聪明的前辈们在1995年底，在浏览器中引入了javascript。Javascript是一种脚本语言，浏览器中带有javascript引擎，用于解析并执行javascript代码，然后就可以在客户端操作到html页面中的DOM，这样就解决了不刷新页面情况，动态的改变用户html页面的内容。再后来，大家发现编写原生的javascript代码太繁琐了，还需要记住各种晦涩难懂的API，最重要还需要考虑各种浏览器的兼容性，其实是因为“懒”，就出现了一个救世主jQuery，并很快的占领了javascript世界，几乎成为前端开发标配。</p>
+<p>例如 获取某个元素节点内容</p>
+<p>原生写法：document.getElementById(‘name’).innerHTML();</p>
+<p>jQuery写法：$(‘name’).html();</p>
+<p>【学习后端MVC模式】</p>
+<p>事间万物往往都很难抵抗时间的洗礼，javascript也不例外，她也渐渐显现出各种不和谐：组织代码混乱、业务与操作DOM杂合，所以为她引入并改造了后端的MVC模式。</p>
+<p>javascript前端MVC模式，需要服务器端配合，JavaScript可以在前端修改服务器渲染后的数据，简单来说即提交一次反馈一次。</p>
+<p>例如：提交表单 填写内容 → 点击提交 →业务逻辑处理 →存入<a href="http://lib.csdn.net/base/mysql" target="_blank" rel="noopener"><strong>数据库</strong></a> → 刷新页面→服务器取数据库数据→渲染到客户端页面→ 展示上一次你提交的内容。</p>
+<p>MVC概念释疑：</p>
+<p>视图（View）：用户界面。<br>控制器（Controller）：业务逻辑<br>模型（Model）：数据保存</p>
+<p>View 传送指令到 Controller；Controller 完成业务逻辑后，要求 Model 改变状态；Model 将新的数据发送到 View，用户得到反馈。数据流，如图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="103633_tiZw_125977.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>但可惜，他并不没想象那么美，那么这种模式有哪些缺点？（注：以下缺点网上总结的，说的挺对，引用）</p>
+<p>缺点一：</p>
+<p>​    它必须等待服务器端的指示，而且如果是异步模式的话，所有html节点、数据、页面结构都是后端请求过来。</p>
+<p>浏览器只作为一个解析显示容器，Model 作用几乎是废x，Model 层面做的很少几乎前端无法控制，你前端几乎是切图仔和做轮播图的工作</p>
+<p>缺点二：</p>
+<p>​    因为你前端渲染的页面结构，几乎是后端服务器包扎一堆数据一起发送过来，前端的你只需要用拼接字符串 或者字符串拼接引擎</p>
+<p>   比如Mustache、Jade、artTemplate、tmpl、kissyTemplate、ejs等来做事，说白了纯苦力和重复工作居多，这也导致了，如果很多人认为前端并不重要，只负责美工 和 动作体验就好了。</p>
+<p>缺点三：</p>
+<p>​    一发而动全身。数据、显示不分离！为什么这么说，因为如果业务逻辑要变，比如很简单的需求，你用jsp或者php 拼接出来的ajax数据页面，年龄这个字段我不需要了，把性别字段 区分开，男的单独显示，女的单独显示，以前是一起显示到一个表的</p>
+<p>【MVVC阶段】</p>
+<p>没错，说那么多缺点，就为了最后的MVVC模式，为何MVVC模式？</p>
+<p>MVVC模式是基于数据驱动，她把Model用纯javascript对象来表示，View负责显示，达到两者分离：</p>
+<p>1、它采用双向绑定（data-binding）：View的变动，自动反映在 ViewModel，反之亦然,model数据的变动，也自动展示给页面显示<br>2、把Model和View关联起来的就是ViewModel。ViewModel负责把Model的数据同步到View显示出来，还负责把View的修改同步回Model。</p>
+<p>数据流向变为，如图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="103659_CacO_125977.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>与之前MVC的主要差别点在于，MVC你需要操作DOM及javascript对象来改变前端数据，MVVC你只需操作javascript对象即可改变前端数据。这也是MVVM的核心思想：关注Model的变化，让MVVM框架利用自己的机制去自动更新DOM，从而把开发者从操作DOM的繁琐中解脱出来！也就是数据-视图分离，数据驱动视图，视图不影响数据。</p>
+<p>当今世上常见的MVVC框架有：vuejs、Angularjs、reactjs等等（想了解更多，见教程后面的对比分析）</p>
+<p>【那么vue来了】</p>
+<p>好了，大家应该对javascript发展及MVVM模式有一个大体的了解，现在转到vue，说下vue是一个什么东西？</p>
+<p>​    官方文档介绍：是一套构建用户界面的<strong>渐进式框架**</strong>，**Vue 采用自底向上增量开发的设计，Vue 的核心库只关注视图层，它不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">单文件组件</a>和 Vue 生态系统支持的库结合使用时，Vue 也完全能够为复杂的单页应用程序提供驱动。</p>
+<p>​    个人实践后对vue的理解：vue是一套构建前端的MVVM框架，它集合了众多优秀主流框架设计及思想，轻量、数据驱动（默认单向数据绑定，但也提供支持双向数据绑定）、学习成本低，且可与webpack/gulp构建工具结合实现web组件化开发、构建部署等；很庆幸，我们生在开源遍地的时代，vue本身就拥有一套较为成熟的生态系统：vue+vue-router+vuex+webpack+sass/less，不仅满足小的前端项目开发，也完全胜任开发大型的前端应用，包括单页面应用和多页面应用等，它可实现前端页面前后端业务分离、快速开发（因为很多组件供调用）、单元测试、构建优化（结合webpack自动打包构建、优化）、部署等。瞬间提升前端开发人员的逼格，当后端开发再鄙视前端简单时，你就可以让他来试试了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-05-04T15:44:56.000Z" itemprop="dateUpdated">2018-05-04 23:44:56</time>
+</span><br>
+
+
+        
+        <a href="/2018/05/04/MD/论文/vue1/" target="_blank" rel="external">http://io.stelawliet.top/2018/05/04/MD/论文/vue1/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/04/MD/论文/前后分离/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/04/MD/论文/json/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/04/MD/论文/vue1/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aS27bQBAFQN//0jKQVRaW/F4PFUTN4kqwCHJKBhr9+/qKr8ef6+/Pz/7y+mqffPGFgYHxsYzkxa8f/RrWHjH/gTAwMO7GmAXZ/CjJEV/f/8uZMTAwMI5TwyTEY2BgYFwbcPM0MUki27COgYFxT0YSBJPQOStKZ6EcAwPjPozZYODffH77fAMDA+O/ZzzKa1aynoTd6F0YGBirGc8C3PtK0PzQ9UACAwNjNeO81Dxpul21ooGBgbGV0ZaObQOufUs+EniaFGJgYKxjXLVykS9Y5GF3OEzFwMBYx7h2YJkngieZbDSDxcDAWMRoQ2FeauZHn4F/eAIGBsZqxqz4bA89G0jkTUAMDIytjHzdoU3+ksB92XACAwNjNaMdQOYhNQ/WLQwDA+NujLzFlh+ufcJ5+oiBgXEHRpsUzkYC7UC0DrgYGBhLGcnXeQnaDhXaJl2xLYKBgbGIUYwGy7Za8tNctcCBgYGxm3ESCk8CZXtn0bDDwMBYx2iL2PMSNEkZ63wPAwPjBozZ0kMSy2fLHPXoFAMDYzVjhskL17YZ1zbyjv4nGBgYH8J4lFcelK9qz0WrGxgYGKsZbbBrl1zzADpbI8PAwLgPIx8DtGusM2TbvMPAwLgPoy1iZ0PKYbx/x3gAAwNjKSNPE2eB+OR+DAwMjOSeduXrpKw9Sg0xMDA+lpE369vljGQMmQfxX5YtMDAwljIuKCDLsnZWHkfLYRgYGNsY32AQLhs4kdiOAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

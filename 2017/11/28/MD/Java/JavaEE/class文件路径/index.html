@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Class.getResource和ClassLoader.getResource的使用 参考 Class.getResource(String path)12path不以’/&amp;apos;开头时，默认是从此类所在的包下取资源；path  以’/&amp;apos;开头时，则是从ClassPath根下获取； 什么意思呢？看下面这段代码的输出结果就明白了： 1234567package testpackage">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="Class.getResource和ClassLoader.getResource的使用 参考 Class.getResource(String path)12path不以’/&amp;apos;开头时，默认是从此类所在的包下取资源；path  以’/&amp;apos;开头时，则是从ClassPath根下获取； 什么意思呢？看下面这段代码的输出结果就明白了： 1234567package testpackage">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-02T01:18:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Class.getResource和ClassLoader.getResource的使用 参考 Class.getResource(String path)12path不以’/&amp;apos;开头时，默认是从此类所在的包下取资源；path  以’/&amp;apos;开头时，则是从ClassPath根下获取； 什么意思呢？看下面这段代码的输出结果就明白了： 1234567package testpackage">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-28T05:34:42.000Z" itemprop="datePublished" class="page-time">
+  2017-11-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Class-getResource-String-path"><span class="post-toc-number">1.</span> <span class="post-toc-text">Class.getResource(String path)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Class-getClassLoader（）-getResource-String-path"><span class="post-toc-number">2.</span> <span class="post-toc-text">Class.getClassLoader（）.getResource(String path)</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/Java/JavaEE/class文件路径"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-28 13:34:42" datetime="2017-11-28T05:34:42.000Z"  itemprop="datePublished">2017-11-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Class.getResource和ClassLoader.getResource的使用</p>
+<p><a href="http://www.cnblogs.com/keyi/p/6282966.html" target="_blank" rel="noopener">参考</a></p>
+<h2 id="Class-getResource-String-path"><a href="#Class-getResource-String-path" class="headerlink" title="Class.getResource(String path)"></a>Class.getResource(String path)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path不以’/&apos;开头时，默认是从此类所在的包下取资源；</span><br><span class="line">path  以’/&apos;开头时，则是从ClassPath根下获取；</span><br></pre></td></tr></table></figure>
+<p>什么意思呢？看下面这段代码的输出结果就明白了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">package testpackage;</span><br><span class="line">public class TestMain &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(TestMain.class.getResource(&quot;&quot;));</span><br><span class="line">        System.out.println(TestMain.class.getResource(&quot;/&quot;));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">file:/E:/workspace/Test/WebRoot/WEB-INF/classes/testpackage/</span><br><span class="line">file:/E:/workspace/Test/WebRoot/WEB-INF/classes/</span><br></pre></td></tr></table></figure>
+<p><code>getclass.getResource(&quot;&quot;)</code>为当前类的包根路径</p>
+<p><code>getClass.getRessource(&quot;/&quot;)</code>为classpath根路径</p>
+<p>※Class.getResource和Class.getResourceAsStream在使用时，路径选择上是一样的。</p>
+<h2 id="Class-getClassLoader（）-getResource-String-path"><a href="#Class-getClassLoader（）-getResource-String-path" class="headerlink" title="Class.getClassLoader（）.getResource(String path)"></a>Class.getClassLoader（）.getResource(String path)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path不能以’/&apos;开头时；</span><br><span class="line">path是从ClassPath根下获取；</span><br></pre></td></tr></table></figure>
+<p><code>Class.getClassLoader().getResource(&quot;&quot;)</code> == <code>xxClass.getResource(&quot;/&quot;)</code></p>
+<p>注：</p>
+<p><strong>Windows绝对路径：</strong></p>
+<p>以盘符开始 如C:/a.txt </p>
+<p>Windows相对路径： </p>
+<p>.      指的是当前目录 </p>
+<p>..     指的是当前目录的上一级目录 </p>
+<p>./test 表示当前目录下的test文件夹 </p>
+<p>/test  表示当前盘符下的test文件夹 </p>
+<p><strong>Linux绝对路径：</strong></p>
+<p>以root根目录/开始的路径 如/ 表示root根目录 </p>
+<p>Linux相对路径： </p>
+<p>./     指的是当前目录 </p>
+<p>../    指的是当前目录的上一级目录 </p>
+<p>.代表当前目录，..代表上级目录 好像是统一的。</p>
+<p>在windows或者Linux获取配置文件如：.properties文件时</p>
+<p>使用Class.getResource或者ClassLoader.getResource获取绝对路径classpath时返回的值如下不同</p>
+<p>　　</p>
+<p>Windows输出</p>
+<p>　</p>
+<p>Linux输出</p>
+<p>　　</p>
+<p>因此获取绝对路径的截取的也就不同</p>
+<p>　　※Class.getClassLoader（）.getResource和Class.getClassLoader（）.getResourceAsStream在使用时，路径选择上也是一样的。</p>
+<p>getResourceAsStream()方法，参数是与getResouce()方法是一样的，它相当于你用getResource()取得File文件后，再new InputStream(file)</p>
+<p>总结：</p>
+<p>Xxx.class.getResource(“”) ;   Xxx.class.getResource(“/“)或者Xxx.class.getClassLoader().getgetResource(“”);;</p>
+<p>xxx.getClass.getResource(“”) ;   xxx.getClass.getResource(“/“)或者xxx.getClass.getClassLoader().getgetResource(“”);</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">知识扩充：</span><br><span class="line"></span><br><span class="line">linux下没有C、D盘等硬盘分区的概念。</span><br><span class="line">linux下是采用目录形式来代替windows中硬盘分区的概念。</span><br><span class="line"></span><br><span class="line">linux文件结构</span><br><span class="line">/：根目录，所有的目录、文件、设备都在/之下，/就是Linux文件系统的组织者，也是最上级的领导者。</span><br><span class="line">/bin：bin 就是二进制（binary）英文缩写。在一般的系统当中，都可以在这个目录下找到linux常用的命令。系统所需要的那些命令位于此目录。</span><br><span class="line">/boot：Linux的内核及引导系统程序所需要的文件目录，比如 vmlinuz initrd.img 文件都位于这个目录中。在一般情况下，GRUB或LILO系统引导管理器也位于这个目录。</span><br><span class="line">/cdrom：这个目录在刚刚安装系统的时候是空的。可以将光驱文件系统挂在这个目录下。例如：mount /dev/cdrom /cdrom</span><br><span class="line">/dev：dev 是设备（device)的英文缩写。这个目录对所有的用户都十分重要。因为在这个目录中包含了所有linux系统中使用的外部设备。但是这里并不是放的外部设备的驱动程序。这一点和常用的windows,dos操作系统不一样。它实际上是一个访问这些外部设备的端口。可以非常方便地去访问这些外部设备，和访问一个文件，一个目录没有任何区别。</span><br><span class="line">/etc：etc这个目录是linux系统中最重要的目录之一。在这个目录下存放了系统管理时要用到的各种配置文件和子目录。要用到的网络配置文件，文件系统，x系统配置文件，设备配置信息，设置用户信息等都在这个目录下。</span><br><span class="line">/home：如果建立一个用户，用户名是&quot;xx&quot;,那么在/home目录下就有一个对应的/home/xx路径，用来存放用户的主目录。</span><br><span class="line">/lib：lib是库（library）英文缩写。这个目录是用来存放系统动态连接共享库的。几乎所有的应用程序都会用到这个目录下的共享库。因此，千万不要轻易对这个目录进行什么操作，一旦发生问题，系统就不能工作了。</span><br><span class="line">/lost+found：在ext2或ext3文件系统中，当系统意外崩溃或机器意外关机，而产生一些文件碎片放在这里。当系统启动的过程中fsck工具会检查这里，并修复已经损坏的文件系统。有时系统发生问题，有很多的文件被移到这个目录中，可能会用手工的方式来修复，或移到文件到原来的位置上。</span><br><span class="line">/mnt：这个目录一般是用于存放挂载储存设备的挂载目录的，比如有cdrom等目录。可以参看/etc/fstab的定义。</span><br><span class="line">/media：有些linux的发行版使用这个目录来挂载那些usb接口的移动硬盘（包括U盘）、CD/DVD驱动器等等。</span><br><span class="line">/opt：这里主要存放那些可选的程序。</span><br><span class="line">/proc：可以在这个目录下获取系统信息。这些信息是在内存中，由系统自己产生的。</span><br><span class="line">/root：Linux超级权限用户root的家目录。</span><br><span class="line">/sbin：这个目录是用来存放系统管理员的系统管理程序。大多是涉及系统管理的命令的存放，是超级权限用户root的可执行命令存放地，普通用户无权限执行这个目录下的命令，这个目录和/usr/sbin; /usr/X11R6/sbin或/usr/local/sbin目录是相似的，凡是目录sbin中包含的都是root权限才能执行的。</span><br><span class="line">/selinux ：对SElinux的一些配置文件目录，SElinux可以让linux更加安全。</span><br><span class="line">/srv 服务启动后，所需访问的数据目录，举个例子来说，www服务启动读取的网页数据就可以放在/srv/www中</span><br><span class="line">/tmp：临时文件目录，用来存放不同程序执行时产生的临时文件。有时用户运行程序的时候，会产生临时文件。/tmp就用来存放临时文件的。/var/tmp目录和这个目录相似。</span><br><span class="line">/usr</span><br><span class="line">这是linux系统中占用硬盘空间最大的目录。用户的很多应用程序和文件都存放在这个目录下。在这个目录下，可以找到那些不适合放在/bin或/etc目录下的额外的工具</span><br><span class="line">/usr/local：这里主要存放那些手动安装的软件，即不是通过“新立得”或apt-get安装的软件。它和/usr目录具有相类似的目录结构。让软件包管理器来管理/usr目录，而把自定义的脚本（scripts)放到/usr/local目录下面、。</span><br><span class="line">/usr/share ：系统共用的东西存放地，比如 /usr/share/fonts 是字体目录，/usr/share/doc和/usr/share/man帮助文件。</span><br><span class="line">/var：这个目录的内容是经常变动的，看名字就知道，可以理解为vary的缩写，/var下有/var/log 这是用来存放系统日志的目录。/var/ www目录是定义Apache服务器站点存放目录；/var/lib 用来存放一些库文件，比如MySQL的，以及MySQL数据库的的存放地。</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-07-02T01:18:44.000Z" itemprop="dateUpdated">2018-07-02 09:18:44</time>
+</span><br>
+
+
+        
+        <a href="/2017/11/28/MD/Java/JavaEE/class文件路径/" target="_blank" rel="external">http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/06/MD/JavaScript/emmt/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/24/MD/JavaScript/js/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/11/28/MD/Java/JavaEE/class文件路径/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQW7jMBAEwPz/07vAXheyu4ecOAFKp0BxKBYNiJMefn3F159/V/7J/6+n0Z4+8zTa18aFh4eHN5r662m9nmhCypcpeXrxXDw8PLw13uup5OB2a3ka+fXGUCwfHh4e3kd5OWyvsMbDw8P7jbwW0L7ck60FDw8P7yfw8qm8fsW3SzMro1eyFjw8PLwuXx2+lD/182J/Dw8PD++gq56Xy7PAom2P1bPFw8PDW+DNmkyzB88OAczm8GZyeHh4eFd5eTTwetD8Tt4Yy7+Gx40BDw8Pb4E3i19P/vZWGHGhpMbDw8MLePmgs6nkG0zbkIs2ITw8PLwP8fI7J621W1Fy3bXDw8PDu8prW18JONkS6v8JnuaAh4eHt8ZLAoWT0rY9XpAvwZsn4uHh4S3w8iFuBbj5pnIeiODh4eFt8E7K4lmAe+vYQXQfDw8Pb4F3K1RtS9t2s2mXCQ8PD2+PV79YR49pX/0nDbDHQ1d4eHh4V3n5oYE2aGgPELTZyZvlw8PDw1vj5ROdUU/K8aOWGx4eHt4CLy9P88m1zf628Z/PEw8PD2+Plw+aHwVop5UU1nmxjoeHh/edvJOCOC+CT6Zbby14eHh4a7zzg1bnrbIWE7Xu8PDw8JZ5szC3/aukUE7i3ei3eHh4eFd5J6VzfoiqvZ833t4U9Hh4eHjfwstb+LOW/3mYW4yGh4eHt8Cbte3byLUNf9uoNwos8PDw8C7xZk2vWYQxK51PFgsPDw9vgzdrLOXHBZJCPA812oIeDw8Pb4+Xx7ht7Nsew8qDhuL7wcPDw1vjteXvLLpti+YLWQseHh7eR3ltyZu/9GfhcrQceHh4eD+Al7/K22m1xwiiowN4eHh4a7w2XGiD2tkiJuO/uYOHh4e3wNvIQpMS/PzOUU8PDw8Pb8L7CxWBIhZSObi3AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

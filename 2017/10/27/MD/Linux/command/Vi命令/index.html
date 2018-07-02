@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | my blog | 2333</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Linux——Vi、Vim编辑器命令基础原创 2015年12月20日 19:39:43  标签： linux / vim  Vi是一个命令行界面下的文本编辑工具，Vim是Vi的一个增强版。 vim或vi命令可以启动vim编辑器vim + 目标文件路径 使用vim打开文件如果目标文件存在，则vim打开该文件如果目标文件不存在，则vim会新建该文件，并打开  vi的三种模式：1、命令模式（常规模式）任">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/index.html">
+<meta property="og:site_name" content="my blog">
+<meta property="og:description" content="Linux——Vi、Vim编辑器命令基础原创 2015年12月20日 19:39:43  标签： linux / vim  Vi是一个命令行界面下的文本编辑工具，Vim是Vi的一个增强版。 vim或vi命令可以启动vim编辑器vim + 目标文件路径 使用vim打开文件如果目标文件存在，则vim打开该文件如果目标文件不存在，则vim会新建该文件，并打开  vi的三种模式：1、命令模式（常规模式）任">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-27T09:34:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Linux——Vi、Vim编辑器命令基础原创 2015年12月20日 19:39:43  标签： linux / vim  Vi是一个命令行界面下的文本编辑工具，Vim是Vi的一个增强版。 vim或vi命令可以启动vim编辑器vim + 目标文件路径 使用vim打开文件如果目标文件存在，则vim打开该文件如果目标文件不存在，则vim会新建该文件，并打开  vi的三种模式：1、命令模式（常规模式）任">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-27T09:34:44.000Z" itemprop="datePublished" class="page-time">
+  2017-10-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Linux——Vi、Vim编辑器命令基础"><span class="post-toc-number">1.</span> <span class="post-toc-text">Linux——Vi、Vim编辑器命令基础</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-MD/Linux/command/Vi命令"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-27 17:34:44" datetime="2017-10-27T09:34:44.000Z"  itemprop="datePublished">2017-10-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Linux——Vi、Vim编辑器命令基础"><a href="#Linux——Vi、Vim编辑器命令基础" class="headerlink" title="Linux——Vi、Vim编辑器命令基础"></a>Linux——Vi、Vim编辑器命令基础</h1><p>原创 2015年12月20日 19:39:43</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=linux&amp;t=blog" target="_blank" rel="noopener">linux</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=vim&amp;t=blog" target="_blank" rel="noopener">vim</a></li>
+</ul>
+<p>Vi是一个命令行界面下的文本编辑工具，Vim是Vi的一个增强版。</p>
+<p>vim或vi命令可以启动vim编辑器<br>vim + 目标文件路径 使用vim打开文件<br>如果目标文件存在，则vim打开该文件<br>如果目标文件不存在，则vim会新建该文件，并打开</p>
+<hr>
+<p>vi的三种模式：<br>1、命令模式（常规模式）<br>任何模式下按ESC键都会返回命令模式。命令模式下可以通过键入不同的命令完成选择、复制、粘贴、撤销等操作。<br>2、插入模式<br>在命令模式中按“i”键即可进入插入模式，插入模式下可以输入编辑文本内容；按ESC键可返回命令模式。<br>3、ex模式<br>在命令模式下按“：”键可进入ex模式，ex模式下可以保存、修改、退出vim。</p>
+<hr>
+<p>命令模式：<br>i 在光标前插入文本<br>o 在当前行的下面插入新行<br>dd 删除整行<br>yy 将当前行的内容放入缓冲区（复制当前行）<br>p 将缓冲区中的内容放入光标后（粘贴）<br>数字yy 复制N行<br>r 替换当前字符（先按r，再按要替换的新字符）<br>u 撤销上一个操作<br>/关键字 查找关键字（按N键可以在找到的这些关键字之间来回切换）</p>
+<hr>
+<p>ex模式：<br>w 保存当前修改<br>q 退出<br>q！ 强制退出，不保存任何修改<br>wq 先保存后退出<br>x 保存并退出<br>set nu / set number 显示行号<br>！ 系统命令 执行一条系统命令并显示结果<br>sh 切换到命令行，之后再按Ctrl + D 即可返回vim</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2017-10-27T09:34:44.000Z" itemprop="dateUpdated">2017-10-27 17:34:44</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/27/MD/Linux/command/Vi命令/" target="_blank" rel="external">http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/&title=my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/&title=my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=my blog&url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/27/MD/Java/JavaEE/MAVEN/MAVEN环境配置/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/27/MD/Java/JavaEE/MAVEN/ntelliJ IDEA 配置Maven/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/&title=《No title》 — my blog&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/&title=《No title》 — my blog&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — my blog&url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/27/MD/Linux/command/Vi命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3aQW7DMAwF0dz/0i7QVYDUynxSLRpqtAoMx+HzghEpPh54Xd/r+fPzldfrr/es718/eduSIUPGxzKu5eow7r5be2V3z5chQ8Y5jDTJ1sC1J6xjkyFDhgyeBNNASegyZMiQ0U+4fJOX1p4yZMiQUStiSfmaXk9/d0MtLkOGjA9k1A4G/ubzr59vyJAh498zrnCtN2dpQZum19vvypAhYzRjHVCnAdd/Tlw8y5AhYyiDFIQ8RZLBiz7jTYgyZMgYyuC8dHtHCtTa4eWbTaEMGTKGMniIJBV2kjKhypAh42QGb6il27hOmg6mRWTIkDGU0dm6pQVwOgqGNpoyZMg4gEEKxTT58umIDUcIMmTIGM2opUVevtZSc3EbKkOGjNGM2sFAOhBGzhxbCVeGDBlDGTyB8kBJYuUkdL8MGTJGM9LNHB/2ShNxf4BMhgwZUxkkrLT1z4tPch29RBkyZIxmpOVr/35+SMlfogwZMk5g1Fr2tTZZh4QqchkyZIxjdAYmgiwebv7i0wwZMmQcwOBJkB9M1kpZ0rYL/jFkyJAxgsGDTg8UN7TMcMEsQ4aM2YwrXP0Ctd9u++E5MmTIGM3YW6CmP9afE5EhQ8Y5jDTJ1jZ/6cFkHIMMGTIOYOwqbmvjF2nS39w7lCFDxiBG66AxbM+ljT8ZMmTISBtk67DS1j9K/TJkyDiAwccj+GgFSaM81aLJERkyZAxldArIfhD8dZBXIEOGjHGML8ncYL77QUb7AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
