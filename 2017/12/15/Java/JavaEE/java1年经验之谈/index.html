@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="java后端工作一年浅谈经验转载 2017年08月27日 18:53:17  标签： java / 程序员 / 经验 / 技术   **185  1.引言 　　毕业已经一年有余，这一年里特别感谢技术管理人员的器重，以及同事的帮忙，学到了不少东西。这一年里走过一些弯路，也碰到一些难题，也受到过做为一名开发却经常为系统维护和发布当救火队员的苦恼。遂决定梳理一下自己所学的东西，为大家分享一下。 　　经过">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="java后端工作一年浅谈经验转载 2017年08月27日 18:53:17  标签： java / 程序员 / 经验 / 技术   **185  1.引言 　　毕业已经一年有余，这一年里特别感谢技术管理人员的器重，以及同事的帮忙，学到了不少东西。这一年里走过一些弯路，也碰到一些难题，也受到过做为一名开发却经常为系统维护和发布当救火队员的苦恼。遂决定梳理一下自己所学的东西，为大家分享一下。 　　经过">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-12-15T06:40:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="java后端工作一年浅谈经验转载 2017年08月27日 18:53:17  标签： java / 程序员 / 经验 / 技术   **185  1.引言 　　毕业已经一年有余，这一年里特别感谢技术管理人员的器重，以及同事的帮忙，学到了不少东西。这一年里走过一些弯路，也碰到一些难题，也受到过做为一名开发却经常为系统维护和发布当救火队员的苦恼。遂决定梳理一下自己所学的东西，为大家分享一下。 　　经过">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-15T06:39:45.000Z" itemprop="datePublished" class="page-time">
+  2017-12-15
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#java后端工作一年浅谈经验"><span class="post-toc-number">1.</span> <span class="post-toc-text">java后端工作一年浅谈经验</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/JavaEE/java1年经验之谈"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-15 14:39:45" datetime="2017-12-15T06:39:45.000Z"  itemprop="datePublished">2017-12-15</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="java后端工作一年浅谈经验"><a href="#java后端工作一年浅谈经验" class="headerlink" title="java后端工作一年浅谈经验"></a>java后端工作一年浅谈经验</h1><p>转载 2017年08月27日 18:53:17</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=java&amp;t=blog" target="_blank" rel="noopener">java</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=%E7%A8%8B%E5%BA%8F%E5%91%98&amp;t=blog" target="_blank" rel="noopener">程序员</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=%E7%BB%8F%E9%AA%8C&amp;t=blog" target="_blank" rel="noopener">经验</a> /</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=%E6%8A%80%E6%9C%AF&amp;t=blog" target="_blank" rel="noopener">技术</a></li>
+</ul>
+<ul>
+<li>**185</li>
+</ul>
+<p>1.引言</p>
+<p>　　毕业已经一年有余，这一年里特别感谢技术管理人员的器重，以及同事的帮忙，学到了不少东西。这一年里走过一些弯路，也碰到一些难题，也受到过做为一名开发却经常为系统维护和发布当救火队员的苦恼。遂决定梳理一下自己所学的东西，为大家分享一下。</p>
+<p>　　经过一年意识到以前也有很多认识误区，比如：</p>
+<p>　　偏爱收集，经常收集各种资料视频塞满一个个硬盘，然后心满意足的看着容量不行动。</p>
+<p>　　不重基础，总觉得很多基础东西不需要再看了，其实不懂的地方很多，计算机程序方面任何一个结果都必有原因，不要只会用不知道原理，那是加工厂出来的。现在ide查看代码那么方便，ctrl+点击就进入了JDK查看实现细节。</p>
+<p>　　好高骛远，在计算机基础不牢固的情况下，总想着要做架构，弄分布式，搞大数据之类。</p>
+<p>　　不重视性能，只求能实现功能，sql查询是不是可以优化，是否有算法妙用，大对象是否要清除。</p>
+<p>　　不重视扩展性，模块之间紧密耦合，常用方法不提取成工具类，调用关系混乱等问题。</p>
+<p>……</p>
+<p>　　本文重点不在这些，故只列举了一小部分，下面进入正题。</p>
+<p>2.语法基础</p>
+<p>2.1 Java类初始化顺序</p>
+<p>　　这是所有情况的类初始化顺序，如果实际类中没有定义则跳过：父类静态变量——父类静态代码块——子类静态代码块——父类非静态变量——父类非静态代码块——父类构造函数——子类非静态变量——子类非静态代码块——子类构造函数</p>
+<p>2.2值传递和引用传递</p>
+<p>　　可能很多人对此不屑一顾，心想老子都工作一年了，对这些还不熟悉吗？但实际情况并非这样，JDK中东西全部熟悉了吗？以一个最简单的例子开始，你觉得下图中代码执行完之后fatherList中的元素是什么？</p>
+<p>　　这是一个最基础的值传递和引用传递的例子，你觉得好简单，已经想跃跃欲试的挑战了，那么请看下面的，StringBuffer很好理解，但是当你执行一遍之后发现是不是和预想中的输出不一样呢？String不是引用类型吗，怎么会这样呢？如果你无法理解，那么请看下String的实现源码，了解下其在内存中分配的实现原理。</p>
+<p>2.3集合的使用</p>
+<p>　　这部分几乎每个人都会用到，而且大家还都不陌生。下图来源于互联网，供大家复习一下。但是利用集合的特性进行巧妙的组合运用能解决优化很多复杂问题。Set不可重复性，List的顺序性，Map的键值对，SortSet/SortMap的有序性，我在工作中有很多复杂的业务都巧妙的使用了这些，涉及到公司保密信息，我就不贴出代码了。工作越久越发现这些和越巧妙。</p>
+<p>2.3异常处理</p>
+<p>1.看着try、catch、finally非常容易，如果和事务传播结合在一起，就会变得极其复杂。</p>
+<p>2.finally不一定必须执行，return在catch/finally中处理情况（建议亲自操刀试一下）。</p>
+<p>3.catch中可以继续抛自定义异常（并把异常一步步传递到控制层，利用切面抓取封装异常，返回给调用者）。</p>
+<p>2.4面向对象思想</p>
+<p>　　一提起面向对象，大家都知道抽象、封装、继承、和多态。但是实际工作经验中又知道多少呢，对于项目中如何巧用估计更不要提了。</p>
+<p>　　共性的机会每个都需要用的建立基类，如每个控制层方法可能要通过security获取一个登录用户id，用于根据不同的用户操作不同的数据，可以抽象出一个应用层基类，实现获取id的protect方法。同理DAO层可以利用泛型提取出一个包含增删改查的基类。</p>
+<p>　　多态的Override：基类的引用变量不仅可以指向基类的实例对象，也可以指向其子类的实例对象，如果指向子类的实例对象，其调用的方法应该是正在运行的那个对象的方法。在策略模式中使用很普遍。</p>
+<p>　　提到面向对象，就不可避免的要说设计模式，在工作中，一个技术大牛写的一个类似策略模式（更复杂一点），十分巧妙的解决了各种业务同一个方法，并且实现了订单、工单、业务的解耦，看得我是非常佩服。我想很多面试中都会问道单例模式吧，还没有理解的建议去看一看。</p>
+<p>3.多线程</p>
+<p>3.1线程安全</p>
+<p>　　这个是老生常谈的问题了，但是确实是问题和bug高发区。线程同步问题不需要单独写了，想必大家都清楚，不太熟悉的建议百度一下。</p>
+<p>3.1.1 线程安全问题</p>
+<p>1.代码中如果有同步操作，共享变量要特别注意（这个一般都能意识到）</p>
+<p>2多个操作能修改数据表中同一条数据的。（这个容易被忽略，业务A可能操作表a，业务B也可以操作表a，业务A、B即使在不同的模块和方法中，也会引起线程安全问题。例如如果一个人访问业务A接口，另一个人访问业务B接口，在web中每个业务请求都是会有单独的一个线程进行处理的，就会出现线程安全问题）。</p>
+<p>3.不安全的类型使用，例如StringBuffer、StringBuild，HashTable、HashMap等。在工作中我就遇到过有人在for循环进行list的remove，虽然编译器不报错，程序可以运行，但是结果却可想而知。</p>
+<p>4.Spring的bean默认是单例的，如果有类变量就要特别小心了（一般情况下是没人在控制层、业务层、DAO层等用类变量的，用的话建议是final类型，例如日志log，gson等）。</p>
+<p>5.多个系统共享数据库情况，这个其实和分布式系统类似</p>
+<p>　　用户重复提交问题（即使代码中从数据库读取是否存在进行限制不能解决问题）</p>
+<p>3.1.2线程安全解决</p>
+<p>　　在需要同步的地方采用安全的类型。</p>
+<p>JDK锁机制，lock、tryLock，synchronized，wait、notify、notifyAll等</p>
+<p>Concurrent并发工具包，在处理一些问题上，谁用谁知道。强烈建议查看源码！</p>
+<p>　　数据表加锁。（除非某个表的访问频率极低，否则不建议使用）</p>
+<p>　　涉及分布式的，采用中间件技术例如zookeeper等解决。</p>
+<p>3.2异步</p>
+<p>　　异步使用场景不影响主线程，且响应较慢的业务。例如IO操作，第三方服务（短信验证码、app推送、云存储上传等）。</p>
+<p>　　如果异步任务很多，就需要使用任务队列了，任务队列可以在代码级别实现，也可以利用redis（优势太明显了）。</p>
+<p>3.3多线程通信</p>
+<p>　　这方面文章非常多，这里不在详述。</p>
+<p>1.共享变量方式（共享文件、全局变量，信号量机制等）</p>
+<p>2.消息队列方式</p>
+<p>3.忙等，锁机制</p>
+<p>3.4多线程实现</p>
+<p>1.集成Thread类，重写（这里的重写指的是override）run方法，调用start方法执行。</p>
+<p>2.实现Runable接口，实现run方法，以Runable实例创建thread对象。</p>
+<p>3.实现Callable接口，实现call方法，FutureTask包装callable接口，FutureTask对象创建thread对象，常用语异步操作，建议使用匿名内部类，方便阅读和使用。</p>
+<p>　　额外需要说明的是：</p>
+<p>1.理解thread的join方法；</p>
+<p>2.不要认为volitate是线程安全的（不明白原因的建议去看jvm运行时刻内存分配策略）；</p>
+<p>3.sleep时间片结束后并不保证立马获取cpu。</p>
+<p>4.ThreadLocal能够为每一个线程维护变量副本，常用于在多线程中用空间换时间。</p>
+<p>4.开源框架</p>
+<p>4.1 Hibernate、Mybatis</p>
+<p>　　相信每一个java程序员对这些都不陌生，这里不再详述。</p>
+<p>　　需要说明的主要以下几点：</p>
+<p>1.hibernate一级缓存（内置session缓存），二级缓存（可装配sessionFactory缓存），二级缓存会引起并发问题。</p>
+<p>2.hibernate延迟加载原理理解。</p>
+<p>3.hibernate的get、load方法，sava、persist、savaOrUpdate方法区别</p>
+<p>4.session重建了关联关系却并没有同数据库进行同步和更新　　</p>
+<p>5.hibernate session关联关系：detached对象、persistent对象</p>
+<p>6.Spring data集成，注解方式配置属性和实体。</p>
+<p>7.mybatis插件。</p>
+<p>8.分页查询（数据库）。</p>
+<p>9.连接池技术</p>
+<p>4.2 Spring IOC</p>
+<p>4.1.1 Spring bean</p>
+<p>1.bean注入注解方式方便易读，引用第三方（数据库连接，数据库连接池，JedisPool等）采用配置文件方式。</p>
+<p>\2. bean作用域：Singleton，prototype，request，session，global session</p>
+<p>3.bean生命周期:如下图所示（图片来源于互联网）：</p>
+<p>4.3 Spring AOP</p>
+<p>　　基本概念：关注点、切面Aspect、切入点pointcut、连接点joinpoint、通知advice、织入weave、引入introduction。</p>
+<p>Spring AOP支持5中类型通知，分别是MethodBeforeAdvice、AfterReturningAdvice、ThrowsAdvice、MethodInterceptor、IntroductionInterceptor（吐槽一下名字太长）</p>
+<p>　　实现方式如下:</p>
+<p>1.基于代理的AOP</p>
+<p>2.基于@Aspect注解驱动的切面。（强烈推荐：可读性好，易维护，易扩展，开发快）</p>
+<p>3.纯POJO切面。</p>
+<p>4.注入式Aspect切面。</p>
+<p>4.4 Srping事务</p>
+<p>4.4.1事务传播</p>
+<p>　　概念：某些操作需要保证原子性，如果中间出错，需要事务回滚。如果某个事务回滚，那么调用该事务的方法中的事务的作出如何的动作，就是事务传播。</p>
+<p>　　短时间内写不清楚，建议访问 <a href="http://www.cnblogs.com/yangy608/archive/2010/12/15/1907065.html" target="_blank" rel="noopener">http://www.cnblogs.com/yangy608/archive/2010/12/15/1907065.html</a> 查看。</p>
+<p>　　事务传播属性：</p>
+<ol>
+<li>PROPAGATION_REQUIRED–支持当前事务，如果当前没有事务，就新建一个事务。这是最常见的选择。</li>
+</ol>
+<p>\2. PROPAGATION_SUPPORTS–支持当前事务，如果当前没有事务，就以非事务方式执行。</p>
+<p>\3. PROPAGATION_MANDATORY–支持当前事务，如果当前没有事务，就抛出异常。</p>
+<p>\4. PROPAGATION_REQUIRES_NEW–新建事务，如果当前存在事务，把当前事务挂起。</p>
+<p>\5. PROPAGATION_NOT_SUPPORTED–以非事务方式执行操作，如果当前存在事务，就把当前事务挂起。</p>
+<p>\6. PROPAGATION_NEVER–以非事务方式执行，如果当前存在事务，则抛出异常。</p>
+<p>　　事务隔离级别：</p>
+<ol>
+<li>ISOLATION_DEFAULT：这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别.另外四个与JDBC的隔离级别相对应</li>
+</ol>
+<p>\2. ISOLATION_READ_UNCOMMITTED：这是事务最低的隔离级别，充许令外一个事务可以看到这个事务未提交的数据。这种隔离级别会产生脏读，不可重复读和幻像读。</p>
+<p>\3. ISOLATION_READ_COMMITTED：保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据</p>
+<p>\4. ISOLATION_REPEATABLE_READ：这种事务隔离级别可以防止脏读，不可重复读。但是可能出现幻像读。它除了保证一个事务不能读取另一个事务未提交的数据外，还保证了避免下面的情况产生(不可重复读)。</p>
+<p>\5. ISOLATION_SERIALIZABLE这是花费最高代价但是最可靠的事务隔离级别。事务被处理为顺序执行。除了防止脏读，不可重复读外，还避免了幻像读。</p>
+<p>4.5其他Spring 技术栈</p>
+<p>spring boot轻量级启动框架</p>
+<p>spring security用户权限管理，根据角色和用户，实现UserDetailsService，进行自定义权限管理。</p>
+<p>spring task代码级定时任务，注解方式，使用起来非常方便。需要注意的是，如果某次定时任务出了异常而没有进行处理，会导致接下来定时任务失效。如果各个任务相互独立，可以简单用try，catch包围（之前就吃过这方面的亏）。</p>
+<p>spring data注解方式定义实体，属性等</p>
+<p>spring mvc简单明了的mvc框架。url传值、数组传值、对象传值、对象数组等传值类型，上传/下载文件类型需要注意。</p>
+<p>spring restful注意命名，对命名要求很严格。</p>
+<p>spring shell命令行方式执行命令，救火、导入导出数据等用起来非常方便、制作报表。　　</p>
+<p>\5. Web基础 </p>
+<p>5.1 web容器启动</p>
+<p>1.web.xml加载顺序: listener -&gt; filter -&gt;servlet</p>
+<p>2.webt容器启动过程，java新手很怕配置文件，理解完这些有助于熟悉配置文件 <a href="http://blog.csdn.net/u014431852/article/details/47042895" target="_blank" rel="noopener">http://blog.csdn.net/u014431852/article/details/47042895</a></p>
+<p>5.2  Servlet、Interceptor、Listener、Filter</p>
+<p>Servlet接收请求返回响应，最原始的web业务处理类。</p>
+<p>Interceptor拦截器，可以实现HandlerInterceptor接口自定义拦截器，在日志记录、权限检查、性能监控、通用行为等场景使用，本质是AOP。</p>
+<p>Listener监听器常用于统计在线人数等纵向功能。</p>
+<p>Filter过滤器在请求接口处理业务之前改变requset，在业务处理之后响应用户之前改变response。如果某些数据不加密，很容易用抓包工具加filter作弊。</p>
+<p>5.3 web项目结构</p>
+<p>5.3.1 mvn结构</p>
+<p>　　熟练掌握几种常见的mvn项目结构，mvn可以自动生成，这里不再详述。</p>
+<p>5.3.2 mvn包管理</p>
+<p>1.版本号尽量几种在一个文件中便于管理。</p>
+<p>2.spring milestone包解决spring包冲突问题。</p>
+<p>3.mvn dependency:tree命令分析所有包依赖，对于冲突的在pom文件中<exclusion>包围起来</exclusion></p>
+<p>5.3.3版本控制</p>
+<p>1.git、svn等</p>
+<p>2.代码冲突解决方案</p>
+<p>3.分支管理。</p>
+<p>　　对于某个稳定版本上线后，如果在此基础上开发新功能，一定要新建分支，在新分支上提交代码，最后在新版发布时合并分支。修改运营环境bug切换到主分支进行修改</p>
+<p>5.4 Http请求</p>
+<p>5.4.1请求方法</p>
+<p>post、get、put、head、delete、copy、move、connect、link、patch，最常用的是前4、5个。</p>
+<p>5.4.2请求头，状态码</p>
+<p>　　常用的请求头有Accept（下载文件会特殊使用）、Accept-Charset（设置utf-8字符集）、Content-Type（json等配置）等</p>
+<p>　　常用的响应头有Content-Type、Content-Type、Content-Length等，偏前端，不再详述。</p>
+<p>6.系统架构</p>
+<p>　　接触的不是特别多，目前用到的只是服务器主从备份。Nginx反向代理进行配置。</p>
+<p>　　多个项目nginx配置</p>
+<p>Spring Mvc用json数据进行交互，配置json转换的servlet。</p>
+<p>　　封装返回值</p>
+<p>　　自定义RunEnvironmentException（状态码，原因），覆盖原有Exception，切面ExceptionHandler抓取Exception并封装到返回值中（前后端松耦合）</p>
+<p> 　　令人头疼的用户重复（连续快速点击）提交问题，前端限制治标不治本；后端用sessonid在切面上实现，又需要前端存储，对所有请求数据加sessionId。最后用jedis中存储，用接口名+用户名当做key，根据不同的接口对不同的key可以单独设置时间，不仅保证了重复提交问题，也避免了恶意请求问题，同时还能自定义请求间隔。（期初担心redis缓存读写时间延误导致限制失效，后来发现多虑了，对一般的小系统来说，经性能测试，发现即使请求频率再提高100被也不会导致限制失效）</p>
+<p>testNg单元测试、性能测试，覆盖测试。</p>
+<p>　　切面管理日期、权限。缓存等。</p>
+<p>\7. Nosql</p>
+<p>1.Redis的java库Jedis。</p>
+<p>Jedispool配置。</p>
+<p>　　项目中用到的有任务队列、缓存。</p>
+<ol start="2">
+<li>neo4j图数据库</li>
+</ol>
+<p>　　处理社交、推荐</p>
+<p>8.服务端</p>
+<p>linux操作系统熟悉以centos为例：</p>
+<p>　　常用简单命令：ssh、vim、scp、ps、gerp、sed、awk、cat、tail，df、top，shell、chmod、sh、tar、find、wc、ln、|  </p>
+<p>　　目录结构明细:/etc/、~/、/usr/、/dev/、/home/、/etc/init.d/</p>
+<p>　　服务端：jdk、tomcat、nginx、mysql、jedis、neo4j启动与配置（特别说明的是该死的防火墙，nginx启动后一直访问不了，查找一下午查不到原因，最后发现是防火墙问题）</p>
+<p>　　监控服务器状态（cpu，磁盘，内存），定位pid，日志查看</p>
+<p>nginx负载均衡、反向代理、配置</p>
+<p>自动化部署脚本</p>
+<p>　　简单shell脚本书写，避免大量人力劳动。</p>
+<p>　　监控系统，代码抛fatal异常自动发邮件，系统指标持续偏高自动发邮件。</p>
+<p>9.数据库相关</p>
+<p>10.第三方接口对接</p>
+<p>10.1支付接口</p>
+<p>　　微信支付坑比较多，用将近两周时间才把微信支付所有完成。需要在微信后台配置的地方太多。</p>
+<p>　　而支付宝支付模块只用了2天时间就搞定了。</p>
+<p>10.2推送接口</p>
+<p>　　为用户定义tag、定义alias，注意当数据更新时需要同步更新tag、更新alias。如果没采用异步实现（用户体验就是好卡啊）</p>
+<p>10.3云存储</p>
+<p>　　大量文件上传云端（七牛云），注意创建bucket</p>
+<p>10.4短信验证</p>
+<p>　　很简单的第三方接口，引入依赖，直接调用即可。需要在第三方后台设置模板等，注意限定用户访问次数。</p>
+<p>10.5邮件</p>
+<p>　　很简单小功能，工具类。</p>
+<p>时间有限，目前先写这么多技术栈。对于代码书写和、算法技巧问题，会抽时间写在（2）中。</p>
+<p>好了同学们，我能介绍的也都全部介绍完给你们了，如果下获得更多JAVA教学资源，可以选择来我们这里共同交流，群：<a href="">24044837</a>，很多大神在这里切磋学习，不懂可以直接问，晚上还有大牛免费直播教学。<br>注：加群要求<br>1、具有一定工作经验的，面对目前流行的技术不知从何下手，需要突破技术瓶颈的可以加，有些应届生和实习生也可以加。<br>2、在公司待久了，过得很安逸，但跳槽时面试碰壁。需要在短时间内进修、跳槽拿高薪的可以加。<br>3、如果没有工作经验，但基础非常扎实，对java工作机制，常用设计思想，常用java开发框架掌握熟练的，可以加。<br>4、觉得自己很牛B，一般需求都能搞定。但是所学的知识点没有系统化，很难在技术领域继续突破的可以加。<br>5.阿里Java高级大牛直播讲解知识点，分享知识，多年工作经验的梳理和总结，带着大家全面、科学地建立自己的技术体系和技术认知！<br>PS：现在主要讲解的内容是（反射原理、枚举原理与应用、注解原理、常用设计模式、正规表达式高级应用、JAVA操作Office原理详解、JAVA图像处理技术，等多个知识点的详解和实战）<br>6.小号或者小白之类加群一律不给过，谢谢。<br>最后，每一位读到这里的网友，感谢你们能耐心地看完。觉得对你有帮助可以给个喜欢！希望在成为一名更优秀的Java程序员的道路上，我们可以一起学习、一起进步</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2017-12-15T06:40:10.000Z" itemprop="dateUpdated">2017-12-15 14:40:10</time>
+</span><br>
+
+
+        
+        <a href="/2017/12/15/Java/JavaEE/java1年经验之谈/" target="_blank" rel="external">http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/26/sql/SQL面试语法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/06/JavaScript/emmt/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/12/15/Java/JavaEE/java1年经验之谈/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aQW7DMAwEwP7/0+2lhwJJnF1RSn0Yn4w0sTgqYBEkv77i6/vF9fjXV9//+3nynetPNl94eHh4m0JPQnl8zvV9G26+NS+fiYeHh3eMlz86DzTZlJaRx4yHh4d3N14eep7rTg4bPDw8vDvz8lQ7LzckRw4eHh7e3XhJMaJ9dJIKTwoTm2steHh4eDEvT3/vc3+kv4eHh4c37qon6XKycF7q3RXn79Pw8PDwDvDyF25eUMjT3DYhXosTDw8Pby9vMk6aB5GXOXaVSPDw8PA+w5sUUifBtcl60U7Dw8PDO8DLm/R5afV6+SS4tghS9Pfw8PDwtvImLbF8sXl6fb36Yg0DDw8Pr+QlQSfliTY1z9dqj5ziP4mHh4dX8vKAkrLpWvt/Le2Oxhfw8PDwjvHa5LUt1+ZJ/GSjXx4MeHh4eMd4a8XTNhWejw4Um4KHh4d3gLdWApi86PO0eK0B9mQVPDw8vI/z8ldw/tuElIReV6bx8PDwxrz2EZPy7uTwSPBPVsHDw8M7xpscD+2I1Vr7LU/N35Rx8fDw8DbxJkNUyTI5bDIu8OQeDw8P7wAvT46TFHxvQHmqXYwd4OHh4Y15k8Z8/tv2agew8PDw8D7Jaw+GHHz9ybwJVyfTeHh4eMd4bbLbAvItyA+PpPyBh4eHt5c3afCvNb3WNmtxuAEPDw/vGC9vX50IZXIU1U0vPDw8vK28vGDaDgeslSra2PDw8PBO89ZaU/M5hbZAvNZyw8PDwzvBW3vHrnWX2iMkv99w4eHh4ZW8fxuBKgcI8iT+TQMMDw8PbxNvPkCQHyrnTjM8PDy8e/J2NcnWtqPeIDw8PLzb8CbpdT7glY+o1tk9Hh4e3piXj9TvbVnlMSyugoeHh3eAt1ZgbQ+J9uW+uYOHh4eHt4f3A+LxaG1eC0LwAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

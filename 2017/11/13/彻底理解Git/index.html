@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="彻底理解Git翻译 2016年05月25日 23:24:14  标签： git   **10903  Translated from http://maryrosecook.com/blog/post/git-from-the-inside-out. 本文原地址：https://github.com/pysnow530/git-from-the-inside-out/blob/master/REA">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/11/13/彻底理解Git/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="彻底理解Git翻译 2016年05月25日 23:24:14  标签： git   **10903  Translated from http://maryrosecook.com/blog/post/git-from-the-inside-out. 本文原地址：https://github.com/pysnow530/git-from-the-inside-out/blob/master/REA">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/1-a1-tree-graph.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/2-a1-commit.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/3-a1-refs.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/4-a1-wc-and-index.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/5-a1-wc-number-set-to-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/6-a1-wc-and-index-number-set-to-2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/7-a2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/8-a2-just-objects-commits-and-refs.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/9-a2-detached-head.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/10-a3-detached-head.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/11-a3-on-deputy.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/12-a3-on-master-on-a2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/13-a3ondeputy.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/14-a3-on-master-on-a2.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/15-a3-on-master.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/16-a4-b3-on-deputy.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/17-a4-b3-on-deputy.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/18-b4-on-deputy.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/19-b4-master-deputy-on-b4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/20-b5-on-deputy-b6-on-master.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/21-b6-on-master-with-merge-head.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/22-b11-on-master.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/23-b11-with-objects-wc-and-index.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/24-b11-letter-removed-from-wc-and-index.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/25-11.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/26-11-cp-alpha-to-bravo.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/27-12-bravo.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/28-12-fetched-to-alpha.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/29-12-merged-to-alpha.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/30-13-alpha-cloned-to-delta-bare.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/31-14-alpha.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/32-14-pushed-to-delta.png">
+<meta property="og:updated_time" content="2017-11-13T10:48:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="彻底理解Git翻译 2016年05月25日 23:24:14  标签： git   **10903  Translated from http://maryrosecook.com/blog/post/git-from-the-inside-out. 本文原地址：https://github.com/pysnow530/git-from-the-inside-out/blob/master/REA">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/1-a1-tree-graph.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-13T10:46:05.000Z" itemprop="datePublished" class="page-time">
+  2017-11-13
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#彻底理解Git"><span class="post-toc-number">1.</span> <span class="post-toc-text">彻底理解Git</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建项目"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">创建项目</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始化仓库"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">初始化仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加文件"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">添加文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建提交"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">创建提交</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建树图"><span class="post-toc-number">1.0.4.1.</span> <span class="post-toc-text">创建树图</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建提交对象"><span class="post-toc-number">1.0.4.2.</span> <span class="post-toc-text">创建提交对象</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#将当前分支指向新提交"><span class="post-toc-number">1.0.4.3.</span> <span class="post-toc-text">将当前分支指向新提交</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建第二个提交"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">创建第二个提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检出提交"><span class="post-toc-number">1.0.6.</span> <span class="post-toc-text">检出提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建分支"><span class="post-toc-number">1.0.7.</span> <span class="post-toc-text">创建分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检出分支"><span class="post-toc-number">1.0.8.</span> <span class="post-toc-text">检出分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#检出与工作区有冲突的分支"><span class="post-toc-number">1.0.9.</span> <span class="post-toc-text">检出与工作区有冲突的分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#合并祖先提交"><span class="post-toc-number">1.0.10.</span> <span class="post-toc-text">合并祖先提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#合并后代提交"><span class="post-toc-number">1.0.11.</span> <span class="post-toc-text">合并后代提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#合并不同提交线的两个提交"><span class="post-toc-number">1.0.12.</span> <span class="post-toc-text">合并不同提交线的两个提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#合并不同提交线且有相同修改文件的两个提交"><span class="post-toc-number">1.0.13.</span> <span class="post-toc-text">合并不同提交线且有相同修改文件的两个提交</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#移除文件"><span class="post-toc-number">1.0.14.</span> <span class="post-toc-text">移除文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拷贝仓库"><span class="post-toc-number">1.0.15.</span> <span class="post-toc-text">拷贝仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关联其它仓库"><span class="post-toc-number">1.0.16.</span> <span class="post-toc-text">关联其它仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从远程仓库获取分支"><span class="post-toc-number">1.0.17.</span> <span class="post-toc-text">从远程仓库获取分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#合并FETCH-HEAD"><span class="post-toc-number">1.0.18.</span> <span class="post-toc-text">合并FETCH_HEAD</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#从远程仓库拉取分支"><span class="post-toc-number">1.0.19.</span> <span class="post-toc-text">从远程仓库拉取分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#克隆仓库"><span class="post-toc-number">1.0.20.</span> <span class="post-toc-text">克隆仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推送分支到远程仓库的已检出分支"><span class="post-toc-number">1.0.21.</span> <span class="post-toc-text">推送分支到远程仓库的已检出分支</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#克隆裸仓库"><span class="post-toc-number">1.0.22.</span> <span class="post-toc-text">克隆裸仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#推送分支到裸仓库"><span class="post-toc-number">1.0.23.</span> <span class="post-toc-text">推送分支到裸仓库</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.0.24.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#脚注"><span class="post-toc-number">1.0.25.</span> <span class="post-toc-text">脚注</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-彻底理解Git"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-13 18:46:05" datetime="2017-11-13T10:46:05.000Z"  itemprop="datePublished">2017-11-13</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="彻底理解Git"><a href="#彻底理解Git" class="headerlink" title="彻底理解Git"></a>彻底理解Git</h1><p>翻译 2016年05月25日 23:24:14</p>
+<ul>
+<li>标签：</li>
+<li><a href="http://so.csdn.net/so/search/s.do?q=git&amp;t=blog" target="_blank" rel="noopener">git</a></li>
+</ul>
+<ul>
+<li>**10903</li>
+</ul>
+<p>Translated from <a href="http://maryrosecook.com/blog/post/git-from-the-inside-out" target="_blank" rel="noopener">http://maryrosecook.com/blog/post/git-from-the-inside-out</a>.</p>
+<p>本文原地址：<a href="https://github.com/pysnow530/git-from-the-inside-out/blob/master/README.md" target="_blank" rel="noopener">https://github.com/pysnow530/git-from-the-inside-out/blob/master/README.md</a></p>
+<p>本文主要解释git的工作原理。如果你是一个视频党，请移步<a href="https://www.youtube.com/watch?v=fCtZWGhQBvo" target="_blank" rel="noopener">youtube视频</a>。</p>
+<p>本文假设你已经了解Git，并可以使用它来对项目做版本控制。我们主要考察支撑Git的图结构和指导Git行为的图属性。在考察原理时，我们会创建真实的状态模型，而不是通过各种实验的结果妄做猜想。通过这个真实的状态模型，我们可以更直观地了解git已经做了什么，正在做什么，以及接下来要做什么。</p>
+<p>本文结构组织为一系列的Git命令，针对一个单独的项目展开。在关键的地方，我们会观察Git当前状态的图结构，并解释图属性及其产生的行为。</p>
+<p>如果你读完本文后仍意犹未尽，可以看一下<a href="http://gitlet.maryrosecook.com/docs/gitlet.html" target="_blank" rel="noopener">maryrosecook对Git的JavaScript实现</a> ，里面包含了大量注释。</p>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~ $ mkdir alpha</span><br><span class="line">~ $ cd alpha</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>创建项目目录<code>alpha</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ mkdir data</span><br><span class="line">~/alpha $ printf &apos;a&apos; &gt; data/letter.txt</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>进入<code>alpha</code>目录，创建目录<code>data</code>。在<code>data</code>目录下，创建内容为<code>a</code>的文件<code>letter.txt</code>。现在，<code>alpha</code>的目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alpha</span><br><span class="line">└── data</span><br><span class="line">    └── letter.txt</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+<h3 id="初始化仓库"><a href="#初始化仓库" class="headerlink" title="初始化仓库"></a>初始化仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git init</span><br><span class="line">Initialized empty Git repository</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p><code>git init</code>命令将当前目录添加到Git仓库。为此，它会在当前目录下创建一个<code>.git</code>目录并写入一批文件。这些文件记录了Git配置和版本历史的所有信息。它们都是一些普通的文件，并没什么特别。用户可以使用编辑器或shell命令对它们进行浏览或编辑。也就是说，用户可以像编辑他们的项目文件一样来浏览或编辑项目的版本历史。</p>
+<p>现在，<code>alpha</code>的目录结构变成了这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alpha</span><br><span class="line">├── data</span><br><span class="line">│   └── letter.txt</span><br><span class="line">└── .git</span><br><span class="line">    ├── objects</span><br><span class="line">    etc...</span><br><span class="line">1234567</span><br></pre></td></tr></table></figure>
+<p><code>.git</code>目录和它的内容是由Git创建的。其它文件组成了工作区，是由用户创建的。</p>
+<h3 id="添加文件"><a href="#添加文件" class="headerlink" title="添加文件"></a>添加文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git add data/letter.txt</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>添加<code>data/letter.txt</code>文件到Git。该操作有两个影响。</p>
+<p>第一，它会在<code>.git/objects/</code>目录下创建一个新的blob文件。</p>
+<p>这个blob文件包含了<code>data/letter.txt</code>文件压缩后的内容，文件名取自内容的哈希值。哈希意味着执行一段算法，将给定内容转换为更小的1，且能唯一2确定原内容的值的过程。例如，Git对<code>a</code>作哈希得到<code>2e65efe2a145dda7ee51d1741299f848e5bf752e</code>。哈希值的头两个字符用作对象数据库的目录名：<code>.git/objects/2e/</code>，剩下的字符用作blob文件的文件名：<code>.git/objects/2e/65efe2a145dda7ee51d1741299f848e5bf752e</code>。</p>
+<p>注意刚才添加文件时，Git将它的内容保存到<code>objects</code>目录的过程。即使我们从工作区把<code>data/letter.txt</code>文件删掉，它的内容仍然可以在Git中找回。</p>
+<p>第二，它会将<code>data/letter.txt</code>文件添加到index。index是一个列表，它记录有我们想要跟踪的所有文件。该列表保存在<code>.git/index</code>文件内，每一行维护一个文件名到（添加到index时的）文件内容哈希值的映射。执行<code>git add</code>命令后的index如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data/letter.txt 2e65efe2a145dda7ee51d1741299f848e5bf752e</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>创建一个内容为<code>1234</code>的文件<code>data/number.txt</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;1234&apos; &gt; data/number.txt</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>现在工作区的目录结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">alpha</span><br><span class="line">└── data</span><br><span class="line">    ├── letter.txt</span><br><span class="line">    └── number.txt</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>将<code>data/number.txt</code>添加到Git。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git add data</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p><code>git add</code>命令创建一个包含<code>data/number.txt</code>内容的blob对象，然后添加一个index项，将<code>data/number.txt</code>指向刚刚创建的blob对象。执行完后的index如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data/letter.txt 2e65efe2a145dda7ee51d1741299f848e5bf752e</span><br><span class="line">data/number.txt 274c0052dd5408f8ae2bc8440029ff67d79bc5c3</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>注意，虽然我们执行的是<code>git add data</code>，但只有<code>data</code>目录内的文件被加到index，<code>data</code>不会被加入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;1&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>我们原打算在<code>data/number.txt</code>内写入<code>1</code>而不是刚才的<code>1234</code>，现在修正一下，然后将文件重新加到index。这条命令会为新的内容重新生成一个blob文件，并更新<code>data/number.txt</code>在index中的指向。</p>
+<h3 id="创建提交"><a href="#创建提交" class="headerlink" title="创建提交"></a>创建提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git commit -m &apos;a1&apos;</span><br><span class="line">          [master (root-commit) 774b54a] a1</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>创建一个提交<code>a1</code>。Git会打印出此次提交的简短描述。</p>
+<p>提交命令对应三个步骤。创建提交版本对应文件的树图（tree graph），创建一个提交对象，然后将当前分支指向该提交。</p>
+<h4 id="创建树图"><a href="#创建树图" class="headerlink" title="创建树图"></a>创建树图</h4><p>树图记录着index内对应文件 (即项目文件) 的位置和内容，Git通过树图来记录项目的当前状态。</p>
+<p>树图由两类对象组成：blob和tree。</p>
+<p>blob是在执行<code>git add</code>命令时创建的，用来保存项目文件的内容。</p>
+<p>tree是在创建提交时产生的，一个tree对应工作区的一个目录。</p>
+<p>创建提交后，对应<code>data</code>目录的tree如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">100664 blob 2e65efe2a145dda7ee51d1741299f848e5bf752e letter.txt</span><br><span class="line">100664 blob 56a6051ca2b02b04ef92d5150c9ef600403cb1de number.txt</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>第一行记录了恢复<code>data/letter.txt</code>文件需要的所有信息。第一部分表示该文件的权限，第二部分表示该行记录的是一个blob对象，第三部分表示该blob的哈希值，第四部分记录了文件名。</p>
+<p>第二行是<code>data/number.txt</code>的信息。</p>
+<p>下面是对应<code>alpha</code>目录（项目根目录）的tree：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">040000 tree 0eed1217a2947f4930583229987d90fe5e8e0b74 data</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>这仅有的一行指向<code>data</code>这个树对象。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/1-a1-tree-graph.png" alt="Tree graph for the a1 commit" title="">
+                </div>
+                <div class="image-caption">Tree graph for the a1 commit</div>
+            </figure>
+<p>上图中，<code>root</code> tree指向了<code>data</code>，而<code>data</code> tree指向了<code>data/letter.txt</code>和<code>data/number.txt</code>这两个blob。</p>
+<h4 id="创建提交对象"><a href="#创建提交对象" class="headerlink" title="创建提交对象"></a>创建提交对象</h4><p><code>git commit</code>在创建完树图后会创建一个提交对象。提交对象是<code>.git/objects/</code>目录下的另一种文本文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tree ffe298c3ce8bb07326f888907996eaa48d266db4</span><br><span class="line">author Mary Rose Cook &lt;mary@maryrosecook.com&gt; 1424798436 -0500</span><br><span class="line">committer Mary Rose Cook &lt;mary@maryrosecook.com&gt; 1424798436 -0500</span><br><span class="line"></span><br><span class="line">a1</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p>第一行指向一个tree对象。通过这里的哈希值，我们可以找到一个指向工作区根目录（即alpha目录）的tree对象。最后一行是提交信息。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/2-a1-commit.png" alt="a1 commit object pointing at its tree graph" title="">
+                </div>
+                <div class="image-caption">a1 commit object pointing at its tree graph</div>
+            </figure>
+<h4 id="将当前分支指向新提交"><a href="#将当前分支指向新提交" class="headerlink" title="将当前分支指向新提交"></a>将当前分支指向新提交</h4><p>最后，commit命令将当前分支指向新的提交。</p>
+<p>那么，哪个是当前分支呢？Git查看保存<code>HEAD</code>的文件<code>.git/HEAD</code>，此时它的内容是：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ref: refs/heads/master</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>好了，<code>HEAD</code>现在指向<code>master</code>，<code>master</code>就是我们的当前分支。</p>
+<p><code>HEAD</code>和<code>master</code>都是引用。引用是一个标记，Git或用户可以通过它找到某个提交。</p>
+<p>代表<code>master</code>引用的文件还不存在，因为这是我们在该仓库的第一个提交。不过不用担心，Git会创建该文件<code>.git/refs/heads/master</code>并写入提交对象的哈希值：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">74ac3ad9cde0b265d2b4f1c778b283a6e2ffbafd</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>注意：如果你跟着本文边读边敲，你的<code>a1</code>提交生成的哈希值会跟上值不同。像blob和tree这样以内容计算哈希的对象，它们的哈希值与本文相同。提交不然，因为它的哈希值包含了提交日期和作者的信息。</p>
+<p>现在把<code>HEAD</code>和<code>master</code>添加到我们的图里：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/3-a1-refs.png" alt="HEAD pointing at master and master pointing at the a1 commit" title="">
+                </div>
+                <div class="image-caption">HEAD pointing at master and master pointing at the a1 commit</div>
+            </figure>
+<p><code>HEAD</code>指向<code>master</code>，这跟提交前一样。但是<code>master</code>现在已经存在了，而且它指向了新的提交对象。</p>
+<h3 id="创建第二个提交"><a href="#创建第二个提交" class="headerlink" title="创建第二个提交"></a>创建第二个提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">下图是提交`a1`后的Git状态图（包含工作区和index）：</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/4-a1-wc-and-index.png" alt="a1 commit shown with the working copy and index" title="">
+                </div>
+                <div class="image-caption">a1 commit shown with the working copy and index</div>
+            </figure>
+<p>注意，<code>data/letter.txt</code>和<code>data/number.txt</code>的内容在工作区、index和<code>a1</code>是一致的。index和<code>HEAD</code>都通过哈希值指向blob对象，而在工作区，内容直接保存在文件里。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;2&apos; &gt; data/number.txt</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>将<code>data/number.txt</code>的内容更新为<code>2</code>。这个操作只修改了工作区，index和<code>HEAD</code>不变。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/5-a1-wc-number-set-to-2.png" alt="data/number.txt set to 2 in the working copy" title="">
+                </div>
+                <div class="image-caption">data/number.txt set to 2 in the working copy</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>将文件添加到Git。此操作将在<code>objects</code>目录下添加一个内容为<code>2</code>的blob对象，然后将index中的<code>data/number.txt</code>项指向该blob对象。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/6-a1-wc-and-index-number-set-to-2.png" alt="data/number.txt set to 2 in the working copy and index" title="">
+                </div>
+                <div class="image-caption">data/number.txt set to 2 in the working copy and index</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git commit -m &apos;a2&apos;</span><br><span class="line">          [master f0af7e6] a2</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>提交此次变更。Git在这里做的操作跟之前第一次提交时相同。</p>
+<p>第一步，创建包含index文件列表的树图。</p>
+<p>index中的<code>data/number.txt</code>项已经更新，老的<code>data</code> tree不能再反映<code>data</code>目录现在的状态了，此时一个新的<code>data</code> tree会被创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">100664 blob 2e65efe2a145dda7ee51d1741299f848e5bf752e letter.txt</span><br><span class="line">100664 blob d8263ee9860594d2806b0dfd1bfd17528b0ba2a4 number.txt</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>新的<code>data</code> tree和之前的<code>data</code> tree有不同的哈希值，为记录这一变化，新的<code>root</code> tree被创建：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">040000 tree 40b0318811470aaacc577485777d7a6780e51f0b data</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>第二步，一个新的commit对象被创建。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tree ce72afb5ff229a39f6cce47b00d1b0ed60fe3556</span><br><span class="line">parent 774b54a193d6cfdd081e581a007d2e11f784b9fe</span><br><span class="line">author Mary Rose Cook &lt;mary@maryrosecook.com&gt; 1424813101 -0500</span><br><span class="line">committer Mary Rose Cook &lt;mary@maryrosecook.com&gt; 1424813101 -0500</span><br><span class="line"></span><br><span class="line">a2</span><br><span class="line">1234567</span><br></pre></td></tr></table></figure>
+<p>commit对象的第一行指向新的<code>root</code> tree，第二行指向父提交<code>a1</code>。Git会查看<code>HEAD</code>，找到当前分支master，进而找到父提交的哈希值。</p>
+<p>第三步，新创建的提交的哈希值被写入记录<code>master</code>分支的文件。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/7-a2.png" alt="a2 commit" title="">
+                </div>
+                <div class="image-caption">a2 commit</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/8-a2-just-objects-commits-and-refs.png" alt="Git graph without the working copy and index" title="">
+                </div>
+                <div class="image-caption">Git graph without the working copy and index</div>
+            </figure>
+<p><strong>图属性</strong>：项目内容被保存到blob和tree对象组成的树形结构里。这意味着只有变化的文件才被保存到对象数据库。看上图，<code>a2</code>重用了<code>a1</code>提交前生成的<code>a</code> blob。同样的，如果一个目录在提交前后没有变化，那么这个目录及其子目录的tree对象和blob对象都可以重用。通常，我们的单个提交只包含极少的变化文件，这意味着Git可以使用少量磁盘空间保存大量提交历史。</p>
+<p><strong>图属性</strong>：每个提交都有一个父提交。这意味着仓库可以记录项目提交历史。</p>
+<p>译者注：仓库的第一个提交是没有父提交的（或者说父提交为空）。</p>
+<p><strong>图属性</strong>：ref是某段提交历史的入口。这意味着我们可以给某个提交一个有意义的名字。用户将工作组织成不同版本线，并赋予有意义的ref，如<code>fix-for-bug-376</code>。Git使用符号链接来操作提交历史，如<code>HEAD</code>、<code>MERGE_HEAD</code>和<code>FETCH_HEAD</code>。</p>
+<p><strong>图属性</strong>：<code>objects/</code>目录下的结点是不可变的。这意味着它的内容可以编辑，但不能删除。添加的文件内容和创建的提交都保存在<code>objects</code>目录3下。</p>
+<p><strong>图属性</strong>：ref是可变的。因此，一个分支的状态是可以修改的。<code>master</code>分支指向的提交可能是项目当前最好的版本，但它会被一个新的更好的提交取代。</p>
+<p><strong>图属性</strong>：工作区和ref指向的提交更容易被访问到，其它提交会麻烦一点。这意味着最近的提交历史更容易被访问，但它们更经常被修改。或者说，Git has a fading memory that must be jogged with increasingly vicious prods。</p>
+<p>工作区是在历史里最容易找到的，它就在仓库的根目录，不需要执行Git命令。它也是在历史里我们最经常修改的，用户可以针对一个文件修改N个版本，但Git只记录执行<code>add</code>命令时的版本。</p>
+<p><code>HEAD</code>指向的提交很容易找到，它就是当前分支的最近一个提交。执行<code>git statsh</code>4命令后的工作区就是它的内容。同时，<code>HEAD</code>也是我们最经常修改的ref。</p>
+<p>其它ref指向的提交也很容易找到，我们只要把它们检出就可以了。修改其它分支没有修改<code>HEAD</code>来得经常，但当修改其它分支涉及到的功能时，它们就会变得非常有用。</p>
+<p>没有被ref指向的提交是很难找到的。在某个ref上的提交越多，操作之前的提交就越不容易。但我们通常很少操作很久之前的提交5。</p>
+<h3 id="检出提交"><a href="#检出提交" class="headerlink" title="检出提交"></a>检出提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git checkout 37888c2</span><br><span class="line">          You are in &apos;detached HEAD&apos; state...</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>使用<code>a2</code>的哈希值检出该提交。(此命令不能直接运行，请先使用<code>git log</code>找到你仓库里<code>a2</code>的哈希值。)</p>
+<p>检出操作分四步。</p>
+<p>第一步，Git找到<code>a2</code>指向的树图。</p>
+<p>第二步，将树图里对应的文件写到工作区。这一步不会产生任何变化。工作区的内容已经和树图保持一致了，因为我们的<code>HEAD</code>之前就已经通过<code>master</code>指向<code>a2</code>提交了。</p>
+<p>第三步，将树图里对应的文件写到index。这一步也不会产生任何变化。index也已经跟树图的内容保持一致了。</p>
+<p>第四步，将<code>a2</code>的哈希值写入<code>HEAD</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">f0af7e62679e144bb28c627ee3e8f7bdb235eee9</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>将<code>HEAD</code>内容设置为某个哈希值会导致仓库进入detached <code>HEAD</code>状态。注意下图中的<code>HEAD</code>，它直接指向<code>a2</code>提交，而不再指向<code>master</code>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/9-a2-detached-head.png" alt="Detached HEAD on a2 commit" title="">
+                </div>
+                <div class="image-caption">Detached HEAD on a2 commit</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;3&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">~/alpha $ git commit -m &apos;a3&apos;</span><br><span class="line">          [detached HEAD 3645a0e] a3</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>将<code>data/number.txt</code>的内容修改为<code>3</code>，然后提交。Git查看<code>HEAD</code>来确定<code>a3</code>的父提交，它没有发现分支，而是找到了<code>a2</code>的哈希值。</p>
+<p>Git将<code>HEAD</code>更新为<code>a3</code>的哈希值。此时仓库仍然处于detached <code>HEAD</code>状态，而没有在一个分支上，因为没有ref指向<code>a3</code>或它之后的提交。这意味着它很容易丢失。</p>
+<p>从现在起，我们将在Git的状态图中忽略tree和blob。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/10-a3-detached-head.png" alt="a3 commit that is not on a branch" title="">
+                </div>
+                <div class="image-caption">a3 commit that is not on a branch</div>
+            </figure>
+<h3 id="创建分支"><a href="#创建分支" class="headerlink" title="创建分支"></a>创建分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git branch deputy</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>创建一个新分支<code>deputy</code>。该操作只是创建一个新文件<code>.git/refs/heads/deputy</code>，并把<code>HEAD</code>指向的<code>a3</code>的哈希值写入该文件。</p>
+<p><strong>图属性</strong>：分支只是ref，而ref只是文件。这意味着Git的分支是很轻量的。</p>
+<p>创建<code>deputy</code>分支使得<code>a3</code>附属到了该分支上，<code>a3</code>现在安全了。<code>HEAD</code>仍然处于detached状态，因为它仍直接指向一个提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/11-a3-on-deputy.png" alt="a3 commit now on the deputy branch" title="">
+                </div>
+                <div class="image-caption">a3 commit now on the deputy branch</div>
+            </figure>
+<h3 id="检出分支"><a href="#检出分支" class="headerlink" title="检出分支"></a>检出分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git checkout master</span><br><span class="line">          Switched to branch &apos;master&apos;</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>检出<code>master</code>分支。</p>
+<p>第一步，Git会获取<code>master</code>指向的提交<code>a2</code>，根据<code>a2</code>获取该分支指向的树图。</p>
+<p>第二步，Git将树图对应的文件写入工作区。此步会将<code>data/number.txt</code>的内容修改为<code>2</code>。</p>
+<p>第三步，Git将树图对应的文件写入index。此步会将index内的<code>data/number.txt</code>更新为<code>2</code>这个blob的哈希值。</p>
+<p>第四步，Git将<code>HEAD</code>指向<code>master</code>，即将<code>HEAD</code>内容由哈希值改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ref: refs/heads/master</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/12-a3-on-master-on-a2.png" alt="master checked out and pointing at the a2 commit" title="">
+                </div>
+                <div class="image-caption">master checked out and pointing at the a2 commit</div>
+            </figure>
+<h3 id="检出与工作区有冲突的分支"><a href="#检出与工作区有冲突的分支" class="headerlink" title="检出与工作区有冲突的分支"></a>检出与工作区有冲突的分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;789&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git checkout deputy</span><br><span class="line">          Your changes to these files would be overwritten</span><br><span class="line">          by checkout:</span><br><span class="line">            data/number.txt</span><br><span class="line">          Commit your changes or stash them before you</span><br><span class="line">          switch branches.</span><br><span class="line">12345678</span><br></pre></td></tr></table></figure>
+<p>用户小手一抖，将<code>data/number.txt</code>文件的内容改成了<code>789</code>，然后试图检出<code>deputy</code>。Git阻止了这场血案。</p>
+<p><code>HEAD</code>通过<code>master</code>指向<code>a2</code>，<code>data/number.txt</code>在<code>a2</code>提交时的内容是<code>2</code>。<code>deputy</code>指向<code>a3</code>，该文件在<code>a3</code>提交时的内容是<code>3</code>。而在工作区中，该文件内容是<code>789</code>。这些版本的文件内容都不相同，我们必须先解决这些差异。</p>
+<p>Git可以使用要检出的文件内容替换工作区的文件内容，但这样会导致文件内容的丢失。</p>
+<p>Git也可以把要检出的文件内容合并到工作区，但这要复杂的多。</p>
+<p>所以Git终止了检出操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;2&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git checkout deputy</span><br><span class="line">          Switched to branch &apos;deputy&apos;</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+<p>现在我们意识到了这次失误，将文件改回原内容。现在可以成功检出<code>deputy</code>了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/13-a3ondeputy.png" alt="deputy checked out" title="">
+                </div>
+                <div class="image-caption">deputy checked out</div>
+            </figure>
+<h3 id="合并祖先提交"><a href="#合并祖先提交" class="headerlink" title="合并祖先提交"></a>合并祖先提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git merge master</span><br><span class="line">          Already up-to-date.</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>将<code>master</code>合并到<code>deputy</code>。合并两个分支就是合并他们的提交。<code>deputy</code>指向合并的目的提交，<code>master</code>指向合并的源提交。Git不会对本次合并做任何操作，只是提示<code>Already up-to-date.</code>。</p>
+<p><strong>图属性</strong>：提交序列被解释为对项目内容的一系列更改。这意味着，如果源提交是目的提交的祖先提交，Git将不会做合并操作。这些修改已经被合并过了。</p>
+<h3 id="合并后代提交"><a href="#合并后代提交" class="headerlink" title="合并后代提交"></a>合并后代提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git checkout master</span><br><span class="line">          Switched to branch &apos;master&apos;</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>检出<code>master</code>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/14-a3-on-master-on-a2.png" alt="master checked out and pointing at the a2 commit" title="">
+                </div>
+                <div class="image-caption">master checked out and pointing at the a2 commit</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git merge deputy</span><br><span class="line">          Fast-forward</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>将<code>deputy</code>合并到<code>master</code>。Git发现目的提交<code>a2</code>是源提交<code>a3</code>的祖先提交。Git使用了fast-forward合并。</p>
+<p>Git获取源提交和它指向的树图，将树图中的文件写入工作区和index。然后使用”fast-forward”技术将<code>master</code>指向<code>a3</code>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/15-a3-on-master.png" alt="a3 commit from deputy fast-forward merged into master" title="">
+                </div>
+                <div class="image-caption">a3 commit from deputy fast-forward merged into master</div>
+            </figure>
+<p><strong>图属性</strong>：提交序列被解释为对仓库内容的一系列更改。这意味着，如果源提交是目的提交的后代提交，提交历史是不会改变的，因为已经存在一段提交来描述目的提交和源提交之间的变化。但是Git的状态图是会改变的。<code>HEAD</code>指向的<code>ref</code>会更新为源提交。</p>
+<h3 id="合并不同提交线的两个提交"><a href="#合并不同提交线的两个提交" class="headerlink" title="合并不同提交线的两个提交"></a>合并不同提交线的两个提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;4&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">~/alpha $ git commit -m &apos;a4&apos;</span><br><span class="line">          [master 7b7bd9a] a4</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>将<code>data/number.txt</code>内容修改为<code>4</code>，然后提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git checkout deputy</span><br><span class="line">          Switched to branch &apos;deputy&apos;</span><br><span class="line">          ~/alpha $ printf &apos;b&apos; &gt; data/letter.txt</span><br><span class="line">          ~/alpha $ git add data/letter.txt</span><br><span class="line">          ~/alpha $ git commit -m &apos;b3&apos;</span><br><span class="line">                    [deputy 982dffb] b3</span><br><span class="line">1234567</span><br></pre></td></tr></table></figure>
+<p>检出到<code>deputy</code>，将<code>data/letter.txt</code>内容修改为<code>b</code>，然后提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/16-a4-b3-on-deputy.png" alt="a4 committed to master, b3 committed to deputy and deputy checked out" title="">
+                </div>
+                <div class="image-caption">a4 committed to master, b3 committed to deputy and deputy checked out</div>
+            </figure>
+<p><strong>图属性</strong>：多个提交可以共用一个父提交，这意味着我们可以在提交历史里创建新的提交线。</p>
+<p><strong>图属性</strong>：一个提交可以有多个父提交，这意味着我们可以通过创建一个合并提交来合并两个不同的提交线。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git merge master -m &apos;b4&apos;</span><br><span class="line">          Merge made by the &apos;recursive&apos; strategy.</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>合并<code>master</code>到<code>deputy</code>。</p>
+<p>Git发现目的提交<code>b3</code>和源提交<code>a4</code>在两个不同的提交线上，它创建了一个合并提交。这个过程总共分八步。</p>
+<p>第一步，Git将源提交的哈希值写入文件<code>alpha/.git/MERGE_HEAD</code>。若此文件存在，说明Git正在做合并操作。</p>
+<p>第二步，Git查找源提交和目的提交的最近一个公共父提交，即基提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/17-a4-b3-on-deputy.png" alt="a3, the base commit of a4 and b3" title="">
+                </div>
+                <div class="image-caption">a3, the base commit of a4 and b3</div>
+            </figure>
+<p><strong>图属性</strong>：每个提交都有一个父提交。这意味着我们可以发现两个提交线分开自哪个提交。Git查找<code>b3</code>和<code>a4</code>的所有祖先提交，发现了最近的公共父提交<code>a3</code>。这正是他们的基提交。</p>
+<p>第三步，Git为基提交、源提交和目的提交创建索引。</p>
+<p>第四步，Git创建源提交和目的提交相对于基提交的差异，此处的差异是一个列表，每一项由文件路径以及文件状态组成。状态包括：添加、移除、修改、冲突。</p>
+<p>Git获取基提交、源提交和目的提交的文件列表，然后针对每一个文件，通过对比index来判断它的状态。Git将文件列表及状态写入差异列表。在我们的例子中，差异包含两个条目。</p>
+<p>第一项记录<code>data/letter.txt</code>的状态。在基提交、目的提交和源提交中，该文件内容分别是<code>a</code>、<code>b</code>和<code>a</code>。文件内容在基提交和目的提交不同，但在基提交和源提交相同。Git发现文件内容被目的提交修改了，而在源提交中没有被修改。所以<code>data/letter.txt</code>项的状态是修改，而不是冲突。</p>
+<p>第二项记录<code>data/number.txt</code>的状态。在我们的例子中，该文件内容在基提交和目的提交相同，但在基提交和源提交不同。这个条目的状态也是修改。</p>
+<p><strong>图属性</strong>：查找一个合并操作的基提交是可行的。这意味着，如果基提交中的一个文件只在源提交或目的提交做了修改，Git可以自动合并该文件，这样就减少了用户的工作量。</p>
+<p>第五步，Git将差异中的项更新到工作区。<code>data/letter.txt</code>内容被修改为<code>b</code>，<code>data/number.txt</code>内容被修改为<code>4</code>。</p>
+<p>第六步，Git将差异中的项更新到index。<code>data/letter.txt</code>会指向内容为<code>b</code>的blob，<code>data/number.txt</code>会指向内容为<code>4</code>的blob。</p>
+<p>第七步，更新后的index被提交：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tree 20294508aea3fb6f05fcc49adaecc2e6d60f7e7d</span><br><span class="line">parent 982dffb20f8d6a25a8554cc8d765fb9f3ff1333b</span><br><span class="line">parent 7b7bd9a5253f47360d5787095afc5ba56591bfe7</span><br><span class="line">author Mary Rose Cook &lt;mary@maryrosecook.com&gt; 1425596551 -0500</span><br><span class="line">committer Mary Rose Cook &lt;mary@maryrosecook.com&gt; 1425596551 -0500</span><br><span class="line"></span><br><span class="line">b4</span><br><span class="line">12345678</span><br></pre></td></tr></table></figure>
+<p>注意，这个提交有两个父提交。</p>
+<p>第八步，Git将当前分支<code>deputy</code>指向新创建的提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/18-b4-on-deputy.png" alt="b4, the merge commit resulting from the recursive merge of a4 into b3" title="">
+                </div>
+                <div class="image-caption">b4, the merge commit resulting from the recursive merge of a4 into b3</div>
+            </figure>
+<h3 id="合并不同提交线且有相同修改文件的两个提交"><a href="#合并不同提交线且有相同修改文件的两个提交" class="headerlink" title="合并不同提交线且有相同修改文件的两个提交"></a>合并不同提交线且有相同修改文件的两个提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git checkout master</span><br><span class="line">          Switched to branch &apos;master&apos;</span><br><span class="line">~/alpha $ git merge deputy</span><br><span class="line">          Fast-forward</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>检出<code>master</code>，将<code>deputy</code>合并到<code>master</code>。此操作将使用fast-forwards将<code>master</code>指向<code>b4</code>。现在，<code>master</code>和<code>deputy</code>指向了相同的提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/19-b4-master-deputy-on-b4.png" alt="deputy merged into master to bring master up to the latest commit, b4" title="">
+                </div>
+                <div class="image-caption">deputy merged into master to bring master up to the latest commit, b4</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git checkout deputy</span><br><span class="line">          Switched to branch &apos;deputy&apos;</span><br><span class="line">~/alpha $ printf &apos;5&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">~/alpha $ git commit -m &apos;b5&apos;</span><br><span class="line">          [deputy bd797c2] b5</span><br><span class="line">1234567</span><br></pre></td></tr></table></figure>
+<p>检出<code>deputy</code>。将<code>data/number.txt</code>内容修改为<code>5</code>，然后提交。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git checkout master</span><br><span class="line">          Switched to branch &apos;master&apos;</span><br><span class="line">~/alpha $ printf &apos;6&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">~/alpha $ git commit -m &apos;b6&apos;</span><br><span class="line">          [master 4c3ce18] b6</span><br><span class="line">1234567</span><br></pre></td></tr></table></figure>
+<p>检出<code>master</code>。将<code>data/number.txt</code>内容修改为<code>6</code>，然后提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/20-b5-on-deputy-b6-on-master.png" alt="b5 commit on deputy and b6 commit on master" title="">
+                </div>
+                <div class="image-caption">b5 commit on deputy and b6 commit on master</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git merge deputy</span><br><span class="line">          CONFLICT in data/number.txt</span><br><span class="line">          Automatic merge failed; fix conflicts and</span><br><span class="line">          commit the result.</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>将<code>deputy</code>合并到<code>master</code>。合并因冲突中止。对于有冲突的合并操作，执行步骤的前六步跟没有冲突的合并是相同的：写入<code>.git/MERGE_HEAD</code>，查找基提交，创建基提交、目的提交和源提交的索引，生成差异，更新工作区，更新index。由于发生了冲突，第七步（创建提交）和第八步（更新ref）不再执行。让我们再来看看这些步骤，观察到底发生了什么。</p>
+<p>第一步，Git将源提交的哈希值写入<code>.git/MERGE_HEAD</code>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/21-b6-on-master-with-merge-head.png" alt="MERGE_HEAD written during merge of b5 into b6" title="">
+                </div>
+                <div class="image-caption">MERGE_HEAD written during merge of b5 into b6</div>
+            </figure>
+<p>第二步，Git查找到基提交<code>b4</code>。</p>
+<p>第三步，Git创建基提交、目的提交和源提交的索引。</p>
+<p>第四步，Git生成目的提交和源提交相对于基提交的差异列表，每一项包含文件路径和该文件的状态：添加、移除、修改或冲突。</p>
+<p>在本例中，差异列表仅包含一项：<code>data/number.txt</code>。由于它的内容在源提交和目的提交中都是变化的（相对于基提交），它的状态被标为冲突。</p>
+<p>第五步，差异列表中的文件被写入工作区。对于冲突的部分，Git将两个版本都写入工作区。<code>data/number.txt</code>的内容变为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span><br><span class="line">6</span><br><span class="line">=======</span><br><span class="line">5</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; deputy</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p>第六步，差异列表中的文件被写入index。index中的项被文件路径和stage的组合唯一标识。没有冲突的项stage为0。在本次合并前，index看起来像下面的样子（标有0的一列是stage）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0 data/letter.txt 63d8dbd40c23542e740659a7168a0ce3138ea748</span><br><span class="line">0 data/number.txt 62f9457511f879886bb7728c986fe10b0ece6bcb</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>差异列表写入index后，index变成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">0 data/letter.txt 63d8dbd40c23542e740659a7168a0ce3138ea748</span><br><span class="line">1 data/number.txt bf0d87ab1b2b0ec1a11a3973d2845b42413d9767</span><br><span class="line">2 data/number.txt 62f9457511f879886bb7728c986fe10b0ece6bcb</span><br><span class="line">3 data/number.txt 7813681f5b41c028345ca62a2be376bae70b7f61</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>stage <code>0</code>的<code>data/letter.txt</code>项跟合并前一样。stage <code>0</code>的<code>data/number.txt</code>项已经不复存在，取而代之的是三个新项。stage <code>1</code>的项包含该文件在基提交中内容的哈希值，stage <code>2</code>包含目的提交的哈希值，stage <code>3</code>包含源提交的哈希值。这三项表明文件<code>data/number.txt</code>存在冲突。</p>
+<p>合并中止了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;11&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>将两个有冲突的文件合并，这里我们将<code>data/number.txt</code>的内容修改为<code>11</code>，然后将文件添加到index，以告诉Git冲突已经解决了。Git为<code>11</code>创建一个blob，移除index中的三项<code>data/number.txt</code>，并添加stage为<code>0</code>的<code>data/number.txt</code>项，该项指向新创建blob。现在index变成了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">0 data/letter.txt 63d8dbd40c23542e740659a7168a0ce3138ea748</span><br><span class="line">0 data/number.txt 9d607966b721abde8931ddd052181fae905db503</span><br><span class="line"></span><br><span class="line">~/alpha $ git commit -m &apos;b11&apos;</span><br><span class="line">          [master 251a513] b11</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p>第七步，提交。Git发现存在<code>.git/MERGE_HEAD</code>，也就是说合并还在进行。通过检查index，发现没有冲突。它创建了一个新提交<code>b11</code>，用来记录合并后的内容。然后删除<code>.git/MERGE_HEAD</code>。此次合并完成。</p>
+<p>第八步，Git将当前分支<code>master</code>指向新提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/22-b11-on-master.png" alt="b11, the merge commit resulting from the conflicted, recursive merge of b5 into b6" title="">
+                </div>
+                <div class="image-caption">b11, the merge commit resulting from the conflicted, recursive merge of b5 into b6</div>
+            </figure>
+<h3 id="移除文件"><a href="#移除文件" class="headerlink" title="移除文件"></a>移除文件</h3><p>下图是当前Git的状态图，其中包含了提交历史、最后提交的tree和blob、工作区以及index：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/23-b11-with-objects-wc-and-index.png" alt="The working copy, index, b11 commit and its tree graph" title="">
+                </div>
+                <div class="image-caption">The working copy, index, b11 commit and its tree graph</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git rm data/letter.txt</span><br><span class="line">          rm &apos;data/letter.txt&apos;</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>使用Git移除<code>data/letter.txt</code>。Git将该文件从工作区和index删除。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/24-b11-letter-removed-from-wc-and-index.png" alt="After data/letter.txt rmed from working copy and index" title="">
+                </div>
+                <div class="image-caption">After data/letter.txt rmed from working copy and index</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git commit -m &apos;11&apos;</span><br><span class="line">          [master d14c7d2] 11</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>提交变更。按照惯例，Git为index创建一个树图。该树图不再包含<code>data/letter.txt</code>，因为它已经从index删除了。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/25-11.png" alt="11 commit made after data/letter.txt rmed" title="">
+                </div>
+                <div class="image-caption">11 commit made after data/letter.txt rmed</div>
+            </figure>
+<h3 id="拷贝仓库"><a href="#拷贝仓库" class="headerlink" title="拷贝仓库"></a>拷贝仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ cd ..</span><br><span class="line">      ~ $ cp -R alpha bravo</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>将<code>alpha/</code>拷贝到<code>bravo/</code>。此时将出现下面的目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">~</span><br><span class="line">├── alpha</span><br><span class="line">│   └── data</span><br><span class="line">│       └── number.txt</span><br><span class="line">└── bravo</span><br><span class="line">    └── data</span><br><span class="line">        └── number.txt</span><br><span class="line">12345678</span><br></pre></td></tr></table></figure>
+<p>现在<code>bravo</code>目录存在另一个Git状态图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/26-11-cp-alpha-to-bravo.png" alt="New graph created when alpha cped to bravo" title="">
+                </div>
+                <div class="image-caption">New graph created when alpha cped to bravo</div>
+            </figure>
+<h3 id="关联其它仓库"><a href="#关联其它仓库" class="headerlink" title="关联其它仓库"></a>关联其它仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      ~ $ cd alpha</span><br><span class="line">~/alpha $ git remote add bravo ../bravo</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>回到<code>alpha</code>仓库，将<code>bravo</code>设置为<code>alpha</code>仓库的远程仓库。该操作将在<code>alpha/.git/config</code>添加两行内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[remote &quot;bravo&quot;]</span><br><span class="line">    url = ../bravo/</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>这两行说明，存在一个远程仓库<code>bravo</code>，该仓库位于<code>../bravo</code>目录。</p>
+<h3 id="从远程仓库获取分支"><a href="#从远程仓库获取分支" class="headerlink" title="从远程仓库获取分支"></a>从远程仓库获取分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ cd ../bravo</span><br><span class="line">~/bravo $ printf &apos;12&apos; &gt; data/number.txt</span><br><span class="line">~/bravo $ git add data/number.txt</span><br><span class="line">~/bravo $ git commit -m &apos;12&apos;</span><br><span class="line">          [master 94cd04d] 12</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p>进入<code>bravo</code>仓库，将<code>data/number.txt</code>内容修改为<code>12</code>并提交到<code>master</code>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/27-12-bravo.png" alt="12 commit on bravo repository" title="">
+                </div>
+                <div class="image-caption">12 commit on bravo repository</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">~/bravo $ cd ../alpha</span><br><span class="line">~/alpha $ git fetch bravo master</span><br><span class="line">          Unpacking objects: 100%</span><br><span class="line">          From ../bravo</span><br><span class="line">            * branch master -&gt; FETCH_HEAD</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p>进入<code>alpha</code>仓库，将<code>bravo</code>的<code>master</code>分支取回到<code>alpha</code>。该操作分四步。</p>
+<p>第一步，Git获取<code>bravo</code>仓库中<code>master</code>指向提交的哈希值，也就是提交<code>12</code>的哈希值。</p>
+<p>第二步，Git创建一个包含了<code>12</code>提交依赖的所有对象的列表，包括提交对象本身和祖先提交，以及它们的树图内的所有对象。它将<code>alpha</code>对象数据库中已经存在的对象从列表中移除。然后将列表的对象拷贝到<code>alpha/.git/objects/</code>。</p>
+<p>第三步，Git将ref文件<code>alpha/.git/refs/remotes/bravo/master</code>的内容更新为提交<code>12</code>的哈希值。</p>
+<p>第四步，<code>alpha/.git/FETCH_HEAD</code>的内容被设置为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">94cd04d93ae88a1f53a4646532b1e8cdfbc0977f branch &apos;master&apos; of ../bravo</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>这表示最近一次执行fetch命令获取的是<code>bravo</code>中<code>master</code>分支的提交<code>12</code>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/28-12-fetched-to-alpha.png" alt="alpha after bravo/master fetched" title="">
+                </div>
+                <div class="image-caption">alpha after bravo/master fetched</div>
+            </figure>
+<p><strong>图属性</strong>：对象可以被拷贝。这意味着提交历史可以被不同仓库共享。</p>
+<p><strong>图属性</strong>：仓库可以保存远程分支的ref，如<code>alpha/.git/refs/remotes/bravo/master</code>。这意味着仓库可以将远程仓库的分支状态记录到本地。在获取该分支时，它将会被修正，但如果远程分支修改了，它就会过期。</p>
+<h3 id="合并FETCH-HEAD"><a href="#合并FETCH-HEAD" class="headerlink" title="合并FETCH_HEAD"></a>合并FETCH_HEAD</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git merge FETCH_HEAD</span><br><span class="line">          Updating d14c7d2..94cd04d</span><br><span class="line">          Fast-forward</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+<p>合并<code>FETCH_HEAD</code>。<code>FETCH_HEAD</code>只是另一个ref，它解析到源提交<code>12</code>。<code>HEAD</code>指向目的提交<code>11</code>。Git使用fast-forward合并将<code>master</code>指向<code>12</code>提交。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/29-12-merged-to-alpha.png" alt="alpha after FETCH_HEAD merged" title="">
+                </div>
+                <div class="image-caption">alpha after FETCH_HEAD merged</div>
+            </figure>
+<h3 id="从远程仓库拉取分支"><a href="#从远程仓库拉取分支" class="headerlink" title="从远程仓库拉取分支"></a>从远程仓库拉取分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git pull bravo master</span><br><span class="line">          Already up-to-date.</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>将<code>bravo</code>仓库的<code>master</code>分支拉取到<code>alpha</code>仓库。pull是”fetch and merge <code>FETCH_HEAD</code>“的简写。Git执行这条命令然后报告<code>master</code>分支<code>Already up-to-date</code>。</p>
+<h3 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ cd ..</span><br><span class="line">      ~ $ git clone alpha charlie</span><br><span class="line">          Cloning into &apos;charlie&apos;</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+<p>进入上层目录，克隆<code>alpha</code>到<code>charlie</code>。克隆到<code>charlie</code>和我们之前使用<code>cp</code>拷贝<code>bravo</code>仓库的结果是相同的。Git首先创建一个目录<code>charlie</code>，然后将<code>charlie</code>初始化为一个Git仓库，将<code>alpha</code>添加为一个远程仓库<code>origin</code>，获取<code>origin</code>并合并到<code>FETCH_HEAD</code>。</p>
+<h3 id="推送分支到远程仓库的已检出分支"><a href="#推送分支到远程仓库的已检出分支" class="headerlink" title="推送分支到远程仓库的已检出分支"></a>推送分支到远程仓库的已检出分支</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">      ~ $ cd alpha</span><br><span class="line">~/alpha $ printf &apos;13&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">~/alpha $ git commit -m &apos;13&apos;</span><br><span class="line">          [master 3238468] 13</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p>返回<code>alpha</code>仓库，将<code>data/number.txt</code>修改为<code>13</code>，然后提交到<code>alpha</code>仓库的<code>master</code>分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git remote add charlie ../charlie</span><br><span class="line">12</span><br></pre></td></tr></table></figure>
+<p>将<code>charlie</code>设为<code>alpha</code>仓库的远程分支。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git push charlie master</span><br><span class="line">          Writing objects: 100%</span><br><span class="line">          remote error: refusing to update checked out</span><br><span class="line">          branch: refs/heads/master because it will make</span><br><span class="line">          the index and work tree inconsistent</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<p>将<code>master</code>推送到<code>charlie</code>仓库。</p>
+<p><code>13</code>提交依赖的所有对象都被拷贝到<code>charlie</code>仓库。</p>
+<p>此时，推送操作中止了。Git给出了出错信息，它拒绝将分支推送到远程已检出的分支上。这在情理之中，因为如果推送成功，远程分支的index和<code>HEAD</code>将会改变。如果此时有人正在编辑远程分支的工作区，他就懵b了。</p>
+<p>此时，我们可以创建一个新的分支，将<code>13</code>提交合并进来，然后推到<code>charlie</code>。但是我们往往希望仓库可以随时提交。我们希望有一个中心仓库可以用来做同步，而又没有人可以直接在远程仓库仓库，就像Github一样。这时我们就需要一个裸仓库(bare repository)。</p>
+<h3 id="克隆裸仓库"><a href="#克隆裸仓库" class="headerlink" title="克隆裸仓库"></a>克隆裸仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ cd ..</span><br><span class="line">      ~ $ git clone alpha delta --bare</span><br><span class="line">          Cloning into bare repository &apos;delta&apos;</span><br><span class="line">1234</span><br></pre></td></tr></table></figure>
+<p>返回上层目录，克隆出一个裸仓库<code>delta</code>。这跟普通的克隆只有两点不同：<code>config</code>文件会指明该仓库是一个裸仓库，之前在<code>.git</code>目录的文件现在直接放在仓库目录下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">delta</span><br><span class="line">├── HEAD</span><br><span class="line">├── config</span><br><span class="line">├── objects</span><br><span class="line">└── refs</span><br><span class="line">123456</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/30-13-alpha-cloned-to-delta-bare.png" alt="alpha and delta graphs after alpha cloned to delta" title="">
+                </div>
+                <div class="image-caption">alpha and delta graphs after alpha cloned to delta</div>
+            </figure>
+<h3 id="推送分支到裸仓库"><a href="#推送分支到裸仓库" class="headerlink" title="推送分支到裸仓库"></a>推送分支到裸仓库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">      ~ $ cd alpha</span><br><span class="line">~/alpha $ git remote add delta ../delta</span><br><span class="line">123</span><br></pre></td></tr></table></figure>
+<p>回到<code>alpha</code>仓库，将<code>delta</code>仓库设为<code>alpha</code>的远程仓库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ printf &apos;14&apos; &gt; data/number.txt</span><br><span class="line">~/alpha $ git add data/number.txt</span><br><span class="line">~/alpha $ git commit -m &apos;14&apos;</span><br><span class="line">          [master cb51da8] 14</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>将<code>data/number.txt</code>内容修改为<code>14</code>并提交到<code>alpha</code>的<code>master</code>分支。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/31-14-alpha.png" alt="14 commit on alpha" title="">
+                </div>
+                <div class="image-caption">14 commit on alpha</div>
+            </figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">~/alpha $ git push delta master</span><br><span class="line">          Writing objects: 100%</span><br><span class="line">          To ../delta</span><br><span class="line">            3238468..cb51da8 master -&gt; master</span><br><span class="line">12345</span><br></pre></td></tr></table></figure>
+<p>将<code>master</code>推送到<code>delta</code>。此操作分三步。</p>
+<p>第一步，<code>master</code>分支上<code>14</code>提交依赖的所有对象都被从<code>alpha/.git/objects/</code>拷贝到<code>delta/objects</code>。</p>
+<p>第二步，<code>delta/refs/heads/master</code>更新为<code>14</code>提交。</p>
+<p>第三步，<code>alpha/.git/refs/remotes/delta/master</code>更新为<code>14</code>提交。<code>alpha</code>记录了<code>delta</code>更新后的状态。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/pysnow530/git-from-the-inside-out/master/images/32-14-pushed-to-delta.png" alt="14 commit pushed from alpha to delta" title="">
+                </div>
+                <div class="image-caption">14 commit pushed from alpha to delta</div>
+            </figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Git构建在图上，几乎所有的Git命令都是在操作这个图。想要深入了解Git，关注图属性而不是执行流程或命令。</p>
+<p>想要学习更多Git知识，可以研究一下<code>.git</code>目录。没什么可怕的。看看它里面有哪些东西。修改文件内容，观察发生了什么。手动创建一个提交，看看你能把仓库搞得多惨。然后试着修复它。</p>
+<h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><ol>
+<li>在这个例子中，哈希值内容比原文件更长。不管是否能节约空间，Git始终选择使用哈希值作为文件名。</li>
+<li>也有可能两个不同的内容有相同的哈希值，但这个可能性很低。</li>
+<li><code>git prune</code>删除所有不能被ref访问到的对象。执行此命令可能会丢失数据。</li>
+<li><code>git stash</code>将工作区和<code>HEAD</code>提交的所有差异保存到一个安全的地方。它们可以在以后取回。</li>
+<li><code>rebase</code>命令可以用来添加、编辑或删除历史提交。</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2017-11-13T10:48:08.000Z" itemprop="dateUpdated">2017-11-13 18:48:08</time>
+</span><br>
+
+
+        
+        <a href="/2017/11/13/彻底理解Git/" target="_blank" rel="external">http://io.stelawliet.top/2017/11/13/彻底理解Git/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/11/13/彻底理解Git/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/11/13/彻底理解Git/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/11/13/彻底理解Git/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2017/11/13/彻底理解Git/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/11/13/彻底理解Git/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/14/JavaScript/ajax-json-xstream/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/12/Java/JavaEE/文件上传/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/11/13/彻底理解Git/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/11/13/彻底理解Git/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/11/13/彻底理解Git/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2017/11/13/彻底理解Git/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/11/13/彻底理解Git/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3awY7iMBAEUP7/p9nrrHaBqjYZKfbLCaFM4hekmm6nH4/4eAbHqzN/fv/qyv/+7eOKAwMD47aM2eLam63go7tjYGAcwEii8P05bWjmjy+5LwYGBsb6Oe9LwOQzBgYGRrvEJCJnpR4GBgbGShP7HpCXgMn5F/biGBgYN2Tkm2W///mS9xsYGBi3YjzLo719Eo5t+fifVWFgYGzNyANuVtjlQxVt4GJgYJzJGMZc3HzmW3XDQTEMDIxNGbOut0W2C80//1XhYmBgbMrIT83b0QScX7940BgYGFsz8gGLfINsZSsteTQYGBjnMGYhOBukyIu8YhQMAwPjAEbUHMYlYxu1sxb3JQwDA2NrRvuyMG9K10O52G7DwMDYlNH68hb0/dbbeoFY/8fAwMC4OSMpv9qRi3xZyfDZh28wMDC2ZrRbbFeMWawMYXz4TTAwMLZg5CGYBF8blHkZ+mFtGBgYBzDWC7i8fZ29KvhwNQwMjK0ZK7E4Kwdng2jRmRgYGAcwoi2tURnXhukw3DEwMA5jzF5VtsNheVpG18HAwDiAkUTtt2bNrmieMTAwdmU8y6MN2baJHY5rYGBgbM3Ij3bMYjj3ETe9bcRjYGDcnbESsm3rm0dwErgYGBinMdYHwtrNtfWXEBgYGBizBjK52nq5ObwxBgbGkYw8atuisA13DAyMExhJEzsr/toAnbW4GBgYezO+W/CtB/TsNQMGBsamjD90gtE/cO5K2gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

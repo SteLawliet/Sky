@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Maven仓库管理之Nexus  [TOC] ​     我分两部分来介绍，首先介绍一下Maven的仓库，然后在说一下如何通过Nexus来建立我们自己的仓库，以及如何使用。  Maven 仓库​    在以前使用Ant的时候，我们会建立一个lib目录在存放我们的jar包，比如项目所依赖的第三方包，每建立一个项目都要建立一个lib，不停的做copy工作，不仅是对于磁盘的浪费，而且也造成了版本管理上的">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="Maven仓库管理之Nexus  [TOC] ​     我分两部分来介绍，首先介绍一下Maven的仓库，然后在说一下如何通过Nexus来建立我们自己的仓库，以及如何使用。  Maven 仓库​    在以前使用Ant的时候，我们会建立一个lib目录在存放我们的jar包，比如项目所依赖的第三方包，每建立一个项目都要建立一个lib，不停的做copy工作，不仅是对于磁盘的浪费，而且也造成了版本管理上的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/105307_V56O_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/img/201301/11121200_EhRy.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/110029_qjba_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/110632_3bp6_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/img/201301/11121200_qGJe.jpg">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/115632_f4lW_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/115717_OQk5_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/115740_hMna_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/115914_4KtG_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/120059_Fgl2_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/120116_SM2E_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/120235_uFmI_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/120354_qUqO_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/131940_I6Ph_103999.png">
+<meta property="og:image" content="http://static.oschina.net/uploads/space/2013/0111/133443_hwI6_103999.gif">
+<meta property="og:updated_time" content="2017-10-28T07:18:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="Maven仓库管理之Nexus  [TOC] ​     我分两部分来介绍，首先介绍一下Maven的仓库，然后在说一下如何通过Nexus来建立我们自己的仓库，以及如何使用。  Maven 仓库​    在以前使用Ant的时候，我们会建立一个lib目录在存放我们的jar包，比如项目所依赖的第三方包，每建立一个项目都要建立一个lib，不停的做copy工作，不仅是对于磁盘的浪费，而且也造成了版本管理上的">
+<meta name="twitter:image" content="http://static.oschina.net/uploads/space/2013/0111/105307_V56O_103999.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-28T07:18:47.000Z" itemprop="datePublished" class="page-time">
+  2017-10-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Maven-仓库"><span class="post-toc-number">1.</span> <span class="post-toc-text">Maven 仓库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Maven-仓库的两个概念：本地仓库和远程仓库"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Maven 仓库的两个概念：本地仓库和远程仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在-POM-中配置远程仓库"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">在 POM 中配置远程仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在-settings-xml-中配置远程仓库"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">在 settings.xml 中配置远程仓库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置maven仓库镜像"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">配置maven仓库镜像</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#利用-Nexus-来构建企业级-Maven-仓库"><span class="post-toc-number">2.</span> <span class="post-toc-text">利用 Nexus 来构建企业级 Maven 仓库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Nexus简介"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Nexus简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装-Nexus"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">安装 Nexus</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用捆绑包安装"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">使用捆绑包安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配置-中央仓库"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">配置**中央仓库**</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加代理仓库-proxy"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">添加代理仓库(proxy)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#管理本地仓库-hosted"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">管理本地仓库(hosted)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#仓库组-group"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">仓库组(group)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#通过-Nexus-搜索构件"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">通过 Nexus 搜索构件</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在-Maven-中使用-Nexus"><span class="post-toc-number">3.</span> <span class="post-toc-text">在 Maven 中使用**Nexus**</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#构件部署"><span class="post-toc-number">4.</span> <span class="post-toc-text">构件部署</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#补充"><span class="post-toc-number">5.</span> <span class="post-toc-text">补充</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1、-发现配置了nexus仓库组之后，下载构件抛异常"><span class="post-toc-number">5.0.0.1.</span> <span class="post-toc-text">1、 发现配置了nexus仓库组之后，下载构件抛异常</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/JavaEE/MAVEN/Maven仓库管理之Nexus "
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-28 15:18:47" datetime="2017-10-28T07:18:47.000Z"  itemprop="datePublished">2017-10-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>Maven仓库管理之Nexus </p>
+<p>[TOC]</p>
+<p>​     我分两部分来介绍，首先介绍一下Maven的仓库，然后在说一下如何通过Nexus来建立我们自己的仓库，以及如何使用。 </p>
+<h1 id="Maven-仓库"><a href="#Maven-仓库" class="headerlink" title="Maven 仓库"></a><strong>Maven</strong> <strong>仓库</strong></h1><p>​    在以前使用Ant的时候，我们会建立一个lib目录在存放我们的jar包，比如项目所依赖的第三方包，每建立一个项目都要建立一个lib，不停的做copy工作，不仅是对于磁盘的浪费，而且也造成了版本管理上的麻烦。而且我们还需要通过提交到svn上来对lib进行管理，但是svn对于这种二进制文件的管理并不出色。  </p>
+<p>​    Maven仓库的初衷就是为了解决这个问题。 maven仓库是所有常用的第三方依赖包的集中营。这样所有的Maven项目就可以从这个仓库中获取所需要的资源，Maven仓库中对jar通过Group Id, Atifact Id, version 来管理，所以Maven项目可以很方便的进行依赖管理。你不需要自己来管理这个庞大的资源仓库，当然你可以创建一个公司层面的仓库，这个我在这个章节的后面会介绍。 </p>
+<h2 id="Maven-仓库的两个概念：本地仓库和远程仓库"><a href="#Maven-仓库的两个概念：本地仓库和远程仓库" class="headerlink" title="Maven 仓库的两个概念：本地仓库和远程仓库"></a><strong>Maven</strong> <strong>仓库的两个概念：本地仓库和远程仓库</strong></h2><p>​     本地仓库是远程仓库的一个缓冲和子集，当你构建Maven项目的时候，首先会从本地仓库查找资源，如果没有，那么Maven会从远程仓库下载到你本地仓库。这样在你下次使用的时候就不需要从远程下载了。如果你所需要的jar包版本在本地仓库没有，而且也不存在于远程仓库，Maven在构建的时候会报错，这种情况可能发生在有些jar包的新版本没有在Maven仓库中及时更新。 </p>
+<p>​    Maven缺省的本地仓库地址为<em>${user.home}/.m2/repository</em> 。也就是说，一个用户会对应的拥有一个本地仓库。当然你可以通过修改<em>${user.home}/.m2/settings.xml</em> 配置这个地址： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;   </span><br><span class="line">...</span><br><span class="line">  &lt;localRepository&gt; D:/java/repository&lt;/localRepository&gt;   </span><br><span class="line">  ...</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<p>如果你想让所有的用户使用统一的配置，那么你可以修改${M2_HOME}/conf/setting.xml </p>
+<p> 还可以通过在运行时指定目录（不推荐这么做）： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn clean install -Dmaven.repo.local=/home/juven/myrepo/</span><br></pre></td></tr></table></figure>
+<p>​    当我们创建一个简单的Maven项目后(只需要在pom.xml配置好依赖项)，运行mvn clean install就可以把项目构建好，maven会自动从中央仓库下载所需的依赖项(即jar包）。这个中央仓库定义在<em>${M2_HOME}/lib/maven-2.0.10-uber.jar</em> 里面。你可以在里面找到<em>/org/apache/maven/project/pom-4.0.0.xml</em>这个文件，在这个文件里面定义了中央仓库的地址： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;   </span><br><span class="line">  &lt;repository&gt;   </span><br><span class="line">    &lt;id&gt; central&lt;/id&gt;   </span><br><span class="line">    &lt;name&gt; Maven Repository Switchboard&lt;/name&gt;   </span><br><span class="line">    &lt;layout&gt; default&lt;/layout&gt;   </span><br><span class="line">    &lt;url&gt;http://repo1.maven.org/maven2&lt;/url&gt;   </span><br><span class="line">    &lt;snapshots&gt;   </span><br><span class="line">      &lt;enabled&gt; false&lt;/enabled&gt;   </span><br><span class="line">    &lt;/snapshots&gt;   </span><br><span class="line">  &lt;/repository&gt;   </span><br><span class="line">&lt;/repositories&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="在-POM-中配置远程仓库"><a href="#在-POM-中配置远程仓库" class="headerlink" title="在 POM 中配置远程仓库"></a><strong>在</strong> <strong>POM</strong> <strong>中配置远程仓库</strong></h2><p><strong>     </strong>  当某个依赖项存在于第三方的公共仓库时，我们需要配置其他远程仓库呢。下面是在pom.xml里面配置一个远程仓库的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;  </span><br><span class="line">    &lt;repository&gt;</span><br><span class="line">        // 其他远程仓库</span><br><span class="line">    &lt;/repository&gt; </span><br><span class="line">    &lt;repository&gt;   </span><br><span class="line">      &lt;id&gt; maven-net-cn&lt;/id&gt;   </span><br><span class="line">      &lt;name&gt; Maven China Mirror&lt;/name&gt;   </span><br><span class="line">      &lt;url&gt; http://maven.net.cn/content/groups/public/&lt;/url&gt;   </span><br><span class="line">      &lt;releases&gt;   </span><br><span class="line">        &lt;enabled&gt; true&lt;/enabled&gt;   </span><br><span class="line">      &lt;/releases&gt;   </span><br><span class="line">      &lt;snapshots&gt;   </span><br><span class="line">        &lt;enabled&gt; false&lt;/enabled&gt;   </span><br><span class="line">      &lt;/snapshots&gt;   </span><br><span class="line">    &lt;/repository&gt;   </span><br><span class="line">  &lt;/repositories&gt;   </span><br><span class="line">  &lt;pluginRepositories&gt;   </span><br><span class="line">    &lt;pluginRepository&gt;</span><br><span class="line">      // 其他maven插件仓库</span><br><span class="line">    &lt;/pluginRepository&gt;</span><br><span class="line">    &lt;pluginRepository&gt;   </span><br><span class="line">      &lt;id&gt; maven-net-cn&lt;/id&gt;   </span><br><span class="line">      &lt;name&gt; Maven China Mirror&lt;/name&gt;   </span><br><span class="line">      &lt;url&gt; http://maven.net.cn/content/groups/public/&lt;/url&gt;   </span><br><span class="line">      &lt;releases&gt;   </span><br><span class="line">        &lt;enabled&gt; true&lt;/enabled&gt;   </span><br><span class="line">      &lt;/releases&gt;   </span><br><span class="line">      &lt;snapshots&gt;   </span><br><span class="line">        &lt;enabled&gt; false&lt;/enabled&gt;   </span><br><span class="line">      &lt;/snapshots&gt;        </span><br><span class="line">    &lt;/pluginRepository&gt;   </span><br><span class="line">  &lt;/pluginRepositories&gt;</span><br></pre></td></tr></table></figure>
+<p>​    这里我们可以看到，允许配置多个repository和 plugin repository，其中<releases><enabled>true</enabled></releases>告诉Maven可以从这个仓库下载releases版本的构件，而<snapshots><enabled>false</enabled></snapshots>告诉Maven不要从这个仓库下载snapshot版本的构件。 </p>
+<blockquote>
+<p>Maven在使用第三方构件和插件时是分开来配置的,所以如果我们也希望插件的下载也通过我们的本地仓库来下载,那么我们就需要配置pluginRepository. </p>
+</blockquote>
+<blockquote>
+<p>之所以不允许从某些仓库下载snapshot版本，是因为snapshot版本不稳定，但是某些snapshot版本，比如公司内部正在开发的项目, 是必须的 </p>
+</blockquote>
+<p>至于<pluginrepositories>，这是配置Maven从什么地方下载插件构件，Maven的所有行为都是通过插件来完成的。 <pluginrepository>的配置与<repository>类似，这里就不多说了。      </repository></pluginrepository></pluginrepositories></p>
+<h2 id="在-settings-xml-中配置远程仓库"><a href="#在-settings-xml-中配置远程仓库" class="headerlink" title="在 settings.xml 中配置远程仓库"></a><strong>在</strong> <strong>settings.xml</strong> <strong>中配置远程仓库</strong></h2><p>​     pom.xml的作用范围限于一个项目， 但一个公司/组织通常不只开发一个项目，那么为了避免重复配置，那么我们可以把一些公共配置放在${MAVEN_HOME}/conf/setting.xml(或${user.home}/.m2/setting.xml中。下面是在setting.xml中配置一个远程仓库的例子. </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;   </span><br><span class="line">  &lt;profiles&gt; </span><br><span class="line">    &lt;profile&gt;</span><br><span class="line">       &lt;!-- 其他profile --&gt;</span><br><span class="line">    &lt;/profile&gt;</span><br><span class="line">    &lt;profile&gt;   </span><br><span class="line">      &lt;id&gt;myProfiel&lt;/id&gt;   </span><br><span class="line">      &lt;!--  在这里加入&lt;repositories&gt;及&lt;pluginRepositories&gt;  --&gt; </span><br><span class="line">    &lt;/profile&gt;   </span><br><span class="line">  &lt;/profiles&gt;   </span><br><span class="line">   </span><br><span class="line">  &lt;!-- 声明哪些profile被激活，或根据某些条件激活 --&gt; </span><br><span class="line">  &lt;activeProfiles&gt;   </span><br><span class="line">    &lt;activeProfile&gt;myProfiel&lt;/activeProfile&gt;   </span><br><span class="line">  &lt;/activeProfiles&gt;   </span><br><span class="line">  </span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<p>​     这里通过<activeprofile>元素来激活这个profile，这样我们就可以全局的使用这个配置，不再需要为每个POM做重复的配置了（也可以针对特定的条件激活，比如某些profile只有在使用JDK 1.4时才生效)。 </activeprofile></p>
+<p>​     在实际的操作过程中，setting.xml最好不要配置远程仓库，最好能够通过nexus建立公司或者组织自己的仓库，然后把地址指向自己的仓库，后面我会介绍为什么要这么做以及怎么做。  </p>
+<h2 id="配置maven仓库镜像"><a href="#配置maven仓库镜像" class="headerlink" title="配置maven仓库镜像"></a><strong>配置maven仓库镜像</strong></h2><p>​    当你连接中央仓库时速度很慢，或有些国外的第三方仓库无法被访问时，你可以在setting.xml中为这些仓库指定一个镜像来加快下载依赖项的速度。下面是一个配置镜像的例子 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;   </span><br><span class="line">  ...  </span><br><span class="line">  &lt;mirrors&gt;   </span><br><span class="line">     &lt;mirror&gt;   </span><br><span class="line">      &lt;!-- 其他镜像库 --&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">    &lt;mirror&gt;   </span><br><span class="line">      &lt;id&gt; maven-net-cn&lt;/id&gt;   </span><br><span class="line">      &lt;name&gt; Maven China Mirror&lt;/name&gt;   </span><br><span class="line">      &lt;url&gt; http://maven.net.cn/content/groups/public/&lt;/url&gt;   </span><br><span class="line">      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;   </span><br><span class="line">    &lt;/mirror&gt;   </span><br><span class="line">  &lt;/mirrors&gt;   </span><br><span class="line">   ...</span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<p>这里的</p>
+<mirrorof>必须指定某个<repository>的Id. 如果想为所有的仓库做镜像， 那么可以改为：<mirrorof>*</mirrorof>
+
+<h1 id="利用-Nexus-来构建企业级-Maven-仓库"><a href="#利用-Nexus-来构建企业级-Maven-仓库" class="headerlink" title="利用 Nexus 来构建企业级 Maven 仓库"></a><strong>利用</strong> <strong>Nexus</strong> <strong>来构建企业级</strong> <strong>Maven</strong> <strong>仓库</strong></h1><h2 id="Nexus简介"><a href="#Nexus简介" class="headerlink" title="Nexus简介"></a>Nexus<strong>简介</strong></h2><p>​    Nexus是一个Maven仓库管理器，用来搭建私有仓库服务器。建立公司/组织的私有仓库的的好处是便于管理，节省公网带宽，利用内网下载依赖项速度快，还有一个非常有用的功能就是能有效管理内部项目的SNAPSHOT版本，实现各个模块间的共享. </p>
+<h2 id="安装-Nexus"><a href="#安装-Nexus" class="headerlink" title="安装 Nexus"></a><strong>安装</strong> <strong>Nexus</strong></h2><p>​    可以从<a href="http://nexus.sonatype.org/downloads/%20%E6%9D%A5%E8%8E%B7%E5%8F%96%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%EF%BC%8C%E7%9B%AE%E5%89%8D%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E4%B8%BA1.3.4" target="_blank" rel="noopener">http://nexus.sonatype.org/downloads/</a> 获取最新版本的nexus，本文以1.3.4为例进行说明。 </p>
+<p>​    Nexus提供了两种安装方式，内嵌Jetty的捆绑包（bundle）和WAR包。前者解压后即可单独运行，只要系统中安装了JRE， 后者需要一个Servlet容器来运行.</p>
+<h3 id="使用捆绑包安装"><a href="#使用捆绑包安装" class="headerlink" title="使用捆绑包安装"></a>使用捆绑包安装</h3><p>​    如果你使用Windows，那么下载<em>nexus-webapp-1.3.</em> <em>4**-bundle.zip</em>，并将其解压至任意目录，如<em>D:/**tools</em>，然后转到<em>D:**tools\nexus-webapp-1.3.<strong>4\</strong>bin\jsw\indows-x86-32</em> ，双击运行Nexus.bat。<strong> </strong>如果你是在linux下安装，那么就下载<em>nexus-webapp-1.3.</em> <em>4</em> <em>-bundle.<strong>tar</strong>.gz，解压后运行nexus.sh。nexus</em>还支持solaris,macos等操作系统。<br>​    当你在控制台看到“Started <a href="mailto:SelectChannelConnector@0.0.0.0" target="_blank" rel="noopener">SelectChannelConnector@0.0.0.0</a>:8081”之后，说明Nexus启动成功了。 打开浏览器，访问<a href="http://127.0.0.1:8081/nexus，使用管理员的帐号(admin)和密码(admin123)登录，" target="_blank" rel="noopener">http://127.0.0.1:8081/nexus，使用管理员的帐号(admin)和密码(admin123)登录，</a> 会看到如下的页面：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/105307_V56O_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>在这里可以进行管理仓库，配置Nexus系统，管理任务，管理用户，角色，权限，查看系统的RSS源，管理及查看系统日志等操作。 </p>
+<p> <strong>使用War</strong>包<strong>安装</strong></p>
+<p>​     下载WAR包，然后将其发布到servlet容器中即可  </p>
+<p>​      到此我们已经安装好Nexus,下面介绍一下Nexus常用的功能和使用方法。 </p>
+<h2 id="配置-中央仓库"><a href="#配置-中央仓库" class="headerlink" title="配置**中央仓库**"></a><strong>配置**</strong>中央仓库**</h2><p><strong>     </strong>在左边菜单栏里选择Repositories, 会看到如下的界面： </p>
+<p><img src="http://static.oschina.net/uploads/img/201301/11121200_EhRy.jpg" alt="img"></p>
+<p>其中右边栏上半部分列出当前nexus管理的repository，黑体字是类型为group的repository. 这里简单介绍下几种repository的类型: </p>
+<ul>
+<li>hosted，本地仓库。通常我们会部署自己的构件到这一类型的仓库。比如公司/组织开发的项目 </li>
+<li>proxy，代理仓库，它们被用来代理远程的公共仓库，如maven中央仓库或一些第三方公共仓库。 </li>
+<li>group，仓库组，用来合并多个hosted/proxy仓库，当你的项目希望在多个repository使用依赖项时，无需引用多个仓库了，只需要引用一个类型为group的repository即可。 </li>
+</ul>
+<p>Maven central是Maven的中央仓库，点击它并选择configuration标签栏，我们会看到下面的页面：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/110029_qjba_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>这里有几个配置项是经常用到的： </p>
+<ul>
+<li>Override local storage location:  该选项允许配置 Nexus本地仓库的存放地址，用来覆盖其默认的存放地址 </li>
+<li>Remote storage location: 该选项允许配置远程仓库的地址。一般为了提高代理速度，你可以将其修改为国内的镜像地址。默认值是<a href="http://repo1.maven.org/maven2/" target="_blank" rel="noopener">http://repo1.maven.org/maven2/</a> </li>
+<li>Download remote indexes: 该选项配置是否下载远程索引文件。 建议配置为true，这样我们便可以通过nexus的搜索功能来搜索我们需要的依赖项。 </li>
+</ul>
+<h2 id="添加代理仓库-proxy"><a href="#添加代理仓库-proxy" class="headerlink" title="添加代理仓库(proxy)"></a><strong>添加代理仓库(proxy)</strong></h2><p>​     nexus默认提供了Maven central这个代理仓库，如果你需要添加其他代理仓库，那么可以点击左边栏页面上的Repositories链接，然后在右边栏页面上依次点击add -&gt; add proxy repository, 随后出现以下页面：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/110632_3bp6_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>​     根据提示填写相关信息保存即可。</p>
+<h2 id="管理本地仓库-hosted"><a href="#管理本地仓库-hosted" class="headerlink" title="管理本地仓库(hosted)"></a><strong>管理本地仓库(hosted)</strong></h2><p>​    Nexus预定义了三种本地仓库，分别是Releases, Snapshots, 3rd Party. 下面分别介绍一下这三种类型仓库的作用 </p>
+<ul>
+<li>Releases:  存放稳定版本的构件。比如我们完成了一个版本的下数组件的开发,就可以把它发布到这里。 </li>
+<li>Snapshots: 存放快照版本的构件。 比如一个下数组件在完成所有开发和测试工作之前，是不应该发布到release仓库的，但可能其他项目只需用到这个组件的某些接口，只要这些接口完成了开发并通过测试，就可以拿来使用, 从而实现多个项目并行开发。 </li>
+<li>3rd Party:  存放其他第三方构件。你可能会问， 不是有中央仓库和其他第三方公共仓库来管理这些依赖项了吗？没错。但由于某些开源项目出现的时间比maven要早，因此他们大都没有采用maven方式进行构建。 其他还包括包括一些非开源或使用maven 1.x构建的组件. 我们可以把这类组件通通添加到这里。<br>创建本地仓库的方法很简单。点击Repository面板上方的Add按钮，然后选择Hosted Repository，然后在下方的配置面板中输入相关信息。 注意根据自己的需要选择本地仓库的类型 </li>
+</ul>
+<p><img src="http://static.oschina.net/uploads/img/201301/11121200_qGJe.jpg" alt="img"></p>
+<h2 id="仓库组-group"><a href="#仓库组-group" class="headerlink" title="仓库组(group)"></a><strong>仓库组(group)</strong></h2><p>​      通过前面介绍我们了解到, 可以建立多个代理仓库和本地仓库. 但如果没有仓库组的概念，那么当需要引用这些仓库时, 就需要将他们逐个添加到pom.xml或setting.xml. 仓库组是为了简化仓库的引用而提出的。有了仓库组的概念, 我们可以把仓库根据不同目的进行分组，比如把常用的归到一组或根据访问权限分组， 然后直接声明引用某个仓库组即可. 下面是pom.xml中声明引用一个nexus仓库组的例子：   </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;</span><br><span class="line">     &lt;repository&gt;</span><br><span class="line">        &lt;id&gt;nexus-public&lt;/id&gt;                                               &lt;url&gt;http://127.0.0.1:8081/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">        &lt;releases&gt;</span><br><span class="line">            &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">        &lt;/releases&gt;</span><br><span class="line">        &lt;snapshots&gt;</span><br><span class="line">            &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">        &lt;/snapshots&gt;</span><br><span class="line">     &lt;/repository&gt;</span><br><span class="line">&lt;/repositories&gt;</span><br></pre></td></tr></table></figure>
+<p> 可以看到声明引用一个仓库组和一个普通的远程仓库，配置的写法完全一样。 </p>
+<blockquote>
+<p>maven本身没有仓库组的概念 </p>
+</blockquote>
+<p>​       Nexus中预设了2个仓库组， 分别是public repositories和public snapshot repositories. 如图:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/115632_f4lW_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>public repository默认包含本地仓库的Releases, snapshots和3rd party以及代理仓库的Maven Central. 你可以在Configuration配置页添加其他仓库到这个仓库组。 如果需要，你还可以创建一个仓库组,方法是点击 Add-&gt;Repository Group, 当New Repository Group界面后,填入ID, name 等相关信息, 然后在右边Available Repositories 栏里可以选择你要添加的仓库到你新建的仓库组.<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/115717_OQk5_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<h2 id="通过-Nexus-搜索构件"><a href="#通过-Nexus-搜索构件" class="headerlink" title="通过 Nexus 搜索构件"></a><strong>通过</strong> <strong>Nexus</strong> <strong>搜索构件</strong></h2><p>​      在开发过程中过程中，我们往往只记得某个构件的大致名字，这时我们可以通过nexus提供的构件搜索功能查询该构件的完整配置信息(groupId,artifactId,version)．如果通过nexus搜不到某个的构件，那说明这个构件不在当前nexus所登记的仓库中，可能需要添加额外的代理仓库或手工上传某个构件。 </p>
+<p>​     在使用nexus的搜索功能之前，必须先让nexus所登记的仓库建立索引文件, Nexus默认是不为每个仓库建立索引文件的,因为建立像中央仓库这样的索引文件需要耗费比较大的网络带宽和事件,仅索引文件就要几十兆. 要开启中央仓库的索引文件下载功能需要在Maven Central的配置页中， 把Download Remote Indexes改为true. 如图:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/115740_hMna_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>​     这样设置之后, Nexus会自动从远程中央仓库下载索引文件, 为了检验索引文件自动下载是否生效,可以切换到Browse标签页，如图：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/115914_4KtG_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>如果出现类似于以上文件夹,那说明索引文件已经建立成功. </p>
+<p>​    下面我们试一下搜索功能,  搜索栏输入testing, 查询结果如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/120059_Fgl2_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>这是模糊查询的结果，当然如果你知道更多信息，比如版本号等，你可以使用高级搜索，点击高级搜索后，右边界面会提供集中搜索方式：keyword, classname, GAV, checksum<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/120116_SM2E_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>比如我们这里选择GAV模式. 假设我只知道artifact的名字（如testng）和版本号（如5.8）, 其他的我不知道, 那么就在artifact 和 version处分别输入testng 和 5.8 , 搜索结果如下:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/120235_uFmI_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>如果你不知道知道构件的名称, 只知道classname, 那么你也可以通过class name 的方式搜索,这里就不再赘述。 </p>
+<p>当你选中某项搜索结果， 页面的下方会出现这个构件的详细信息, 并且会列出这个构件的Maven依赖配置, 你可以直接拷贝到你的pom文件中使用,这是个非常实用的功能:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/120354_qUqO_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<h1 id="在-Maven-中使用-Nexus"><a href="#在-Maven-中使用-Nexus" class="headerlink" title="在 Maven 中使用**Nexus**"></a><strong>在</strong> <strong>Maven</strong> <strong>中使用**</strong>Nexus**</h1><p>​    到此我们介绍了如何安装和使用Nexus以及其基本配置, 那么如何在Maven来使用Nexus本地仓库呢？其实和配置远程仓库的方法一样。下面是在settings.xml中添加了一个nexus本地仓库的例子： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;profiles&gt;</span><br><span class="line">   ...</span><br><span class="line">   &lt;profile&gt;</span><br><span class="line">       &lt;id&gt;dev&lt;/id&gt;</span><br><span class="line">       &lt;repositories&gt;</span><br><span class="line">            &lt;repository&gt;</span><br><span class="line">                &lt;id&gt;nexus&lt;/id&gt;                </span><br><span class="line">                &lt;url&gt;http://127.0.0.1:8081/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line">                &lt;releases&gt;</span><br><span class="line">                    &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">                &lt;/releases&gt;</span><br><span class="line">                &lt;snapshots&gt;</span><br><span class="line">                    &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">                &lt;/snapshots&gt;</span><br><span class="line">             &lt;/repository&gt;</span><br><span class="line">        &lt;/repositories&gt;           </span><br><span class="line">        &lt;pluginRepositories&gt;</span><br><span class="line">              &lt;pluginRepository&gt;</span><br><span class="line">                  &lt;id&gt;nexus&lt;/id&gt;</span><br><span class="line">                  &lt;url&gt;http://127.0.0.1:8081/nexus/content/groups/public&lt;/url&gt;</span><br><span class="line">                  &lt;releases&gt;</span><br><span class="line">                      &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">                  &lt;/releases&gt;</span><br><span class="line">                  &lt;snapshots&gt;</span><br><span class="line">                      &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">                   &lt;/snapshots&gt;</span><br><span class="line">               &lt;/pluginRepository&gt;</span><br><span class="line">         &lt;/pluginRepositories&gt;</span><br><span class="line">     &lt;/profile&gt;</span><br><span class="line">   ...</span><br><span class="line">&lt;/profiles&gt;</span><br><span class="line"></span><br><span class="line">&lt;activeProfiles&gt;</span><br><span class="line">       &lt;activeProfile&gt;dev&lt;/activeProfile&gt;</span><br><span class="line">&lt;/activeProfiles&gt;</span><br></pre></td></tr></table></figure>
+<p>你也可以在pom.xml中声明引用某个nexus仓库。 </p>
+<h1 id="构件部署"><a href="#构件部署" class="headerlink" title="构件部署"></a><strong>构件部署</strong></h1><p><strong>     </strong>有些时候我们需要部署构件到Nexus的3rd party, 比如我们在中央仓库找不到我们需要的构件, 我们可以通过Nexus的UI界面来上传构件: </p>
+<p>点击左边菜单栏的 Repositories, 然后点击右边界面的3rd party, 选择界面下方的Artifact Upload, 这个时候出现以下界面:<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/131940_I6Ph_103999.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>上传构件需要两个步骤,一个是定义文件的上传,再就是构件的实体文件.第一部分定义文件可以是POM文件, 这也是比较推荐的方式, 如果没有pom文件,可以选择以参数的形式输入。第二部分是上传构件的实体文件。这里简单说一下Classifier和Extension, 这两个都是选填项. Classifier用来区别同功能的构件用于不同的场景, 比如这个构件是分别针对JDK14和JDK15做了2个功能一样的Jar, 这个时候你就需要指定这个构件的Classifier为JDK14还是JDK15. Extension是指扩展名,如果不提供,那么会自动取这个构件的Packaging Type作为扩展名, 比如ear, jar, war 等等. (Packaging Type是在第一步中通过pom文件或者手工输入得到的) </p>
+<p>​     刚才说了3rd party的部署, 对于releases 和 snapshots的部署也是一样的操作过程. </p>
+<p>​     一般我们会通过UI 界面来部署一些缺失的构件。对于自己开发的构件还有另一种简单的部署方式， 即通过命令mvn deploy进行部署。但使用这种部署方式需要在pom.xml中添加一些配置，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;project&gt;   </span><br><span class="line">    …   </span><br><span class="line">    &lt;distributionManagement&gt;   </span><br><span class="line">        &lt;repository&gt;   </span><br><span class="line">            &lt;id&gt;nexus-releases&lt;/id&gt;   </span><br><span class="line">	     &lt;name&gt;Nexus Release Repository&lt;/name&gt;   </span><br><span class="line">	     &lt;url&gt;http://127.0.0.1:8081/nexus/content/repositories/releases/&lt;/url&gt;</span><br><span class="line">        &lt;/repository&gt;</span><br><span class="line">        &lt;snapshotRepository&gt;</span><br><span class="line">            &lt;id&gt;nexus-snapshots&lt;/id&gt;</span><br><span class="line">            &lt;name&gt;Nexus Snapshot Repository&lt;/name&gt;</span><br><span class="line">            &lt;url&gt;http://127.0.0.1:8081/nexus/content/repositories/snapshots/&lt;/url&gt;</span><br><span class="line">        &lt;/snapshotRepository&gt;   </span><br><span class="line">    &lt;/distributionManagement&gt;   </span><br><span class="line">    …   </span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+<p>这里告诉Maven当我要发布release版本或者snapshot版本时，把构建好的成品上传到哪个服务器地址。 </p>
+<p>最后还要在setting.xml里面配置一个有部署权限的Nexus的帐号和密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;settings&gt;   </span><br><span class="line">  …   </span><br><span class="line">    &lt;servers&gt;   </span><br><span class="line">      &lt;server&gt;   </span><br><span class="line">        &lt;id&gt; nexus-releases&lt;/id&gt;   </span><br><span class="line">    &lt;username&gt;admin&lt;/username&gt;   </span><br><span class="line">    &lt;password&gt;admin123&lt;/password&gt;   </span><br><span class="line">  &lt;/server&gt;   </span><br><span class="line">  &lt;server&gt;   </span><br><span class="line">    &lt;id&gt; nexus-snapshots&lt;/id&gt;   </span><br><span class="line">    &lt;username&gt;admin&lt;/username&gt;   </span><br><span class="line">    &lt;password&gt;admin123&lt;/password&gt;   </span><br><span class="line">  &lt;/server&gt;      </span><br><span class="line">&lt;/servers&gt;   </span><br><span class="line">…   </span><br><span class="line">&lt;/settings&gt;</span><br></pre></td></tr></table></figure>
+<p>至此 我们就可以通过命令mvn deploy来发布我们项目到本地仓库了. </p>
+<blockquote>
+<p>这里我们使用了admin来进行部署，一般建议使用一个具有部署权限的账号执行部署操作。 </p>
+</blockquote>
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><h4 id="1、-发现配置了nexus仓库组之后，下载构件抛异常"><a href="#1、-发现配置了nexus仓库组之后，下载构件抛异常" class="headerlink" title="1、 发现配置了nexus仓库组之后，下载构件抛异常"></a>1、 发现配置了nexus仓库组之后，下载构件抛异常</h4><p>0-10-3 下午05时09分43秒: Build error for /com.newyulong.iptv.domain.entity/pom.xml; org.apache.maven.plugin.PluginResolutionException: Plugin org.apache.maven.plugins:maven-resources-plugin:2.4.1 or one of its dependencies could not be resolved: Missing:<br>-———<br>1) org.apache.maven.plugins:maven-resources-plugin:maven-plugin:2.4.1 </p>
+<p>  Try downloading the file manually from the project website. </p>
+<p>  Then, install it using the command:<br>​      mvn install:install-file -DgroupId=org.apache.maven.plugins -DartifactId=maven-resources-plugin -Dversion=2.4.1 -Dpackaging=maven-plugin -Dfile=/path/to/file </p>
+<p>  Alternatively, if you host your own repository you can deploy the file there:<br>​      mvn deploy:deploy-file -DgroupId=org.apache.maven.plugins -DartifactId=maven-resources-plugin -Dversion=2.4.1 -Dpackaging=maven-plugin -Dfile=/path/to/file -Durl=[url] -DrepositoryId=[id] </p>
+<p>-———<br>1 required artifact is missing. </p>
+<p>for artifact:<br>  org.apache.maven.plugins:maven-resources-plugin:maven-plugin:2.4.1 </p>
+<p>from the specified remote repositories:<br>  Nexus (<a href="http://localhost:8181/nexus/content/groups/public" target="_blank" rel="noopener">http://localhost:8181/nexus/content/groups/public</a> , releases=true, snapshots=false) </p>
+<p> 这里的主要原因是配置nexus里面的Public Repositories 顺序和条件出错，导致不能下载构件。比如这个public repositories：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://static.oschina.net/uploads/space/2013/0111/133443_hwI6_103999.gif" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure></p>
+<p>这个是正确的配置顺序。其中左边的是正在使用的定义好的仓库，右边的是候选的仓库。在这个例子中，nexus下载构件的顺序是Releases –&gt;Snapshots –&gt; 3rd party –&gt; Maven Central。 </p>
+<p>​     好多公司处于安全考虑，要求使用用代理访问公网，而nexus经常需要往maven repository中心下载东西，因此需要给nexus的仓库设置代理。 </p>
+<p>原文地址：&lt;http:// <a href="http://blog.csdn.net/cuker919/article/details/5922007&gt;" target="_blank" rel="noopener">http://blog.csdn.net/cuker919/article/details/5922007&gt;</a></p>
+</repository></mirrorof>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2017-10-28T07:18:47.000Z" itemprop="dateUpdated">2017-10-28 15:18:47</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /" target="_blank" rel="external">http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/28/Java/JavaEE/Java框架/spring/SSM框架详细整合教程 /" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/27/Java/JavaEE/MAVEN/MAVEN环境配置/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/28/Java/JavaEE/MAVEN/Maven仓库管理之Nexus /" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqElEQVR42u3aUY7iMBAEUO5/6d0DzAJV3TaDVi9fIxISvyDZPdV+POLjz4/j2dln1yffev2sn1ceO/Dw8PDWQ2+Hmw9oM9xkPP+4Jx4eHt41XnK717Pu608S0tMhluPBw8PD+zZeUgTn98yXBzw8PLz/iZeX3XkxPbsDHh4e3id5m8Htz+bgi1kLHh4eXszblLO/9feV/h4eHh7euqueN/7b786Wk/qJeHh4eBd4s2hgs70gCRraxtibK/Hw8PCO8vJJv53Ko4B1tCmhKPTx8PDwLvDaoexL6vxsvuGgDnDx8PDwFrw2bmgf2S4YeQgSXY+Hh4d3mbfpK+VnZ43/trzGw8PDu8dLCtl2Wk8K9JadFNP18oCHh4c34p2d1s82z9oI+Om6h4eHh3eUN5um2yHmBfSVCAMPDw/vKK/99z4voGfbEWYFfbQk4OHh4R3l5WHErJieRRv5D/D0leHh4eFd4OUX5dFqO4nnkcTsejw8PLx7vDbD2L+UtpRvwxE8PDy8G7y8hJ1N6HnJvim1n94NDw8P7wJvUwRviuO2XG5/ADw8PLzP8zbBbvLK2pe1+RwPDw/vLG/Wnm83Ua2Skni0eHh4eJ/kbZr0m/vkL2sWIuPh4eHd4CURwKYB1i4zeUOuWKLw8PDwLvPyR86aXrPm1qrphYeHh/cR3qzh1G7DysGrlBoPDw/vGi8pi2fR7Wz5qbt2eVaNh4eHt+DNWlN5o2tWNOcv980d8PDw8C7w2gm3fXAb0baByOPUgYeHh1fy2sVgXyjPSupZKY+Hh4d3j9cGuO23Nq2v1QKGh4eH9wW8PEh9PYmfinffjA0PDw/vC3intlXlsHybAh4eHt4nefkm1PwVzBpXbYD75v54eHh4F3izQnmzGJzdvHUgyMDDw8NLeX8Bwe3kKXdBqF8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

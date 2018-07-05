@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="JavaScript内置对象  switch  Java SDF  ​   javascript 事件  Event 对象Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。 事件通常与函数结合使用，函数不会在事件发生前被执行！ 事件句柄　(Event Handlers)HTML 4.0 的新特性之一是能够使 HTML 事件触发浏览器中的行为，比">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="JavaScript内置对象  switch  Java SDF  ​   javascript 事件  Event 对象Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。 事件通常与函数结合使用，函数不会在事件发生前被执行！ 事件句柄　(Event Handlers)HTML 4.0 的新特性之一是能够使 HTML 事件触发浏览器中的行为，比">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-22T09:38:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="JavaScript内置对象  switch  Java SDF  ​   javascript 事件  Event 对象Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。 事件通常与函数结合使用，函数不会在事件发生前被执行！ 事件句柄　(Event Handlers)HTML 4.0 的新特性之一是能够使 HTML 事件触发浏览器中的行为，比">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-21T09:22:48.000Z" itemprop="datePublished" class="page-time">
+  2017-11-21
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Event-对象"><span class="post-toc-number">1.</span> <span class="post-toc-text">Event 对象</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件句柄-Event-Handlers"><span class="post-toc-number">2.</span> <span class="post-toc-text">事件句柄　(Event Handlers)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#鼠标-键盘属性"><span class="post-toc-number">3.</span> <span class="post-toc-text">鼠标 / 键盘属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#IE-属性"><span class="post-toc-number">4.</span> <span class="post-toc-text">IE 属性</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-JavaScript/JavaScript复习"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-21 17:22:48" datetime="2017-11-21T09:22:48.000Z"  itemprop="datePublished">2017-11-21</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <ul>
+<li><p>JavaScript内置对象</p>
+</li>
+<li><p>switch</p>
+</li>
+<li><p>Java SDF</p>
+<blockquote>
+<p>​</p>
+</blockquote>
+</li>
+<li><p>javascript 事件</p>
+<blockquote>
+<h2 id="Event-对象"><a href="#Event-对象" class="headerlink" title="Event 对象"></a>Event 对象</h2><p>Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。</p>
+<p>事件通常与函数结合使用，函数不会在事件发生前被执行！</p>
+<h2 id="事件句柄-Event-Handlers"><a href="#事件句柄-Event-Handlers" class="headerlink" title="事件句柄　(Event Handlers)"></a>事件句柄　(Event Handlers)</h2><p>HTML 4.0 的新特性之一是能够使 HTML 事件触发浏览器中的行为，比如当用户点击某个 HTML 元素时启动一段 JavaScript。下面是一个属性列表，可将之插入 HTML 标签以定义事件的行为。</p>
+<p>| 属性                                       | 此事件发生在何时…        |<br>| —————————————- | —————— |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onabort.asp" target="_blank" rel="noopener">onabort</a> | 图像的加载被中断。          |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onblur.asp" target="_blank" rel="noopener">onblur</a> | 元素失去焦点。            |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onchange.asp" target="_blank" rel="noopener">onchange</a> | 域的内容被改变。           |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onclick.asp" target="_blank" rel="noopener">onclick</a> | 当用户点击某个对象时调用的事件句柄。 |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_ondblclick.asp" target="_blank" rel="noopener">ondblclick</a> | 当用户双击某个对象时调用的事件句柄。 |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onerror.asp" target="_blank" rel="noopener">onerror</a> | 在加载文档或图像时发生错误。     |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onfocus.asp" target="_blank" rel="noopener">onfocus</a> | 元素获得焦点。            |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onkeydown.asp" target="_blank" rel="noopener">onkeydown</a> | 某个键盘按键被按下。         |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onkeypress.asp" target="_blank" rel="noopener">onkeypress</a> | 某个键盘按键被按下并松开。      |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onkeyup.asp" target="_blank" rel="noopener">onkeyup</a> | 某个键盘按键被松开。         |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onload.asp" target="_blank" rel="noopener">onload</a> | 一张页面或一幅图像完成加载。     |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onmousedown.asp" target="_blank" rel="noopener">onmousedown</a> | 鼠标按钮被按下。           |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onmousemove.asp" target="_blank" rel="noopener">onmousemove</a> | 鼠标被移动。             |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onmouseout.asp" target="_blank" rel="noopener">onmouseout</a> | 鼠标从某元素移开。          |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onmouseover.asp" target="_blank" rel="noopener">onmouseover</a> | 鼠标移到某元素之上。         |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onmouseup.asp" target="_blank" rel="noopener">onmouseup</a> | 鼠标按键被松开。           |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onreset.asp" target="_blank" rel="noopener">onreset</a> | 重置按钮被点击。           |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onresize.asp" target="_blank" rel="noopener">onresize</a> | 窗口或框架被重新调整大小。      |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onselect.asp" target="_blank" rel="noopener">onselect</a> | 文本被选中。             |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onsubmit.asp" target="_blank" rel="noopener">onsubmit</a> | 确认按钮被点击。           |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_onunload.asp" target="_blank" rel="noopener">onunload</a> | 用户退出页面。            |</p>
+<h2 id="鼠标-键盘属性"><a href="#鼠标-键盘属性" class="headerlink" title="鼠标 / 键盘属性"></a>鼠标 / 键盘属性</h2><p>| 属性                                       | 描述                        |<br>| —————————————- | ————————- |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_altkey.asp" target="_blank" rel="noopener">altKey</a> | 返回当事件被触发时，”ALT” 是否被按下。    |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_button.asp" target="_blank" rel="noopener">button</a> | 返回当事件被触发时，哪个鼠标按钮被点击。      |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_clientx.asp" target="_blank" rel="noopener">clientX</a> | 返回当事件被触发时，鼠标指针的水平坐标。      |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_clienty.asp" target="_blank" rel="noopener">clientY</a> | 返回当事件被触发时，鼠标指针的垂直坐标。      |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_ctrlkey.asp" target="_blank" rel="noopener">ctrlKey</a> | 返回当事件被触发时，”CTRL” 键是否被按下。  |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_metakey.asp" target="_blank" rel="noopener">metaKey</a> | 返回当事件被触发时，”meta” 键是否被按下。  |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_relatedtarget.asp" target="_blank" rel="noopener">relatedTarget</a> | 返回与事件的目标节点相关的节点。          |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_screenx.asp" target="_blank" rel="noopener">screenX</a> | 返回当某个事件被触发时，鼠标指针的水平坐标。    |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_screeny.asp" target="_blank" rel="noopener">screenY</a> | 返回当某个事件被触发时，鼠标指针的垂直坐标。    |<br>| <a href="itss://chm/www.w3school.com.cn/jsref/event_shiftkey.asp" target="_blank" rel="noopener">shiftKey</a> | 返回当事件被触发时，”SHIFT” 键是否被按下。 |</p>
+<h2 id="IE-属性"><a href="#IE-属性" class="headerlink" title="IE 属性"></a>IE 属性</h2><p>除了上面的鼠标/事件属性，IE 浏览器还支持下面的属性：</p>
+<p>| 属性              | 描述                                       |<br>| ————— | —————————————- |<br>| cancelBubble    | 如果事件句柄想阻止事件传播到包容对象，必须把该属性设为 true。        |<br>| fromElement     | 对于 mouseover 和 mouseout 事件，fromElement 引用移出鼠标的元素。 |<br>| keyCode         | 对于 keypress 事件，该属性声明了被敲击的键生成的 Unicode 字符码。对于 keydown 和 keyup 事件，它指定了被敲击的键的虚拟键盘码。虚拟键盘码可能和使用的键盘的布局相关。 |<br>| offsetX,offsetY | 发生事件的地点在事件源元素的坐标系统中的 x 坐标和 y 坐标。         |<br>| returnValue     | 如果设置了该属性，它的值比事件句柄的返回值优先级高。把这个属性设置为 fasle，可以取消发生事件的源元素的默认动作。 |<br>| srcElement      | 对于生成事件的 Window 对象、Document 对象或 Element 对象的引用。 |<br>| toElement       | 对于 mouseover 和 mouseout 事件，该属性引用移入鼠标的元素。 |<br>| x,y             | 事件发生的位置的 x 坐标和 y 坐标，它们相对于用CSS动态定位的最内层包容元素。 |</p>
+</blockquote>
+<p>​</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2017-11-22T09:38:41.000Z" itemprop="dateUpdated">2017-11-22 17:38:41</time>
+</span><br>
+
+
+        
+        <a href="/2017/11/21/JavaScript/JavaScript复习/" target="_blank" rel="external">http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/24/JavaScript/js/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/19/JavaScript/html复习/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/11/21/JavaScript/JavaScript复习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3awU6EUAwF0Pn/n9bElUYZb9tXRpPDygwEOJjQcvsej3h7+9g+//38l++/f9/bO+axseHh4eG1bv1qSwDVG3p+o8m1knvGw8PD2+blxSDfkgJw9ctzcOHB4eHh4b2UV22gk2KTFxI8PDy8/8urhhfVW8wDETw8PLzX8vKXeC9aTRr0/HGsZC14eHh4MW/yUn7V3+vzPTw8PLzWVL06DOuVkBxTvls8PDy8BV4ymsrfunkDPWmsqwsO8PDw8O7nzYf9vaChF238cAY8PDy823mnRly9pjx5iL+UBzw8PLyjvPkgqjcMq7bpedH6cod4eHh4a7y8Se0FEPmrvBDOJs03Hh4e3hov/7DvXbIXDc+DYzw8PLw9Xu+NerbY5K/7QnOPh4eHt8zLY4hq/Hp2mULhIeLh4eGt8fKP/2oJ6S2l6hUhPDw8vL/D6+HnAe7hrAUPDw/vlhg3f90ne6utdi8OviwMeHh4eId4yeB/3lgnl8+DiSTwxcPDw7uHVx3/V+PdvFT0muxCkIGHh4c34CWDqGrokP9evVY5OMbDw8Nb4OWLBpKBfbUk5FHC6Ax4eHh4R3mn4oP8DDm4/B3QOwUeHh5ekZeP56sPYn58b9AVpSx4eHh4y7z8pufxax5n9Pbi4eHhzXn5IqdeAai20fn4Lfln4OHh4W3z8jF/zui96KvxxOXjwMPDw1vgbYe81SKRPKa8UOHh4eFt8N6KW+/J9Qb/kwb98osBDw8Pb8ybLzLIB/zzIDghHV5DgYeHh9fqPKvH5MukzgYQl+fBw8PDW+NVLz8ZfZ1qwaPj8fDw8F7KS0KKvNXOi8doeIaHh4f3B3jVvb0wIl9uFYUReHh4eAu8e8KI3tKB6rgLDw8Pb5vXG4BNFhBU2+LesgY8PDy8Bd47wqdpztBMY+MAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="mysql变量MySQL中的变量以定义者分类分为用户变量与系统变量。 以作用域分类为全局变量，会话变量。  用户变量：以”@”开始，形式为”@变量名”。用户变量跟mysql客户端是绑定的，设置的变量，只对当前用户使用的客户端生效 系统变量：定义时，以如下两种形式出现，set GLOBAL 变量名  或者  set @@global.变量名，对所有客户端生效。只有具有super权限才可以设置全局变量">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/05/19/sql/MySQL变量/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="mysql变量MySQL中的变量以定义者分类分为用户变量与系统变量。 以作用域分类为全局变量，会话变量。  用户变量：以”@”开始，形式为”@变量名”。用户变量跟mysql客户端是绑定的，设置的变量，只对当前用户使用的客户端生效 系统变量：定义时，以如下两种形式出现，set GLOBAL 变量名  或者  set @@global.变量名，对所有客户端生效。只有具有super权限才可以设置全局变量">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-19T13:34:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="mysql变量MySQL中的变量以定义者分类分为用户变量与系统变量。 以作用域分类为全局变量，会话变量。  用户变量：以”@”开始，形式为”@变量名”。用户变量跟mysql客户端是绑定的，设置的变量，只对当前用户使用的客户端生效 系统变量：定义时，以如下两种形式出现，set GLOBAL 变量名  或者  set @@global.变量名，对所有客户端生效。只有具有super权限才可以设置全局变量">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">No title</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">No title</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-19T13:21:38.000Z" itemprop="datePublished" class="page-time">
+  2018-05-19
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql变量"><span class="post-toc-number">1.</span> <span class="post-toc-text">mysql变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-declare定义变量"><span class="post-toc-number">2.</span> <span class="post-toc-text">mysql declare定义变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-SET定义变量"><span class="post-toc-number">3.</span> <span class="post-toc-text">mysql SET定义变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#mysql-declare和set定义变量的区别"><span class="post-toc-number">4.</span> <span class="post-toc-text">mysql declare和set定义变量的区别</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MySQL的用户变量和系统变量"><span class="post-toc-number"></span> <span class="post-toc-text">MySQL的用户变量和系统变量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、用户变量"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、用户变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、系统变量"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、系统变量</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-sql/MySQL变量"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">No title</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-19 21:21:38" datetime="2018-05-19T13:21:38.000Z"  itemprop="datePublished">2018-05-19</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="mysql变量"><a href="#mysql变量" class="headerlink" title="mysql变量"></a>mysql变量</h2><p>MySQL中的变量以定义者分类分为用户变量与系统变量。</p>
+<p>以作用域分类为全局变量，会话变量。</p>
+<ol>
+<li>用户变量：以”@”开始，形式为”@变量名”。用户变量跟mysql客户端是绑定的，设置的变量，只对当前用户使用的客户端生效</li>
+<li>系统变量：定义时，以如下两种形式出现，set GLOBAL 变量名  或者  set @@global.变量名，对所有客户端生效。只有具有super权限才可以设置全局变量</li>
+<li>会话变量：只对连接的客户端有效。</li>
+<li>局部变量：作用范围在begin到end语句块之间。在该语句块里设置的变量。declare语句专门用于定义局部变量。set语句是设置不同类型的变量，包括会话变量和全局变量</li>
+</ol>
+<p>通俗理解术语之间的区别：</p>
+<p>用户定义的变量就叫用户变量。这样理解的话，会话变量和全局变量都可以是用户定义的变量。只是他们是对当前客户端生效还是对所有客户端生效的区别了。所以，用户变量包括了会话变量和全局变量</p>
+<p>局部变量与用户变量的区分在于两点:1.用户变量是以”@”开头的。局部变量没有这个符号。2.定义变量不同。用户变量使用set语句，局部变量使用declare语句定义 3.作用范围。局部变量只在begin-end语句块之间有效。在begin-end语句块运行完之后，局部变量就消失了。</p>
+<p>所以，最后它们之间的层次关系是：变量包括局部变量和用户变量。用户变量包括会话变量和全局变量。</p>
+<h2 id="mysql-declare定义变量"><a href="#mysql-declare定义变量" class="headerlink" title="mysql declare定义变量"></a>mysql declare定义变量</h2><p>mysql declare用于定义变量，在存储过程和函数中通过declare定义变量在BEGIN…END中，且在语句之前。并且可以通过重复定义多个变量</p>
+<p>declare变量的作用范围同编程里面类似，在这里一般是在对应的begin和end之间。在end之后这个变量就没有作用了，不能使用了。这个同编程一样。</p>
+<p>注意：declare定义的变量名不能带‘@’符号，mysql在这点做的确实不够直观，往往变量名会被错成参数或者字段名。</p>
+<p>mysql存储过程中使用declare定义变量，实例如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">DROP PROCEDURE IF EXISTS insert_ten_rows $$</span><br><span class="line"></span><br><span class="line">CREATE PROCEDURE insert_ten_rows () </span><br><span class="line">    BEGIN</span><br><span class="line">        DECLARE crs INT DEFAULT 0;</span><br><span class="line"></span><br><span class="line">        WHILE crs &lt; 10 DO</span><br><span class="line">            INSERT INTO `continent`(`name`) VALUES (&apos;cont&apos;+crs);</span><br><span class="line">            SET crs = crs + 1;</span><br><span class="line">        END WHILE;</span><br><span class="line">    END $$</span><br><span class="line"></span><br><span class="line">DELIMITER ;12345678910111213</span><br></pre></td></tr></table></figure>
+<h2 id="mysql-SET定义变量"><a href="#mysql-SET定义变量" class="headerlink" title="mysql SET定义变量"></a>mysql SET定义变量</h2><p>mysql set也可以用来定于变量，定义变量的形式是以”@”开始，如：”@变量名”。</p>
+<p>mysql SET定义变量实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET @t1=0, @t2=1, @t3=2;</span><br><span class="line"></span><br><span class="line">mysql&gt; select @t1;</span><br><span class="line">+------+</span><br><span class="line">| @t1  |</span><br><span class="line">+------+</span><br><span class="line">| 0    |</span><br><span class="line">+------+</span><br><span class="line"></span><br><span class="line">mysql&gt; select @t2;</span><br><span class="line">+------+</span><br><span class="line">| @t2  |</span><br><span class="line">+------+</span><br><span class="line">| 1    |</span><br><span class="line">+------+</span><br><span class="line"></span><br><span class="line">mysql&gt; select @t3;</span><br><span class="line">+------+</span><br><span class="line">| @t3  |</span><br><span class="line">+------+</span><br><span class="line">| 2    |</span><br><span class="line">+------+</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<p>复杂一点的实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; SET @t1=0, @t2=1, @t3=2;</span><br><span class="line"></span><br><span class="line">mysql&gt; SELECT @t1:=(@t2:=1)+@t3:=4,@t1,@t2,@t3;</span><br><span class="line">+----------------------+------+------+------+</span><br><span class="line">| @t1:=(@t2:=1)+@t3:=4 | @t1  | @t2  | @t3  |</span><br><span class="line">+----------------------+------+------+------+</span><br><span class="line">|                    5 | 5    | 1    | 4    |</span><br><span class="line">+----------------------+------+------+------+</span><br><span class="line"></span><br><span class="line">12345678910</span><br></pre></td></tr></table></figure>
+<h2 id="mysql-declare和set定义变量的区别"><a href="#mysql-declare和set定义变量的区别" class="headerlink" title="mysql declare和set定义变量的区别"></a>mysql declare和set定义变量的区别</h2><p>mysql declare和set定义变量，除了一个不加@和一个加@这个区别之外，还有以下区别：</p>
+<p>declare用来定义局部变量</p>
+<p>@用来定义会话变量</p>
+<p>declare变量的作用范围同编程里面类似，在这里一般是在对应的begin和end之间。在end之后这个变量就没有作用了，不能使用了。这个同编程一样。</p>
+<p>另外有种变量叫做会话变量(session variable)，也叫做用户定义的变量(user defined variable)。这种变量要在变量名称前面加上“@”符号，叫做会话变量，代表整个会话过程他都是有作用的，这个有点类似于全局变量一样。这种变量用途比较广，因为只要在一个会话内(就是某个应用的一个连接过程中)，这个变量可以在被调用的存储过程或者代码之间共享数据。</p>
+<h1 id="MySQL的用户变量和系统变量"><a href="#MySQL的用户变量和系统变量" class="headerlink" title="MySQL的用户变量和系统变量"></a>MySQL的用户变量和系统变量</h1><p>MySQL中的变量分为用户变量与系统变量。</p>
+<h2 id="一、用户变量"><a href="#一、用户变量" class="headerlink" title="一、用户变量"></a>一、用户变量</h2><p>用户变量是指与数据库的一次连接中声明的变量，在连接断开后就会消失。<br>1、变量命名<br>变量名必须以@开头，例如@name</p>
+<p>2、声明及赋值<br>声明与赋值的方法两种，一种是使用set语句，一种是使用select语句。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/*使用set语句声明变量并赋值（注：声明的时候必须赋初值）*/</span><br><span class="line">set @name=&apos;zhangsan&apos;;</span><br><span class="line"></span><br><span class="line">/*使用select语句声明并赋值*/</span><br><span class="line">select @age:=23;</span><br></pre></td></tr></table></figure>
+<p>3、查看用户变量<br>查看变量使用select语句</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select @name;</span><br></pre></td></tr></table></figure>
+<h2 id="二、系统变量"><a href="#二、系统变量" class="headerlink" title="二、系统变量"></a>二、系统变量</h2><p>系统变量又分为全局变量与会话变量。</p>
+<ul>
+<li>全局变量在MySQL启动的时候由服务器自动将它们初始化为默认值，这些默认值可以通过更改my.ini这个文件来更改。</li>
+<li>会话变量在每次建立一个新的连接的时候，由MySQL来初始化，MySQL会将当前所有全局变量的值复制一份，作为会话变量。也就是说，如果在建立会话以后，没有手动更改过会话变量与全局变量的值，那所有这些变量的值都是一样的。</li>
+<li>全局变量与会话变量的区别就在于，对全局变量的修改会影响到整个服务器，但是对会话变量的修改，只会影响到当前的会话（也就是当前的数据库连接）。</li>
+</ul>
+<p>1、查看系统变量<br>查看全局变量可以使用show global variables语句，查看会话变量可以使用show session variables或者show variables语句。这些语句会列出所有的变量，如果需要查看某个变量，可以在后面加like进行模糊查询，例如：show variables like ‘%sql_mode%’。</p>
+<p>另外，还可以使用select语句来查看系统变量。<br>会话变量：select @@ session/local.varname;<br>全局变量：select @@global.varname;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/*查询所有的全局变量*/</span><br><span class="line">show global variables;</span><br><span class="line"></span><br><span class="line">/*查询所有的会话变量*/</span><br><span class="line">show variables;</span><br><span class="line"></span><br><span class="line">/*查询名字中含有sql_mode的全局变量*/</span><br><span class="line">show global variables like &apos;%sql_mode%&apos;;</span><br><span class="line">select @@global.varname;</span><br><span class="line"></span><br><span class="line">/*查询名字中含有sql_mode的会话变量*/</span><br><span class="line">show variables like &apos;%sql_mode%&apos;;</span><br><span class="line">select @@session.varname;</span><br><span class="line">select @@local.varname;</span><br></pre></td></tr></table></figure>
+<p>2、修改系统变量<br>跟修改用户变量相同，修改系统变量使用的也是set语句。<br>当需要修改会话变量时，可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set session varname=value //或者 set @@session.varname=value</span><br></pre></td></tr></table></figure>
+<p>当需要修改系统变量时，可以使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set global varname=value //或者</span><br><span class="line">set @@ global.varname=value</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-05-19T13:34:49.000Z" itemprop="dateUpdated">2018-05-19 21:34:49</time>
+</span><br>
+
+
+        
+        <a href="/2018/05/19/sql/MySQL变量/" target="_blank" rel="external">http://io.stelawliet.top/2018/05/19/sql/MySQL变量/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/19/MD/mac强化/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/19/Linux/security/fail2ban ssh security/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/19/sql/MySQL变量/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aS27bQBAFQN//0gqQbSLmvW7ZCIfFlSGZ4hQXjf59fcXX6/eVfPv643r3C+/+5/pZqwsDA+O2jNfllRy0/fb61SS/9pd7MTAwHsDIfy4JoEl4vX5WfjYMDAyM60PnR8lfCgYGBsY+4OaPSQrU/HVgYGBg5KXppumWpJLfXotjYGDckNEOBn7y72+cb2BgYNyE8SqvTfs+TzTrU2FgYBzNyFtpSSGa42cD0X+EYwwMjIcx2qO3RexmhLDaXMPAwLgto22ftYVuu64xC/oYGBinMvap24yUB/TohWJgYDyY0T5+/0k++IyqcAwMjIMYs4ZXnrptmnfRsBMDA+MBjP1SxWxha7Zg8XYSi4GBcSijvW2WVs6a+x8eGGBgYNyWMVtraANlvsyRPwsDAwOjDaOzgUE+Nii6hhgYGMcxku76JvnLA/oHBpkYGBiHMjY35+OB9gXliyAf2NfAwMD47xlFPA5Iefu+Db4RCQMD42hGGyg3axk5uw3ZGBgYpzKuDzRrirXpZttoi+pvDAyM4xj7T5K0Lx8t1CkjBgbG0Yy8NG0Dbp56totiGBgYT2N8qlhNQnMbRosUEwMD42hGG+xmQ8qcPQNjYGA8gdEWk0ng20wqZgUtBgbGExhtuz9Zy1jF+LZUxsDAwFincbPxQ5FWYmBgYJSttFnAzVtsq9QQAwPjtoy2ZZaH1/pAo4EBBgbG2YxZAfmpQ7eLYu0ZMDAwbs74BTRtGQZY8+JcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

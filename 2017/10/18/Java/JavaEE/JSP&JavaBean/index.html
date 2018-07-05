@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>JSP&amp;JavaBean | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="javaee,jsp">
+    <meta name="description" content="[TOC] ##JSP三大指令   一个jsp页面中，可以有0~N个指令的定义！ page：\&amp;lt;%@page language=”java” info=”xxx”…%&amp;gt;  pageEncoding和contentType：   pageEncoding：它指定当前jsp页面的编码，只要不说谎，就不会有乱码！在服务器要把jsp编译成.java时需要使用pageEncoding! cont">
+<meta name="keywords" content="javaee,jsp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP&amp;JavaBean">
+<meta property="og:url" content="http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="[TOC] ##JSP三大指令   一个jsp页面中，可以有0~N个指令的定义！ page：\&amp;lt;%@page language=”java” info=”xxx”…%&amp;gt;  pageEncoding和contentType：   pageEncoding：它指定当前jsp页面的编码，只要不说谎，就不会有乱码！在服务器要把jsp编译成.java时需要使用pageEncoding! cont">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-04T11:42:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP&amp;JavaBean">
+<meta name="twitter:description" content="[TOC] ##JSP三大指令   一个jsp页面中，可以有0~N个指令的定义！ page：\&amp;lt;%@page language=”java” info=”xxx”…%&amp;gt;  pageEncoding和contentType：   pageEncoding：它指定当前jsp页面的编码，只要不说谎，就不会有乱码！在服务器要把jsp编译成.java时需要使用pageEncoding! cont">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">JSP&amp;JavaBean</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">JSP&amp;JavaBean</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-10-18T11:30:33.000Z" itemprop="datePublished" class="page-time">
+  2017-10-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/javaee/">javaee</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/javaee/jsp/">jsp</a></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#page："><span class="post-toc-number">1.</span> <span class="post-toc-text">page：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#include-–-gt-静态包含"><span class="post-toc-number">2.</span> <span class="post-toc-text">include –&gt; 静态包含</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#taglib-–-gt-导入标签库"><span class="post-toc-number">3.</span> <span class="post-toc-text">taglib –&gt; 导入标签库</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JSP九个内置对象"><span class="post-toc-number"></span> <span class="post-toc-text">JSP九个内置对象</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#pageContext"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">pageContext</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#JSP动作标签"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">JSP动作标签</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#JavaBean"><span class="post-toc-number"></span> <span class="post-toc-text">JavaBean</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#javaBean的规范："><span class="post-toc-number">0.1.</span> <span class="post-toc-text">javaBean的规范：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内省："><span class="post-toc-number">0.2.</span> <span class="post-toc-text">内省：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#jsp中与javaBean相关的标签"><span class="post-toc-number">0.3.</span> <span class="post-toc-text">jsp中与javaBean相关的标签</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EL表达式"><span class="post-toc-number"></span> <span class="post-toc-text">EL表达式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#EL表达式来读取四大域"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">EL表达式来读取四大域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#javaBean导航"><span class="post-toc-number">0.1.1.</span> <span class="post-toc-text">javaBean导航</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EL函数库（由JSTL提供的）"><span class="post-toc-number">1.</span> <span class="post-toc-text">EL函数库（由JSTL提供的）</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/JavaEE/JSP&amp;JavaBean"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">JSP&JavaBean</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-10-18 19:30:33" datetime="2017-10-18T11:30:33.000Z"  itemprop="datePublished">2017-10-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/javaee/">javaee</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/javaee/jsp/">jsp</a></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>[TOC]</p>
+<p>##JSP三大指令</p>
+<p>  一个jsp页面中，可以有0~N个指令的定义！</p>
+<h3 id="page："><a href="#page：" class="headerlink" title="page："></a>page：</h3><p>\&lt;%@page language=”java” info=”xxx”…%&gt;</p>
+<ul>
+<li><p>pageEncoding和contentType：</p>
+<blockquote>
+<ol>
+<li>pageEncoding：它指定当前jsp页面的编码，只要不说谎，就不会有乱码！在服务器要把jsp编译成.java时需要使用pageEncoding!</li>
+<li>contentType：它表示添加一个响应头：Content-Type！等同与response.setContentType(“text/html;charset=utf-8”);</li>
+<li>如果两个属性只提供一个，那么另一个的默认值为设置那一个。</li>
+<li>如果两个属性都没有设置，那么默认为iso</li>
+</ol>
+</blockquote>
+</li>
+<li><p>import：导包！可以出现多次</p>
+</li>
+<li><p>errorPage和isErrorPage</p>
+<blockquote>
+<p>errorPage：当前页面如果抛出异常，那么要转发到哪一个页面，由errorPage来指定<br>isErrorPage：它指定当前页面是否为处理错误的页面！当该属性为true时，这个页面会设置状态码为500！而且这个页面可以使用9大内置对象中的exception!</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">error-code</span>&gt;</span>404<span class="tag">&lt;/<span class="name">error-code</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">location</span>&gt;</span>/error/errorPage.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">error-code</span>&gt;</span>500<span class="tag">&lt;/<span class="name">error-code</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">location</span>&gt;</span>/error/errorPage.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">error-page</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">exception-type</span>&gt;</span>java.lang.RuntimeException<span class="tag">&lt;/<span class="name">exception-type</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">location</span>&gt;</span>/index.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>autoFlush和buffer</p>
+<blockquote>
+<ol>
+<li>autoFlush：指定jsp的输出流缓冲区满时，是否自动刷新！默认为true，如果为false，那么在缓冲区满时抛出异常！</li>
+<li>buffer：指定缓冲区大小，默认为8kb，通常不需要修改！</li>
+</ol>
+</blockquote>
+</li>
+<li><p>isELIgnored：是否忽略el表达式，默认值为false，不忽略，即支持！</p>
+</li>
+<li><p>基本没有：</p>
+<blockquote>
+<ol>
+<li>language：指定当前jsp编译后的语言类型，默认值为java。</li>
+<li>info：信息！</li>
+<li>isThreadSafe：当前的jsp是否支持并发访问！</li>
+<li>session：当前页面是否支持session，如果为false，那么当前页面就没有session这个内置对象！</li>
+<li>extends：让jsp生成的servlet去继承该属性指定的类！</li>
+</ol>
+</blockquote>
+</li>
+</ul>
+<h3 id="include-–-gt-静态包含"><a href="#include-–-gt-静态包含" class="headerlink" title="include –&gt; 静态包含"></a>include –&gt; 静态包含</h3><ul>
+<li>与RequestDispatcher的include()方法的功能相似！</li>
+<li>\&lt;%@include%&gt; 它是在jsp编译成java文件时完成的！他们共同生成一个java(就是一个servlet)文件，然后再生成一个class！</li>
+<li>RequestDispatcher的include()是一个方法，包含和被包含的是两个servlet，即两个.class！他们只是把响应的内容在运行时合并了！</li>
+<li>作用：把页面分解了，使用包含的方式组合在一起，这样一个页面中不变的部分，就是一个独立jsp，而我们只需要处理变化的页面。</li>
+</ul>
+<h3 id="taglib-–-gt-导入标签库"><a href="#taglib-–-gt-导入标签库" class="headerlink" title="taglib –&gt; 导入标签库"></a>taglib –&gt; 导入标签库</h3><ul>
+<li>两个属性：<blockquote>
+<p>prefix：指定标签库在本页面中的前缀！由我们自己来起名称！<br>uri: 指定标签库的位置！<br>\&lt;%@taglib prefix=”s” uri=”/struts-tags”%&gt; 前缀的用法\&lt;s:text&gt;</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="JSP九个内置对象"><a href="#JSP九个内置对象" class="headerlink" title="JSP九个内置对象"></a>JSP九个内置对象</h2><ul>
+<li>out –&gt; jsp的输出流，用来向客户端响应</li>
+<li>page –&gt; 当前jsp对象！　它的引用类型是Object，即真身中有如下代码：Object page = this;</li>
+<li>config –&gt; 它对应真身中的ServletConfig对象！</li>
+<li>pageContext 一个顶9个！</li>
+<li>request –&gt; HttpServletEequest</li>
+<li>response –&gt; HttpServletResponse</li>
+<li>exception –&gt; Throwable</li>
+<li>session –&gt; HttpSession</li>
+<li>application –&gt; ServletContext</li>
+</ul>
+<h4 id="pageContext"><a href="#pageContext" class="headerlink" title="pageContext"></a>pageContext</h4><ul>
+<li>一个顶9个！</li>
+<li>Servlet中有三大域，而JSP中有四大域，它就是最后一个域对象！<blockquote>
+<p>ServletContext：整个应用程序<br>session：整个会话(一个会话中只有一个用户)<br>request：一个请求链！<br>pageContext：一个jsp页面！这个域是在当前jsp页面和当前jsp页面中使用的标签之间共享数据！<br>域对象<br>代理其他域：pageContext.setAttribute(“xxx”, “XXX”, PageContext.SESSION_SCOPE);<br>全域查找：pageContext.findAttribute(“xxx”);从小到大，依赖查找！<br>获取其他8个内置对象：</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="JSP动作标签"><a href="#JSP动作标签" class="headerlink" title="JSP动作标签"></a>JSP动作标签</h4><p>　　这些jsp的动作标签，与html提供的标签有本质的区别。</p>
+<ul>
+<li>动作标签是由tomcat(服务器)来解释执行！它与java代码一样，都是在服务器端执行的！</li>
+<li><p>html由浏览器来执行！</p>
+<ul>
+<li><p><code>&lt;jsp:forward&gt;</code>：转发！它与RequestDispatcher的forward方法是一样的，一个是在Servlet中使用，一个是在jsp中使用！</p>
+</li>
+<li><p><code>&lt;jsp:include&gt;</code>：包含：它与RequestDispatcher的include方法是一样的，一个是在Servlet中使用，一个是在jsp中使用！</p>
+<blockquote>
+<p><code>&lt;%@include&gt;</code>和<code>&lt;jsp:include&gt;</code>有什么不同！</p>
+</blockquote>
+</li>
+<li><p><code>&lt;jsp:param&gt;</code>：它用来作为forward和include的子标签！用来给转发或包含的页面传递参数！</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="JavaBean"><a href="#JavaBean" class="headerlink" title="JavaBean"></a>JavaBean</h2><h4 id="javaBean的规范："><a href="#javaBean的规范：" class="headerlink" title="javaBean的规范："></a>javaBean的规范：</h4><pre><code>1. 必须要有一个默认构造器
+2. 提供get/set方法，如果只有get方法，那么这个属性是只读属性！
+3. 属性：有get/set方法的成员，还可以没有成员，只有get/set方法。属性名称由get/set方法来决定！而不是成员名称！
+4. 方法名称满足一定的规范，那么它就是属性！boolean类型的属性，它的读方法可以是is开头，也可以是get开头！
+</code></pre><h4 id="内省："><a href="#内省：" class="headerlink" title="内省："></a>内省：</h4><p> 内省类 –&gt; Bean信息 –&gt; 属性描述符 –&gt; 属性的get/set对应的Method！ — &gt; 可以反射了！</p>
+<p>commons-beanutils，它是依赖内省完成！</p>
+<ul>
+<li>导包：<blockquote>
+<p>commons-beanutils.jar<br>commons-logging.jar</p>
+<p>​</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">BeanUtils.getProperty(Object bean, String propertyName)</span><br><span class="line">BeanUtils.setProperty(Object bean, String propertyName, String propertyValue)</span><br><span class="line">BeanUtils.populate(Map map, Object bean)</span><br><span class="line"></span><br><span class="line">CommontUtils.toBean(Map map, Class <span class="class"><span class="keyword">class</span>)</span></span><br></pre></td></tr></table></figure>
+<h4 id="jsp中与javaBean相关的标签"><a href="#jsp中与javaBean相关的标签" class="headerlink" title="jsp中与javaBean相关的标签"></a>jsp中与javaBean相关的标签</h4><ul>
+<li><a href="jsp:useBean" target="_blank" rel="noopener">jsp:useBean</a> –&gt; 创建或查询bean<ul>
+<li><code>&lt;jsp:useBean id=&quot;user1&quot; class=&quot;cn.itcast.domain.User&quot; scope=&quot;session&quot;/&gt;</code> </li>
+<li>在session域中查找名为user1的bean，如果不存在，创建之</li>
+<li><code>&lt;jsp:useBean id=&quot;user1&quot; class=&quot;cn.itcast.domain.User&quot; scope=&quot;session&quot;/&gt;</code></li>
+</ul>
+</li>
+<li><a href="jsp:setProperty" target="_blank" rel="noopener">jsp:setProperty</a><ul>
+<li><code>&lt;jsp:setProperty property=&quot;username&quot; name=&quot;user1&quot; value=&quot;admin&quot;/&gt;</code> </li>
+<li>设置名为user1的这个javabean的username属性值为admin</li>
+</ul>
+</li>
+<li><a href="jsp:getProperty" target="_blank" rel="noopener">jsp:getProperty</a><ul>
+<li><code>&lt;jsp:getProperty property=&quot;username&quot; name=&quot;user1&quot;/&gt;</code> </li>
+<li>获取名为user1的javabean的名为username属性值</li>
+</ul>
+</li>
+</ul>
+<h2 id="EL表达式"><a href="#EL表达式" class="headerlink" title="EL表达式"></a>EL表达式</h2><p>####EL是JSP内置的表达式语言</p>
+<ul>
+<li>jsp2.0开始，不让再使用java脚本，而是使用el表达式和动态标签来替代java脚本！</li>
+<li>EL替代的是&lt;%= … %&gt;，也就是说，EL只能做输出！</li>
+</ul>
+<h4 id="EL表达式来读取四大域"><a href="#EL表达式来读取四大域" class="headerlink" title="EL表达式来读取四大域"></a>EL表达式来读取四大域</h4><ul>
+<li>${xxx}，全域查找名为xxx的属性，如果不存在，输出空字符串，而不是null。</li>
+<li>${pageScope.xxx}、${requestScope.xxx}、${sessionScope.xxx}、${applicationScope.xxx}，指定域获取属性！</li>
+</ul>
+<h5 id="javaBean导航"><a href="#javaBean导航" class="headerlink" title="javaBean导航"></a>javaBean导航</h5><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%Address address = <span class="keyword">new</span> Address();</span><br><span class="line">   address.setCity(<span class="string">"北京"</span>);</span><br><span class="line">   address.setStreet(<span class="string">"西三旗"</span>);</span><br><span class="line"></span><br><span class="line">   Employee emp = <span class="keyword">new</span> Employee();</span><br><span class="line">   emp.setName(<span class="string">"李小四"</span>);</span><br><span class="line">   emp.setSalary(<span class="number">123456</span>);</span><br><span class="line">   emp.setAddress(address);</span><br><span class="line"></span><br><span class="line">   request.setAttribute(<span class="string">"emp"</span>, emp);%&gt;</span><br><span class="line">  &lt;h3&gt;使用el获取request域的emp&lt;/h3&gt;</span><br><span class="line">  $&#123;requestScope.emp.address.street &#125;</span><br><span class="line"></span><br><span class="line">  &lt;!-- request.getAttribute(<span class="string">"emp"</span>).getAddress().getStreet() --&gt;</span><br></pre></td></tr></table></figure>
+<p>EL可以输出的东西都在11个内置对象中！11个内置对象，其中10个是Map！pageContext不是map，它就是PageContext类型，1个项9个。</p>
+<ul>
+<li><p><code>param：</code>对应参数，它是一个Map，其中key参数名，value是参数值，适用于单值的参数。</p>
+</li>
+<li><p><code>paramValues</code>：对应参数，它是一个Map，其中key参数名，value是多个参数值，适用于多值的参数。</p>
+</li>
+<li><p><code>header</code>：对应请求头，它是一个Map，其中key表示头名称，value是单个头值，适用于单值请求头</p>
+</li>
+<li><p><code>headerValues</code>：对应请求头，它是一个Map，其中key表示头名称，value是多个头值，适用于多值请求头</p>
+</li>
+<li><p>initParam：获取<code>&lt;context-param&gt;</code>内的参数！</p>
+</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-name</span>&gt;</span>xxx<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">param-value</span>&gt;</span>XXX<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">context-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>yyy<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>YYY<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">context-param</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>${initParam.xxx}</p>
+<ul>
+<li>cookie：<code>Map&lt;String,Cookie&gt;</code>类型，其中key是cookie的name，value是cookie对象。 ${cookie.username.value}</li>
+<li><code>pageContext</code>：它是PageContext类型！<code>${pageContext.request.contextPath}</code></li>
+</ul>
+<h3 id="EL函数库（由JSTL提供的）"><a href="#EL函数库（由JSTL提供的）" class="headerlink" title="EL函数库（由JSTL提供的）"></a>EL函数库（由JSTL提供的）</h3><p>导入标签库：<br><code>&lt;%@ tablib prefix=&quot;fn&quot; uri=&quot;http://java.sun.com/jsp/jstl/functions&quot;%&gt;</code><br><code>String toUpperCase(String input)</code>：把参数转换成大写<br><code>String toLowerCase(String input)</code>：把参数转换成小写<br><code>int indexOf(String input, String substring)</code>：从大串，输出小串的位置！<br><code>boolean contains(String input, String substring)</code>：查看大串中是否包含小串<br><code>boolean containsIgnoreCase(String input, String substring)</code>：忽略大小写的，是否包含<br><code>boolean startsWith(String input, String substring)</code>：是否以小串为前缀<br><code>boolean endsWith(String input, String substring)</code>：是否以小串为后缀<br><code>String substring(String input, int beginIndex, int endIndex)</code>：截取子串<br><code>String substringAfter(String input, String substring)</code>：获取大串中，小串所在位置后面的字符串<br><code>substringBefore(String input, String substring)</code>：获取大串中，小串所在位置前面的字符串<br><code>String escapeXml(String input)</code>：把input中“&lt;”、”&gt;”、”&amp;”、”‘“、”””，进行转义<br><code>String trim(String input)</code>：去除前后空格<br><code>String replace(String input, String substringBefore, String substringAfter)</code>：替换<br><code>String[] split(String input, String delimiters)</code>：分割字符串，得到字符串数组<br><code>int length(Object obj)</code>：可以获取字符串、数组、各种集合的长度！<br><code>String join(String array[], String separator)</code>：联合字符串数组！</p>
+<p>自定义函数库</p>
+<ul>
+<li>写一个java类，类中可以定义0~N个方法，但必须是static，而且有返回值的！</li>
+<li>在WEB-INF目录下创建一个tld文件</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">function</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>fun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">function-class</span>&gt;</span>cn.itcast.fn.MyFunction<span class="tag">&lt;/<span class="name">function-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">function-signature</span>&gt;</span>java.lang.String fun()<span class="tag">&lt;/<span class="name">function-signature</span>&gt;</span><span class="tag">&lt;/<span class="name">function</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在jsp页面中导入标签库<br><code>&lt;%@ taglib prefix=&quot;it&quot; uri=&quot;/WEB-INF/tlds/itcast.tld&quot; %&gt;</code></li>
+<li>在jsp页面中使用自定义的函数：<code>${it:fun() }</code></li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-07-04T11:42:09.000Z" itemprop="dateUpdated">2018-07-04 19:42:09</time>
+</span><br>
+
+
+        
+        <a href="/2017/10/18/Java/JavaEE/JSP&amp;JavaBean/" target="_blank" rel="external">http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&amp;JavaBean/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javaee/">javaee</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jsp/">jsp</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/&title=《JSP&JavaBean》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/&title=《JSP&JavaBean》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JSP&JavaBean》 — stelawliet&url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/10/20/firewall/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">firewall-cmd命令记</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/10/10/MD/未命名/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/&title=《JSP&JavaBean》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/&title=《JSP&JavaBean》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《JSP&JavaBean》 — stelawliet&url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2017/10/18/Java/JavaEE/JSP&JavaBean/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACN0lEQVR42u3awY6jMBAE0Pz/T2elPc1oBVTZZLTTPJ+QIgiPQ8nd7dcrXu+/69/ro1+/rqO7zu99fWJhYGD8Wsb7dCWvfvS0BNZ+lEMqBgbGAxh5FOYRmXya80+WvBsGBgZGG4LJCyUhi4GBgbETuHnBuRbZGBgYGDtFbFu4nsdr+7+31eIYGBi/kLEzGPj09Q/NNzAwMP5jxrtcOwPIJEYX3woDA2M0Y388ee8Bi7bEvahrMTAwRjCSYE1aZslurR05FAfFMDAwRjN2Dj3shHL7zOT5GBgYUxntcYq2yMzBa6NQDAyMJzDalll7V76tzDeFUS2OgYExiJEHbrHTTI5w3XRQ7Nt8AwMDYzRjraHflqxtQVt01TAwMEYz1krWvEGWH93It5UXFTkGBsY4Rh6sa0G8UyQXz8HAwBjNyEMz//Ve0mLXEAMDYxCjHUO2Bybyl25HoRe1OAYGxjhG20rbaajlw4C60YaBgTGUsTN6bBtqebu/HaNiYGA8gbF26GGnTbY2ALiAYWBgDGXkB7DaAvV8o9lGedFuw8DAGMrIYzf/m3atBe5huw0DA2MQY+fwVntEbKtllrTkMDAwhjLuisW2fG1D9uL5GBgYoxlt2N1bjn6iVMbAwJjKyEM22ai18Z1vHy82oxgYGA9grIVs0hqrq+pyLIqBgYGxdt0WnO3IEwMDAyMvJtdK2TaIo+dgYGA8gLEzDFjr6uUbzehDYGBgjGa0BWT7l2tlcN68w8DAGM34A272f63wXleqAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

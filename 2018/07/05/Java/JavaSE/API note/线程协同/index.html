@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>wait&amp;sleep - notify&amp;notifyAll | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="java,多线程">
+    <meta name="description" content="线程的状态 new(新建)刚创建线程对象new Thread(),还没有调用start(); runnable(可运行)可能在运行中,也可能是即将获得cpu blocked(阻塞)  执行同步代码时锁被其他线程占用则进入blocked 执行wait方法时把锁释放了-&amp;gt;等待notify/notifyAll唤醒 被唤醒后得到锁才能进入runnable   waiting(无限等待) 执行了wai">
+<meta name="keywords" content="java,多线程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="wait&amp;sleep - notify&amp;notifyAll">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="线程的状态 new(新建)刚创建线程对象new Thread(),还没有调用start(); runnable(可运行)可能在运行中,也可能是即将获得cpu blocked(阻塞)  执行同步代码时锁被其他线程占用则进入blocked 执行wait方法时把锁释放了-&amp;gt;等待notify/notifyAll唤醒 被唤醒后得到锁才能进入runnable   waiting(无限等待) 执行了wai">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-05T13:16:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="wait&amp;sleep - notify&amp;notifyAll">
+<meta name="twitter:description" content="线程的状态 new(新建)刚创建线程对象new Thread(),还没有调用start(); runnable(可运行)可能在运行中,也可能是即将获得cpu blocked(阻塞)  执行同步代码时锁被其他线程占用则进入blocked 执行wait方法时把锁释放了-&amp;gt;等待notify/notifyAll唤醒 被唤醒后得到锁才能进入runnable   waiting(无限等待) 执行了wai">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">wait&amp;sleep - notify&amp;notifyAll</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">wait&amp;sleep - notify&amp;notifyAll</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-05T08:27:43.000Z" itemprop="datePublished" class="page-time">
+  2018-07-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/api/">api</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程的状态"><span class="post-toc-number">1.</span> <span class="post-toc-text">线程的状态</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#synchronized-Object"><span class="post-toc-number">2.</span> <span class="post-toc-text">synchronized (Object){}</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Thread-sleep"><span class="post-toc-number">3.</span> <span class="post-toc-text">Thread.sleep()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#object-wait"><span class="post-toc-number">4.</span> <span class="post-toc-text">object.wait()</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#object-notify"><span class="post-toc-number">5.</span> <span class="post-toc-text">object.notify</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#object-notifyAll"><span class="post-toc-number">6.</span> <span class="post-toc-text">object.notifyAll</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/JavaSE/API note/线程协同"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">wait&sleep - notify&notifyAll</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-05 16:27:43" datetime="2018-07-05T08:27:43.000Z"  itemprop="datePublished">2018-07-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/api/">api</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><ol>
+<li><code>new</code>(新建)<br>刚创建线程对象new Thread(),还没有调用start();</li>
+<li><code>runnable</code>(可运行)<br>可能在运行中,也可能是即将获得cpu</li>
+<li><code>blocked</code>(阻塞) <ol>
+<li>执行同步代码时锁被其他线程占用则进入blocked</li>
+<li>执行wait方法时把锁释放了-&gt;等待notify/notifyAll唤醒</li>
+<li>被唤醒后得到锁才能进入runnable</li>
+</ol>
+</li>
+<li><code>waiting</code>(无限等待)<ol>
+<li>执行了wait后无限等待.只有被唤醒才能进入<code>blocked</code></li>
+</ol>
+</li>
+<li><p><code>timed waiting</code>(计时等待)</p>
+<ol>
+<li><p>提前唤醒则进入<code>blocked</code>或<code>runnable</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimeWait</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Object o = <span class="keyword">new</span> Object();</span><br><span class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (o) &#123;</span><br><span class="line">                System.out.println(<span class="string">"start wait"</span>);</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    o.wait(<span class="number">1000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(<span class="string">"wait out"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>teminated</code>(终止)</p>
+<ol>
+<li>run方法执行结束</li>
+<li>异常抛出给JVM</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="synchronized-Object"><a href="#synchronized-Object" class="headerlink" title="synchronized (Object){}"></a>synchronized (Object){}</h3><ul>
+<li>同步代码块.所有线程执行到synchronized代码块时先检查是否已经有其他线程持有此对象锁</li>
+<li>同一个对象锁.任何时候只有最多一个线程能进入synchronized中执行代码</li>
+<li>在成员方法上时锁的对象为this</li>
+<li>在静态方法上时锁的对象为此类的class对象</li>
+</ul>
+<h3 id="Thread-sleep"><a href="#Thread-sleep" class="headerlink" title="Thread.sleep()"></a>Thread.sleep()</h3><ul>
+<li>只释放cpu资源.计时结束后继续往下执行.</li>
+</ul>
+<h3 id="object-wait"><a href="#object-wait" class="headerlink" title="object.wait()"></a>object.wait()</h3><ul>
+<li>首先<code>Object.wait()</code>必须在<code>synchronized{}</code>中调用.否则会有<code>IllegalMonitorStateException</code>的异常.</li>
+<li>当执行到<code>Object.wait()</code>时会释放当前的锁</li>
+<li>释放锁后无限等待直到其他线程调用相同对象锁的<code>notify/notifyAll</code></li>
+</ul>
+<h3 id="object-notify"><a href="#object-notify" class="headerlink" title="object.notify"></a>object.notify</h3><ul>
+<li>唤醒任意一个相同对象锁的wait线程进入runnable状态</li>
+</ul>
+<h3 id="object-notifyAll"><a href="#object-notifyAll" class="headerlink" title="object.notifyAll"></a>object.notifyAll</h3><ul>
+<li>唤醒所有对象锁的wait线程进入blocked</li>
+<li>其中一个抢到锁的线程进入runnable</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-07-05T13:16:29.000Z" itemprop="dateUpdated">2018-07-05 21:16:29</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/05/Java/JavaSE/API note/线程协同/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/&title=《wait&sleep - notify&notifyAll》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/&title=《wait&sleep - notify&notifyAll》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wait&sleep - notify&notifyAll》 — stelawliet&url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/05/Java/JavaSE/API note/集合细节/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/05/Java/JavaSE/BigDataNote/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/&title=《wait&sleep - notify&notifyAll》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/&title=《wait&sleep - notify&notifyAll》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《wait&sleep - notify&notifyAll》 — stelawliet&url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/05/Java/JavaSE/API note/线程协同/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3awW4iMRAE0Pz/T2elPa2UAFXdNslKb05oIMZvItmmuj8+4uvz7/X19b93vl7P33005vO//bhx4eHh4Y2mvvn6R+zn3/Lo8SV3kjnj4eHh3eYlm0HyyYQUTevBOPmc8fDw8H4DL3k3fxDtcRkPDw/vf+TlB+KzGw8eHh7e7+Rtoth2om24MIuG8fDw8O7xNgWwn3r9pvoeHh4eXllVb5f+/H4O+FxceHh4eDd4edm+bQ5I7uwbs6JtAw8PD++NvM32kE+ifbdtC8PDw8M7y2tLWbOD8mycWZntm18MeHh4eNd4+Qaw2QzyR3DgYeHh4eFd5u0j2jwgyD8/Cyai3wp4eHh4C96phqf9gfhUcwMeHh7ePd4+XJhFwO2iPxsZDw8P7x4vL/bnrQbRkfdQPFE0XeHh4eGtebOWpn1kkN+P/j95So2Hh4e35p0q6rdf0wYc+cOq0ws8PDy8kpcvuLMGqTbebZd+PDw8vPfzkh/8bZTQBgr5Ab2NP/Dw8PBu8E7FDe1UZvX9+v+Gh4eHd4GXNwHMClRt2DqLJCIkHh4e3lHe7Ni6aZyaPaBhgxceHh7eUd5sgT4VFuwbDl58Fx4eHt4F3ozU9ia0I+fbSXHox8PDwzvEa0v1s8A3udqmrigsxsPDw7vGm4WkbeF/1iw1G+Gb1gE8PDy8Q7xZcJAffFvG7ID+YgQ8PDy8o7xZNDA7QO+DhrpshoeHh3eZ104xL3rl5a7ZUf7FjoeHh4d3lLcJSfNFPw84Nu0CqwsPDw+v5O2X783D2gcWL0bAw8PDu8ZrJ7EpfeXbxoEIGA8PD+9HebMlftZ0tQks8PDw8H4br53uBplvSw8fMR4eHt41Xrtkb8r/bUvBrJUBDw8P7x5vFrw+H3TWRpBHG3lai4eHh3eU9wc1qrGGOoon6wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

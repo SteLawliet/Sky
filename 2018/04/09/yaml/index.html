@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>yaml study | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="yaml">
+    <meta name="description" content="yaml study YamlBeans makes it easy to serialize and deserialize Java object graphs to and from YAML, a human-friendly data format. Replace XML and properties files with YAML for more expressive power">
+<meta name="keywords" content="yaml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yaml study">
+<meta property="og:url" content="http://io.stelawliet.top/2018/04/09/yaml/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="yaml study YamlBeans makes it easy to serialize and deserialize Java object graphs to and from YAML, a human-friendly data format. Replace XML and properties files with YAML for more expressive power">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-04T11:53:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="yaml study">
+<meta name="twitter:description" content="yaml study YamlBeans makes it easy to serialize and deserialize Java object graphs to and from YAML, a human-friendly data format. Replace XML and properties files with YAML for more expressive power">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">yaml study</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">yaml study</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-09T14:36:15.000Z" itemprop="datePublished" class="page-time">
+  2018-04-09
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/标记语言/">标记语言</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/标记语言/yaml/">yaml</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-yaml"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">yaml study</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-09 22:36:15" datetime="2018-04-09T14:36:15.000Z"  itemprop="datePublished">2018-04-09</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/标记语言/">标记语言</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/标记语言/yaml/">yaml</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>yaml study</p>
+<p>YamlBeans makes it easy to serialize and deserialize Java object graphs to and from YAML, a human-friendly data format. Replace XML and properties files with YAML for more expressive power (lists, maps, anchors, etc) and easier hand-editing. </p>
+<p>Basic deserialization</p>
+<p>The YamlReader class is used to deserialize YAML to Java objects. The following YAML defines a Map with four entries. The “phone numbers” entry is a List of two items, each of which is a Map.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">name: Nathan Sweet</span><br><span class="line">age: 28</span><br><span class="line">address: 4011 16th Ave S</span><br><span class="line">phone numbers:</span><br><span class="line"> - name: Home</span><br><span class="line">   number: 206-555-5138</span><br><span class="line"> - name: Work</span><br><span class="line">   number: 425-555-2306</span><br></pre></td></tr></table></figure>
+<p>The “read” method reads the next YAML document and deserializes it into HashMaps, ArrayLists, and Strings. Since we know the root object defined in the YAML of our example is a Map, we can cast the object and make use of it.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">YamlReader reader = new YamlReader(new FileReader(&quot;contact.yml&quot;));</span><br><span class="line">Object object = reader.read();</span><br><span class="line">System.out.println(object);</span><br><span class="line">Map map = (Map)object;</span><br><span class="line">System.out.println(map.get(&quot;address&quot;));</span><br></pre></td></tr></table></figure>
+<p>Multiple objects</p>
+<p>A stream of YAML can contain more than one YAML document. Each call to YamlReader#read() deserializes the next document into an object. YAML documents are delimited by “—“ (this is optional for the first document).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">name: Nathan Sweet</span><br><span class="line">age: 28</span><br><span class="line">---</span><br><span class="line">name: Jenny Alarco</span><br><span class="line">age: 25</span><br></pre></td></tr></table></figure>
+<p>This prints the String “28” then “25”:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">YamlReader reader = new YamlReader(new FileReader(&quot;contact.yml&quot;));</span><br><span class="line">while (true) &#123;</span><br><span class="line">	Map contact = reader.read();</span><br><span class="line">	if (contact == null) break;</span><br><span class="line">	System.out.println(contact.get(&quot;age&quot;));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Deserializing other classes</p>
+<p>There are two ways to deserialize something other than HashMaps, ArrayLists, and Strings. Imagine this YAML document and Java class:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">name: Nathan Sweet</span><br><span class="line">age: 28</span><br><span class="line"></span><br><span class="line">public class Contact &#123;</span><br><span class="line">	public String name;</span><br><span class="line">	public int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The “read” method can be passed a class, so the YamlReader knows what it is deserializing:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">YamlReader reader = new YamlReader(new FileReader(&quot;contact.yml&quot;));</span><br><span class="line">Contact contact = reader.read(Contact.class);</span><br><span class="line">System.out.println(contact.age);</span><br></pre></td></tr></table></figure>
+<p>The YamlReader creates an instance of the Contact class and sets the “name” and “age” fields. The YamlReader determines the “age” value in the YAML needs to be converted into a int. Deserialization would have failed if the age was not a valid int. The YamlReader can set public fields and bean setter methods. </p>
+<p>Instead of telling the YamlReader what type to deserialize, the type can alternatively be specified in the YAML using a tag:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!com.example.Contact</span><br><span class="line">name: Nathan Sweet</span><br><span class="line">age: 28</span><br></pre></td></tr></table></figure>
+<p>Serializing objects</p>
+<p>The YamlWriter class is used to serialize Java objects to YAML. The “write” method automatically handles this by recognizing public fields and bean getter methods.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Contact contact = new Contact();</span><br><span class="line">contact.name = &quot;Nathan Sweet&quot;;</span><br><span class="line">contact.age = 28;</span><br><span class="line">YamlWriter writer = new YamlWriter(new FileWriter(&quot;output.yml&quot;));</span><br><span class="line">writer.write(contact);</span><br><span class="line">writer.close();</span><br></pre></td></tr></table></figure>
+<p>This outputs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!com.example.Contact</span><br><span class="line">name: Nathan Sweet</span><br><span class="line">age: 28</span><br></pre></td></tr></table></figure>
+<p>The tags are automatically output as needed so that the YamlReader class will be able to reconstruct the object graph. For example, serializing this ArrayList does not output any tag for the list because YamlReader uses an ArrayList by default.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List list = new ArrayList();</span><br><span class="line">list.add(&quot;moo&quot;);</span><br><span class="line">list.add(&quot;cow&quot;);</span><br><span class="line"></span><br><span class="line">- moo</span><br><span class="line">- cow</span><br></pre></td></tr></table></figure>
+<p>If the list was a LinkedList, then YamlWriter knows that a tag is needed and outputs:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">List list = new LinkedList();</span><br><span class="line">list.add(&quot;moo&quot;);</span><br><span class="line">list.add(&quot;cow&quot;);</span><br><span class="line"></span><br><span class="line">!java.util.LinkedList</span><br><span class="line">- moo</span><br><span class="line">- cow</span><br></pre></td></tr></table></figure>
+<p>Complex graphs</p>
+<p>YamlBeans can serialize any object graph.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class Contact &#123;</span><br><span class="line">	public String name;</span><br><span class="line">	public int age;</span><br><span class="line">	public List phoneNumbers;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class Phone &#123;</span><br><span class="line">	public String name;</span><br><span class="line">	public String number;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">friends:</span><br><span class="line">  - !com.example.Contact</span><br><span class="line">    name: Bob</span><br><span class="line">    age: 29</span><br><span class="line">    phoneNumbers:</span><br><span class="line">        - !com.example.Phone</span><br><span class="line">          name: Home</span><br><span class="line">          number: 206-555-1234</span><br><span class="line">        - !com.example.Phone</span><br><span class="line">          name: Work</span><br><span class="line">          number: 206-555-5678</span><br><span class="line">  - !com.example.Contact</span><br><span class="line">    name: Mike</span><br><span class="line">    age: 31</span><br><span class="line">    phoneNumbers:</span><br><span class="line">        - !com.example.Phone</span><br><span class="line">          number: 206-555-4321</span><br><span class="line">enemies:</span><br><span class="line">  - !com.example.Contact</span><br><span class="line">    name: Bill</span><br><span class="line">    phoneNumbers:</span><br><span class="line">        - !com.example.Phone</span><br><span class="line">          name: Cell</span><br><span class="line">          number: 206-555-1234</span><br></pre></td></tr></table></figure>
+<p>This is a map of lists of contacts, each with a list of phone numbers. Again, the public fields could also have been bean properties. </p>
+<p>Tag shortcuts</p>
+<p>Tags can be lengthy sometimes and can clutter up the YAML. Alternate tags can be defined for a class and will be used instead of the full class name.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">YamlWriter writer = new YamlWriter(new FileWriter(&quot;output.yml&quot;));</span><br><span class="line">writer.getConfig().setClassTag(&quot;contact&quot;, Contact.class);</span><br><span class="line">writer.write(contact);</span><br><span class="line">writer.close();</span><br></pre></td></tr></table></figure>
+<p>The output no longer contains the full classname for the Contact class.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">!contact</span><br><span class="line">name: Nathan Sweet</span><br><span class="line">age: 28</span><br></pre></td></tr></table></figure>
+<p>Lists and maps</p>
+<p>When reading or writing a List or Map, YamlBeans cannot know what type of objects are supposed to be in the List or Map, so it will write out a tag.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">!com.example.Contact</span><br><span class="line">name: Bill</span><br><span class="line">    phoneNumbers:</span><br><span class="line">        - !com.example.Phone</span><br><span class="line">          number: 206-555-1234</span><br><span class="line">        - !com.example.Phone</span><br><span class="line">          number: 206-555-5678</span><br><span class="line">        - !com.example.Phone</span><br><span class="line">          number: 206-555-7654</span><br></pre></td></tr></table></figure>
+<p>This can make the YAML less readable. To improve this, you may define what element type should be expected for a List or Map field on your object.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">YamlWriter writer = new YamlWriter(new FileWriter(&quot;output.yml&quot;));</span><br><span class="line">writer.getConfig().setPropertyElementType(Contact.class, &quot;phoneNumbers&quot;, Phone.class);</span><br><span class="line">writer.write(contact);</span><br><span class="line">writer.close();</span><br></pre></td></tr></table></figure>
+<p>Now YamlBeans knows what to expect for elements of the “phoneNumbers” field, so extra tags will not be output.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!com.example.Contact</span><br><span class="line">name: Bill</span><br><span class="line">    phoneNumbers:</span><br><span class="line">        - number: 206-555-1234</span><br><span class="line">        - number: 206-555-5678</span><br><span class="line">        - number: 206-555-7654</span><br></pre></td></tr></table></figure>
+<p>Setting the element type for a Map field tells YamlBeans what to expect for values in the Map. Keys in a Map are always Strings. </p>
+<p>Anchors</p>
+<p>When an object graph contains multiple references to the same object, an anchor may be used so that the object only needs to be defined once in the YAML.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">oldest friend:</span><br><span class="line">    &amp;1 !contact</span><br><span class="line">    name: Bob</span><br><span class="line">    age: 29</span><br><span class="line">best friend: *1</span><br></pre></td></tr></table></figure>
+<p>In this map, the “oldest friend” and “best friend” keys reference the same object. The YamlReader automatically handles the anchors in the YAML when rebuilding the object graph. By default, the YamlWriter automatically outputs anchors when writing objects.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Contact contact = new Contact();</span><br><span class="line">contact.name = &quot;Bob&quot;;</span><br><span class="line">contact.age = 29;</span><br><span class="line">Map map = new HashMap();</span><br><span class="line">map.put(&quot;oldest friend&quot;, contact);</span><br><span class="line">map.put(&quot;best friend&quot;, contact);</span><br></pre></td></tr></table></figure>
+<p>Architecture</p>
+<p>The YAML tokenizer, parser, and emitter are based on those from the JvYAML project. They have been heavily refactored, bugs fixed, etc. The rest of the JvYAML project was not used because of its complexity. YamlBeans strives for the simplest possible thing that works, with the goal being to make it easy to use the YAML data format with Java. </p>
+<p>YamlBeans supports YAML version 1.0 and 1.1. </p>
+<p>More info</p>
+<p>Various other features are available on the YamlConfig class and should be pretty self explanatory. </p>
+<p>First release date: 2008-08-14 </p>
+<p>Website:</p>
+<p><a href="http://sourceforge.net/projects/yamlbeans/" target="_blank" rel="noopener">http://sourceforge.net/projects/yamlbeans/</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-07-04T11:53:43.000Z" itemprop="dateUpdated">2018-07-04 19:53:43</time>
+</span><br>
+
+
+        
+        <a href="/2018/04/09/yaml/" target="_blank" rel="external">http://io.stelawliet.top/2018/04/09/yaml/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/yaml/">yaml</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/04/09/yaml/&title=《yaml study》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/04/09/yaml/&title=《yaml study》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/04/09/yaml/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《yaml study》 — stelawliet&url=http://io.stelawliet.top/2018/04/09/yaml/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/04/09/yaml/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/10/JavaScript/Vue.js/生命周期/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/05/Java/JavaEE/java学习之路/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Java学习大纲参考 I</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/04/09/yaml/&title=《yaml study》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/04/09/yaml/&title=《yaml study》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/04/09/yaml/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《yaml study》 — stelawliet&url=http://io.stelawliet.top/2018/04/09/yaml/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/04/09/yaml/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABu0lEQVR42u3aQW4DIQwF0Nz/0um2UjTTbxvIqHqsogTBIwvL2Lxe8Xh/jN/fX81P1nztGLi4uGPu+3Z8zrna7HNOsktuwMXFPc+9DzTVOfeU3vq4uLjP5+ZhKwmFuLi4/4+bj0mgxMXFPc9NLifVK0013Vl8V8PFxR1w8yrlvs9b6ru4uLgt7qoEZW0J9XJ3XFzcI9xqQzRPPpJfq/vi4uKe5PYKH9XrTe8wlzNxcXG3cdcmMdVjVEskuLi4Z7iTsuak3XKfvkTlWlxc3G3cfPt86WrhtfDIAxcX96vcSfIxb5deHgAXF/cgt9ryrD7R6D32ugxkuLi4m7mTRXvH6BFxcXHPcyeF0SQNmhRKop4wLi7uBm6vfVJ9qJGnUPleuLi4+7iTR1fJM4tquyV6R4aLi3uE24x88aWoV5CNLj+4uLjbuD10ubi5KgvDxcXdxn0XR7VQ0gtbhR4OLi7uBm41uFQXTa5GeXsGFxf3JDcPOj1ENRT+8SsuLu5Bbu8RRjVNWTAHFxf38dz8AJOLFi4u7vO5vWNM/o5RioOLizvgri1u5kct/ym4uLhHuL3G57x0kq+Ji4t7kPsDOVTDQtf+bCQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
