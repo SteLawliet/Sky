@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>boolean filter | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="boolean过滤器">
+    <meta name="description" content="布尔过滤器可以实现存储压缩大量数据的集合结构,使用二进制0和1组成的数组上标记记录 e.g int[] arr = new int[5];以java 的int数组举例.java中每个int是4个字节.每个字节是8位.所以一个int在计算机内部由8个0或1表示.所以上面举例的arr长度为5个int.能表示8x5=40个0或1的数组  以下用简写为01数组  哈希函数映射操作 要添加的值用K个哈希函数">
+<meta name="keywords" content="boolean过滤器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="boolean filter">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="布尔过滤器可以实现存储压缩大量数据的集合结构,使用二进制0和1组成的数组上标记记录 e.g int[] arr = new int[5];以java 的int数组举例.java中每个int是4个字节.每个字节是8位.所以一个int在计算机内部由8个0或1表示.所以上面举例的arr长度为5个int.能表示8x5=40个0或1的数组  以下用简写为01数组  哈希函数映射操作 要添加的值用K个哈希函数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-09T11:44:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="boolean filter">
+<meta name="twitter:description" content="布尔过滤器可以实现存储压缩大量数据的集合结构,使用二进制0和1组成的数组上标记记录 e.g int[] arr = new int[5];以java 的int数组举例.java中每个int是4个字节.每个字节是8位.所以一个int在计算机内部由8个0或1表示.所以上面举例的arr长度为5个int.能表示8x5=40个0或1的数组  以下用简写为01数组  哈希函数映射操作 要添加的值用K个哈希函数">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">boolean filter</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">boolean filter</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-05T13:16:23.000Z" itemprop="datePublished" class="page-time">
+  2018-07-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#布尔过滤器"><span class="post-toc-number">1.</span> <span class="post-toc-text">布尔过滤器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#哈希函数映射操作"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">哈希函数映射操作</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2进制01数组索引记录"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">2进制01数组索引记录</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#判断存在-contains"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">判断存在 contains</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#2进制数组大小和错误率的关系"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">2进制数组大小和错误率的关系</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-algorithm/boolean过滤器"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">boolean filter</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-05 21:16:23" datetime="2018-07-05T13:16:23.000Z"  itemprop="datePublished">2018-07-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="布尔过滤器"><a href="#布尔过滤器" class="headerlink" title="布尔过滤器"></a>布尔过滤器</h3><p>可以实现存储压缩大量数据的集合结构,使用二进制0和1组成的数组上标记记录</p>
+<p>e.g</p>
+<p><code>int[] arr = new int[5];</code><br>以java 的int数组举例.java中每个int是4个字节.每个字节是8位.所以一个int在计算机内部由8个0或1表示.所以上面举例的<code>arr</code>长度为5个int.能表示8x5=40个0或1的数组</p>
+<blockquote>
+<p>以下用简写为01数组</p>
+</blockquote>
+<h5 id="哈希函数映射操作"><a href="#哈希函数映射操作" class="headerlink" title="哈希函数映射操作"></a>哈希函数映射操作</h5><ol>
+<li>要添加的值用K个哈希函数来进行计算,每个哈希函数得到的值为01数组的索引index</li>
+<li>在K个索引上进行1标记</li>
+</ol>
+<h5 id="2进制01数组索引记录"><a href="#2进制01数组索引记录" class="headerlink" title="2进制01数组索引记录"></a>2进制01数组索引记录</h5><ol>
+<li>创建二进制的01数组;  <code>int[]</code> int为32位 ,long为64位,以32位的int举例<br>(K个<code>index</code>为上面K个哈希函数的值,也就是要标记记录的二进制01数组的位置</li>
+<li>使用当前要标记的K个<code>index</code>分别去除以int的位数得到int数组的位置下标 <code>intIndex</code></li>
+<li>使用当前的<code>index</code>去%类型大小32得到二进制位的位置<code>bitIndex</code></li>
+<li><p>取得数组下标位置上的值<code>int[intIndex]</code>和<code>(1&lt;&lt;bitIndex)</code>来  或<code>|</code> 运算<br>e.g<br><code>[0,1,2,3,4]</code> 举例如果要标记的其中一个index为67.那么java中计算67/32=2,67%32=3.<br>然后要标记的索引就在<code>arr[2]</code>中的int值转化为32为二进制后第3个位置,具体图例如下</p>
+<p>[0,1, ==2== ,3,4]</p>
+<pre><code>/\   arr[2]转为32位2进制
+</code></pre><p>[ 00==1==0…000 (32位) ]  第3位标记1</p>
+</li>
+</ol>
+<blockquote>
+<p>1 &lt;&lt; bitIndex 先标记单个int的32位中bitindex的位置为1<br>然后和int[intIndex]来或运算来把这个位置标记到对应int数组的上</p>
+</blockquote>
+<h5 id="判断存在-contains"><a href="#判断存在-contains" class="headerlink" title="判断存在 contains"></a>判断存在 contains</h5><ol>
+<li>拿要判断的值用上面的K个哈希函数来取得哈希值.</li>
+<li>对哈希值取模.模的大小为2进制01数组的大小.</li>
+<li>取模后得到的值为索引,在01数组中判断这个索引位置上的值是否为1;</li>
+<li>K个索引上的值全为1则存在</li>
+</ol>
+<h5 id="2进制数组大小和错误率的关系"><a href="#2进制数组大小和错误率的关系" class="headerlink" title="2进制数组大小和错误率的关系"></a>2进制数组大小和错误率的关系</h5><figure class="highlight pascal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">M = - (n*lnP)/((ln2)^<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">k = ln2 * (m/n)</span><br><span class="line"></span><br><span class="line">n 为样本量</span><br><span class="line">p 位要设计的容错率</span><br><span class="line">M为<span class="number">01</span>数组的大小</span><br><span class="line">k为调整需要的哈希函数个数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">当 n = <span class="number">100</span> * <span class="number">10</span>^<span class="number">9</span> (<span class="number">100</span>亿时)</span><br><span class="line">p 容错率 <span class="number">0.0001</span> </span><br><span class="line">M的大小为<span class="number">16</span>G</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-07-09T11:44:25.000Z" itemprop="dateUpdated">2018-07-09 19:44:25</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/05/algorithm/boolean过滤器/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/boolean过滤器/">boolean过滤器</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/&title=《boolean filter》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/&title=《boolean filter》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《boolean filter》 — stelawliet&url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/06/Java/faceEx/阿里面试/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/05/2018-07-05/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/&title=《boolean filter》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/&title=《boolean filter》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《boolean filter》 — stelawliet&url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/05/algorithm/boolean过滤器/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACwElEQVR42u3aQW7jMBAEQP//07sPyFrpniEXOpROhqHILAbgjJr8fOLrz4/r2/ff7mk/Pz/z8IWHh4e3HnrC+Pac5Pvn53/72+EU4OHh4V3jPQ/reVF+BiQLes5opxIPDw/vDbx2QW/b9HYMeHh4eO/nJW1x3qC3wQceHh7ee3htFJu30ZvPz9N9OGvBw8PDu7CL9J7PV/b38PDw8Na76nlDnIS8bdTbNuv/eBoeHh7eBd4scm1LSPtX+3vw8PDw7vGSxTopCckS3x7n2sTBeHh4ePd47RDbLf/94PJA+WvZwMPDwzvKS1re5ADBbInPQ4c8UP5aEvDw8PAO8WYv+e0xgra9TqKQYjMMDw8P7xovX+Lb7at8Qk9FIb9UPzw8PLw1L2mXZ6S2hMzKTFQq8PDw8K7x2jhgmBwvmvvDWTUeHh7e6Bfbhrg9mLWPcQ9k1Xh4eHiXt8Gi1/tyeyyJIfICMDx0hYeHh3eI1244tUPMl/I2mJg17nh4eHh7Xr70zyKD5PnJVOZgPDw8vNu8fHMrb2rzaUqe0Lbmv/wP8fDw8Ba8zSGnZBFPYLOjBtE2GB4eHt4FXt5Yzw4Z5IPIi80sCsHDw8M7xct/OA8U8u20NpBtQw08PDy8e7znZTqPEtoCkMcNeVsf5St4eHh4C1674M7C3E3ZmDXiv5wpw8PDwzvKa8vDJnSYlYRPe+Hh4eH9d96snU2W/vYAVr6dVhQGPDw8vDVvdkxq1nbvS1F0SAsPDw/vKG+2NbXZptqcbmi3yvDw8PBu8GZv9G05Se6fhbafUxceHh5eyZsVg5axGUlSGIrzEXh4eHiHeEkU24a5yf2z9rpo6PHw8PBewDv1zWb6irHh4eHhvYB3Km5o2+j8/gMtNR4eHl7Aa39mNrhkEvdjwMPDw7vNy1/yk0G3TXMeRhze08PDw8Ob8P4CGuAr8CD+Bo8AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

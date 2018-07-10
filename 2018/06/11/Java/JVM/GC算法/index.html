@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
+    <meta name="keywords" content="jvm,gc">
     <meta name="description" content="可达性分析算法Java中使用可达性分析（Reachability Analysis）来判定对象是否存活的。 通过一系列的称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链（Reference Chain）,当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。” 在Java语言中，可作为GC Roots的对象包括下面几种：  ==虚拟机">
-<meta name="keywords" content="blog">
+<meta name="keywords" content="jvm,gc">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GC垃圾判定算法">
 <meta property="og:url" content="http://io.stelawliet.top/2018/06/11/Java/JVM/GC算法/index.html">
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="可达性分析算法Java中使用可达性分析（Reachability Analysis）来判定对象是否存活的。 通过一系列的称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链（Reference Chain）,当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。” 在Java语言中，可作为GC Roots的对象包括下面几种：  ==虚拟机">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T11:45:18.000Z">
+<meta property="og:updated_time" content="2018-07-09T11:54:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GC垃圾判定算法">
 <meta name="twitter:description" content="可达性分析算法Java中使用可达性分析（Reachability Analysis）来判定对象是否存活的。 通过一系列的称为“GC Roots”的对象作为起始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链（Reference Chain）,当一个对象到GC Roots没有任何引用链相连时，则证明此对象是不可用的。” 在Java语言中，可作为GC Roots的对象包括下面几种：  ==虚拟机">
@@ -155,7 +155,7 @@
 </time>
 
 
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/GC-roots/">GC roots</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/gc-roots/">gc roots</a></li></ul></li></ul></li></ul>
 
             
         </h5>
@@ -186,7 +186,7 @@
             <time class="post-time" title="2018-06-11 18:11:09" datetime="2018-06-11T10:11:09.000Z"  itemprop="datePublished">2018-06-11</time>
 
             
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/GC-roots/">GC roots</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/">JVM</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/gc-roots/">gc roots</a></li></ul></li></ul></li></ul>
 
 
 
@@ -216,7 +216,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-07-04T11:45:18.000Z" itemprop="dateUpdated">2018-07-04 19:45:18</time>
+    Last updated: <time datetime="2018-07-09T11:54:15.000Z" itemprop="dateUpdated">2018-07-09 19:54:15</time>
 </span><br>
 
 
@@ -238,6 +238,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/gc/">gc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jvm/">jvm</a></li></ul>
+
 
             
 <div class="page-share-wrap">
