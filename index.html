@@ -418,8 +418,7 @@ public File(URI uri)
 
     
         volatile与内存可见性
-多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(线程每次读取修改volatile修饰的变量时会相当于直接在主存中操作)
-12345678910111213141516171819202122232425262728...
+多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(根据 Java 虚拟机规范的规定，volatile 变量依然有共享内存的拷贝，但是由于它特殊的操作顺序性规定——从工作内 存中读写数据前，必须先将主内存中的数据同步到...
     
 
         <a href="/2018/07/07/Java/JavaSE/API note/concurrent/java.util.concurrent/" class="post-more waves-effect waves-button">
