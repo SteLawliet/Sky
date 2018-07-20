@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>mysql procedure存储过程 | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="mysql,procedure,存储过程">
+    <meta name="description" content="[TOC] procedure 存储过程create 语法年龄判断实例 12345678delimiter /create procedure fun1(in i int)begin select i;if i&amp;gt;=18 then select &amp;quot;adult&amp;quot;;else select &amp;quot;minor&amp;quot;;end if;end / 调用语法1234567891">
+<meta name="keywords" content="mysql,procedure,存储过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql procedure存储过程">
+<meta property="og:url" content="http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="[TOC] procedure 存储过程create 语法年龄判断实例 12345678delimiter /create procedure fun1(in i int)begin select i;if i&amp;gt;=18 then select &amp;quot;adult&amp;quot;;else select &amp;quot;minor&amp;quot;;end if;end / 调用语法1234567891">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-19T01:28:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql procedure存储过程">
+<meta name="twitter:description" content="[TOC] procedure 存储过程create 语法年龄判断实例 12345678delimiter /create procedure fun1(in i int)begin select i;if i&amp;gt;=18 then select &amp;quot;adult&amp;quot;;else select &amp;quot;minor&amp;quot;;end if;end / 调用语法1234567891">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mysql procedure存储过程</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mysql procedure存储过程</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-05-18T13:25:20.000Z" itemprop="datePublished" class="page-time">
+  2018-05-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/">sql</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/mysql/">mysql</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#procedure-存储过程"><span class="post-toc-number">1.</span> <span class="post-toc-text">procedure 存储过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#create-语法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">create 语法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#调用语法"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">调用语法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#传入参数"><span class="post-toc-number">2.</span> <span class="post-toc-text">传入参数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#in"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">in</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#out"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">out</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#inout"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">inout</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#声明变量"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 声明变量</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分配值给变量"><span class="post-toc-number">4.</span> <span class="post-toc-text">分配值给变量</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-sql/MySQL procedure 存储过程"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mysql procedure存储过程</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-05-18 21:25:20" datetime="2018-05-18T13:25:20.000Z"  itemprop="datePublished">2018-05-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/">sql</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/mysql/">mysql</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>[TOC]</p>
+<h2 id="procedure-存储过程"><a href="#procedure-存储过程" class="headerlink" title="procedure 存储过程"></a>procedure 存储过程</h2><h3 id="create-语法"><a href="#create-语法" class="headerlink" title="create 语法"></a>create 语法</h3><p>年龄判断实例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">delimiter /</span><br><span class="line">create procedure fun1(in i int)</span><br><span class="line">begin </span><br><span class="line">select i;</span><br><span class="line">if i&gt;=18 then select &quot;adult&quot;;</span><br><span class="line">else select &quot;minor&quot;;</span><br><span class="line">end if;</span><br><span class="line">end /</span><br></pre></td></tr></table></figure>
+<h3 id="调用语法"><a href="#调用语法" class="headerlink" title="调用语法"></a>调用语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">call fun1(12);</span><br><span class="line">mysql&gt; CALL FUN1(12)/</span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">|   12 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| minor |</span><br><span class="line">+-------+</span><br><span class="line">| minor |</span><br><span class="line">+-------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; CALL FUN1(18)/</span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">|   18 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">+-------+</span><br><span class="line">| adult |</span><br><span class="line">+-------+</span><br><span class="line">| adult |</span><br><span class="line">+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="传入参数"><a href="#传入参数" class="headerlink" title="传入参数"></a>传入参数</h2><h3 id="in"><a href="#in" class="headerlink" title="in"></a>in</h3><ul>
+<li>procedure内部可以接受括号里传递的变量或者直接的值</li>
+<li>内部传入的变量修改后，外部的变量不改变。类似java函数基本数据类型的行参</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create procedure funin(in i int)</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; select i;</span><br><span class="line">    -&gt; set i =2;</span><br><span class="line">    -&gt; select i;</span><br><span class="line">    -&gt; end/</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; set @p_in =100;</span><br><span class="line">    -&gt; call funin(@p_in);/</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">|  100 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.02 sec)</span><br><span class="line"></span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">|    2 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.02 sec)</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select @p_in/</span><br><span class="line">+-------+</span><br><span class="line">| @p_in |</span><br><span class="line">+-------+</span><br><span class="line">|   100 |</span><br><span class="line">+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="out"><a href="#out" class="headerlink" title="out"></a>out</h3><p>创建实例procedure testout</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create procedure testout(out i int)</span><br><span class="line">    -&gt; begin</span><br><span class="line">    -&gt; select i;</span><br><span class="line">    -&gt; set i =2;</span><br><span class="line">    -&gt; select i;</span><br><span class="line">    -&gt; end//</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>procedure参数为out时，括号中传入的变量在过程内部为null。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set @out=99//</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">mysql&gt; call testout(@out)//</span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">| NULL |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line"></span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">|    2 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.01 sec)</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>对变量set后会改变外部传入的变量值</p>
+<p>这里原本<code>set @out=99</code> </p>
+<p>然后执行<code>call testout(@out)</code>后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select @out/</span><br><span class="line">+------+</span><br><span class="line">| @out |</span><br><span class="line">+------+</span><br><span class="line">|    2 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="inout"><a href="#inout" class="headerlink" title="inout"></a>inout</h3><ul>
+<li><p>in 和out的结合</p>
+</li>
+<li><p>外部传入的参数可以得到</p>
+</li>
+<li><p>内部set后外部的值也改变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create procedure funinout(inout i int)</span><br><span class="line">     &gt;begin </span><br><span class="line">     &gt;select i;</span><br><span class="line">     &gt;set i =2; </span><br><span class="line">     &gt;select i; </span><br><span class="line">     &gt;end/</span><br><span class="line">Query OK, 0 rows affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; set @p_inout=200; call funinout(@p_inout)/</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">|  200 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.02 sec)</span><br><span class="line"></span><br><span class="line">+------+</span><br><span class="line">| i    |</span><br><span class="line">+------+</span><br><span class="line">|    2 |</span><br><span class="line">+------+</span><br><span class="line">1 row in set (0.02 sec)</span><br><span class="line"></span><br><span class="line">Query OK, 0 rows affected (0.02 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select @p_inout/</span><br><span class="line">+----------+</span><br><span class="line">| @p_inout |</span><br><span class="line">+----------+</span><br><span class="line">|        2 |</span><br><span class="line">+----------+</span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="声明变量"><a href="#声明变量" class="headerlink" title=" 声明变量"></a> 声明变量</h2><p>在stored procedure存储过程中使用<code>declare</code> 关键字声明变量:</p>
+<p><code>DECLARE variable_name datatype(size) DEFAULT default_value;</code></p>
+<p>Let’s examine the statement above in more detail:</p>
+<ul>
+<li>First, you specify the variable name after the <code>DECLARE</code> keyword. The variable name must follow the naming rules of MySQL table column names.</li>
+<li>Second, you specify the data type of the variable and its size. A variable can have any <a href="http://mysqltutorial.org//mysql-data-types.aspx" target="_blank" rel="noopener">MySQL data types</a> such as <code>INT</code>, <code>VARCHAR</code> , and <code>DATETIME</code>.</li>
+<li>Third, when you declare a variable, its initial value is <code>NULL.</code> You can assign the variable a default value using the <code>DEFAULT</code>keyword.</li>
+</ul>
+<p>For example, we can declare a variable named   <code>total_sale</code> with the data type <code>INT</code> and default value <code>0</code>  as follows:</p>
+<p><code>DECLARE total_sale INT DEFAULT 0;</code></p>
+<p>MySQL allows you to declare two or more variables that share the same data type using a single <code>DECLARE</code> statement as following:</p>
+<p><code>DECLARE x, y INT DEFAULT 0;</code></p>
+<p>We declared two integer variables  <code>x</code> and  <code>y</code>, and set their default values to zero.</p>
+<h2 id="分配值给变量"><a href="#分配值给变量" class="headerlink" title="分配值给变量"></a>分配值给变量</h2><p>Once you declared a variable, you can start using it. To assign a variable another value, you use the <code>SET</code> statement, for example:</p>
+<p><code>DECLARE total_count INT DEFAULT 0;SET total_count = 10;</code></p>
+<p>The value of the <code>total_count</code> variable is <code>10</code>  after the assignment.</p>
+<p>Besides the <code>SET</code>  statement, you can use the <code>SELECT INTO</code>  statement to assign the result of a query, which returns a scalar value, to a variable. See the following example:</p>
+<p><code>DECLARE total_products INT DEFAULT 0 SELECT COUNT(*) INTO total_products FROM products</code></p>
+<p>In the example above:</p>
+<ul>
+<li>First, we declare a variable named <code>total_products</code>  and initialize its value to <code>0</code>.</li>
+<li>Then, we used the <code>SELECT INTO</code>  statement to assign the <code>total_products</code>  variable the number of products that we selected from the <code>products</code>  table in the <a href="http://mysqltutorial.org//mysql-sample-database.aspx" target="_blank" rel="noopener">sample database</a>.</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select count(*) from tableFileUpload/</span><br><span class="line">+----------+</span><br><span class="line">| count(*) |</span><br><span class="line">+----------+</span><br><span class="line">|       17 |</span><br><span class="line">+----------+</span><br><span class="line">1 row in set (0.03 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select count(*) into @p_no from tableFileUpload/</span><br><span class="line">Query OK, 1 row affected (0.01 sec)</span><br><span class="line"></span><br><span class="line">mysql&gt; select @p_no/</span><br><span class="line">+-------+</span><br><span class="line">| @p_no |</span><br><span class="line">+-------+</span><br><span class="line">|    17 |</span><br><span class="line">+-------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-07-19T01:28:15.000Z" itemprop="dateUpdated">2018-07-19 09:28:15</time>
+</span><br>
+
+
+        
+        <a href="/2018/05/18/sql/MySQL procedure 存储过程/" target="_blank" rel="external">http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/procedure/">procedure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储过程/">存储过程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/&title=《mysql procedure存储过程》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/&title=《mysql procedure存储过程》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mysql procedure存储过程》 — stelawliet&url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/18/MD/哔哩哔哩/补/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/05/18/sql/mysql导入导出/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mysql backup&amp;export in shell</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/&title=《mysql procedure存储过程》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/&title=《mysql procedure存储过程》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mysql procedure存储过程》 — stelawliet&url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/05/18/sql/MySQL procedure 存储过程/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqklEQVR42u3aQW4jMQwEwPz/05sHBJ50k5LjBconAxlrVDqISlNfX/Hn34tP/ttX33+O9nPk9o31Bw8PD+/Q1J+n8jyJU9PNl+blmHh4eHjXePnQs2LwPELyrvYZPDw8vM/hJcUjWZQNGw8PD+//4j1PMTlA5zA8PDy8T+YlYUReJPIp5vjrWQseHh5ezNs3sd7//Up/Dw8PD2/dVU82/TzAzUOHtgy8nC0eHh7eBV6+4c6Ozs+wFt/OEw8PD+89vDaSyJte++dnsQUeHh7eWV7SuNq0/PMFattpUVSBh4eHd4G3STvzabVPJgfxZGQ8PDy8G7znWKHdoGcBRPurohmGh4eHd4E3C23zYLeNZdvoYXjpCg8PD2/Na1v7s5Bic5huj9d4eHh493h5fNA2pfJD/OyvRcqCh4eHd5S3OfLOGl15zJGXimEGg4eHh3eowz57zSz8nW33bTHDw8PDu81L/u2/0fLfH9l/qXh4eHh4F3izrXx24E6Wqb1wEEUSeHh4eBd47daftPbzI/ts0YeRLh4eHt6al2+4s6lsCsCBfBoPDw/vEK/dxNsNfVZginDh+Xk8PDy8a7zZP/+nwtlZ+YliYjw8PLwLvFlLaXY4bt/VFqriTgQeHh7empdHBkmLa3YxKx8zLz94eHh493ibgCCfdBtztNeqopKAh4eHd4G3uSyVR7f5ta1Zgw0PDw/vnbxNBLA5Os+i2+GdCDw8PLwFb9OaSrbvNmzNx4wWAg8PD+8Cr9182yNv2yrLCxUeHh7e3/JuXK7aLOIsIhkerPHw8PAWvDaozZv3s8XaFzA8PDy8T+O14HbJNpcYDhQGPDw8vKO8vDG2f352rQEPDw/vPby86dXGuO1FqzZu+OUteHh4eBd4s4A1b/bv2RcvDeDh4eF1vG+Chl6TE98iLAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

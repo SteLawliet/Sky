@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -164,11 +164,11 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Linux/nginx负载均衡"
+            <article id="post-Linux/security/fail2ban ssh security"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-12 22:33:57" datetime="2018-05-12T14:33:57.000Z"  itemprop="datePublished">2018-05-12</time>
+        <time class="post-time" title="2018-05-19 14:54:10" datetime="2018-05-19T06:54:10.000Z"  itemprop="datePublished">2018-05-19</time>
 
         
 
@@ -180,7 +180,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/12/Linux/nginx负载均衡/">No title</a>
+      <a class="post-title-link" href="/2018/05/19/Linux/security/fail2ban ssh security/">No title</a>
     </h3>
   
 
@@ -190,11 +190,11 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        1234567891011upstream springboot &#123;        server 127.0.0.1:7071 weight=1  max_fails=2 fail_timeout=30s;      server 127.0.0.1:7072 weight=1  m...
+        CentOS下fail2ban安装与配置教程介绍fail2ban用于监视系统日志，通过正则表达式匹配错误错误信息，设置一定的条件触发相应的屏蔽动作。在笔者的vps里，主要是用于ssh的保护，ssh登录错误的时候会记录到 /var/log/secure，fail2ban通过 gamin检测到新增...
     
 
-        <a href="/2018/05/12/Linux/nginx负载均衡/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/19/Linux/security/fail2ban ssh security/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -203,11 +203,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-sql/查询错误"
+            <article id="post-Linux/postfix mail"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-12 22:33:36" datetime="2018-05-12T14:33:36.000Z"  itemprop="datePublished">2018-05-12</time>
+        <time class="post-time" title="2018-05-19 14:12:38" datetime="2018-05-19T06:12:38.000Z"  itemprop="datePublished">2018-05-19</time>
 
         
 
@@ -219,7 +219,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/12/sql/查询错误/">No title</a>
+      <a class="post-title-link" href="/2018/05/19/Linux/postfix mail/">No title</a>
     </h3>
   
 
@@ -229,13 +229,13 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-         mysql语句过长PacketTooBigExceptioncom.mysql.jdbc.PacketTooBigException: Packet for query is too large (3158064）
-shell进入mysql 
- set global max_allowed_...
+        Centos 7安装Postfix用于发送提醒邮件发布时间：2015-03-19    更新时间：2015-03-26    作者：boxwang
+本文仅介绍Centos 7安装Postfix用于发送提醒邮件，并非搭建完整邮件服务器教程。
+1. 卸载sendmail，没有安装sendmail的...
     
 
-        <a href="/2018/05/12/sql/查询错误/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/19/Linux/postfix mail/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -244,11 +244,11 @@ shell进入mysql
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Vue/Web Storage"
+            <article id="post-Linux/security/firewall-cmd"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-12 15:19:28" datetime="2018-05-12T07:19:28.000Z"  itemprop="datePublished">2018-05-12</time>
+        <time class="post-time" title="2018-05-19 13:01:57" datetime="2018-05-19T05:01:57.000Z"  itemprop="datePublished">2018-05-19</time>
 
         
 
@@ -260,7 +260,7 @@ shell进入mysql
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/12/Vue/Web Storage/">No title</a>
+      <a class="post-title-link" href="/2018/05/19/Linux/security/firewall-cmd/">No title</a>
     </h3>
   
 
@@ -270,21 +270,11 @@ shell进入mysql
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Web Storage：浏览器端数据储存机制来自《JavaScript 标准参考教程（alpha）》，by 阮一峰
-目录
-概述
-操作方法
-存入/读取数据
-清除数据
-遍历操作
-storage事件
-参考链接
-
-概述这个API的作用是，使得网页可以在浏览器端储存数据。它分成两类：sessionSto...
+        Fail2ban防御暴力破解密码fail2ban可以监视你的系统日志，然后匹配日志的错误信息（正则表达式匹配）执行相应的屏蔽动作（一般情况下是调用防火墙屏蔽）。比如有人在试探你的SSH、SMTP、FTP密码，只要达到你预设的次数，fail2ban就会调用防火墙屏蔽这个IP，而且可以发送e-ma...
     
 
-        <a href="/2018/05/12/Vue/Web Storage/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/19/Linux/security/firewall-cmd/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -293,11 +283,11 @@ storage事件
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Vue/storage"
+            <article id="post-Linux/firewall"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-12 15:18:50" datetime="2018-05-12T07:18:50.000Z"  itemprop="datePublished">2018-05-12</time>
+        <time class="post-time" title="2018-05-19 11:52:09" datetime="2018-05-19T03:52:09.000Z"  itemprop="datePublished">2018-05-19</time>
 
         
 
@@ -309,7 +299,7 @@ storage事件
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/12/Vue/storage/">No title</a>
+      <a class="post-title-link" href="/2018/05/19/Linux/firewall/">No title</a>
     </h3>
   
 
@@ -319,11 +309,12 @@ storage事件
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
+        firewall-cmd –permanent –zone=public –add-rich-rule=”rule family=”ipv4” source address=”180.151.83.30/24” service name=”ssh” reject” 
+123firewall-c...
     
 
-        <a href="/2018/05/12/Vue/storage/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/19/Linux/firewall/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -332,11 +323,11 @@ storage事件
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/论文/springboot"
+            <article id="post-TODOlist/2018-5-19"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-07 00:50:22" datetime="2018-05-06T16:50:22.000Z"  itemprop="datePublished">2018-05-07</time>
+        <time class="post-time" title="2018-05-19 01:47:14" datetime="2018-05-18T17:47:14.000Z"  itemprop="datePublished">2018-05-19</time>
 
         
 
@@ -348,7 +339,7 @@ storage事件
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/07/MD/论文/springboot/">No title</a>
+      <a class="post-title-link" href="/2018/05/19/TODOlist/2018-5-19/">No title</a>
     </h3>
   
 
@@ -358,11 +349,18 @@ storage事件
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Spring Framework 是一个开源的Java／Java EE全功能栈（full-stack）的应用程序框架，以Apache License 2.0开源许可协议的形式发布，也有.NET平台上的移植版本。该框架基于 Expert One-on-One Java EE Design and...
+        
+MySQL procedure  out inout 
+MySQL variables
+MySQL 触发器
+整理快速排序代码
+
+
+
     
 
-        <a href="/2018/05/07/MD/论文/springboot/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/19/TODOlist/2018-5-19/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -371,11 +369,11 @@ storage事件
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/论文/api"
+            <article id="post-MD/哔哩哔哩/补副本"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-06 23:29:15" datetime="2018-05-06T15:29:15.000Z"  itemprop="datePublished">2018-05-06</time>
+        <time class="post-time" title="2018-05-18 22:14:08" datetime="2018-05-18T14:14:08.000Z"  itemprop="datePublished">2018-05-18</time>
 
         
 
@@ -387,7 +385,7 @@ storage事件
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/06/MD/论文/api/">No title</a>
+      <a class="post-title-link" href="/2018/05/18/MD/哔哩哔哩/补副本/">补副本</a>
     </h3>
   
 
@@ -397,15 +395,19 @@ storage事件
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        [/society/activity],methods=[POST]
-[/society/activity],methods=[PUT]
-[/society/activity/{id}],methods=[DELETE]
-[/society/activity],methods=[GET]
-[/...
+        ��
+
+Just Because
+学员默示录
+噬神者
+魔弹之王与战姬
+
+
+
     
 
-        <a href="/2018/05/06/MD/论文/api/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/18/MD/哔哩哔哩/补副本/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -414,11 +416,11 @@ storage事件
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/论文/ＥＳ６"
+            <article id="post-MD/哔哩哔哩/补"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-06 17:25:15" datetime="2018-05-06T09:25:15.000Z"  itemprop="datePublished">2018-05-06</time>
+        <time class="post-time" title="2018-05-18 22:14:08" datetime="2018-05-18T14:14:08.000Z"  itemprop="datePublished">2018-05-18</time>
 
         
 
@@ -430,7 +432,7 @@ storage事件
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/06/MD/论文/ＥＳ６/">No title</a>
+      <a class="post-title-link" href="/2018/05/18/MD/哔哩哔哩/补/">No title</a>
     </h3>
   
 
@@ -440,11 +442,20 @@ storage事件
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ECMAScript 的历史ECMAScript 1.0 是 1997 年发布的，接下来的两年，连续发布了 ECMAScript 2.0（1998 年 6 月）和 ECMAScript 3.0（1999 年 12 月）。3.0 版是一个巨大的成功，在业界得到广泛支持，成为通行标准，奠定了 Ja...
+        2017 
+
+少女终末旅行
+Just Because
+学员默示录
+噬神者
+魔弹之王与战姬
+
+
+
     
 
-        <a href="/2018/05/06/MD/论文/ＥＳ６/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/18/MD/哔哩哔哩/补/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -453,13 +464,15 @@ storage事件
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/论文/mybatis"
+            <article id="post-sql/MySQL procedure 存储过程"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-05 23:03:27" datetime="2018-05-05T15:03:27.000Z"  itemprop="datePublished">2018-05-05</time>
+        <time class="post-time" title="2018-05-18 21:25:20" datetime="2018-05-18T13:25:20.000Z"  itemprop="datePublished">2018-05-18</time>
 
         
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/">sql</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/mysql/">mysql</a></li></ul></li></ul>
+
 
 
     </div>
@@ -469,7 +482,7 @@ storage事件
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/05/MD/论文/mybatis/">No title</a>
+      <a class="post-title-link" href="/2018/05/18/sql/MySQL procedure 存储过程/">mysql procedure存储过程</a>
     </h3>
   
 
@@ -479,12 +492,20 @@ storage事件
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的 JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java...
+        [TOC]
+procedure 存储过程create 语法年龄判断实例
+12345678delimiter /create procedure fun1(in i int)begin select i;if i&gt;=18 then select &quot;adult&quot;;else...
     
 
-        <a href="/2018/05/05/MD/论文/mybatis/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/18/sql/MySQL procedure 存储过程/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/procedure/">procedure</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/存储过程/">存储过程</a></li></ul>
+
     </div>
     
 </article>
@@ -492,13 +513,15 @@ storage事件
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/论文/springmvc"
+            <article id="post-sql/mysql导入导出"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-05 23:02:31" datetime="2018-05-05T15:02:31.000Z"  itemprop="datePublished">2018-05-05</time>
+        <time class="post-time" title="2018-05-18 10:58:08" datetime="2018-05-18T02:58:08.000Z"  itemprop="datePublished">2018-05-18</time>
 
         
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/">sql</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/mysql/">mysql</a></li></ul></li></ul>
+
 
 
     </div>
@@ -508,7 +531,7 @@ storage事件
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/05/MD/论文/springmvc/">No title</a>
+      <a class="post-title-link" href="/2018/05/18/sql/mysql导入导出/">mysql backup&amp;export in shell</a>
     </h3>
   
 
@@ -518,17 +541,20 @@ storage事件
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        SpringMVC就是通过DispatcherServlet将一堆组件串联起来的Web框架。
-
-Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。
-
-
-Spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。使用 Sp...
+        backup mysql databases in shelldumpmysqldump -h${IP}  -u${username} -p ${password} ${db_name}&gt;${.sql_dir}
+db_name 多个时用空格分开
+1➜  workspace mysqldu...
     
 
-        <a href="/2018/05/05/MD/论文/springmvc/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/18/sql/mysql导入导出/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/backup/">backup</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/export/">export</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li></ul>
+
     </div>
     
 </article>
@@ -536,11 +562,11 @@ Spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。使用 Sp
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Linux/ssh/mosh"
+            <article id="post-MD/mem/哲学"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-05-05 21:29:40" datetime="2018-05-05T13:29:40.000Z"  itemprop="datePublished">2018-05-05</time>
+        <time class="post-time" title="2018-05-18 02:22:47" datetime="2018-05-17T18:22:47.000Z"  itemprop="datePublished">2018-05-18</time>
 
         
 
@@ -552,7 +578,7 @@ Spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。使用 Sp
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/05/05/Linux/ssh/mosh/">No title</a>
+      <a class="post-title-link" href="/2018/05/18/MD/mem/哲学/">No title</a>
     </h3>
   
 
@@ -563,10 +589,16 @@ Spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。使用 Sp
 
     
         
+
+
+
+拥有希望的哲学是唯一的救赎。
+
+
     
 
-        <a href="/2018/05/05/Linux/ssh/mosh/" class="post-more waves-effect waves-button">
-            Continue reading...
+        <a href="/2018/05/18/MD/mem/哲学/" class="post-more waves-effect waves-button">
+            阅读全文…
         </a>
     </div>
     
@@ -579,7 +611,7 @@ Spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。使用 Sp
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/8/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="extend next" rel="next" href="/page/10/">下一页</a>
     </div>
 </nav>
 
@@ -601,7 +633,7 @@ Spring 框架提供了构建 Web 应用程序的全功能 MVC 模块。使用 Sp
 
         <p>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">

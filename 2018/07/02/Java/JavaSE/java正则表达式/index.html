@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="Java Pattern的使用12345678910111213141516@Test  public void testRegex() &amp;#123;      //匹配的字符串对象      String str = &quot;123 we are the world&quot;;      //创建正则表达式字符串  这里的\\b为单词边界      String regex = &quot;\\b[a-z]&amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T12:04:36.000Z">
+<meta property="og:updated_time" content="2018-07-17T06:48:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java正则表达式">
 <meta name="twitter:description" content="Java Pattern的使用12345678910111213141516@Test  public void testRegex() &amp;#123;      //匹配的字符串对象      String str = &quot;123 we are the world&quot;;      //创建正则表达式字符串  这里的\\b为单词边界      String regex = &quot;\\b[a-z]&amp;#123;">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -221,7 +221,7 @@
 </blockquote>
 </li>
 </ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String str =</span><br><span class="line">            <span class="string">"一一一眼眼眼眼眼万万万万万万万年年年年年年年"</span>;</span><br><span class="line">        <span class="comment">//(.)分组1号  "\\1"为匹配1号分组的内容  "+"为1个或多个</span></span><br><span class="line">        String regex_group = <span class="string">"(.)\\1+"</span>; </span><br><span class="line">        <span class="comment">//"$1"为获取分组中匹配到的内容</span></span><br><span class="line">        str = str.replaceAll(regex_group,<span class="string">"$1"</span>);</span><br><span class="line">        System.out.println(<span class="string">"str = "</span> + str); <span class="comment">//输出一眼万年</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String str =</span><br><span class="line">            <span class="string">"一一一眼眼眼眼眼万万万万万万万年年年年年年年"</span>;</span><br><span class="line">        <span class="comment">//(.)分组1号  "\\1"为匹配1号分组的内容  "+"为1个或多个</span></span><br><span class="line">        String regex_group = <span class="string">"(.)\\1+"</span>; </span><br><span class="line">        <span class="comment">//"$1"为获取分组中匹配到的内容</span></span><br><span class="line">        str = str.replaceAll(regex_group,<span class="string">"$1"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h4 id="常用正则表达式实例"><a href="#常用正则表达式实例" class="headerlink" title="常用正则表达式实例"></a>常用正则表达式实例</h4>
         </div>
 
@@ -230,7 +230,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-07-04T12:04:36.000Z" itemprop="dateUpdated">2018-07-04 20:04:36</time>
+    最后更新时间：<time datetime="2018-07-17T06:48:19.000Z" itemprop="dateUpdated">2018-07-17 14:48:19</time>
 </span><br>
 
 
@@ -368,7 +368,7 @@
 
         <p>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">

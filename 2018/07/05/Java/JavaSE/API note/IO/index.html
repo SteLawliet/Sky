@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="OutputStream java.io.OutputStream抽象类是所有字节输出流的超类.  void wirte(int b)写入的内容是由int b的二进制  eg.  写入b 为 97时文本内容打开为a    void wirte(byte[] bytes,int off,int length)从bytes的字节数组中写入从off开始length为长度的的二进制数  文件追加写入时用O">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-11T11:14:35.000Z">
+<meta property="og:updated_time" content="2018-07-17T07:48:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="IO">
 <meta name="twitter:description" content="OutputStream java.io.OutputStream抽象类是所有字节输出流的超类.  void wirte(int b)写入的内容是由int b的二进制  eg.  写入b 为 97时文本内容打开为a    void wirte(byte[] bytes,int off,int length)从bytes的字节数组中写入从off开始length为长度的的二进制数  文件追加写入时用O">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -172,7 +172,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#OutputStream"><span class="post-toc-number">1.</span> <span class="post-toc-text">OutputStream</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#InputStream"><span class="post-toc-number">2.</span> <span class="post-toc-text">InputStream</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#读取和写入e-g"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">读取和写入e.g</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Writer"><span class="post-toc-number">3.</span> <span class="post-toc-text">Writer</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Reader"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reader</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#char-与-byte-的转换"><span class="post-toc-number">5.</span> <span class="post-toc-text">char[] 与 byte[] 的转换</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#OutputStream"><span class="post-toc-number">1.</span> <span class="post-toc-text">OutputStream</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#InputStream"><span class="post-toc-number">2.</span> <span class="post-toc-text">InputStream</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#读取和写入e-g"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">读取和写入e.g</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Writer"><span class="post-toc-number">3.</span> <span class="post-toc-text">Writer</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Reader"><span class="post-toc-number">4.</span> <span class="post-toc-text">Reader</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#char-与-byte-的转换"><span class="post-toc-number">5.</span> <span class="post-toc-text">char[] 与 byte[] 的转换</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#案例"><span class="post-toc-number"></span> <span class="post-toc-text">案例:</span></a>
         </nav>
     </aside>
 
@@ -224,7 +224,13 @@
 <h4 id="Reader"><a href="#Reader" class="headerlink" title="Reader"></a>Reader</h4><hr>
 <p><code>int read()</code>: 读取一个字符返回int值</p>
 <p><code>int read(char[] chars)</code>: 读取的内容放入chars中,返回的int和上面的inputStream一样.</p>
+<blockquote>
+<p>FileOutputstream和FileWriter 在对象创建时生成空文件,会覆盖以及存在的文件</p>
+</blockquote>
 <h4 id="char-与-byte-的转换"><a href="#char-与-byte-的转换" class="headerlink" title="char[] 与 byte[] 的转换"></a>char[] 与 byte[] 的转换</h4><p>char[] UTF-8解码为byte[]<br><code>byte[] bytes = String.valueOf(chars).getBytes(&quot;UTF8&quot;);</code><br>byte[] 使用UTF-8编码为char[]<br><code>char[] chars  = new String(bytes,&quot;UTF8&quot;).toCharArray();</code></p>
+<h3 id="案例"><a href="#案例" class="headerlink" title="案例:"></a>案例:</h3><p>复制多级文件夹</p>
+<p>递归实现</p>
+<p>迭代实现</p>
 
         </div>
 
@@ -233,7 +239,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-07-11T11:14:35.000Z" itemprop="dateUpdated">2018-07-11 19:14:35</time>
+    最后更新时间：<time datetime="2018-07-17T07:48:41.000Z" itemprop="dateUpdated">2018-07-17 15:48:41</time>
 </span><br>
 
 
@@ -371,7 +377,7 @@
 
         <p>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">

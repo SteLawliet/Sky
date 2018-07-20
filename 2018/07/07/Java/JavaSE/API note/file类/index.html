@@ -14,7 +14,7 @@
     
     
     
-    <title>file类注意 | stelawliet | 迁移整理中...</title>
+    <title>file类与java路径注意 | stelawliet | 迁移整理中...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,14 +24,14 @@
     <meta name="description" content="constructors public File(File parent, String child) public File(String pathname) public File(String parent,String child) public File(URI uri)  通过file:URI转化为一个抽象的路径来创建一个新的file实例  method获取  String getNa">
 <meta name="keywords" content="note">
 <meta property="og:type" content="article">
-<meta property="og:title" content="file类注意">
+<meta property="og:title" content="file类与java路径注意">
 <meta property="og:url" content="http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/index.html">
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="constructors public File(File parent, String child) public File(String pathname) public File(String parent,String child) public File(URI uri)  通过file:URI转化为一个抽象的路径来创建一个新的file实例  method获取  String getNa">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-07T11:54:24.000Z">
+<meta property="og:updated_time" content="2018-07-17T07:22:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="file类注意">
+<meta name="twitter:title" content="file类与java路径注意">
 <meta name="twitter:description" content="constructors public File(File parent, String child) public File(String pathname) public File(String parent,String child) public File(URI uri)  通过file:URI转化为一个抽象的路径来创建一个新的file实例  method获取  String getNa">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -125,13 +125,13 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">file类注意</div>
+        <div class="flex-col header-title ellipsis">file类与java路径注意</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -147,7 +147,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">file类注意</h1>
+        <h1 class="title">file类与java路径注意</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-07-07T10:39:23.000Z" itemprop="datePublished" class="page-time">
@@ -170,7 +170,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#constructors"><span class="post-toc-number">1.</span> <span class="post-toc-text">constructors</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#method"><span class="post-toc-number">2.</span> <span class="post-toc-text">method</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建删除"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">创建删除</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目录遍历"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">目录遍历</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java路径"><span class="post-toc-number">3.</span> <span class="post-toc-text">java路径</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#constructors"><span class="post-toc-number">1.</span> <span class="post-toc-text">constructors</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#method"><span class="post-toc-number">2.</span> <span class="post-toc-text">method</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建删除"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">创建删除</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#文件移动与重命名"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">文件移动与重命名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#目录遍历"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">目录遍历</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java路径"><span class="post-toc-number">3.</span> <span class="post-toc-text">java路径</span></a></li></ol>
         </nav>
     </aside>
 
@@ -179,7 +179,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">file类注意</h1>
+        <h1 class="post-card-title">file类与java路径注意</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-07-07 18:39:23" datetime="2018-07-07T10:39:23.000Z"  itemprop="datePublished">2018-07-07</time>
 
@@ -214,7 +214,7 @@
 <hr>
 <h4 id="创建删除"><a href="#创建删除" class="headerlink" title="创建删除"></a>创建删除</h4><p><code>boolean createNewFile();</code></p>
 <blockquote>
-<p>文件不存在时创建空文件</p>
+<p>文件不存在时创建空文件,父目录必须存在,否则抛出异常.如果文件以及存在返回false.</p>
 </blockquote>
 <p><code>boolean delete();</code></p>
 <blockquote>
@@ -225,6 +225,7 @@
 <p>可以创建多级目录.mkdir()只能创建1级目录 </p>
 </blockquote>
 <hr>
+<h4 id="文件移动与重命名"><a href="#文件移动与重命名" class="headerlink" title="文件移动与重命名"></a>文件移动与重命名</h4><p><code>boolean renameTo(File dest)</code><br>路径相同则重命名<br>路径不同则移动</p>
 <h4 id="目录遍历"><a href="#目录遍历" class="headerlink" title="目录遍历"></a>目录遍历</h4><p><code>String list();</code></p>
 <p><code>File[] listFiles();</code></p>
 <blockquote>
@@ -245,7 +246,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-07-07T11:54:24.000Z" itemprop="dateUpdated">2018-07-07 19:54:24</time>
+    最后更新时间：<time datetime="2018-07-17T07:22:16.000Z" itemprop="dateUpdated">2018-07-17 15:22:16</time>
 </span><br>
 
 
@@ -277,7 +278,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类注意》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类与java路径注意》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -287,7 +288,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类注意》 — stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类与java路径注意》 — stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -297,7 +298,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《file类注意》 — stelawliet&url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《file类与java路径注意》 — stelawliet&url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -383,7 +384,7 @@
 
         <p>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -405,7 +406,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类注意》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类与java路径注意》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -415,7 +416,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类注意》 — stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&title=《file类与java路径注意》 — stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -425,7 +426,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《file类注意》 — stelawliet&url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《file类与java路径注意》 — stelawliet&url=http://io.stelawliet.top/2018/07/07/Java/JavaSE/API note/file类/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
