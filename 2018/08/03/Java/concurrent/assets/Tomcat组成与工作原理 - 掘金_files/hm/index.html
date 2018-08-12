@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="(function(){var h={},mt={},c={id:&quot;93bbd335a208870aa1f296bcd6842e5e&quot;,dm:[&quot;juejin.im&quot;],js:&quot;tongji.baidu.com/hm-web/js/&quot;,etrk:[],icon:&apos;&apos;,ctrk:false,align:-1,nv:-1,vdur:1800000,age:31536000000,rec:0,rp:[]">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="(function(){var h={},mt={},c={id:&quot;93bbd335a208870aa1f296bcd6842e5e&quot;,dm:[&quot;juejin.im&quot;],js:&quot;tongji.baidu.com/hm-web/js/&quot;,etrk:[],icon:&apos;&apos;,ctrk:false,align:-1,nv:-1,vdur:1800000,age:31536000000,rec:0,rp:[]">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-02T17:28:43.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="(function(){var h={},mt={},c={id:&quot;93bbd335a208870aa1f296bcd6842e5e&quot;,dm:[&quot;juejin.im&quot;],js:&quot;tongji.baidu.com/hm-web/js/&quot;,etrk:[],icon:&apos;&apos;,ctrk:false,align:-1,nv:-1,vdur:1800000,age:31536000000,rec:0,rp:[]">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-02T17:28:42.000Z" itemprop="datePublished" class="page-time">
+  2018-08-03
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-03 01:28:42" datetime="2018-08-02T17:28:42.000Z"  itemprop="datePublished">2018-08-03</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            (function(){var h={},mt={},c={id:"93bbd335a208870aa1f296bcd6842e5e",dm:["juejin.im"],js:"tongji.baidu.com/hm-web/js/",etrk:[],icon:'',ctrk:false,align:-1,nv:-1,vdur:1800000,age:31536000000,rec:0,rp:[],trust:0,vcard:0,qiao:0,lxb:0,kbtrk:0,conv:0,med:0,cvcc:'',cvcf:[],apps:''};var q=void 0,r=!0,t=null,u=!1;mt.cookie={};mt.cookie.set=function(a,b,d){var f;d.I&&(f=new Date,f.setTime(f.getTime()+d.I));document.cookie=a+"="+b+(d.domain?"; domain="+d.domain:"")+(d.path?"; path="+d.path:"")+(f?"; expires="+f.toGMTString():"")+(d.ib?"; secure":"")};mt.cookie.get=function(a){return(a=RegExp("(^| )"+a+"=([^;]*)(;|$)").exec(document.cookie))?a[2]:t};mt.h={};mt.h.oa=function(a){return document.getElementById(a)};
+mt.h.K=function(a,b){var d=[],f=[];if(!a)return f;for(;a.parentNode!=t;){for(var g=0,n=0,l=a.parentNode.childNodes.length,p=0;p<l;p++){var e="a.parentNode.childNodes[p];if(e.nodeName===a.nodeName&&(g++,e===a&&(n=g),0<n&&1<g))break}if((l=""!==a.id)&&b){d.unshift("#"+encodeURIComponent(a.id));break}else" l&&(l="#" +encodeuricomponent(a.id),l="0<d.length?l+"">"+d.join(">"):l,f.push(l)),d.unshift(encodeURIComponent(String(a.nodeName).toLowerCase())+(1<g?"["+n+"]":""));a=a.parentnode}f.push(d.join(">"));return f};
+mt.h.bb=function(a){return(a=mt.h.K(a,r))&&a.length?String(a[0]):""};mt.h.ab=function(a){return mt.h.K(a,u)};mt.h.Za=function(a,b){for(b=b.toUpperCase();(a=a.parentNode)&&1==a.nodeType;)if(a.tagName==b)return a;return t};mt.h.pa=function(a){return 9===a.nodeType?a:a.ownerDocument||a.document};
+mt.h.$a=function(a){var b={top:0,left:0};if(!a)return b;var d=mt.h.pa(a).documentElement;"undefined"!==typeof a.getBoundingClientRect&&(b=a.getBoundingClientRect());return{top:b.top+(window.pageYOffset||d.scrollTop)-(d.clientTop||0),left:b.left+(window.pageXOffset||d.scrollLeft)-(d.clientLeft||0)}};
+(mt.h.Ga=function(){function a(){if(!a.B){a.B=r;for(var b=0,d=f.length;b<d;b++)f[b]()}}function 10="" b(){try{document.documentelement.doscroll("left")}catch(d){settimeout(b,1);return}a()}var="" d="u,f=[],g;document.addEventListener?g=function(){document.removeEventListener("DOMContentLoaded",g,u);a()}:document.attachEvent&&(g=function(){"complete"===document.readyState&&(document.detachEvent("onreadystatechange",g),a())});(function(){if(!d)if(d=r,"complete"===document.readyState)a.B=r;else" if(document.addeventlistener)document.addeventlistener("domcontentloaded",="" g,u),window.addeventlistener("load",a,u);else="" if(document.attachevent){document.attachevent("onreadystatechange",g);window.attachevent("onload",a);var="" f="u;try{f=window.frameElement==t}catch(l){}document.documentElement.doScroll&&f&&b()}})();return" function(b){a.b?b():f.push(b)}}()).b="u;mt.event={};mt.event.c=function(a,b,d){a.attachEvent?a.attachEvent("on"+b,function(b){d.call(a,b)}):a.addEventListener&&a.addEventListener(b,d,u)};" mt.event.preventdefault="function(a){a.preventDefault?a.preventDefault():a.returnValue=u};" (function(){var="" a="mt.event;mt.f={};mt.f.Da=/msie" (\d+\.\d+)="" i.test(navigator.useragent);mt.f.ba="/msie" i.test(navigator.useragent)?document.documentmode||+regexp.$1:q;mt.f.cookieenabled="navigator.cookieEnabled;mt.f.javaEnabled=navigator.javaEnabled();mt.f.language=navigator.language||navigator.browserLanguage||navigator.systemLanguage||navigator.userLanguage||"";mt.f.Ia=(window.screen.width||0)+"x"+(window.screen.height||0);mt.f.colorDepth=window.screen.colorDepth||0;mt.f.L=function(){var" a;="" parseint(window.pageyoffset||a.documentelement.scrolltop||a.body&&a.body.scrolltop||0,10)};mt.f.m="function(){var" parseint(window.innerheight||a.documentelement.clientheight||a.body&&a.body.clientheight||0,10)};mt.f.orientation="0;(function(){function" b(){var="" mt.f})();="" mt.l="{};mt.l.parse=function(){return(new" function('return="" ("="" +="" source="" ")'))()};="" mt.l.stringify="function(){function" a(a){="" ["\\\x00-\x1f]="" .test(a)&&(a="a.replace(/["\\\x00-\x1f]/g,function(a){var" b="d[a];if(b)return" b;b="a.charCodeAt();return"\\u00"+Math.floor(b/16).toString(16)+(b%16).toString(16)}));return'"'+a+'"'}function" b(a){return="">a?"0"+a:a}var d={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"};return function(d){switch(typeof d){case "undefined":return"undefined";case "number":return isFinite(d)?String(d):"null";case "string":return a(d);case "boolean":return String(d);
+default:if(d===t)return"null";if(d instanceof Array){var g=["["],n=d.length,l,p,e;for(p=0;p<n;p++)switch(e=d[p],typeof e){case="" "undefined":case="" "function":case="" "unknown":break;default:l&&g.push(","),g.push(mt.l.stringify(e)),l="1}g.push("]");return" g.join("")}if(d="" instanceof="" date)return'"'+d.getfullyear()+"-"+b(d.getmonth()+1)+"-"+b(d.getdate())+"t"+b(d.gethours())+":"+b(d.getminutes())+":"+b(d.getseconds())+'"';l="["{"];p=mt.l.stringify;for(n" in="" d)if(object.prototype.hasownproperty.call(d,n))switch(e="d[n],typeof" "unknown":case="" "function":break;default:g&&l.push(","),g="1,l.push(p(n)+":"+p(e))}l.push("}");return" l.join("")}}}();mt.lang="{};mt.lang.d=function(a,b){return"[object" "+b+"]"="=={}.toString.call(a)};mt.lang.Ea=function(){var" a="h.b.a.kb;return" mt.lang.d(a,"number")&&isfinite(a)};mt.lang.gb="function(a){return" mt.lang.d(a,"string")};mt.lang.k="function(a){return" a.replace?a.replace(="" '="" g,"'0").replace(="" \*="" g,"'1").replace(="" !="" g,"'2"):a};mt.localstorage="{};" mt.localstorage.d="function(){if(!mt.localStorage.g)try{mt.localStorage.g=document.createElement("input"),mt.localStorage.g.type="hidden",mt.localStorage.g.style.display="none",mt.localStorage.g.addBehavior("#default#userData"),document.getElementsByTagName("head")[0].appendChild(mt.localStorage.g)}catch(a){return" u}return="" r};="" mt.localstorage.set="function(a,b,d){var" f="new" date;f.settime(f.gettime()+d||31536e6);try{window.localstorage?(b="f.getTime()+"|"+b,window.localStorage.setItem(a,b)):mt.localStorage.D()&&(mt.localStorage.g.expires=f.toUTCString(),mt.localStorage.g.load(document.location.hostname),mt.localStorage.g.setAttribute(a,b),mt.localStorage.g.save(document.location.hostname))}catch(g){}};" mt.localstorage.get="function(a){if(window.localStorage){if(a=window.localStorage.getItem(a)){var" b="a.indexOf("|"),d=a.substring(0,b)-0;if(d&&d">(new Date).getTime())return a.substring(b+1)}}else if(mt.localStorage.D())try{return mt.localStorage.g.load(document.location.hostname),mt.localStorage.g.getAttribute(a)}catch(f){}return t};
+mt.localStorage.remove=function(a){if(window.localStorage)window.localStorage.removeItem(a);else if(mt.localStorage.D())try{mt.localStorage.g.load(document.location.hostname),mt.localStorage.g.removeAttribute(a),mt.localStorage.g.save(document.location.hostname)}catch(b){}};mt.sessionStorage={};mt.sessionStorage.set=function(a,b){if(window.sessionStorage)try{window.sessionStorage.setItem(a,b)}catch(d){}};
+mt.sessionStorage.get=function(a){return window.sessionStorage?window.sessionStorage.getItem(a):t};mt.sessionStorage.remove=function(a){window.sessionStorage&&window.sessionStorage.removeItem(a)};mt.aa={};mt.aa.log=function(a,b){var d=new Image,f="mini_tangram_log_"+Math.floor(2147483648*Math.random()).toString(36);window[f]=d;d.onload=d.onerror=d.onabort=function(){d.onload=d.onerror=d.onabort=t;d=window[f]=t;b&&b(a)};d.src=a};mt.T={};
+mt.T.ua=function(){var a="";if(navigator.plugins&&navigator.mimeTypes.length){var b=navigator.plugins["Shockwave Flash"];b&&b.description&&(a=b.description.replace(/^.*\s+(\S+)\s+\S+$/,"$1"))}else if(window.ActiveXObject)try{if(b=new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))(a=b.GetVariable("$version"))&&(a=a.replace(/^.*\s+(\d+),(\d+).*$/,"$1.$2"))}catch(d){}return a};
+mt.T.Ya=function(a,b,d,f,g){return'<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="'+a+'" width="'+d+'" height="'+f+'"><param name="movie" value="'+b+'"><param name="flashvars" value="'+(g||" ")+'"=""><param name="allowscriptaccess" value="always"><embed type="application/x-shockwave-flash" name="'+a+'" width="'+d+'" height="'+f+'" src="'+b+'" flashvars="'+(g||" ")+'"="" allowscriptaccess="always"></object>'};mt.url={};
+mt.url.i=function(a,b){var d=a.match(RegExp("(^|&|\\?|#)("+b+")=([^&#]*)(&|$|#)",""));return d?d[3]:t};mt.url.cb=function(a){return(a=a.match(/^(https?:)\/\//))?a[1]:t};mt.url.ra=function(a){return(a=a.match(/^(https?:\/\/)?([^\/\?#]*)/))?a[2].replace(/.*@/,""):t};mt.url.W=function(a){return(a=mt.url.ra(a))?a.replace(/:\d+$/,""):a};mt.url.K=function(a){return(a=a.match(/^(https?:\/\/)?[^\/]*(.*)/))?a[2].replace(/[\?#].*/,"").replace(/^$/,"/"):t};
+(function(){function a(){for(var a=u,d=document.getElementsByTagName("script"),f=d.length,f=100<f?100:f,g=0;g<f;g++){var n="d[g].src;if(n&&0===n.indexOf("https://hm.baidu.com/h")){a=r;break}}return" a}return="" h.na="a})();var" a="h.na;" h.w="{eb:"http://tongji.baidu.com/hm-web/welcome/ico",$:"hm.baidu.com/hm.gif",ea:"baidu.com",ya:"hmmd",za:"hmpl",Ra:"utm_medium",xa:"hmkw",Ta:"utm_term",va:"hmci",Qa:"utm_content",Aa:"hmsr",Sa:"utm_source",wa:"hmcu",Pa:"utm_campaign",r:0,m:Math.round(+new" date="" 1e3),f:math.round(+new="" 1e3)%65535,protocol:"https:"="==document.location.protocol?"https:":"http:",P:A()||"https:"===document.location.protocol?"https:":"http:",fb:0,Va:6E5,Fa:6E5,hb:5E3,Wa:5,Xa:1024,Ua:1,Q:2147483647,ba:"kb" cc="" cf="" ci="" ck="" cl="" cm="" cp="" cu="" cw="" ds="" vl="" ep="" et="" fl="" ja="" ln="" lo="" lt="" rnd="" si="" su="" v="" cv="" lv="" api="" sn="" ct="" u="" tt".split("="" ")};="" (function(){var="" f="this.p[a].length,g=0;g<f;g++)this.p[a][g](d)}};return" h.h="a})();" (function(){function="" a(a,f){var="" g="document.createElement("script");g.charset="utf-8";b.d(f,"Function")&&(g.readyState?g.onreadystatechange=function(){if("loaded"===g.readyState||"complete"===g.readyState)g.onreadystatechange=t,f()}:g.onload=function(){f()});g.src=a;var" b="mt.lang;return" h.load="a})();" a(){return="" function(){h.b.a.nv="0;h.b.a.st=4;h.b.a.et=3;h.b.a.ep=h.G.sa()+","+h.G.qa();h.b.j()}}function" b(){cleartimeout(z);var="" a;v&&(a="visible" =="document[v]);x&&(a=!document[x]);p="undefined"==typeof" a?r:a;if((!l||!e)&&p&&k)y="r,m=+new" date;else="" if(l&&e&&(!p||!k))y="u,s+=+new" date-m;l="p;e=k;z=setTimeout(b,100)}function" d(a){var="" k="document,m="";if(a" in="" k)m="a;else" for(var="" d="["webkit","ms","moz","o"],b=0;b<d.length;b++){var" s="d[b]+a.charAt(0).toUpperCase()+a.slice(1);if(s" k){m="s;break}}return" m}function="" f(a){if(!("focus"="=a.type||"blur"==a.type)||!(a.target&&a.target!=window))k="focus"==a.type||"focusin"==a.type?r:u,b()}var" date,m="w,s=0,y=r,v=d("visibilityState"),x=d("hidden"),z;b();(function(){var" document.onfocusin?(g.c(document,"focusin",f),g.c(document,"focusout",f)):(g.c(window,"focus",f),="" g.c(window,"blur",f))})();h.g="{sa:function(){return+new" date-w},qa:function(){return="" y?+new="" date-m+s:s}};n.c("pv-b",function(){g.c(window,"unload",a())});return="" h.g})();="" h.b){var="" h.ha="f})();" a(a,d,m,b){if(!(a="==q||d===q||b===q)){if(""===a)return[d,m,b].join("*");a=String(a).split("!");for(var" e,v="u,x=0;x<a.length;x++)if(e=a[x].split("*"),String(d)===e[0]){e[1]=m;e[2]=b;a[x]=e.join("*");v=r;break}v||a.push([d,m,b].join("*"));return" a.join("!")}}function="" b(a){for(var="" e="" a)if({}.hasownproperty.call(a,e)){var="" m="a[e];d.d(m,"Object")||d.d(m,"Array")?b(m):a[e]=String(m)}}var" 0;l.c("pv-b",function(){e.ia();e.la()});l.c("pv-d",function(){e.ma();e.o.page="" });l.c("stag-b",function(){h.b.a.api="e.e||e.C?e.e+"_"+e.C:"";h.b.a.ct=[decodeURIComponent(h.b.getData("Hm_ct_"+c.id)||""),e.o.U,e.o.page].join("!")});l.c("stag-d",function(){h.b.a.api=0;e.e=0;e.C=0})},ia:function(){var" b[0]&&(1<b.length&&="" ^[0-9a-f]{32}$="" .test(b[1]))&&(b="b[1],a.id=b,a.cmd[b]=a.cmd[b]||[]))}}},window._hmt.cmd[c.id]=[],window._hmt.push.apply(window._hmt,a)},la:function(){var" "function"))e[b](a)},_setaccount:function(a){1<a.length&&="" .test(a[1])&&(e.e|="1)},_setAutoPageview:function(a){if(1<a.length&&(a=a[1],u===a||r===a))e.e|=2,h.b.X=a},_trackPageview:function(a){if(1<a.length&&a[1].charAt&&"/"===a[1].charAt(0)){e.e|=4;h.b.a.et=0;h.b.a.ep="";h.b.a.vl=g.L()+g.M();h.b.a.kb=0;h.b.N?(h.b.a.nv=0,h.b.a.st=4):h.b.N=r;var" _trackevent:function(a){2<a.length&&(e.e|="8,h.b.a.nv=0,h.b.a.st=4,h.b.a.et=4,h.b.a.ep=d.k(a[1])+"*"+d.k(a[2])+(a[3]?"*"+d.k(a[3]):"")+(a[4]?"*"+d.k(a[4]):""),h.b.j())},_setCustomVar:function(a){if(!(4">a.length)){var b=a[1],m=a[4]||3;if(0<b&&6>b&&0<m&&4>m){e.C++;for(var s=(h.b.a.cv||"*").split("!"),f=s.length;f<b-1;f++)s.push("*");s[b-1]=m+"*"+d.k(a[2])+"*"+d.k(a[3]);h.b.a.cv=s.join("!");a=h.b.a.cv.replace( [^1](\*[^!]*){2}="" g,"*").replace(="" ((^|!)\*)+$="" g,"");""!="=a?h.b.setData("Hm_cv_"+c.id,encodeURIComponent(a)," c.age):h.b.ha("hm_cv_"+c.id)}}},_setusertag:function(b){if(!(3="">b.length)){var e=d.k(b[1]);b=d.k(b[2]);if(e!==q&&b!==q){var m=decodeURIComponent(h.b.getData("Hm_ct_"+c.id)||""),m=a(m,e,1,b);h.b.setData("Hm_ct_"+c.id,encodeURIComponent(m),c.age)}}},_setVisitTag:function(b){if(!(3>b.length)){var f=d.k(b[1]);b=d.k(b[2]);if(f!==q&&b!==q){var m=e.o.U,m=a(m,f,2,b);e.o.U=m}}},_setPageTag:function(b){if(!(3>b.length)){var f=d.k(b[1]);b=d.k(b[2]);if(f!==q&&b!==q){var m=e.o.page,m=a(m,f,3,b);e.o.page=m}}},_setReferrerOverride:function(a){1<
+a.length&&(h.b.a.su=a[1].charAt&&"/"===a[1].charAt(0)?n.protocol+"//"+window.location.host+a[1]:a[1],e.Y=r)},_trackOrder:function(a){a=a[1];d.d(a,"Object")&&(b(a),e.e|=16,h.b.a.nv=0,h.b.a.st=4,h.b.a.et=94,h.b.a.ep=f.stringify(a),h.b.j())},_trackMobConv:function(a){if(a={webim:1,tel:2,map:3,sms:4,callback:5,share:6}[a[1]])e.e|=32,h.b.a.et=93,h.b.a.ep=a,h.b.j()},_trackRTPageview:function(a){a=a[1];d.d(a,"Object")&&(b(a),a=f.stringify(a),512>=encodeURIComponent(a).length&&(e.e|=64,h.b.a.rt=a))},_trackRTEvent:function(a){a=
+a[1];if(d.d(a,"Object")){b(a);a=encodeURIComponent(f.stringify(a));var g=function(a){var b=h.b.a.rt;e.e|=128;h.b.a.et=90;h.b.a.rt=a;h.b.j();h.b.a.rt=b},m=a.length;if(900>=m)g.call(this,a);else for(var m=Math.ceil(m/900),s="block|"+Math.round(Math.random()*n.Q).toString(16)+"|"+m+"|",l=[],v=0;v<m;v++)l.push(v),l.push(a.substring(900*v,900*v+900)),g.call(this,s+l.join("|")),l=[]}},_setuserid:function(a){a=a[1];p.ca();p.oa(a)}};e.init();h.fa=e;return 0="==a.indexOf(b)},A:function(a){for(var" h.fa})();="" (function(){function="" a(){"undefined"="==typeof" window["_bdhm_loaded_"+c.id]&&(window["_bdhm_loaded_"+c.id]="r,this.a={},this.X=r,this.N=u,this.init())}var" b="mt.url,d=mt.aa,f=mt.T,g=mt.lang,n=mt.cookie,l=mt.f,p=mt.localStorage,e=mt.sessionStorage,k=h.w,w=h.H;a.prototype={O:function(a,b){a="."+a.replace(/:\d+/,"");b="."+b.replace(/:\d+/,"");var" d="a.indexOf(b);return-1<d&&d+b.length===a.length},Z:function(a,b){a=a.replace(/^https?:\/\//,"");return" c.dm[d].indexof("="" ")){if(this.z(a,c.dm[d]))return="" r}else{var="" e="b.W(a);if(e&&this.O(e,c.dm[d]))return" r}return="" u},j:function(){for(var="" a="document.location.hostname,b=0,d=c.dm.length;b<d;b++)if(this.O(a,c.dm[b]))return" c.dm[b].replace(="" (:\d+)?[\="" \?#].*="" ,"");return="" a},v:function(){for(var="" d.replace(="" ^[^\="" ]+(\="" .*)="" ,"$1")+"="" "}return"="" "},ta:function(){if(!document.referrer)return="" k.m-k.r="">c.vdur?1:4;var a=
+u;this.A(document.referrer)&&this.A(document.location.href)?a=r:(a=b.W(document.referrer),a=this.O(a||"",document.location.hostname));return a?k.m-k.r>c.vdur?1:4:3},getData:function(a){try{return n.get(a)||e.get(a)||p.get(a)}catch(b){}},setData:function(a,b,d){try{n.set(a,b,{domain:this.J(),path:this.V(),I:d}),d?p.set(a,b,d):e.set(a,b)}catch(f){}},Ha:function(a){try{n.set(a,"",{domain:this.J(),path:this.V(),I:-1}),e.remove(a),p.remove(a)}catch(b){}},Ma:function(){var a,b,d,e,f;k.r=this.getData("Hm_lpvt_"+
+c.id)||0;13===k.r.length&&(k.r=Math.round(k.r/1E3));b=this.ta();a=4!==b?1:0;if(d=this.getData("Hm_lvt_"+c.id)){e=d.split(",");for(f=e.length-1;0<=f;f--)13===e[f].length&&(e[f]=""+math.round(e[f] 1e3));for(;2592e3<k.m-e[0];)e.shift();f="4">e.length?2:3;for(1===a&&e.push(k.m);4<e.length;)e.shift();d=e.join(",");e=e[e.length-1]}else d="k.m,e="",f=1;this.setData("Hm_lvt_"+c.id,d,c.age);this.setData("Hm_lpvt_"+c.id,k.m);d=k.m===this.getData("Hm_lpvt_"+c.id)?"1":"0";if(0===c.nv&&this.A(document.location.href)&&" (""="==document.referrer||this.A(document.referrer)))a=0,b=4;this.a.nv=a;this.a.st=b;this.a.cc=d;this.a.lt=e;this.a.lv=f},La:function(){for(var" a="[],b=this.a.et,d=0,e=k.ba.length;d<e;d++){var" f="k.ba[d],g=this.a[f];"undefined"!==typeof" g&&""!="=g&&("tt"!==f||"tt"===f&&0===b)&&(("ct"!==f||"ct"===f&&0===b)&&("kb"!==f||"kb"===f&&3===b))&&a.push(f+"="+encodeURIComponent(g))}switch(b){case" 0:a.push("sn="+k.F);this.a.rt&&a.push(" rt="+encodeURIComponent(this.a.rt));break;case 3:a.push(" sn="+k.F);break;case 85:a.push(" &")},na:function(){this.ma();this.a.si="c.id;this.a.su=document.referrer;this.a.ds=l.Ia;this.a.cl=l.colorDepth+"-bit";this.a.ln=String(l.language).toLowerCase();this.a.ja=l.javaEnabled?1:0;this.a.ck=l.cookieEnabled?1:0;this.a.lo="number"===typeof" _bdhm_top?1:0;this.a.fl="f.ua();this.a.v="1.2.33";this.a.cv=decodeURIComponent(this.getData("Hm_cv_"+c.id)||"");this.a.tt=document.title||"";this.a.vl=l.L()+l.M();var" this.a.cm="b.i(a,k.ya)||"";this.a.cp=b.i(a,k.za)||b.i(a,k.Ra)||"";this.a.cw=b.i(a,k.xa)||b.i(a,k.Ta)||"";this.a.ci=b.i(a,k.va)||b.i(a,k.Qa)||"";this.a.cf=b.i(a,k.Aa)||b.i(a,k.Sa)||"";this.a.cu=b.i(a,k.wa)||b.i(a,k.Pa)||""},init:function(){try{this.Na(),0===this.a.nv?this.Ka():this.S(".*"),h.b=this,this.ga(),w.z("pv-b"),this.Ja()}catch(a){var" b="[];b.push("si="+c.id);b.push("n="+encodeURIComponent(a.name));b.push("m="+encodeURIComponent(a.message));b.push("r="+encodeURIComponent(document.referrer));" d.log(k.p+"="" "+k.$+"?"+b.join("&"))}},ja:function(){function="" a(){w.z("pv-d")}this.x?(this.n="r,this.a.et=0,this.a.ep="",this.a.vl=l.L()+l.M(),this.j(a)):a()},j:function(a){var" e="k.P+"//"+k.$+"?"+b.La();w.z("stag-d");b.da(e);d.log(e,function(d){b.S(d);g.d(a,"Function")&&a.call(b)})},ga:function(){var" a&&(d.test(a)&&e&&g)&&(this.a.rnd="Math.round(Math.random()*k.Q),a=document.createElement("script"),a.setAttribute("type","text/javascript"),a.setAttribute("charset","utf-8"),a.setAttribute("src",k.protocol+"//"+c.js+f+".js?"+this.a.rnd),f=document.getElementsByTagName("script")[0],f.parentNode.insertBefore(a,f))},da:function(a){var" c.id,b)},s:function(a){var="" new="" a})();="" (function(){var="" h.b){h.b.a.kb="b.Ea()?h.b.a.kb:0;var" h.b){var="" a;a="d("navigation");var" a.start};h.b.a.et="87;h.b.a.ep=b.stringify(a);h.b.j()};a.c(window,"load",function(){setTimeout(f,500)})}}catch(g){}})();" h.b&&(c.med||(!a.da||7<a.ba)&&c.cvcc)){var="" g,n,l,p,e="function(a){if(a.item){for(var" d}return[].slice.call(a)},k="function(a,b){for(var" in="" a)if(a.hasownproperty(d)&&b.call(a,d,a[d])="==u)return" u},w="function(a,d){var" k="d.getAttribute("href"),m=d.getAttribute("onclick")?""+d.getAttribute("onclick"):t,n=d.getAttribute("id")||"";l.test(k)?(e.sn="mediate"," e.snv="k):b.d(m,"String")&&l.test(m)&&(e.sn="wrap",e.snv=m);e.id=n}h.b.a.et=86;h.b.a.ep=f.stringify(e);h.b.j();for(e=+new" date;400="">=+new Date-e;);};if(c.med)n="/zoosnet",g="swt",l=/swt|zixun|call|chat|zoos|business|talk|kefu|openkf|online|\/LR\/Chatpre\.aspx/i,p={click:function(){for(var a=[],b=e(document.getElementsByTagName("a")),b=[].concat.apply(b,e(document.getElementsByTagName("area"))),b=[].concat.apply(b,e(document.getElementsByTagName("img"))),d,f,g=0,k=b.length;g</e.length;)e.shift();d=e.join(",");e=e[e.length-1]}else></=f;f--)13===e[f].length&&(e[f]=""+math.round(e[f]></m;v++)l.push(v),l.push(a.substring(900*v,900*v+900)),g.call(this,s+l.join("|")),l=[]}},_setuserid:function(a){a=a[1];p.ca();p.oa(a)}};e.init();h.fa=e;return></b-1;f++)s.push("*");s[b-1]=m+"*"+d.k(a[2])+"*"+d.k(a[3]);h.b.a.cv=s.join("!");a=h.b.a.cv.replace(></m&&4></b&&6></f?100:f,g=0;g<f;g++){var></n;p++)switch(e=d[p],typeof></d;b++)f[b]()}}function></g?"["+n+"]":""));a=a.parentnode}f.push(d.join("></l;p++){var>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-08-02T17:28:43.000Z" itemprop="dateUpdated">2018-08-03 01:28:43</time>
+</span><br>
+
+
+        
+        <a href="/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/" target="_blank" rel="external">http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/ionicons.min/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/03/Java/concurrent/assets/Tomcat组成与工作原理 - 掘金_files/hm/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADM0lEQVR42u3aUW6jUAwF0O5/08wCKsi1TUfBHL6qhjacF6nutf3zE1/Hryu58/qe319fv3p25/V7jS5sbGzsh7CPy+vs7c/eLAcnx3p9KNfP9uGjwsbGxl7HTspMfii9Y73+Pb1jOv0+NjY29ovZyaEkAaYKy98RGxsbGzspS3kDKG8G5QVs8pzY2NjYW9nVqHDNqMaVKu+/9tKwsbGxv549KRLf9vWfzLexsbGxv5h9tK7eQLdXAnsjhw/Pj42Njb2IXS0S1VWe3uChuhjUHB5jY2Njr2DfhendM2FUyyc2Njb2VnbhhcsYMI8H1aWcZBkoH29gY2NjP509P7P5qLjX6M+DEzY2NvZWdr7aksSMPHjksaHXfvrQ2MLGxsZex64eRO+AeqPcyaDiQwjBxsbGXsHOC1LvmPKln+p6UJSxqpUTGxsb++HsfOUljwfJT1WLU6/ZFOUwbGxs7Ieze3/ze2OA5H17oQUbGxv7bezecDdpKk2KYrWslgsYNjY29mp2XtLmY4MkxlTXcaKnwsbGxl7Eno9j56QJuHrn6WeOjY2NvYI9DxjzkW11SFB95srL2NjY2M9jVzdbkpKWr9T0SmO1HGJjY2O/h538o19tyufNoF7RykMLNjY29j52HgCqLfh8zJAXtvnYGBsbG/sN7MnYYDIeyI+yN2bAxsbG3sdOCkASG+4dDyQRaLLEg42Njb2J3Wsk3dsMyhtVvdbSh9+GjY2N/XD2EV+9YpZHjur9o9UibGxs7HXsSSvn+s68cd8rUb3Si42Njb2PXY0QSWHrjZCrH0BvPIyNjY29iZ0v5eSN+148mJSlpgIbGxt7Bfuux80XaPIxQ3Ks1QJ8msCwsbGxH8uu/um/ax0nHzlUxwOF0IKNjY29gn0Ur2ogqRan6rHmhRAbGxt7K/veRZk8JFSbVpNmU28xCBsbG/tZ7KRoVQPDJDxUo0V18ICNjY29ld1r6+ct+8lh5bGkcOjY2NjYr2RfA+49jt4IuXA02NjY2K9k98pbzpusBJW7aNjY2Njr2NWm0iSiFFo/rZFAsiqEjY2NvYmdt2bySJCEmaR85sfUCzPY2NjYD2f/A2dPd8vORErkAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

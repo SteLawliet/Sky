@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>annotation-component registration | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="[TOC] @configuration12345678910111213141516171819202122@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Componentpublic @interface Configuration   @Configuration@ComponentScan(&quot;">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="annotation-component registration">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="[TOC] @configuration12345678910111213141516171819202122@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Componentpublic @interface Configuration   @Configuration@ComponentScan(&quot;">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-09T13:24:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="annotation-component registration">
+<meta name="twitter:description" content="[TOC] @configuration12345678910111213141516171819202122@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Componentpublic @interface Configuration   @Configuration@ComponentScan(&quot;">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">annotation-component registration</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">annotation-component registration</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-24T06:05:43.000Z" itemprop="datePublished" class="page-time">
+  2018-07-24
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#configuration"><span class="post-toc-number">1.</span> <span class="post-toc-text">@configuration</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ComponentScan"><span class="post-toc-number">2.</span> <span class="post-toc-text">@ComponentScan</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Import"><span class="post-toc-number">3.</span> <span class="post-toc-text">@Import</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/spring/annotation/@Configuration"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">annotation-component registration</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-24 14:05:43" datetime="2018-07-24T06:05:43.000Z"  itemprop="datePublished">2018-07-24</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>[TOC]</p>
+<h3 id="configuration"><a href="#configuration" class="headerlink" title="@configuration"></a>@configuration</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Target</span>(ElementType.TYPE)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Configuration</span><br><span class="line">   </span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"BeanConfig.LifeCycle"</span>)</span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"BeanConfig.Bean"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Config2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        AnnotationConfigApplicationContext context</span><br><span class="line">                = <span class="keyword">new</span> AnnotationConfigApplicationContext();</span><br><span class="line">        String[] names = context.getBeanDefinitionNames();</span><br><span class="line">        <span class="keyword">for</span> (String name : names) &#123;</span><br><span class="line">            System.out.println(name);</span><br><span class="line">        &#125;</span><br><span class="line">        JsrDe0 bean = context.getBean(JsrDe0.class);</span><br><span class="line">        System.out.println(bean);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>配置类,对应spring的xml配置文件<code>&lt;beans/&gt;</code>该配置类的applicationContext由AnnotationConfigApplicationContext获得,传入配置类</p>
+<blockquote>
+<p>@configuration 也是一个@Component所以会被当成组件添加到容器中</p>
+</blockquote>
+<h3 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h3><p>扫描指定规则的注解.对应<code>&lt;context:component-scan base-package=&quot;&quot;&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//可以多个ComponentScans</span></span><br><span class="line"><span class="meta">@ComponentScans</span>(</span><br><span class="line">value = &#123;<span class="meta">@ComponentScan</span>(value=<span class="string">"com.atguigu"</span>,includeFilters = &#123;</span><br><span class="line">				<span class="meta">@Filter</span>(type=FilterType.ANNOTATION,classes=&#123;Controller.class&#125;),</span><br><span class="line">				<span class="meta">@Filter</span>(type=FilterType.ASSIGNABLE_TYPE,classes=&#123;BookService.class&#125;),</span><br><span class="line">				<span class="meta">@Filter</span>(type=FilterType.CUSTOM,classes=&#123;MyTypeFilter.class&#125;)</span><br><span class="line">				&#125;,useDefaultFilters = <span class="keyword">false</span>)	</span><br><span class="line">		&#125;)</span><br></pre></td></tr></table></figure>
+<p><code>excludeFilters = Filter[] ：</code>指定扫描的时候按照什么规则排除那些组件<br><code>includeFilters = Filter[] ：</code>指定扫描的时候只需要包含哪些组件<br><code>useDefaultFilters</code>禁用默认扫描规则<br>Filter多个时按先后顺序逐级过滤,type指定过滤方式</p>
+<blockquote>
+<p>FilterType.ANNOTATION：按照注解<br>FilterType.ASSIGNABLE_TYPE：按照给定的类型；<br>FilterType.ASPECTJ：使用ASPECTJ表达式<br>FilterType.REGEX：使用正则指定<br>FilterType.CUSTOM：使用自定义规则</p>
+</blockquote>
+<p>自定义MyFilter implements TypeFilter</p>
+<p>重写match的方法</p>
+<blockquote>
+<p>metadataReader：读取到的当前正在扫描的类的信息<br>metadataReaderFactory:可以获取到其他任何类信息的</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTypeFilter</span> <span class="keyword">implements</span> <span class="title">TypeFilter</span> </span>&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">match</span><span class="params">(MetadataReader metadataReader, MetadataReaderFactory metadataReaderFactory)</span><span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">		<span class="comment">//获取当前类注解的信息</span></span><br><span class="line">		AnnotationMetadata annotationMetadata = metadataReader.getAnnotationMetadata();</span><br><span class="line">		<span class="comment">//获取当前正在扫描的类的类信息</span></span><br><span class="line">		ClassMetadata classMetadata = metadataReader.getClassMetadata();</span><br><span class="line">		<span class="comment">//获取当前类资源（类的路径）</span></span><br><span class="line">		Resource resource = metadataReader.getResource();</span><br><span class="line">		String className = classMetadata.getClassName();</span><br><span class="line">		System.out.println(<span class="string">"---&gt;"</span>+className);</span><br><span class="line">		<span class="keyword">if</span>(className.contains(<span class="string">"er"</span>))&#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​    </p>
+<h3 id="Import"><a href="#Import" class="headerlink" title="@Import"></a>@Import</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Import</span>(&#123;Color.class,Red.class,MyImportSelector.class,</span><br><span class="line">         MyImportBeanDefinitionRegistrar.class&#125;)</span><br><span class="line"><span class="comment">//@Import导入组件，id默认是组件的全类名</span></span><br></pre></td></tr></table></figure>
+<p>[快速给容器中导入一个组件]</p>
+<ol>
+<li>@Import(要导入到容器中的组件)；容器中就会自动注册这个组件，id默认是全类名</li>
+<li>ImportSelector:返回需要导入的组件的全类名数组；</li>
+<li>ImportBeanDefinitionRegistrar:手动注册bean到容器中<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.BeanDefinitionRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.support.RootBeanDefinition;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.ImportBeanDefinitionRegistrar;</span><br><span class="line"><span class="keyword">import</span> org.springframework.core.type.AnnotationMetadata;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyImportBeanDefinitionRegistrar</span> <span class="keyword">implements</span> <span class="title">ImportBeanDefinitionRegistrar</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * AnnotationMetadata：当前类的注解信息</span></span><br><span class="line"><span class="comment">	 * BeanDefinitionRegistry:BeanDefinition注册类；</span></span><br><span class="line"><span class="comment">	 * 		把所有需要添加到容器中的bean；调用</span></span><br><span class="line"><span class="comment">	 * 		BeanDefinitionRegistry.registerBeanDefinition手工注册进来</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">registerBeanDefinitions</span><span class="params">(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">boolean</span> definition = registry.containsBeanDefinition(<span class="string">"com.atguigu.bean.Red"</span>);</span><br><span class="line">		<span class="keyword">boolean</span> definition2 = registry.containsBeanDefinition(<span class="string">"com.atguigu.bean.Blue"</span>);</span><br><span class="line">		<span class="keyword">if</span>(definition &amp;&amp; definition2)&#123;</span><br><span class="line">			<span class="comment">//指定Bean定义信息；（Bean的类型，Bean。。。）</span></span><br><span class="line">			RootBeanDefinition beanDefinition = <span class="keyword">new</span> RootBeanDefinition(RainBow.class);</span><br><span class="line">			<span class="comment">//注册一个Bean，指定bean名</span></span><br><span class="line">			registry.registerBeanDefinition(<span class="string">"rainBow"</span>, beanDefinition);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-08-09T13:24:02.000Z" itemprop="dateUpdated">2018-08-09 21:24:02</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/24/Java/spring/annotation/@Configuration/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/&title=《annotation-component registration》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/&title=《annotation-component registration》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《annotation-component registration》 — stelawliet&url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/24/Java/spring/annotation/@Conditional/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">annotation-component @Conditional</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/24/Java/spring/annotation/xmind/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">spring-annotation xmind</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/&title=《annotation-component registration》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/&title=《annotation-component registration》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《annotation-component registration》 — stelawliet&url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/24/Java/spring/annotation/@Configuration/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACoElEQVR42u3a24oCQQwFwP3/n3ZfF6T1JOksCjVPInPpamESk/z8xMfjz/H8zfP3p2tPVyVnPp9/7cDDw8MbLP31oqu8E+D0+QRInn68Ax4eHt4a73TTfKG9beptVrJmPDw8vO/iTa7KAwkeHh7et/D2XutJGo2Hh4f3ObwkFZ5Tq4Ghl8Tj4eHhbfPyLtLnfF7p7+Hh4eGNu+rJK37+gp4PHxyfjoeHh7fA65UGJulvL72uPhcPDw9vmzcZh7r10p9sSrlWjYeHhzfm3W105cheOp4PcuHh4eFt8JJG1yRg5Oe8Zr+OaW/KEHh4eHhXeb1FJAXWSWdqHorw8PDw9ni91+4knEw2q5qa4+Hh4e3xkoZTL9ntFTiS7YtGsvDw8PCWedW2/aSVNRlQKGw9Hh4e3hrvViO/mhbngaS6zgu/AB4eHl6LdzcA7MGO5+Dh4eEt86oF095gVq8YUW3XjaIcHh4eXpE3T2fz+1QbZtXxAjw8PLwN3t0W1GSgqjoQVggbeHh4eFd5CWPygKTo0Ov1R5/x8PDwFnjVf+7VgapqWpxsQVJ5aBYm8PDw8GJeMsCUp9p5wp0Hg+r24eHh4W3zJkMDyeu7uk3VtUX3wcPDw7vKexSPXuGg10KrDjSUq9R4eHh4Y1411Z4nvr1EvBCc8PDw8NZ41fJr/tLPC7LVYYKoXYeHh4f377xe4z8pE+TBpro2PDw8vD3evAwxh82z3+MPgIeHh7fAm8STJJ2dFBqafbxb4RIPDw/vamt/Mla1sYlvVoWHh4e3xus1+HsNqlulhyiZxsPDw/sYXq+IkIeQ/IlvUm08PDy8D+ZVU/NqGt1sm+Hh4eGt8apNr3wLqoXa3pjX8Sl4eHh4C7zen/wkPOSMlUXj4eHh3ef9ArjCAyfr2qglAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

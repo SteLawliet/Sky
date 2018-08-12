@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Tomcat | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="tomcat,architecture">
+    <meta name="description" content="文件结构confcatalina.policy:Tomcat 安全策略文件,控制JVM相关权限,参考java.securityPermission catalina.porperties: Tomcat Catalina行为控制配置文件,如Common ClassLoader logging.properties :Tomcat 日志配置文件,JDK logging server.xml: Tom">
+<meta name="keywords" content="tomcat,architecture">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tomcat">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="文件结构confcatalina.policy:Tomcat 安全策略文件,控制JVM相关权限,参考java.securityPermission catalina.porperties: Tomcat Catalina行为控制配置文件,如Common ClassLoader logging.properties :Tomcat 日志配置文件,JDK logging server.xml: Tom">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-15T14:22:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Tomcat">
+<meta name="twitter:description" content="文件结构confcatalina.policy:Tomcat 安全策略文件,控制JVM相关权限,参考java.securityPermission catalina.porperties: Tomcat Catalina行为控制配置文件,如Common ClassLoader logging.properties :Tomcat 日志配置文件,JDK logging server.xml: Tom">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Tomcat</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Tomcat</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-14T13:00:41.000Z" itemprop="datePublished" class="page-time">
+  2018-07-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/tomcat/">tomcat</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/tomcat/servlet容器/">servlet容器</a></li></ul></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">文件结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#conf"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">conf</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#lib"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">lib</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#logs目录"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">logs目录</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#webapps"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">webapps</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux/server/Tomcat/Tomcat Architecture"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Tomcat</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-14 21:00:41" datetime="2018-07-14T13:00:41.000Z"  itemprop="datePublished">2018-07-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/tomcat/">tomcat</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/tomcat/servlet容器/">servlet容器</a></li></ul></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><h4 id="conf"><a href="#conf" class="headerlink" title="conf"></a>conf</h4><p>catalina.policy:Tomcat 安全策略文件,控制JVM相关权限,参考<code>java.securityPermission</code></p>
+<p>catalina.porperties: Tomcat Catalina行为控制配置文件,如Common ClassLoader</p>
+<p>logging.properties :Tomcat 日志配置文件,JDK logging</p>
+<p><code>server.xml</code>: Tomcat Server配置文件<br>Server</p>
+<ul>
+<li><p>Listener ….==待补充==<br><code>&lt;Listener className=&quot;org.apache.catalina.startup.VersionLoggerListener&quot; /&gt;</code></p>
+</li>
+<li><p>GlobalNamingResource:全局JNDI资源</p>
+<ul>
+<li>Resource  下面是配置权限由后面的tomcat-users.xml提供数据<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">GlobalNamingResources</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- Editable user database that can also be used by</span></span><br><span class="line"><span class="comment">         UserDatabaseRealm to authenticate users</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Resource</span> <span class="attr">name</span>=<span class="string">"UserDatabase"</span> <span class="attr">auth</span>=<span class="string">"Container"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">type</span>=<span class="string">"org.apache.catalina.UserDatabase"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">description</span>=<span class="string">"User database that can be updated and saved"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">factory</span>=<span class="string">"org.apache.catalina.users.MemoryUserDatabaseFactory"</span></span></span><br><span class="line"><span class="tag">              <span class="attr">pathname</span>=<span class="string">"conf/tomcat-users.xml"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">GlobalNamingResources</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>Service  “name=Catalina”</p>
+<ul>
+<li><p>Connecctor 配置不同协议不同端口的连接</p>
+<ol>
+<li><p>参考文件<code>tomcat-7.0-doc/cinfig/http.html</code></p>
+</li>
+<li><p>实现类<code>org.apache.catalina.connector.Connector</code></p>
+</li>
+<li><p>Executor 线程池的实现类</p>
+<p><code>org.apache.catalina.core.StandardThreadExecutor</code></p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">    <span class="comment">&lt;!--http配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8080"</span> <span class="attr">protocol</span>=<span class="string">"HTTP/1.1"</span></span></span><br><span class="line"><span class="tag">    </span></span><br><span class="line"><span class="tag">                   <span class="attr">connectionTimeout</span>=<span class="string">"20000"</span></span></span><br><span class="line"><span class="tag">    </span></span><br><span class="line"><span class="tag">                   <span class="attr">redirectPort</span>=<span class="string">"8443"</span> /&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--https配置 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">"8443"</span> <span class="attr">protocol</span>=<span class="string">"org.apache.coyote.http11.Http11NioProtocol"</span></span></span><br><span class="line"><span class="tag">                   <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">SSLEnabled</span>=<span class="string">"true"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">SSLHostConfig</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">Certificate</span> <span class="attr">certificateKeystoreFile</span>=<span class="string">"conf/localhost-rsa.jks"</span></span></span><br><span class="line"><span class="tag">                             <span class="attr">type</span>=<span class="string">"RSA"</span> /&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">SSLHostConfig</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">Connector</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--自定义线程池--&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">Executor</span> <span class="attr">name</span>=<span class="string">"tomcatThreadPool"</span> <span class="attr">namePrefix</span>=<span class="string">"catalina-exec-"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">maxThreads</span>=<span class="string">"150"</span> <span class="attr">minSpareThreads</span>=<span class="string">"4"</span>/&gt;</span></span><br><span class="line">    --&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Engine<br><code>&lt;Engine name=&quot;Catalina&quot; defaultHost=&quot;localhost&quot;&gt;</code></p>
+</li>
+<li><p>realm </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Use the LockOutRealm to prevent attempts to guess user passwords</span></span><br><span class="line"><span class="comment">        via a brute-force attack --&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.LockOutRealm"</span>&gt;</span></span><br><span class="line">     <span class="comment">&lt;!-- This Realm uses the UserDatabase configured in the global JNDI</span></span><br><span class="line"><span class="comment">          resources under the key "UserDatabase".  Any edits</span></span><br><span class="line"><span class="comment">          that are performed against this UserDatabase are immediately</span></span><br><span class="line"><span class="comment">          available for use by the Realm.  --&gt;</span></span><br><span class="line">     <span class="tag">&lt;<span class="name">Realm</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.realm.UserDatabaseRealm"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">resourceName</span>=<span class="string">"UserDatabase"</span>/&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">Realm</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>host 虚拟主机</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Host</span> <span class="attr">name</span>=<span class="string">"localhost"</span>  <span class="attr">appBase</span>=<span class="string">"webapps"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">unpackWARs</span>=<span class="string">"true"</span> <span class="attr">autoDeploy</span>=<span class="string">"true"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Valve 阀门类似filter?tomcat默认配置的是关于日志的</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">"org.apache.catalina.valves.AccessLogValve"</span> <span class="attr">directory</span>=<span class="string">"logs"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">prefix</span>=<span class="string">"localhost_access_log"</span> <span class="attr">suffix</span>=<span class="string">".txt"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">pattern</span>=<span class="string">"%h %l %u %t &amp;quot;%r&amp;quot; %s %b"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>context.xml:全局Context配置</p>
+<p>tomcat-user.xml:Tomcat用户权限配置文件 参考(Realm文件实现方式)</p>
+<p>web.xml:Servlet标准的web.xml配置文件,Tomcat默认实现的部分配置:</p>
+<ul>
+<li><p><code>org.apache.catalina.servlets.DefaultServlet</code> (静态资源处理的默认servlet)</p>
+</li>
+<li><p><code>org.apache.jsper.servlet.JapServlet</code>(Jsp文件处理)</p>
+</li>
+</ul>
+<h4 id="lib"><a href="#lib" class="headerlink" title="lib"></a>lib</h4><p>Tomcat jar公用类库的存放</p>
+<p><code>ecj-*.jar</code> :eclipse java编译器</p>
+<p><code>jasper.jar</code>:jsp编译器</p>
+<h4 id="logs目录"><a href="#logs目录" class="headerlink" title="logs目录"></a>logs目录</h4><p><code>localhost.${date}.log</code>:当Tomcat webapp无法启动时,查看错误日志</p>
+<p><code>catAlina.${date}.log</code>:控制台输出.System.out外置</p>
+<h4 id="webapps"><a href="#webapps" class="headerlink" title="webapps"></a>webapps</h4><p>简易的app部署</p>
+<p>其他方式.</p>
+<ol>
+<li>webapp</li>
+<li>修改<code>conf/server.xml</code><br>添加<code>Context</code>元素:<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Context</span> <span class="attr">docBase</span>=<span class="string">"$&#123;webAppAbsolutePath&#125;"</span> <span class="attr">path</span>=<span class="string">"/"</span> <span class="attr">reloadable</span>=<span class="string">"true"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>熟悉配置元素参考<code>org.apache.catalina.core.StandardContext</code> setter方法</p>
+<ol start="3">
+<li><p>通过conf下的文件夹配置独立的context</p>
+<p>热部署配置<code>&lt;context&gt;</code>中reloadable 属性为true.</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">$&#123;TOMCAT_HOME&#125;/conf/</span><br><span class="line">$&#123;engine.name&#125;/$&#123;host.name&#125;/$&#123;context&#125;.xml</span><br></pre></td></tr></table></figure>
+<p>e.g:engine.name=sky<br> host.name=stelawliet<br> context=demo<br>实际就在conf/sky/stelawliet/下创建demo.xml 文件<br>如果直接根路径访问应用/,则ROOT.xml文件</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-07-15T14:22:10.000Z" itemprop="dateUpdated">2018-07-15 22:22:10</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/architecture/">architecture</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/&title=《Tomcat》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/&title=《Tomcat》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tomcat》 — stelawliet&url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/14/Linux/server/Tomcat/Tomcat嵌入式/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">嵌入式 Tomcat</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/12/algorithm/Graph/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">图</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/&title=《Tomcat》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/&title=《Tomcat》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Tomcat》 — stelawliet&url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aO27DMBAFQN//0g6QKkVsvf1QDoJRZcSxxGHBXT3y8Yiv5/f18/Orv7z6Nr9z8p/LFx4eHl5r6MkQc0D+7fvpe3WfZMx4eHh4p3nVYlAd3FbJyceMh4eH9xd4+a+SJTuZPjw8PLz/yssfXC0V1dgCDw8P707eJIqtBhZ52bg1a8HDw8OLeb0NsM9+Pr6/h4eHh9faVa8u8b0luxoWF0aLh4eHd4A3j0p7xw5698yrwGMrCcbDw8OLTyXdGUnkUW8yfb/cGQ8PD2+Vlz9+Ql3YxAqeePHGgIeHh7fEmwyoGqr2gob8t9FE4OHh4Y15vVf9eSC7EM4mU4yHh4d3gDdZdvNQoBpG9Kb4ImvBw8PDW+LlbfEk2H0/iZP3gIsgGA8PD+8AL29tJz1qjs9LUR434+Hh4e3y8uV+a1N/Hvg2sxY8PDy8JV41Wu2FDnnhyRf93qEEPDw8vDkvWeh7gUK5o18KiKOsBQ8PD2/Am8cE1SBjvqk2iYbx8PDw5rzeYpqHqtVGOW/Qo9/i4eHhHeDNY4hJ8NqrV0kzjYeHh3eO9wyufImfL/r54YAIj4eHh3eAlwyrmmck96mWh4XDBHh4eHgHeNWh95C9gwW95+Lh4eGd5s2j0mpskbfO1Xb/oqXGw8PDG/AK+e5gue8Ftfm3hf09PDw8vFVeHrNOYoJ5OSmA8fDw8A7wtprd6rGAPOrNj4Lh4eHh3cN7Fq/eNtVkCqoHC/Dw8PBO83qVpLeIV7fBelPTLCd4eHh4RV5+NCr5e3UWJ88avSvg4eHhjXlJMehtViVBbfW5hRgXDw8P76O8XlucLOuTra/RaTI8PDy8W3h5PFHNQqphRNRw4+Hh4R3j5WFEb/uq2oLnpeiiycbDw8M7wGue0modrppsjK3t5uHh4eH1eV/ph32CGsMt3QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

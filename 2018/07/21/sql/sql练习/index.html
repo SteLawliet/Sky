@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>sql练习 | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="sql练习">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/21/sql/sql练习/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-20T17:49:29.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sql练习">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">sql练习</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">sql练习</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-20T16:55:50.000Z" itemprop="datePublished" class="page-time">
+  2018-07-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/">sql</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-sql/sql练习"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">sql练习</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-21 00:55:50" datetime="2018-07-20T16:55:50.000Z"  itemprop="datePublished">2018-07-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/">sql</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">USE</span> bigdata;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> dept;</span><br><span class="line"></span><br><span class="line"># 1 列出⾄少有4个员⼯的部门的信息。</span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> dept</span><br><span class="line"><span class="keyword">WHERE</span> dept.deptno</span><br><span class="line">      <span class="keyword">IN</span></span><br><span class="line">      (</span><br><span class="line">        <span class="keyword">SELECT</span> emp.deptno <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> emp.DEPTNO <span class="keyword">HAVING</span> <span class="keyword">count</span>(*)&gt;<span class="number">4</span></span><br><span class="line">      );</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> DEPTNO ,<span class="keyword">count</span>(emp.DEPTNO) <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> emp.DEPTNO <span class="keyword">HAVING</span> <span class="keyword">count</span>(*)&gt;<span class="number">4</span></span><br><span class="line"></span><br><span class="line">#<span class="number">2</span> 列出薪⾦⽐“SMITH”多的所有员⼯。</span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> emp</span><br><span class="line"><span class="keyword">WHERE</span> SAL &gt; (</span><br><span class="line">  <span class="keyword">SELECT</span> SAL <span class="keyword">FROM</span> emp <span class="keyword">WHERE</span> ename =<span class="string">'SMITH'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">#3 列出所有员⼯的姓名及其直接上级的姓名。</span><br><span class="line"><span class="keyword">SELECT</span> emp0.ename, emp1.ename <span class="keyword">AS</span> Mname</span><br><span class="line"></span><br><span class="line"><span class="keyword">FROM</span> emp <span class="keyword">AS</span> emp0 ,emp <span class="keyword">AS</span> emp1</span><br><span class="line">  <span class="keyword">WHERE</span> emp0.MGR = emp1.empno;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> emp0.ename, emp1.ename <span class="keyword">AS</span> mname</span><br><span class="line"><span class="keyword">FROM</span> emp <span class="keyword">AS</span> emp0</span><br><span class="line">  <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> emp <span class="keyword">AS</span> emp1</span><br><span class="line">  <span class="keyword">ON</span> emp0.MGR = emp1.empno;</span><br><span class="line"></span><br><span class="line"># 4. 列出受雇⽇期早于其直接上级的所有员⼯。</span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> emp <span class="keyword">AS</span> e0</span><br><span class="line"><span class="keyword">WHERE</span> e0.HIREDATE &lt; (</span><br><span class="line">  <span class="keyword">SELECT</span> e1.HIREDATE <span class="keyword">FROM</span> emp e1</span><br><span class="line">  <span class="keyword">WHERE</span> e1.empno = e0.MGR</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> e0.ename ,e0.HIREDATE ,e1.HIREDATE <span class="keyword">AS</span> mgdate,e1.ename <span class="keyword">AS</span> mg</span><br><span class="line"><span class="keyword">FROM</span> emp e0,emp e1</span><br><span class="line"><span class="keyword">WHERE</span> e0.MGR = e1.empno <span class="keyword">AND</span>  e0.HIREDATE&lt; e1.<span class="string">`HIREDATE`</span>;</span><br><span class="line"></span><br><span class="line"># 5. 列出部门名称和这些部门的员⼯信息，同时列出那些没有员⼯的部门。</span><br><span class="line"><span class="keyword">SELECT</span> e0.*,d.*</span><br><span class="line"><span class="keyword">FROM</span> emp e0 <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> dept d <span class="keyword">ON</span> e0.DEPTNO = d.deptno</span><br><span class="line"></span><br><span class="line">#<span class="number">6.</span>列出所有“CLERK”（办事员）的姓名及其部门名称。</span><br><span class="line"><span class="keyword">SELECT</span> e.ename,d.dname</span><br><span class="line">  <span class="keyword">FROM</span> emp e,dept d</span><br><span class="line"><span class="keyword">WHERE</span> e.DEPTNO = d.deptno <span class="keyword">AND</span> e.JOB =<span class="string">'CLERK'</span>;</span><br><span class="line">#7 列出最低薪⾦⼤于1500的各种⼯作。</span><br><span class="line"><span class="keyword">SELECT</span> JOB, <span class="keyword">min</span>(SAL),<span class="keyword">max</span>(SAL) <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> JOB;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> JOB</span><br><span class="line"><span class="keyword">FROM</span> emp</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> emp.JOB</span><br><span class="line"><span class="keyword">HAVING</span></span><br><span class="line"> <span class="keyword">min</span>(SAL) &gt; <span class="number">1500</span>;</span><br><span class="line"></span><br><span class="line">#8. 列出在部门“SALES”⼯作的员⼯的姓名，假定不知道销售部的部门编号。</span><br><span class="line"><span class="keyword">SELECT</span> e.ename,e.DEPTNO</span><br><span class="line"><span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> e.DEPTNO = (</span><br><span class="line">  <span class="keyword">SELECT</span> d.DEPTNO <span class="keyword">FROM</span> dept d <span class="keyword">WHERE</span> d.dname=<span class="string">'SALES'</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">#29.查询出最早⼯作的那个⼈的名字、⼊职时间和薪⽔。</span><br><span class="line"><span class="keyword">SELECT</span> *</span><br><span class="line"><span class="keyword">FROM</span> emp</span><br><span class="line"><span class="keyword">WHERE</span> HIREDATE = (</span><br><span class="line">  <span class="keyword">SELECT</span> <span class="keyword">min</span>(HIREDATE) <span class="keyword">FROM</span> emp</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 30. 显⽰所有员⼯的名字、薪⽔、奖⾦，如果没有奖⾦，暂时显⽰100.</span><br><span class="line"><span class="keyword">SELECT</span> emp.ename,emp.SAL,<span class="keyword">ifnull</span>(emp.COMM,<span class="number">100</span>) <span class="keyword">FROM</span> emp;</span><br><span class="line"></span><br><span class="line">#33 删除10号部门薪⽔最⾼的员⼯</span><br><span class="line"><span class="keyword">SELECT</span> DEPTNO, <span class="keyword">min</span>(SAL),<span class="keyword">max</span>(SAL) <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> DEPTNO;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> * <span class="keyword">FROM</span> emp e <span class="keyword">WHERE</span> e.SAL=(</span><br><span class="line">    <span class="keyword">SELECT</span> <span class="keyword">MAX</span>(SAL) <span class="keyword">FROM</span> emp <span class="keyword">GROUP</span> <span class="keyword">BY</span> DEPTNO <span class="keyword">HAVING</span> DEPTNO=<span class="number">10</span></span><br><span class="line">) <span class="keyword">AND</span>  e.DEPTNO = <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> @@autocommit;</span><br><span class="line"><span class="keyword">SET</span> @@autocommit = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"># 34.将薪⽔最⾼的员⼯的薪⽔降30%</span><br><span class="line"><span class="keyword">SELECT</span> ename,SAL*<span class="number">0.7</span></span><br><span class="line">  <span class="keyword">FROM</span> emp <span class="keyword">AS</span> e</span><br><span class="line">  <span class="keyword">WHERE</span> e.SAL =</span><br><span class="line">        (<span class="keyword">SELECT</span></span><br><span class="line">           <span class="keyword">MAX</span>(SAL)</span><br><span class="line">         <span class="keyword">FROM</span> emp);</span><br><span class="line">#35. 查询员⼯姓名，⼯资和 ⼯资级别(⼯资&gt;=3000 为3级，⼯资&gt;2000 为2级，⼯资&lt;=2000 为1级)</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> e0.ename,e0.SAL,</span><br><span class="line">  <span class="keyword">CASE</span> <span class="keyword">WHEN</span> SAL&lt;=<span class="number">2000</span> <span class="keyword">THEN</span> <span class="string">'lv1'</span></span><br><span class="line">    <span class="keyword">WHEN</span> SAL &gt;=<span class="number">3000</span> <span class="keyword">THEN</span> <span class="string">'lv3'</span></span><br><span class="line">    <span class="keyword">ELSE</span> <span class="string">'lv2'</span> <span class="keyword">END</span> <span class="keyword">AS</span> <span class="keyword">level</span></span><br><span class="line"><span class="keyword">FROM</span> emp e0;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> *<span class="keyword">FROM</span> emp;</span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> emp;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ROLLBACK</span>;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-07-20T17:49:29.000Z" itemprop="dateUpdated">2018-07-21 01:49:29</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/21/sql/sql练习/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/21/sql/sql练习/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/21/sql/sql练习/&title=《sql练习》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/21/sql/sql练习/&title=《sql练习》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/21/sql/sql练习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《sql练习》 — stelawliet&url=http://io.stelawliet.top/2018/07/21/sql/sql练习/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/21/sql/sql练习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/22/Linux/shell/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">No title</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/20/sql/SQL分类/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SQL概念</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/21/sql/sql练习/&title=《sql练习》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/21/sql/sql练习/&title=《sql练习》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/21/sql/sql练习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《sql练习》 — stelawliet&url=http://io.stelawliet.top/2018/07/21/sql/sql练习/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/21/sql/sql练习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3awU7DQAxF0fz/TweJFQhlcp/dAPXcWUVpaeZkYTy2jwOv83NdXX9d67/6+c2r7xxPLBkyZLwt41yuqwes76y3S57O9yZDhox9GCTIrkPq+k56n+9NhgwZMjrXtSRPhgwZMl7F4MfRNeaPA64MGTLeisGPoDUeTzQfP4vLkCHjDRn9xsBz17/a35AhQ8a/ZJzhIr/Dn8WbnTe7kiFDxmgGP5TyiMcbBvxT9MpkyJAxlJEeXzuhs/YpaovKkCFjS0Y/+eMJXzqoEWS4MmTIGMqopX08vUvbA8XOhgwZMsYxeHitpW4pj4fgbwFXhgwZGzD4oAPvIfLSPx/juDzEypAhYzQjLeuT4Jg2CWrNCRkyZOzDSMcd+FZemxQGqaEMGTIGMWplfZ7qPVHauwnHMmTIGMfgLclaY7LTwuRsGTJkzGagYlYjjasdaONhCxkyZGzDqB1EeRkuTT3j/ciQIWM0Iw2FJECTLaZjZ+TXZMiQMZWxDojrIFgbvKg1Mm9etAwZMoYyeLAjZTVePkP/AXg5T4YMGRszSBE/HuEqHYNvwr0MGTJGMzrBsZM4pq0FHqBlyJAxj3GGixf9a4W5YiNBhgwZoxl8kTZn2gAgCSJHypAhYzaDbCgtt6Vlu9rhWYYMGbsxOkGwNgpWS/KCaREZMmRsyUjDItlu53eKAVeGDBkbMHgK2Gk5pK9VhgwZOzBqg1/9EY1acJchQ8ZujNc2Bo72qr0IGTJkDGV8AON0zFL0hoOcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Spring Bean LifeCycle | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="bean生命周期">
+    <meta name="description" content="bean生命周期 创建 - 初始化 -销毁 spring提供自定义初始化和销毁方法,在容器bean 进行到当前生命周期时会调用我们自定义的初始化和销毁方法 Constructor @Scope:  prototype：多实例的：ioc容器启动并不会去调用方法创建对象放在容器中。  每次获取的时候才会调用方法创建对象；   singleton：单实例的（默认值）：ioc容器启动会调用方法创建对象放">
+<meta name="keywords" content="bean生命周期">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Bean LifeCycle">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="bean生命周期 创建 - 初始化 -销毁 spring提供自定义初始化和销毁方法,在容器bean 进行到当前生命周期时会调用我们自定义的初始化和销毁方法 Constructor @Scope:  prototype：多实例的：ioc容器启动并不会去调用方法创建对象放在容器中。  每次获取的时候才会调用方法创建对象；   singleton：单实例的（默认值）：ioc容器启动会调用方法创建对象放">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-09T12:09:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring Bean LifeCycle">
+<meta name="twitter:description" content="bean生命周期 创建 - 初始化 -销毁 spring提供自定义初始化和销毁方法,在容器bean 进行到当前生命周期时会调用我们自定义的初始化和销毁方法 Constructor @Scope:  prototype：多实例的：ioc容器启动并不会去调用方法创建对象放在容器中。  每次获取的时候才会调用方法创建对象；   singleton：单实例的（默认值）：ioc容器启动会调用方法创建对象放">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Spring Bean LifeCycle</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Spring Bean LifeCycle</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-26T08:42:34.000Z" itemprop="datePublished" class="page-time">
+  2018-07-26
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/lifecycle/">lifecycle</a></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#bean生命周期"><span class="post-toc-number">1.</span> <span class="post-toc-text">bean生命周期</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Constructor"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Constructor</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#BeanPostProcessor"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">BeanPostProcessor.</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/spring/annotation/LifeCyle"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Spring Bean LifeCycle</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-26 16:42:34" datetime="2018-07-26T08:42:34.000Z"  itemprop="datePublished">2018-07-26</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/lifecycle/">lifecycle</a></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <hr>
+<h3 id="bean生命周期"><a href="#bean生命周期" class="headerlink" title="bean生命周期"></a>bean生命周期</h3><p> 创建 - 初始化 -销毁</p>
+<p>spring提供自定义初始化和销毁方法,在容器bean</p>
+<p>进行到当前生命周期时会调用我们自定义的初始化和销毁方法</p>
+<h4 id="Constructor"><a href="#Constructor" class="headerlink" title="Constructor"></a>Constructor</h4><p> <code>@Scope</code>:</p>
+<ul>
+<li><p>prototype：多实例的：ioc容器启动并不会去调用方法创建对象放在容器中。</p>
+<ul>
+<li>每次获取的时候才会调用方法创建对象；</li>
+</ul>
+</li>
+<li><p>singleton：单实例的（默认值）：ioc容器启动会调用方法创建对象放到ioc容器中。</p>
+<ul>
+<li>以后每次获取就是直接从容器（map.get()）中拿，</li>
+</ul>
+</li>
+<li><p>request：同一次请求创建一个实例</p>
+</li>
+<li><p>session：同一个session创建一个实例</p>
+</li>
+</ul>
+<p> 1）、指定初始化和销毁方法；</p>
+<pre><code>通过@Bean指定
+init-method和destroy-method；
+</code></pre><p>2）、通过让Bean实现</p>
+<pre><code>InitializingBean（定义初始化逻辑），
+DisposableBean（定义销毁逻辑）;
+</code></pre><p>  3）、可以使用JSR250；</p>
+<pre><code>@PostConstruct：在bean创建完成并且属性赋值完成；来执行初始化方法
+
+@PreDestroy：在容器销毁bean之前通知我们进行清理工作
+</code></pre><p> 4）、BeanPostProcessor【interface】：bean的后置处理器；</p>
+<pre><code>在bean初始化前后进行一些处理工作；
+
+postProcessBeforeInitialization:在初始化之前工作
+
+postProcessAfterInitialization:在初始化之后工作
+</code></pre><p> Spring底层对 BeanPostProcessor 的使用；</p>
+<pre><code>bean赋值，注入其他组件，@Autowired，生命周期注解功能，
+</code></pre><p> @Async,xxx BeanPostProcessor;</p>
+<h4 id="BeanPostProcessor"><a href="#BeanPostProcessor" class="headerlink" title="BeanPostProcessor."></a>BeanPostProcessor.</h4><p>postProcessBeforeInitialization</p>
+<p>bean装配完成后进行的初始化</p>
+<p>初始化:</p>
+<p>源码分析<br>BeanPostProcessor在Spring-Beans-5.0.5.RELEASE中的<code>AbstractAutowireCapableBeanFactory</code>类中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">initializeBean</span><span class="params">(<span class="keyword">final</span> String beanName, <span class="keyword">final</span> Object bean, @Nullable RootBeanDefinition mbd)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (System.getSecurityManager() != <span class="keyword">null</span>) &#123;</span><br><span class="line">		AccessController.doPrivileged((PrivilegedAction&lt;Object&gt;) () -&gt; &#123;</span><br><span class="line">			invokeAwareMethods(beanName, bean);</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;, getAccessControlContext());</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> &#123;</span><br><span class="line">		invokeAwareMethods(beanName, bean);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	Object wrappedBean = bean;</span><br><span class="line">	<span class="keyword">if</span> (mbd == <span class="keyword">null</span> || !mbd.isSynthetic()) &#123;</span><br><span class="line">		wrappedBean = applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		invokeInitMethods(beanName, wrappedBean, mbd);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> BeanCreationException(</span><br><span class="line">				(mbd != <span class="keyword">null</span> ? mbd.getResourceDescription() : <span class="keyword">null</span>),</span><br><span class="line">				beanName, <span class="string">"Invocation of init method failed"</span>, ex);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> (mbd == <span class="keyword">null</span> || !mbd.isSynthetic()) &#123;</span><br><span class="line">		wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> wrappedBean;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>各种初始化函数的前后顺序</p>
+<blockquote>
+<p><code>BeanPostProcessor</code>接口的</p>
+</blockquote>
+<p>postProcessBeforeInitialization</p>
+<p>`applyBeanPostProcessorsBeforeInitialization</p>
+<p>后执行<code>afterPropertiesSet</code></p>
+<p>再<code>invokeCustomInitMethod</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">invokeInitMethods</span><span class="params">(String beanName, <span class="keyword">final</span> Object bean, @Nullable RootBeanDefinition mbd)</span></span></span><br><span class="line"><span class="function">			<span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">boolean</span> isInitializingBean = (bean <span class="keyword">instanceof</span> InitializingBean);</span><br><span class="line">		<span class="keyword">if</span> (isInitializingBean &amp;&amp; (mbd == <span class="keyword">null</span> || !mbd.isExternallyManagedInitMethod(<span class="string">"afterPropertiesSet"</span>))) &#123;</span><br><span class="line">			<span class="keyword">if</span> (logger.isDebugEnabled()) &#123;</span><br><span class="line">				logger.debug(<span class="string">"Invoking afterPropertiesSet() on bean with name '"</span> + beanName + <span class="string">"'"</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (System.getSecurityManager() != <span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="keyword">try</span> &#123;</span><br><span class="line">					AccessController.doPrivileged((PrivilegedExceptionAction&lt;Object&gt;) () -&gt; &#123;</span><br><span class="line">						((InitializingBean) bean).afterPropertiesSet();</span><br><span class="line">						<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">					&#125;, getAccessControlContext());</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">catch</span> (PrivilegedActionException pae) &#123;</span><br><span class="line">					<span class="keyword">throw</span> pae.getException();</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">else</span> &#123;</span><br><span class="line">				((InitializingBean) bean).afterPropertiesSet();</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">if</span> (mbd != <span class="keyword">null</span> &amp;&amp; bean.getClass() != NullBean.class) &#123;</span><br><span class="line">			String initMethodName = mbd.getInitMethodName();</span><br><span class="line">			<span class="keyword">if</span> (StringUtils.hasLength(initMethodName) &amp;&amp;</span><br><span class="line">					!(isInitializingBean &amp;&amp; <span class="string">"afterPropertiesSet"</span>.equals(initMethodName)) &amp;&amp;</span><br><span class="line">					!mbd.isExternallyManagedInitMethod(initMethodName)) &#123;</span><br><span class="line">				invokeCustomInitMethod(beanName, bean, mbd);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>SGG</p>
+<p>   bean的生命周期：</p>
+<p>​        bean创建—初始化—-销毁的过程</p>
+<p>   容器管理bean的生命周期；</p>
+<p>   我们可以自定义初始化和销毁方法；</p>
+<p> 容器在bean进行到当前生命周期的时候来调用我们自定义的初始化和销毁方法</p>
+<p>   构造（对象创建）</p>
+<p>​        单实例：在容器启动的时候创建对象</p>
+<p>​        多实例：在每次获取的时候创建对象\</p>
+<p>   BeanPostProcessor.postProcessBeforeInitialization</p>
+<p>   初始化：</p>
+<p>​        对象创建完成，并赋值好，调用初始化方法。。。</p>
+<p>   BeanPostProcessor.postProcessAfterInitialization</p>
+<p>   销毁：</p>
+<p>​        单实例：容器关闭的时候</p>
+<p>​        多实例：容器不会管理这个bean；容器不会调用销毁方法；</p>
+<p>   遍历得到容器中所有的BeanPostProcessor；</p>
+<p> 挨个执行beforeInitialization，</p>
+<p>   一但返回null，跳出for循环，</p>
+<p> 不会执行后面的BeanPostProcessor.postProcessorsBeforeInitialization</p>
+<p>   BeanPostProcessor原理</p>
+<p>   populateBean(beanName, mbd, instanceWrapper);给bean进行属性赋值</p>
+<p>   initializeBean</p>
+<p>   {</p>
+<p>   applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);</p>
+<p>   invokeInitMethods(beanName, wrappedBean, mbd);执行自定义初始化</p>
+<p>   applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);</p>
+<p>  } </p>
+<p>   1）、指定初始化和销毁方法；</p>
+<p>​        通过@Bean指定init-method和destroy-method；</p>
+<p>   2）、通过让Bean实现InitializingBean（定义初始化逻辑），</p>
+<p>​                DisposableBean（定义销毁逻辑）;</p>
+<p>   3）、可以使用JSR250；</p>
+<p>​        @PostConstruct：在bean创建完成并且属性赋值完成；来执行初始化方法</p>
+<p>​        @PreDestroy：在容器销毁bean之前通知我们进行清理工作</p>
+<p>   4）、BeanPostProcessor【interface】：bean的后置处理器；</p>
+<p>​        在bean初始化前后进行一些处理工作；</p>
+<p>​        postProcessBeforeInitialization:在初始化之前工作</p>
+<p>​        postProcessAfterInitialization:在初始化之后工作</p>
+<p>   Spring底层对 BeanPostProcessor 的使用；</p>
+<p>​        bean赋值，注入其他组件，@Autowired，生命周期注解功能，</p>
+<p> @Async,xxx BeanPostProcessor;</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-08-09T12:09:35.000Z" itemprop="dateUpdated">2018-08-09 20:09:35</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/26/Java/spring/annotation/LifeCyle/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bean生命周期/">bean生命周期</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/&title=《Spring Bean LifeCycle》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/&title=《Spring Bean LifeCycle》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Bean LifeCycle》 — stelawliet&url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/27/algorithm/并查集/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">并查集FindUion</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/25/Java/spring/annotation/@Bean/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">annotation-component @Bean</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/&title=《Spring Bean LifeCycle》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/&title=《Spring Bean LifeCycle》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Bean LifeCycle》 — stelawliet&url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/26/Java/spring/annotation/LifeCyle/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aQW7jMAwF0N7/0i3QbSHnkxQzweB5VRiJracCIkPy6yu+vn+v053vP9fz/ecnnz6TfLJ54eHh4bWWfrqqn0kWfdqs5MrXg4eHh7fNe15E8prJE+bfOt7Hw8PD+6e8W9lsAsPDw8P7n3inYPCc2uYFhcl24+Hh4b2TVz3Eq0u/m0av1Frw8PDwYl61AfYJfy/29/Dw8PAGXfX8wM2P77zUe2G1eHh4eAu8eak02YjeSFY1US78YsDDw8Mb8G4VBZJDvArOn3lU4OHh4S3wqqRqwl1thuX3C805PDw8vDVer4gwGodqVV+TJ+Ph4eHt8ZLEN3lxPkYwSeKr78LDw8Pb4PUGquaA3vBWs+yLh4eHd5WXBIPJiMDzpuQBKfpl8PeZeHh4eG/kVY/y6vhU9bu9JhweHh7eHu89IwK91HkUKvDw8PAWePNHTxLlapmjF3Lw8PDw7vLyMJAXZ5vpb5FdLuPi4eHhXeL12vmTI7433ppsx4vfDXh4eHiXePP091ZjbJ7WHxtgeHh4eGu83mtuJeKTYsRxnXh4eHgLvKSJ1SvO9gq1SWm4XOTFw8PDu8rLB0x7h3h1QKEXTl40wPDw8PDWeHm5ttcAS1pW+UoK9Wk8PDy8q7z8EK+OVd1K0KPhgDztxsPDwxvzegNS+c7laXQVGf0z8PDw8JZ51ZBwa9F5Kl8NPHh4eHgbvKgYWmzY94JEtQxRxuDh4eFd4vUKqbeKv5MNjVpoeHh4eAu8XpDoPSgPLdWWW3UwCw8PD2/O6wWDvLSah4FeUfjFduPh4eGt8aqv315irxiBh4eH92m8ySt7mGoYwMPDw/tMXvL66kJ7ASkqJePh4eGt8fJiRG90IEdWR7te3MHDw8Nb4PUGsCZjAUljLA8zzZkyPDw8vA7vB+iOAyccyLZ0AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

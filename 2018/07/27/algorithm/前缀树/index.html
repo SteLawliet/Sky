@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>前缀树 | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="TrieNode,前缀树">
+    <meta name="description" content="前缀树">
+<meta name="keywords" content="TrieNode,前缀树">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前缀树">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/27/algorithm/前缀树/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="前缀树">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-07T14:41:13.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前缀树">
+<meta name="twitter:description" content="前缀树">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">前缀树</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">前缀树</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-27T08:31:22.000Z" itemprop="datePublished" class="page-time">
+  2018-07-27
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/">algorithme</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/dataStructure/">dataStructure</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/dataStructure/tree/">tree</a></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#字符串前缀树java实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">字符串前缀树java实现</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#insert"><span class="post-toc-number">2.</span> <span class="post-toc-text">insert</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#search"><span class="post-toc-number">3.</span> <span class="post-toc-text">search</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#delete"><span class="post-toc-number">4.</span> <span class="post-toc-text">delete</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-algorithm/前缀树"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">前缀树</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-27 16:31:22" datetime="2018-07-27T08:31:22.000Z"  itemprop="datePublished">2018-07-27</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/">algorithme</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/dataStructure/">dataStructure</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/dataStructure/tree/">tree</a></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h4 id="字符串前缀树java实现"><a href="#字符串前缀树java实现" class="headerlink" title="字符串前缀树java实现"></a>字符串前缀树java实现</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> pass;<span class="comment">//记录包含当前节点的个数</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> end;<span class="comment">//记录以当前节点结尾的个数</span></span><br><span class="line">  <span class="keyword">private</span> TrieNode[] next;<span class="comment">//记录当前结点指向的哪些字符</span></span><br><span class="line">   </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">TrieNode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">   <span class="keyword">this</span>.end=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">this</span>.pass=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">this</span>.next=<span class="keyword">new</span> TrieNode[<span class="number">26</span>];<span class="comment">//a-z的对应next数组的0-25的下标</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><blockquote>
+<p>遍历字符数组,计算下标.<br>this.pass++ 记录成功insert的次数<br>next下标的值代表当前节点是否有指向的值<br>没有则新建一个结点<br>pass++ 记录经过这个结点的个数<br>遍历完后给当前节点的end++. 记录有以当前节点结尾的个数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">     <span class="keyword">if</span> (s==<span class="keyword">null</span>||s.trim().equals(<span class="string">""</span>)) <span class="keyword">return</span>;</span><br><span class="line">     <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">     TrieNode node  = <span class="keyword">this</span>;</span><br><span class="line">     node.pass++;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">char</span> char0 : chars) &#123;</span><br><span class="line">         <span class="keyword">int</span> index = char0 - <span class="string">'a'</span>;</span><br><span class="line">         <span class="keyword">if</span> (node.next[index] == <span class="keyword">null</span>) &#123;</span><br><span class="line">             node.next[index] = <span class="keyword">new</span> TrieNode();</span><br><span class="line">         &#125;</span><br><span class="line">         node = node.next[index];</span><br><span class="line">         node.pass++;</span><br><span class="line">     &#125;</span><br><span class="line">     node.end++; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="search"><a href="#search" class="headerlink" title="search"></a>search</h4><blockquote>
+<p>只要在字符数组遍历中找不到下个结点的值(==null)就直接返回0(没有找到);<br>遍历完后返回当前节点的end</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">search</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">   <span class="comment">//判断输入</span></span><br><span class="line">     <span class="keyword">if</span> (s==<span class="keyword">null</span>||s.trim().equals(<span class="string">""</span>))<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">     TrieNode node  = <span class="keyword">this</span>;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">char</span> char0 : chars) &#123;</span><br><span class="line">        <span class="comment">//计算下标</span></span><br><span class="line">         <span class="keyword">int</span> index = char0 - <span class="number">97</span>;</span><br><span class="line">         <span class="keyword">if</span> (node.next[index] == <span class="keyword">null</span>) &#123;</span><br><span class="line">             <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         node = node.next[index];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="keyword">return</span> node.end;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><blockquote>
+<p>先判断是否存在当前字符串.<br>遍历字符数组,计算每个字符对应的next中的下标<br>根据下标从next数组中找到对应字符的结点<br>对应字符的结点的pass–如果&lt;=0则表示以后结点的指向只剩当前字符串.<br>遍历完所有的字符后end–,更新以当前结点结尾的记录.</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">delete</span><span class="params">(String s)</span></span>&#123;</span><br><span class="line">     <span class="keyword">if</span> (search(s)&lt;<span class="number">0</span>) <span class="keyword">return</span>;</span><br><span class="line">     <span class="keyword">char</span>[] chars = s.toCharArray();</span><br><span class="line">     TrieNode node  = <span class="keyword">this</span>;</span><br><span class="line">     <span class="keyword">this</span>.pass--;</span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">char</span> char0 : chars) &#123;</span><br><span class="line">         <span class="keyword">int</span> index = char0 - <span class="string">'a'</span>;</span><br><span class="line">         <span class="keyword">int</span> nextPass = --node.next[index].pass;</span><br><span class="line">         <span class="keyword">if</span> (nextPass &lt;= <span class="number">0</span>) &#123;</span><br><span class="line">             node.next[index] = <span class="keyword">null</span>;</span><br><span class="line">             <span class="keyword">return</span>;</span><br><span class="line">         &#125;</span><br><span class="line">         node = node.next[index];</span><br><span class="line">     &#125;</span><br><span class="line">     node.end--;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-08-07T14:41:13.000Z" itemprop="dateUpdated">2018-08-07 22:41:13</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/27/algorithm/前缀树/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/27/algorithm/前缀树/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TrieNode/">TrieNode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前缀树/">前缀树</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/&title=《前缀树》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/&title=《前缀树》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前缀树》 — stelawliet&url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/27/Java/spring/annotation/@Autowired/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">annotation-component @Autowired</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/27/algorithm/并查集/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">并查集FindUion</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/&title=《前缀树》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/&title=《前缀树》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《前缀树》 — stelawliet&url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/27/algorithm/前缀树/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3aQW7DMAwEwPz/0+m1QBp3SdpBLI1PQZvYGh8IkavHI76ev678m6/X8T3zpzQvDAyM2zKSB7/7y+vn1zu/e8rxGqovBQMDYwdGsojkvwkvqZb52jAwMDASRhWQFHcMDAyMCSN/8HFTWt2AYmBgYPSKYHUA19tontyLY2Bg3JCRN5mf/3xJvoGBgXErxrN49RrdZPOXF9k/VoWBgbE0Y7K967Wd1VdTWA8GBsaijF6Zywdwk6MVycAuOtOBgYGxBGOypcvvVj1UUXhxGBgYSzOqQ/n8sMUkAKhuEzEwMHZgVHnV4HNScHstLgYGxnqMSTyQH4C4ohnGwMDYjZFPrqoxQHVT2Hw6BgbGNoxJPDkpmtUBXyGJxcDAWJSRR4m9eKBXdv8JNTEwMJZm9AZq1eY2mfZNQggMDIxVGXmZq47MziqjzTMjGBgYSzOS8LIXYVZfWSF3xcDAWJpxXTCQL6sXOXwo38DAwPh6Rq9xnW/4em0tBgbGPoxJDFB4ZKvQFwouBgbGoozqLcpDsUGzGkWqGBgYmzGaA/q4ia3+KvotBgbGooxey1o9ltGLJQqjPQwMjKUZ82I3OXjRK+69Qo+BgXF3Rq/Izst3fowDAwMDozdES4KBPMI8oQ3GwMDAOFz6WQvKy3EhW8DAwNiSkR+bmGwuq/fHwMDYgdHb5FU3iBeGChgYGEsz8m1c/p3JIpKX1Qw1MTAw7sf4AaitQc+1tpIgAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>java面试@掘金 | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="摘抄,掘金,face">
+    <meta name="description" content="一个两年Java的面试总结前言16年毕业到现在也近两年了，最近面试了阿里集团（菜鸟网络，蚂蚁金服），网易，滴滴，点我达，最终收到点我达，网易offer，蚂蚁金服二面挂掉，菜鸟网络一个月了还在流程中… 最终有幸去了网易。 但是要特别感谢点我达的领导及HR，真的非常非常好，很感谢他们一直的关照和指导。 面试整体事项 简历要准备好，联系方式一定要正确清晰醒目，项目经历按照时间倒序阐述，注意描述自己在项目">
+<meta name="keywords" content="摘抄,掘金,face">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java面试@掘金">
+<meta property="og:url" content="http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="一个两年Java的面试总结前言16年毕业到现在也近两年了，最近面试了阿里集团（菜鸟网络，蚂蚁金服），网易，滴滴，点我达，最终收到点我达，网易offer，蚂蚁金服二面挂掉，菜鸟网络一个月了还在流程中… 最终有幸去了网易。 但是要特别感谢点我达的领导及HR，真的非常非常好，很感谢他们一直的关照和指导。 面试整体事项 简历要准备好，联系方式一定要正确清晰醒目，项目经历按照时间倒序阐述，注意描述自己在项目">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-02T09:20:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java面试@掘金">
+<meta name="twitter:description" content="一个两年Java的面试总结前言16年毕业到现在也近两年了，最近面试了阿里集团（菜鸟网络，蚂蚁金服），网易，滴滴，点我达，最终收到点我达，网易offer，蚂蚁金服二面挂掉，菜鸟网络一个月了还在流程中… 最终有幸去了网易。 但是要特别感谢点我达的领导及HR，真的非常非常好，很感谢他们一直的关照和指导。 面试整体事项 简历要准备好，联系方式一定要正确清晰醒目，项目经历按照时间倒序阐述，注意描述自己在项目">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">java面试@掘金</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">java面试@掘金</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-02T09:18:53.000Z" itemprop="datePublished" class="page-time">
+  2018-08-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/face/">face</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一个两年Java的面试总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">一个两年Java的面试总结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前言"><span class="post-toc-number">2.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#面试整体事项"><span class="post-toc-number">3.</span> <span class="post-toc-text">面试整体事项</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#需要准备的知识"><span class="post-toc-number">4.</span> <span class="post-toc-text">需要准备的知识</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Java基础"><span class="post-toc-number">5.</span> <span class="post-toc-text">Java基础</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据结构和算法"><span class="post-toc-number">6.</span> <span class="post-toc-text">数据结构和算法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JVM"><span class="post-toc-number">7.</span> <span class="post-toc-text">JVM</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#多线程"><span class="post-toc-number">8.</span> <span class="post-toc-text">多线程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据库相关"><span class="post-toc-number">9.</span> <span class="post-toc-text">数据库相关</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#计算机网络"><span class="post-toc-number">10.</span> <span class="post-toc-text">计算机网络</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#设计模式"><span class="post-toc-number">11.</span> <span class="post-toc-text">设计模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#分布式相关"><span class="post-toc-number">12.</span> <span class="post-toc-text">分布式相关</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#缓存相关"><span class="post-toc-number">13.</span> <span class="post-toc-text">缓存相关</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#框架相关"><span class="post-toc-number">14.</span> <span class="post-toc-text">框架相关</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一些小建议"><span class="post-toc-number">15.</span> <span class="post-toc-text">一些小建议</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#几个链接"><span class="post-toc-number">16.</span> <span class="post-toc-text">几个链接</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">17.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/faceEx/1java面试大概"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">java面试@掘金</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-02 17:18:53" datetime="2018-08-02T09:18:53.000Z"  itemprop="datePublished">2018-08-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/face/">face</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="一个两年Java的面试总结"><a href="#一个两年Java的面试总结" class="headerlink" title="一个两年Java的面试总结"></a>一个两年Java的面试总结</h1><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>16年毕业到现在也近两年了，最近面试了阿里集团（菜鸟网络，蚂蚁金服），网易，滴滴，点我达，最终收到点我达，网易offer，蚂蚁金服二面挂掉，菜鸟网络一个月了还在流程中… 最终有幸去了网易。 但是要特别感谢点我达的领导及HR，真的非常非常好，很感谢他们一直的关照和指导。</p>
+<h1 id="面试整体事项"><a href="#面试整体事项" class="headerlink" title="面试整体事项"></a>面试整体事项</h1><ol>
+<li>简历要准备好，联系方式一定要正确清晰醒目，项目经历按照时间倒序阐述，注意描述自己在项目中承担的职责，简历的模板尽量选择简洁的，毕竟程序员大部分还是喜欢简单明了的。</li>
+<li>推荐boss直聘，我觉得很好用（不是广告）。</li>
+<li>一般的整体面试流程都是电面-&gt;现场面-&gt;HR面-&gt;等着。</li>
+<li>不要觉得HR说让你回去等消息就是GG了，他们也要跟你之前的面试官讨论，再向领导汇报，如果说不急可能还要和其他候选人比较，所以HR让你回去等消息绝对不是说明你完蛋了。</li>
+<li>面试前准备好自我介绍，1分钟左右就可以，可以写在纸上，电面可以照着念，等你到了现场面了基本也都快背下来你的自我介绍了。</li>
+<li>准备好扎实的基础，这是一切的根源，没实力怎么都没用的。</li>
+<li>面试中你可以把你的面试官往你会的知识上引导（我遇到过你会什么他不问什么的）。</li>
+<li>遇到了设计类题目不要着急，面试官不是为了让你几分钟设计一个高并发高可用设计模式完美的架构，只是想看看你的思路，看看你应变的能力，然后给你些提示看看你能否迅速的调整。</li>
+<li>offer都会有的，不要着急，把面试当成一个交流的过程。</li>
+</ol>
+<h1 id="需要准备的知识"><a href="#需要准备的知识" class="headerlink" title="需要准备的知识"></a>需要准备的知识</h1><p>以下为在近期面试中比较有印象的问题，也就不分公司了，因为没什么意义，大致分类记录一下，目前只想起这么多，不过一定要知道这些问题只是冰山一角，就算都会了也不能怎么样，最最重要的，还是坚实的基础，清醒的头脑。</p>
+<h1 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h1><ol>
+<li>HashMap的源码，实现原理，JDK8中对HashMap做了怎样的优化。</li>
+<li>HaspMap扩容是怎样扩容的，为什么都是2的N次幂的大小。</li>
+<li>HashMap，HashTable，ConcurrentHashMap的区别。</li>
+<li>极高并发下HashTable和ConcurrentHashMap哪个性能更好，为什么，如何实现的。</li>
+<li>HashMap在高并发下如果没有处理线程安全会有怎样的安全隐患，具体表现是什么。</li>
+<li>java中四种修饰符的限制范围。</li>
+<li>Object类中的方法。</li>
+<li>接口和抽象类的区别，注意JDK8的接口可以有实现。</li>
+<li>动态代理的两种方式，以及区别。</li>
+<li>Java序列化的方式。</li>
+<li>传值和传引用的区别，Java是怎么样的，有没有传值引用。</li>
+<li>一个ArrayList在循环过程中删除，会不会出问题，为什么。</li>
+<li>@transactional注解在什么情况下会失效，为什么。</li>
+</ol>
+<h1 id="数据结构和算法"><a href="#数据结构和算法" class="headerlink" title="数据结构和算法"></a>数据结构和算法</h1><ol>
+<li>B+树</li>
+<li>快速排序，堆排序，插入排序（其实八大排序算法都应该了解</li>
+<li>一致性Hash算法，一致性Hash算法的应用</li>
+</ol>
+<h1 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h1><ol>
+<li>JVM的内存结构。</li>
+<li>JVM方法栈的工作过程，方法栈和本地方法栈有什么区别。</li>
+<li>JVM的栈中引用如何和堆中的对象产生关联。</li>
+<li>可以了解一下逃逸分析技术。</li>
+<li>GC的常见算法，CMS以及G1的垃圾回收过程，CMS的各个阶段哪两个是Stop the world的，CMS会不会产生碎片，G1的优势。</li>
+<li>标记清除和标记整理算法的理解以及优缺点。</li>
+<li>eden survivor区的比例，为什么是这个比例，eden survivor的工作过程。</li>
+<li>JVM如何判断一个对象是否该被GC，可以视为root的都有哪几种类型。</li>
+<li>强软弱虚引用的区别以及GC对他们执行怎样的操作。</li>
+<li>Java是否可以GC直接内存。</li>
+<li>Java类加载的过程。</li>
+<li>双亲委派模型的过程以及优势。</li>
+<li>常用的JVM调优参数。</li>
+<li>dump文件的分析。</li>
+<li>Java有没有主动触发GC的方式（没有）。</li>
+</ol>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><ol>
+<li>Java实现多线程有哪几种方式。</li>
+<li>Callable和Future的了解。</li>
+<li>线程池的参数有哪些，在线程池创建一个线程的过程。</li>
+<li>volitile关键字的作用，原理。</li>
+<li>synchronized关键字的用法，优缺点。</li>
+<li>Lock接口有哪些实现类，使用场景是什么。</li>
+<li>可重入锁的用处及实现原理，写时复制的过程，读写锁，分段锁（ConcurrentHashMap中的segment）。</li>
+<li>悲观锁，乐观锁，优缺点，CAS有什么缺陷，该如何解决。</li>
+<li>ABC三个线程如何保证顺序执行。</li>
+<li>线程的状态都有哪些。</li>
+<li>sleep和wait的区别。</li>
+<li>notify和notifyall的区别。</li>
+<li>ThreadLocal的了解，实现原理。</li>
+</ol>
+<h1 id="数据库相关"><a href="#数据库相关" class="headerlink" title="数据库相关"></a>数据库相关</h1><p>常见的数据库优化手段 索引的优缺点，什么字段上建立索引 数据库连接池。 durid的常用配置。</p>
+<h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>TCP，UDP区别。 三次握手，四次挥手，为什么要四次挥手。 长连接和短连接。 连接池适合长连接还是短连接。</p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>观察者模式 代理模式 单例模式，有五种写法，可以参考文章单例模式的五种实现方式 可以考Spring中使用了哪些设计模式</p>
+<h1 id="分布式相关"><a href="#分布式相关" class="headerlink" title="分布式相关"></a>分布式相关</h1><p>分布式事务的控制。 分布式锁如何设计。 分布式session如何设计。 dubbo的组件有哪些，各有什么作用。 zookeeper的负载均衡算法有哪些。 dubbo是如何利用接口就可以通信的。</p>
+<h1 id="缓存相关"><a href="#缓存相关" class="headerlink" title="缓存相关"></a>缓存相关</h1><p>redis和memcached的区别。 redis支持哪些数据结构。 redis是单线程的么，所有的工作都是单线程么。 redis如何存储一个String的。 redis的部署方式，主从，集群。 redis的哨兵模式，一个key值如何在redis集群中找到存储在哪里。 redis持久化策略。</p>
+<h1 id="框架相关"><a href="#框架相关" class="headerlink" title="框架相关"></a>框架相关</h1><p>SpringMVC的Controller是如何将参数和前端传来的数据一一对应的。 Mybatis如何找到指定的Mapper的，如何完成查询的。 Quartz是如何完成定时任务的。 自定义注解的实现。 Spring使用了哪些设计模式。 Spring的IOC有什么优势。 Spring如何维护它拥有的bean。 一些较新的东西 JDK8的新特性，流的概念及优势，为什么有这种优势。 区块链了解 如何设计双11交易总额面板，要做到高并发高可用</p>
+<h1 id="一些小建议"><a href="#一些小建议" class="headerlink" title="一些小建议"></a>一些小建议</h1><p>可以去leetcode上刷题换换思路。 八大排序算法一定要手敲一遍（快排，堆排尤其重要）。 了解一些新兴的技术。 面试之后面试官都会问你有没有什么问题，千万不要没问题，也别傻乎乎的问一些敏感问题。 了解你要面试的公司的产品及竞争产品。</p>
+<h1 id="几个链接"><a href="#几个链接" class="headerlink" title="几个链接"></a>几个链接</h1><p>很多Java面试题<a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.importnew.com%2F22083.html" target="_blank" rel="noopener">www.importnew.com/22083.html</a> 更多Java面试题<a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.importnew.com%2F22087.html" target="_blank" rel="noopener">www.importnew.com/22087.html</a> 还是Java面试题<a href="https://link.juejin.im/?target=http%3A%2F%2Fwww.importnew.com%2F17232.html" target="_blank" rel="noopener">www.importnew.com/17232.html</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>无论是哪家公司，都很重视高并发高可用的技术，重视基础，重视JVM。面试是一个双向选择的过程，不要抱着畏惧的心态去面试，不利于自己的发挥。同时看中的应该不止薪资，还要看你是不是真的喜欢这家公司，是不是能真的得到锻炼。其实我写了这么多，只是我自己的总结，并不一定适用于所有人，相信经过一些面试，大家都会有这些感触。 如果这些文字能够帮到你，那就最好了，帮不到就当是我自己的一个记录。 最后，希望大家都能找到适合自己的公司，开开心心的撸代码</p>
+<p><strong>原文出处</strong>：<a href="https://link.juejin.im/?target=https%3A%2F%2Fsegmentfault.com%2Fa%2F1190000013550405" target="_blank" rel="noopener">segmentfault.com/a/119000001…</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-08-02T09:20:18.000Z" itemprop="dateUpdated">2018-08-02 17:20:18</time>
+</span><br>
+
+
+        
+        <a href="/2018/08/02/Java/faceEx/1java面试大概/" target="_blank" rel="external">http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/face/">face</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/掘金/">掘金</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/摘抄/">摘抄</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/&title=《java面试@掘金》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/&title=《java面试@掘金》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java面试@掘金》 — stelawliet&url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/08/02/Java/JVM/对象taoyui/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">对象分配坑分析@掘金</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/02/sql/Mysql锁/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Mysql锁@掘金</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/&title=《java面试@掘金》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/&title=《java面试@掘金》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java面试@掘金》 — stelawliet&url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/02/Java/faceEx/1java面试大概/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvElEQVR42u3aUW7bQAwEUN//0ukBUskz5Mp1gaevAHEUPQVYMkO+XvH18+u6+szV18nPXl2/73n4wsPDw1s/enLrn/i6v8P9K8hf2eXrw8PDw3uMlxz0ySevXkFyz3tkUiTw8PDwvpN3f8TnjXhbTvDw8PD+R1573OdN+f3zfKgw4OHh4ZW85IDeN8f5S2wL1YGsBQ8PDy/m5VOk7/n6kfkeHh4e3nqqnh+7s6AhiX1Xz4mHh4f3AK89lJOmNvlucugfG4/h4eHhHeXlv3g2mmob4vy4L0oCHh4e3lFeEj3kB30b4G7ufyxZwcPDwyt5ScubD/jbpnxWnJInvMxa8PDw8B7jJYd+uzi1GbPljf6r0OPh4eFNePu4dj/EymPcWQuOh4eHd5aXH8RJedgzZrFs8XfDw8PDW/M2aWexm1Ae6207HpUHPDw8vEO8fI2pbZrbcdostnjzzHh4eHgP8PZxar52kAeyswUFPDw8vM/wZm1xG7m2bXR7n9XoCw8PD2/By9lJCcmLRx6FtO01Hh4e3hO8fVCbNMH5Z2arA6swFw8PD2/Bax+lBe95w5EbHh4e3sO8fHifB6z5425KTvGgeHh4eAve2YZ4trA1W02IvouHh4f3AC8fKeWhQH6474dtUdyMh4eHd5SXN7j7uXzbph/+XwEPDw/vEO/sTfOFg7bYzIoWHh4e3hO8+wJQjOdHI6t9cPymgOHh4eE9wNvPidpId7YokLCLrAUPDw9vwZutSSVHfDtIywtDHUPg4eHhHeXlV1IMZo11cs8kaF6B8fDw8EpeWwxOhQ7tSkH+ivHw8PA+w2sXC2b4vDluFw7w8PDwvpPXBhOzEGRfEv4S5uLh4eH9I96mDJwqCR9tqfHw8PAOhRHtOlRecmbB8ZvVBDw8PLwHeHkTnK8CbOLdtkgMSXh4eHgT3h/zMZKXwxom7gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

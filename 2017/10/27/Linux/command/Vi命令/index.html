@@ -29,13 +29,13 @@
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="Linux——Vim编辑器命令基础参考 Vi是一个命令行界面下的文本编辑工具，Vim是Vi的一个增强版。 vim或vi命令可以启动vim编辑器vim + 目标文件路径 使用vim打开文件如果目标文件存在，则vim打开该文件如果目标文件不存在，则vim会新建该文件，并打开  vi的三种模式：1、命令模式（常规模式）任何模式下按ESC键都会返回命令模式。命令模式下可以通过键入不同的命令完成选择、复制、">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T11:47:42.000Z">
+<meta property="og:updated_time" content="2018-07-25T06:56:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux——Vim编辑器命令基础">
 <meta name="twitter:description" content="Linux——Vim编辑器命令基础参考 Vi是一个命令行界面下的文本编辑工具，Vim是Vi的一个增强版。 vim或vi命令可以启动vim编辑器vim + 目标文件路径 使用vim打开文件如果目标文件存在，则vim打开该文件如果目标文件不存在，则vim会新建该文件，并打开  vi的三种模式：1、命令模式（常规模式）任何模式下按ESC键都会返回命令模式。命令模式下可以通过键入不同的命令完成选择、复制、">
     
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
     <script>window.lazyScripts=[]</script>
 
     <!-- custom head -->
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -204,7 +204,7 @@
 <hr>
 <p>vi的三种模式：<br>1、命令模式（常规模式）<br>任何模式下按ESC键都会返回命令模式。命令模式下可以通过键入不同的命令完成选择、复制、粘贴、撤销等操作。<br>2、插入模式<br>在命令模式中按“i”键即可进入插入模式，插入模式下可以输入编辑文本内容；按ESC键可返回命令模式。<br>3、ex模式<br>在命令模式下按“：”键可进入ex模式，ex模式下可以保存、修改、退出vim。</p>
 <hr>
-<p>命令模式：<br>i 在光标前插入文本<br>o 在当前行的下面插入新行<br>dd 删除整行<br>yy 将当前行的内容放入缓冲区（复制当前行）<br>p 将缓冲区中的内容放入光标后（粘贴）<br>数字yy 复制N行<br>r 替换当前字符（先按r，再按要替换的新字符）<br>u 撤销上一个操作<br>/关键字 查找关键字（按N键可以在找到的这些关键字之间来回切换）</p>
+<p>命令模式：<br>i 在光标前插入文本<br>o 在当前行的下面插入新行<br>dd 删除整行<br>yy 将当前行的内容放入缓冲区（复制当前行）<br>p 将缓冲区中的内容放入光标后（粘贴）<br>数字+yy 复制N行<br>r 替换当前字符（先按r，再按要替换的新字符）<br>u 撤销上一个操作<br>/关键字 查找关键字（按N键可以在找到的这些关键字之间来回切换）</p>
 <hr>
 <p>ex模式：<br>w 保存当前修改<br>q 退出<br>q！ 强制退出，不保存任何修改<br>wq 先保存后退出<br>x 保存并退出<br>set nu / set number 显示行号<br>！ 系统命令 执行一条系统命令并显示结果<br>sh 切换到命令行，之后再按Ctrl + D 即可返回vim</p>
 
@@ -215,7 +215,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2018-07-04T11:47:42.000Z" itemprop="dateUpdated">2018-07-04 19:47:42</time>
+    最終更新：<time datetime="2018-07-25T06:56:35.000Z" itemprop="dateUpdated">2018-07-25 14:56:35</time>
 </span><br>
 
 
@@ -326,6 +326,30 @@
 
 
 
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
 
 
 
@@ -353,7 +377,7 @@
 
         <p>
             
-            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
@@ -424,7 +448,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 
 </script>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+<script src="/js/main.min.js?v=1.7.2"></script>
 
 
 <div class="search-panel" id="search-panel">
@@ -444,7 +468,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </li>
 </template>
 
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+<script src="/js/search.min.js?v=1.7.2" async></script>
 
 
 

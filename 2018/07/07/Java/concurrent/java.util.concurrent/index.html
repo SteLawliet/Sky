@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>java.util.concurrent了解 | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="synchronized,volatile,atomic">
+    <meta name="description" content="volatile与内存可见性 多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(根据 Java 虚拟机规范的规定，volatile 变量依然有共享内存的拷贝，但是由于它特殊的操作顺序性规定——从工作内 存中读写数据前，必须先将主内存中的数据同步到工作内存中，所有看起来如同直接在主内存中读写访问一 般，因此这里的描述对于 volatile 也不例外)">
+<meta name="keywords" content="synchronized,volatile,atomic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java.util.concurrent了解">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="volatile与内存可见性 多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(根据 Java 虚拟机规范的规定，volatile 变量依然有共享内存的拷贝，但是由于它特殊的操作顺序性规定——从工作内 存中读写数据前，必须先将主内存中的数据同步到工作内存中，所有看起来如同直接在主内存中读写访问一 般，因此这里的描述对于 volatile 也不例外)">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-11T11:35:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java.util.concurrent了解">
+<meta name="twitter:description" content="volatile与内存可见性 多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(根据 Java 虚拟机规范的规定，volatile 变量依然有共享内存的拷贝，但是由于它特殊的操作顺序性规定——从工作内 存中读写数据前，必须先将主内存中的数据同步到工作内存中，所有看起来如同直接在主内存中读写访问一 般，因此这里的描述对于 volatile 也不例外)">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">java.util.concurrent了解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">java.util.concurrent了解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-07T02:47:03.000Z" itemprop="datePublished" class="page-time">
+  2018-07-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/">concurrent</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/并发编程/">并发编程</a></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#volatile与内存可见性"><span class="post-toc-number">1.</span> <span class="post-toc-text">volatile与内存可见性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#原子变量-CAS算法"><span class="post-toc-number">2.</span> <span class="post-toc-text">原子变量-CAS算法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#原子变量"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">原子变量</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ConcurrentHashMap-锁分段机制"><span class="post-toc-number">3.</span> <span class="post-toc-text">ConcurrentHashMap 锁分段机制</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#CountDownLatch-闭锁"><span class="post-toc-number">4.</span> <span class="post-toc-text">CountDownLatch 闭锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Callable"><span class="post-toc-number">5.</span> <span class="post-toc-text">Callable</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lock"><span class="post-toc-number">6.</span> <span class="post-toc-text">lock</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Condition控制线程通信"><span class="post-toc-number">7.</span> <span class="post-toc-text">Condition控制线程通信</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#消费者与生产者举例"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">消费者与生产者举例</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程八锁"><span class="post-toc-number">8.</span> <span class="post-toc-text">线程八锁</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程按序交替"><span class="post-toc-number">9.</span> <span class="post-toc-text">线程按序交替</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ReadWriteLock-读写锁"><span class="post-toc-number">10.</span> <span class="post-toc-text">ReadWriteLock 读写锁</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#读锁"><span class="post-toc-number">10.1.</span> <span class="post-toc-text">读锁</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写锁"><span class="post-toc-number">10.2.</span> <span class="post-toc-text">写锁</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程池"><span class="post-toc-number">11.</span> <span class="post-toc-text">线程池</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#线程调度"><span class="post-toc-number">12.</span> <span class="post-toc-text">线程调度</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fork-Join-Poll"><span class="post-toc-number">13.</span> <span class="post-toc-text">Fork/Join/Poll</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/concurrent/java.util.concurrent"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">java.util.concurrent了解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-07 10:47:03" datetime="2018-07-07T02:47:03.000Z"  itemprop="datePublished">2018-07-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/">concurrent</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/并发编程/">并发编程</a></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="volatile与内存可见性"><a href="#volatile与内存可见性" class="headerlink" title="volatile与内存可见性"></a>volatile与内存可见性</h3><hr>
+<p>多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(根据 Java 虚拟机规范的规定，volatile 变量依然有共享内存的拷贝，但是由于它特殊的操作顺序性规定——从工作内 存中读写数据前，必须先将主内存中的数据同步到工作内存中，所有看起来如同直接在主内存中读写访问一 般，因此这里的描述对于 volatile 也不例外)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Volatile</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        Task task = <span class="keyword">new</span> Task();</span><br><span class="line">        <span class="keyword">new</span> Thread(task).start();</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line"><span class="comment">//            System.out.println("task.flag = " + task.flag);</span></span><br><span class="line">            <span class="keyword">if</span> (task.flag) &#123;</span><br><span class="line">                System.out.println(<span class="string">"while "</span> + task.flag);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Task</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">boolean</span> flag = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">           <span class="comment">//睡眠,保证main线程初次进入while时flag还没有被修改</span></span><br><span class="line">            Thread.sleep(<span class="number">200</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        flag = <span class="keyword">true</span>;</span><br><span class="line">        System.out.println(<span class="string">"flag = "</span> + flag);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">运行结果:</span><br><span class="line">flag = <span class="keyword">true</span></span><br><span class="line">...(一直没有结束,<span class="keyword">while</span>中的语句一直没有打印)</span><br></pre></td></tr></table></figure>
+<p>原因:</p>
+<p>main线程的while(ture){}执行太快导致线程没有机会去主存中读取已经被其他线程修改的flag.从而导致一直在执行while(ture){}无法结束.</p>
+<blockquote>
+<p>volatile 不具备互斥性<br>volatile 不能保证原子性.<br>volatile 修饰后jvm不能==重排序==</p>
+</blockquote>
+<h3 id="原子变量-CAS算法"><a href="#原子变量-CAS算法" class="headerlink" title="原子变量-CAS算法"></a>原子变量-CAS算法</h3><hr>
+<p>e.g.   i++; </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> temp = i;</span><br><span class="line">i = i + <span class="number">1</span>;</span><br><span class="line">i = temp;</span><br></pre></td></tr></table></figure>
+<p>从上面的代码可以看出<code>i++</code>这个操作分3个读取,改变,赋值.<br>没有原子性.多线程访问时不安全.</p>
+<h4 id="原子变量"><a href="#原子变量" class="headerlink" title="原子变量"></a>原子变量</h4><p>jdk1.5之后的<code>java.util.concurrent.atomic</code>包下的原子变量:</p>
+<ol>
+<li>使用volatile保证内存可见性</li>
+<li>CAS(compare-and-swap)算法保证数据的原子性(CAS算法是硬件对并发操作共享数据的支持)</li>
+<li>CAS 包含3个操作数:内存值V,预估值A,更新值B<br> 当且仅当V==A时,V=B.否则做不操作.</li>
+<li>总的分俩次同步操作.<ol>
+<li>读取V = X</li>
+<li>读取A = X,然后判断 V==A? V = B : V = V;<blockquote>
+<p>CAS大概理解:<br>俩次读取相同变量.<br>俩次值相等没有被其他线程更改的情况下做赋值操作</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="ConcurrentHashMap-锁分段机制"><a href="#ConcurrentHashMap-锁分段机制" class="headerlink" title="ConcurrentHashMap 锁分段机制"></a>ConcurrentHashMap 锁分段机制</h3><hr>
+<p><code>java.util.concurrent.concurrentHashMap</code></p>
+<p>Hashtable的问题,如果存在以下的复合操作(先判断再增删)<br>时,由于Hashtable是全表加锁.锁的粗粒度太高.效率低<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!map.contains())&#123;</span><br><span class="line">   map.put()</span><br><span class="line">&#125;</span><br><span class="line">以上代码在判断存在操作和put分别有不同的`<span class="keyword">synchronized</span>`同步锁.可能导致判断后锁又被其他线程占用</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>concurrentHashMap采用的”锁分段”机制.可以做到多线程并行访问不同的分段.来提高效率</li>
+<li>提供了复合操作的同步方法</li>
+</ul>
+<p><code>java.util.concurrent</code>包的其他线程安全效率较高的容器类<br><code>ConcurrentHashMap</code> -&gt; <code>HashMap</code></p>
+<p><code>ConcurrentSkipListMap</code> -&gt;<code>TreeMap</code></p>
+<p><code>CopyOnWriteArrayList</code> -&gt; <code>ArrayList</code>  </p>
+<p><code>CopyOnWriteArrayList</code>特性相对于<br><code>List&lt;T&gt; Collections.synchronizedList(ArrayList list);</code></p>
+<blockquote>
+<p>都是线程安全,前者迭代器不存在并发修改异常<br>每次更新时复制新的,更新多时效率低<br>期望读取数和遍历远远大于更新数时效率高<br>并发迭代更新多时效率高</p>
+</blockquote>
+<h3 id="CountDownLatch-闭锁"><a href="#CountDownLatch-闭锁" class="headerlink" title="CountDownLatch 闭锁"></a>CountDownLatch 闭锁</h3><hr>
+<p>CountDownLatch:闭锁,在指定的线程数运算结束后.才继续执行await()后的代码</p>
+<p><code>CountDOwnLatch(int count)</code> : count值为指定等待的线程数.</p>
+<p><code>void countDown()</code>: 单个线程的运算结束时调用,使countDownLatch的等待线程数-1.</p>
+<p><code>void await()</code> :在要等待的线程中count次调用countDown()时才返回await(),否则当前线程一直在<code>await()</code>处阻塞.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@program</span>: DAY_SE</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: CountDownLatchDemo</span></span><br><span class="line"><span class="comment"> * 子线程排序完成后交给主线程计算时间并打印结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: stelawliet</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span>: 2018-07-09 16:37</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountDownLatchDe</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] a = &#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">33</span>,<span class="number">0</span>,<span class="number">9</span>,<span class="number">23</span>,<span class="number">6</span>&#125;;</span><br><span class="line">        <span class="keyword">int</span>[] a0 = &#123;<span class="number">121</span>,<span class="number">33</span>,<span class="number">4353</span>,<span class="number">7660</span>,<span class="number">79</span>,<span class="number">67623</span>,<span class="number">766</span>&#125;;</span><br><span class="line">        CountDownLatch latch = <span class="keyword">new</span> CountDownLatch(<span class="number">2</span>);</span><br><span class="line">        TestLatch testLatch = <span class="keyword">new</span> TestLatch(latch,a);</span><br><span class="line">        TestLatch testLatch0 = <span class="keyword">new</span> TestLatch(latch,a0);</span><br><span class="line">        Long s = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">new</span> Thread(testLatch).start();</span><br><span class="line">        <span class="keyword">new</span> Thread(testLatch0).start();</span><br><span class="line">        latch.await();</span><br><span class="line">        System.out.println(</span><br><span class="line">        (System.currentTimeMillis() - s) + <span class="string">"ms"</span>);</span><br><span class="line">        System.out.println(Arrays.toString(a));</span><br><span class="line">        System.out.println(Arrays.toString(a0));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestLatch</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> CountDownLatch latch;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span>[] a;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TestLatch</span><span class="params">(CountDownLatch latch, <span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.latch = latch;</span><br><span class="line">        <span class="keyword">this</span>.a = a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">try</span>&#123;</span><br><span class="line">          sort(a);</span><br><span class="line">       &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">         <span class="comment">//指定任务结束线程计数-1,要放入finally中避免死锁</span></span><br><span class="line">        latch.countDown();  </span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; a.length - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (a[j] &gt; a[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    a[j] = a[j] ^ a[j + <span class="number">1</span>];</span><br><span class="line">                    a[j + <span class="number">1</span>] = a[j] ^ a[j + <span class="number">1</span>];</span><br><span class="line">                    a[j] = a[j] ^ a[j + <span class="number">1</span>];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>latch.countDown();一般都要放入finally中避免死锁.</p>
+</blockquote>
+<h3 id="Callable"><a href="#Callable" class="headerlink" title="Callable"></a>Callable</h3><hr>
+<p>Callable需要使用<code>Future&lt;T&gt;</code>来接受结果T为返回值类型的泛型.</p>
+<p><code>T t get();</code> 方法在调用时会阻塞当前线程直到callable的run返回结果.所以也可以用此实现<code>CountDownLatch</code>的闭锁功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@program</span>: DAY_SE</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: FutureTask&amp;Callable Demo</span></span><br><span class="line"><span class="comment"> * 等待线程计算1-100的和然后main线程输出结果</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: Zhaoziqi</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span>: 2018-07-09 17:30</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallableDe</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        Call call = <span class="keyword">new</span> Call();</span><br><span class="line">        FutureTask&lt;Integer&gt; futureTask = <span class="keyword">new</span> FutureTask&lt;&gt;(call);</span><br><span class="line">        <span class="keyword">new</span> Thread(futureTask).start();</span><br><span class="line">        <span class="comment">//get()方法会阻塞当前线程.等待线程run结束返回</span></span><br><span class="line">        Integer integer = futureTask.get();</span><br><span class="line">        System.out.println(<span class="string">"----------------"</span>);</span><br><span class="line">        System.out.println(<span class="string">"integer = "</span> + integer);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Call</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">            sum += i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>理解:<br>实现Callable来执行线程类似于Javascript的异步.<br>不过js的异步执行的结果不会阻塞而是同步代码执行结束后才返回.使用callable也可以实现类似的效果</p>
+<h3 id="lock"><a href="#lock" class="headerlink" title="lock"></a>lock</h3><hr>
+<p><code>Lock lock = new ReentrantLock();</code></p>
+<p> lock.lock<br> lock.unlock</p>
+<p>lock与synchronized的区别</p>
+<p>待补充…</p>
+<h3 id="Condition控制线程通信"><a href="#Condition控制线程通信" class="headerlink" title="Condition控制线程通信"></a>Condition控制线程通信</h3><hr>
+<p><code>Condition condition = lock.newCondition();</code><br><code>condition.await();</code>   -&gt; object.wait()<br><code>condition.signal();</code> -&gt; object.notify()<br><code>condition.signalAll();</code> -&gt; object.notifyAll()</p>
+<p>wait和notify/notify的使用已经在<a href="/Users/zhaoziqi/workspace/blog/hexo/source/_posts/Java/JavaSE/API note/线程协同.md">线程协同</a>中说过</p>
+<h4 id="消费者与生产者举例"><a href="#消费者与生产者举例" class="headerlink" title="消费者与生产者举例"></a>消费者与生产者举例</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="线程八锁"><a href="#线程八锁" class="headerlink" title="线程八锁"></a>线程八锁</h3><hr>
+<h3 id="线程按序交替"><a href="#线程按序交替" class="headerlink" title="线程按序交替"></a>线程按序交替</h3><hr>
+<h3 id="ReadWriteLock-读写锁"><a href="#ReadWriteLock-读写锁" class="headerlink" title="ReadWriteLock 读写锁"></a>ReadWriteLock 读写锁</h3><hr>
+<p><code>ReadWriteLock lock = new ReentrantReadWriteLock</code>  </p>
+<h4 id="读锁"><a href="#读锁" class="headerlink" title="读锁"></a>读锁</h4><p><code>lock.readLock().lock();</code></p>
+<p><code>lock.readLock().unlock();</code></p>
+<h4 id="写锁"><a href="#写锁" class="headerlink" title="写锁"></a>写锁</h4><p><code>lock.writeLock().lock</code></p>
+<p><code>lock.writeLock().unlock</code></p>
+<p>读读 不需要互斥</p>
+<p>写写/读写 需要互斥</p>
+<h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><hr>
+<h3 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h3><hr>
+<h3 id="Fork-Join-Poll"><a href="#Fork-Join-Poll" class="headerlink" title="Fork/Join/Poll"></a>Fork/Join/Poll</h3><hr>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-07-11T11:35:25.000Z" itemprop="dateUpdated">2018-07-11 19:35:25</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/07/Java/concurrent/java.util.concurrent/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atomic/">atomic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/volatile/">volatile</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/&title=《java.util.concurrent了解》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/&title=《java.util.concurrent了解》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java.util.concurrent了解》 — stelawliet&url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/07/Java/JavaSE/博学谷练习/集合/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">博学谷习题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/07/Java/concurrent/并发编程note/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">并发编程note</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/&title=《java.util.concurrent了解》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/&title=《java.util.concurrent了解》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《java.util.concurrent了解》 — stelawliet&url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/07/Java/concurrent/java.util.concurrent/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3awW7rMAwEwP7/T/ddCxRxdkmpCB5Gp8BxbI0OIkPq6yse3z/Gzyu/75l9Tt7y+/5jAw8PD28x9d/j1YuTqT//Knn+87ue54yHh4d3m5c87vlXz0vT7t7tfF5ex8PDw/sYXptYz0h4eHh4/wfvORXOE/SWjYeHh/dpvHxCeTI9K1jky3241oKHh4cX8/Iu0ud8vtLfw8PDw1t31Tcbd1uc3aTpL2eLh4eHd4G3b1Alk25T5CQ4JfPEw8PDu8FLCgf7v/r5c2bh4WXyjYeHh3eBN9vEn19/KlE+tuh4eHh4R3l5Qvz84lMb+qydVpch8PDw8A7xWsb+ert8dWMMDw8P7094eYE1CQBtQfZwUo6Hh4f3h7w22Z113maHFYrwgIeHh3eNl5Qk8sOs7dHS2QGCqCSBh4eHd4G36Rnl5Yy89DBb4mJx8fDw8Na8dgvetPyTK+2ivFl0PDw8vAu8TRq92b7bcm17WGE1UTw8PLzH+9vSbV4CzltibbOt+BYPDw/vAi/fvtu+UjutTZm4iIF4eHh4R3ltSykPBu1vZwHpTXjAw8PDu8DLA0O+fe8nPQtIq5QaDw8PL+Z9x2NWyGgLCm0KXhxdxcPDw1vwZl2yWXrdNvsPfIuHh4d3gZdsypuDqkmbKi+CDOeAh4eHd5nXPmhfwN0k08NzZHh4eHiHeHkSPGtN5YXgNpmum154eHh4h3ht0TZJlJOJblpuUdDCw8PDO8r7Lse+/b9JkduSBx4eHt4NXrv55sWFPFlvD2xtQggeHh7eKd6plLousC4aYEVYwsPDw7vGm23Km6LD4dj1yoKHh4f3Aby8QLC5nrfB3iwZHh4e3gfwkmME+6MJ+f19rMDDw8M7w5sVAvJ21OYA6yY44eHh4d3gbYqtm+Q7T8dvlC3w8PDwRrx/Ak9UuZPlGesAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
