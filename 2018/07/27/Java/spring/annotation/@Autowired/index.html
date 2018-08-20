@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="Autowired">
-    <meta name="description" content="@Autowired 自动装配.  不管成员属性的修饰符  不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.  1234567891011121314151617181920212223242526//默认加在ioc容器中的组件，容器启动会调用无参构造器创建对象，再进行初始化赋值等操作@Componentpublic class Boss &amp;#123;   //@A">
+    <meta name="description" content="@Autowired 自动装配.  不管成员属性的修饰符  不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.   @Authwired 注解也可以应用在数组类型的属性上, 此时 Spring 将会把所有匹配的 Bean 进行自动装配. @Authwired 注解也可以应用在集合属性上, 此时 Spring 读取该集合的类型信息, 然后自动装配所有与之兼容的 Bean">
 <meta name="keywords" content="Autowired">
 <meta property="og:type" content="article">
 <meta property="og:title" content="annotation-component @Autowired">
 <meta property="og:url" content="http://io.stelawliet.top/2018/07/27/Java/spring/annotation/@Autowired/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="@Autowired 自动装配.  不管成员属性的修饰符  不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.  1234567891011121314151617181920212223242526//默认加在ioc容器中的组件，容器启动会调用无参构造器创建对象，再进行初始化赋值等操作@Componentpublic class Boss &amp;#123;   //@A">
+<meta property="og:description" content="@Autowired 自动装配.  不管成员属性的修饰符  不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.   @Authwired 注解也可以应用在数组类型的属性上, 此时 Spring 将会把所有匹配的 Bean 进行自动装配. @Authwired 注解也可以应用在集合属性上, 此时 Spring 读取该集合的类型信息, 然后自动装配所有与之兼容的 Bean">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-09T13:55:11.000Z">
+<meta property="og:updated_time" content="2018-08-18T14:29:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="annotation-component @Autowired">
-<meta name="twitter:description" content="@Autowired 自动装配.  不管成员属性的修饰符  不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.  1234567891011121314151617181920212223242526//默认加在ioc容器中的组件，容器启动会调用无参构造器创建对象，再进行初始化赋值等操作@Componentpublic class Boss &amp;#123;   //@A">
+<meta name="twitter:description" content="@Autowired 自动装配.  不管成员属性的修饰符  不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.   @Authwired 注解也可以应用在数组类型的属性上, 此时 Spring 将会把所有匹配的 Bean 进行自动装配. @Authwired 注解也可以应用在集合属性上, 此时 Spring 读取该集合的类型信息, 然后自动装配所有与之兼容的 Bean">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -203,7 +203,12 @@
 </li>
 <li><p>不管成员属性的修饰符</p>
 </li>
-<li>不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.</li>
+<li><p>不管构造函数是否有参数都会把容器中的成员属性bean注入到当前对象的bean中.</p>
+</li>
+<li><blockquote>
+<p>@Authwired 注解也可以应用在数组类型的属性上, 此时 Spring 将会把所有匹配的 Bean 进行自动装配. @Authwired 注解也可以应用在集合属性上, 此时 Spring 读取该集合的类型信息, 然后自动装配所有与之兼容的 Bean. @Authwired 注解用在 java.util.Map 上时, 若该 Map 的键值为 String, 那么 Spring 将自动装配与之 Map 值类型兼容的 Bean, 此时 Bean 的名称作为键值</p>
+</blockquote>
+</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//默认加在ioc容器中的组件，容器启动会调用无参构造器创建对象，再进行初始化赋值等操作</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Boss</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//@Autowired </span></span><br><span class="line">	<span class="keyword">private</span> Car car;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//构造器要用的组件，都是从容器中获取</span></span><br><span class="line">   <span class="comment">//@Autowired 在构造器上ioc会调用对应的构造器创建对象.</span></span><br><span class="line">   <span class="comment">//@Autowired </span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Boss</span><span class="params">(Car car)</span></span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.car = car;</span><br><span class="line">		System.out.println(<span class="string">"Boss...有参构造器"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> Car <span class="title">getCar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> car;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//@Autowired </span></span><br><span class="line">	<span class="comment">//标注在方法，Spring容器创建当前对象，就会调用方法，完成赋值；</span></span><br><span class="line">	<span class="comment">//方法使用的参数，自定义类型的值从ioc容器中获取</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCar</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">     @Autowired  Car car)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.car = car;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="Resource"><a href="#Resource" class="headerlink" title="@Resource"></a>@Resource</h4><p>可以指定名称beanName.</p>
@@ -217,7 +222,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-08-09T13:55:11.000Z" itemprop="dateUpdated">2018-08-09 21:55:11</time>
+    最終更新：<time datetime="2018-08-18T14:29:50.000Z" itemprop="dateUpdated">2018-08-18 22:29:50</time>
 </span><br>
 
 

@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="java继承 js继承 INSERT INTO employees VALUES(10001,’1953-09-02’,’Georgi’,’Facello’,’M’,’1986-06-26’); INSERT INTO employees VALUES(10002,’1964-06-02’,’Bezalel’,’Simmel’,’F’,’1985-11-21’); INSERT INTO empl">
+    <meta name="description" content="关于分页3个方面的改进  前端不仅内容分页.对定位页码的标签再进行逻辑分页.参考[goooooogle] 抽取分页逻辑封装成包装分页bean. 使用aop拦截web层pageQuery方法的调用.获取前端传入的分页参数.然后对dao层的查询方法进行动态代理.对sql后面进行limit和分页参数的拼接.参考[Mybatis-PageHelper]   牛客3-4期算法 咕泡java全套 尚硅谷jav">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="No title">
 <meta property="og:url" content="http://io.stelawliet.top/2018/06/25/welcome/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="java继承 js继承 INSERT INTO employees VALUES(10001,’1953-09-02’,’Georgi’,’Facello’,’M’,’1986-06-26’); INSERT INTO employees VALUES(10002,’1964-06-02’,’Bezalel’,’Simmel’,’F’,’1985-11-21’); INSERT INTO empl">
+<meta property="og:description" content="关于分页3个方面的改进  前端不仅内容分页.对定位页码的标签再进行逻辑分页.参考[goooooogle] 抽取分页逻辑封装成包装分页bean. 使用aop拦截web层pageQuery方法的调用.获取前端传入的分页参数.然后对dao层的查询方法进行动态代理.对sql后面进行limit和分页参数的拼接.参考[Mybatis-PageHelper]   牛客3-4期算法 咕泡java全套 尚硅谷jav">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-07T01:46:11.000Z">
+<meta property="og:updated_time" content="2018-08-20T05:34:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="java继承 js继承 INSERT INTO employees VALUES(10001,’1953-09-02’,’Georgi’,’Facello’,’M’,’1986-06-26’); INSERT INTO employees VALUES(10002,’1964-06-02’,’Bezalel’,’Simmel’,’F’,’1985-11-21’); INSERT INTO empl">
+<meta name="twitter:description" content="关于分页3个方面的改进  前端不仅内容分页.对定位页码的标签再进行逻辑分页.参考[goooooogle] 抽取分页逻辑封装成包装分页bean. 使用aop拦截web层pageQuery方法的调用.获取前端传入的分页参数.然后对dao层的查询方法进行动态代理.对sql后面进行limit和分页参数的拼接.参考[Mybatis-PageHelper]   牛客3-4期算法 咕泡java全套 尚硅谷jav">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -187,8 +187,12 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>java继承 js继承</p>
-<p>INSERT INTO employees VALUES(10001,’1953-09-02’,’Georgi’,’Facello’,’M’,’1986-06-26’); INSERT INTO employees VALUES(10002,’1964-06-02’,’Bezalel’,’Simmel’,’F’,’1985-11-21’); INSERT INTO employees VALUES(10003,’1959-12-03’,’Parto’,’Bamford’,’M’,’1986-08-28’); INSERT INTO employees VALUES(10004,’1954-05-01’,’Chirstian’,’Koblick’,’M’,’1986-12-01’); INSERT INTO employees VALUES(10005,’1955-01-21’,’Kyoichi’,’Maliniak’,’M’,’1989-09-12’); INSERT INTO employees VALUES(10006,’1953-04-20’,’Anneke’,’Preusig’,’F’,’1989-06-02’); INSERT INTO employees VALUES(10007,’1957-05-23’,’Tzvetan’,’Zielinski’,’F’,’1989-02-10’); INSERT INTO employees VALUES(10008,’1958-02-19’,’Saniya’,’Kalloufi’,’M’,’1994-09-15’); INSERT INTO employees VALUES(10009,’1952-04-19’,’Sumant’,’Peac’,’F’,’1985-02-18’); INSERT INTO employees VALUES(10010,’1963-06-01’,’Duangkaew’,’Piveteau’,’F’,’1989-08-24’); INSERT INTO employees VALUES(10011,’1953-11-07’,’Mary’,’Sluis’,’F’,’1990-01-22’); INSERT INTO salaries VALUES(10001,60117,’1986-06-26’,’1987-06-26’); INSERT INTO salaries VALUES(10001,62102,’1987-06-26’,’1988-06-25’); INSERT INTO salaries VALUES(10001,66074,’1988-06-25’,’1989-06-25’); INSERT INTO salaries VALUES(10001,66596,’1989-06-25’,’1990-06-25’); INSERT INTO salaries VALUES(10001,66961,’1990-06-25’,’1991-06-25’); INSERT INTO salaries VALUES(10001,71046,’1991-06-25’,’1992-06-24’); INSERT INTO salaries VALUES(10001,74333,’1992-06-24’,’1993-06-24’); INSERT INTO salaries VALUES(10001,75286,’1993-06-24’,’1994-06-24’); INSERT INTO salaries VALUES(10001,75994,’1994-06-24’,’1995-06-24’); INSERT INTO salaries VALUES(10001,76884,’1995-06-24’,’1996-06-23’); INSERT INTO salaries VALUES(10001,80013,’1996-06-23’,’1997-06-23’); INSERT INTO salaries VALUES(10001,81025,’1997-06-23’,’1998-06-23’); INSERT INTO salaries VALUES(10001,81097,’1998-06-23’,’1999-06-23’); INSERT INTO salaries VALUES(10001,84917,’1999-06-23’,’2000-06-22’); INSERT INTO salaries VALUES(10001,85112,’2000-06-22’,’2001-06-22’); INSERT INTO salaries VALUES(10001,85097,’2001-06-22’,’2002-06-22’); INSERT INTO salaries VALUES(10001,88958,’2002-06-22’,’9999-01-01’); INSERT INTO salaries VALUES(10002,72527,’1996-08-03’,’1997-08-03’); INSERT INTO salaries VALUES(10002,72527,’1997-08-03’,’1998-08-03’); INSERT INTO salaries VALUES(10002,72527,’1998-08-03’,’1999-08-03’); INSERT INTO salaries VALUES(10002,72527,’1999-08-03’,’2000-08-02’); INSERT INTO salaries VALUES(10002,72527,’2000-08-02’,’2001-08-02’); INSERT INTO salaries VALUES(10002,72527,’2001-08-02’,’9999-01-01’); INSERT INTO salaries VALUES(10003,40006,’1995-12-03’,’1996-12-02’); INSERT INTO salaries VALUES(10003,43616,’1996-12-02’,’1997-12-02’); INSERT INTO salaries VALUES(10003,43466,’1997-12-02’,’1998-12-02’); INSERT INTO salaries VALUES(10003,43636,’1998-12-02’,’1999-12-02’); INSERT INTO salaries VALUES(10003,43478,’1999-12-02’,’2000-12-01’); INSERT INTO salaries VALUES(10003,43699,’2000-12-01’,’2001-12-01’); INSERT INTO salaries VALUES(10003,43311,’2001-12-01’,’9999-01-01’); INSERT INTO salaries VALUES(10004,40054,’1986-12-01’,’1987-12-01’); INSERT INTO salaries VALUES(10004,42283,’1987-12-01’,’1988-11-30’); INSERT INTO salaries VALUES(10004,42542,’1988-11-30’,’1989-11-30’); INSERT INTO salaries VALUES(10004,46065,’1989-11-30’,’1990-11-30’); INSERT INTO salaries VALUES(10004,48271,’1990-11-30’,’1991-11-30’); INSERT INTO salaries VALUES(10004,50594,’1991-11-30’,’1992-11-29’); INSERT INTO salaries VALUES(10004,52119,’1992-11-29’,’1993-11-29’); INSERT INTO salaries VALUES(10004,54693,’1993-11-29’,’1994-11-29’); INSERT INTO salaries VALUES(10004,58326,’1994-11-29’,’1995-11-29’); INSERT INTO salaries VALUES(10004,60770,’1995-11-29’,’1996-11-28’); INSERT INTO salaries VALUES(10004,62566,’1996-11-28’,’1997-11-28’); INSERT INTO salaries VALUES(10004,64340,’1997-11-28’,’1998-11-28’); INSERT INTO salaries VALUES(10004,67096,’1998-11-28’,’1999-11-28’); INSERT INTO salaries VALUES(10004,69722,’1999-11-28’,’2000-11-27’); INSERT INTO salaries VALUES(10004,70698,’2000-11-27’,’2001-11-27’); INSERT INTO salaries VALUES(10004,74057,’2001-11-27’,’9999-01-01’); INSERT INTO salaries VALUES(10005,78228,’1989-09-12’,’1990-09-12’); INSERT INTO salaries VALUES(10005,82621,’1990-09-12’,’1991-09-12’); INSERT INTO salaries VALUES(10005,83735,’1991-09-12’,’1992-09-11’); INSERT INTO salaries VALUES(10005,85572,’1992-09-11’,’1993-09-11’); INSERT INTO salaries VALUES(10005,85076,’1993-09-11’,’1994-09-11’); INSERT INTO salaries VALUES(10005,86050,’1994-09-11’,’1995-09-11’); INSERT INTO salaries VALUES(10005,88448,’1995-09-11’,’1996-09-10’); INSERT INTO salaries VALUES(10005,88063,’1996-09-10’,’1997-09-10’); INSERT INTO salaries VALUES(10005,89724,’1997-09-10’,’1998-09-10’); INSERT INTO salaries VALUES(10005,90392,’1998-09-10’,’1999-09-10’); INSERT INTO salaries VALUES(10005,90531,’1999-09-10’,’2000-09-09’); INSERT INTO salaries VALUES(10005,91453,’2000-09-09’,’2001-09-09’); INSERT INTO salaries VALUES(10005,94692,’2001-09-09’,’9999-01-01’); INSERT INTO salaries VALUES(10006,43311,’1990-08-05’,’1991-08-05’); INSERT INTO salaries VALUES(10006,43311,’1991-08-05’,’1992-08-04’); INSERT INTO salaries VALUES(10006,43311,’1992-08-04’,’1993-08-04’); INSERT INTO salaries VALUES(10006,43311,’1993-08-04’,’1994-08-04’); INSERT INTO salaries VALUES(10006,43311,’1994-08-04’,’1995-08-04’); INSERT INTO salaries VALUES(10006,43311,’1995-08-04’,’1996-08-03’); INSERT INTO salaries VALUES(10006,43311,’1996-08-03’,’1997-08-03’); INSERT INTO salaries VALUES(10006,43311,’1997-08-03’,’1998-08-03’); INSERT INTO salaries VALUES(10006,43311,’1998-08-03’,’1999-08-03’); INSERT INTO salaries VALUES(10006,43311,’1999-08-03’,’2000-08-02’); INSERT INTO salaries VALUES(10006,43311,’2000-08-02’,’2001-08-02’); INSERT INTO salaries VALUES(10006,43311,’2001-08-02’,’9999-01-01’); INSERT INTO salaries VALUES(10007,56724,’1989-02-10’,’1990-02-10’); INSERT INTO salaries VALUES(10007,60740,’1990-02-10’,’1991-02-10’); INSERT INTO salaries VALUES(10007,62745,’1991-02-10’,’1992-02-10’); INSERT INTO salaries VALUES(10007,63475,’1992-02-10’,’1993-02-09’); INSERT INTO salaries VALUES(10007,63208,’1993-02-09’,’1994-02-09’); INSERT INTO salaries VALUES(10007,64563,’1994-02-09’,’1995-02-09’); INSERT INTO salaries VALUES(10007,68833,’1995-02-09’,’1996-02-09’); INSERT INTO salaries VALUES(10007,70220,’1996-02-09’,’1997-02-08’); INSERT INTO salaries VALUES(10007,73362,’1997-02-08’,’1998-02-08’); INSERT INTO salaries VALUES(10007,75582,’1998-02-08’,’1999-02-08’); INSERT INTO salaries VALUES(10007,79513,’1999-02-08’,’2000-02-08’); INSERT INTO salaries VALUES(10007,80083,’2000-02-08’,’2001-02-07’); INSERT INTO salaries VALUES(10007,84456,’2001-02-07’,’2002-02-07’); INSERT INTO salaries VALUES(10007,88070,’2002-02-07’,’9999-01-01’); INSERT INTO salaries VALUES(10008,46671,’1998-03-11’,’1999-03-11’); INSERT INTO salaries VALUES(10008,48584,’1999-03-11’,’2000-03-10’); INSERT INTO salaries VALUES(10008,52668,’2000-03-10’,’2000-07-31’); INSERT INTO salaries VALUES(10009,60929,’1985-02-18’,’1986-02-18’); INSERT INTO salaries VALUES(10009,64604,’1986-02-18’,’1987-02-18’); INSERT INTO salaries VALUES(10009,64780,’1987-02-18’,’1988-02-18’); </p>
+            <p>关于分页3个方面的改进</p>
+<ol>
+<li>前端不仅内容分页.对定位页码的标签再进行逻辑分页.参考[goooooogle]</li>
+<li>抽取分页逻辑封装成包装分页bean.</li>
+<li>使用aop拦截web层pageQuery方法的调用.获取前端传入的分页参数.然后对dao层的查询方法进行动态代理.对sql后面进行limit和分页参数的拼接.参考[Mybatis-PageHelper]</li>
+</ol>
 <ol>
 <li>牛客3-4期算法</li>
 <li>咕泡java全套</li>
@@ -196,6 +200,27 @@
 <li>黑马大数据3期</li>
 <li>小马哥spring boot cloud</li>
 <li>尚学堂大数据</li>
+</ol>
+<ol>
+<li>简单的看了下layui和以前学的vue语法好像.</li>
+<li>javascript是单线程一行一行的解释执行.每次遇到异步代码不会立刻执行而是直接放到队列中.直到所有非异步的代码执行完,才会去队列中依次回调异步函数.所以说</li>
+</ol>
+<p>速度</p>
+<ol>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">~~~java</span><br><span class="line">boolean flag = QueryXxx();</span><br><span class="line">if(flag)&#123;</span><br><span class="line">   return flase;</span><br><span class="line">&#125;else&#123;</span><br><span class="line">   return true;</span><br><span class="line">&#125;</span><br><span class="line">~~~</span><br><span class="line">return !QueryXxxx();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ServletRegistration.Dynamic  </p>
+</li>
+<li>spring docs</li>
+<li>tar 练习</li>
+<li>安装练习</li>
+</ol>
+<p>mv /etc/yum.repos.d/CentOS-Base.repo.backup  /etc/yum.repos.d/CentOS-Base.repo </p>
+<p>propertyEditorRegistrars</p>
+<ol>
+<li>@Authwired 注解也可以应用在数组类型的属性上, 此时 Spring 将会把所有匹配的 Bean 进行自动装配.</li>
+<li>@Authwired 注解也可以应用在集合属性上, 此时 Spring 读取该集合的类型信息, 然后自动装配所有与之兼容的 Bean.</li>
+<li>@Authwired 注解用在 java.util.Map 上时, 若该 Map 的键值为 String, 那么 Spring 将自动装配与之 Map 值类型兼容的 Bean, 此时 Bean 的名称作为键值</li>
 </ol>
 
         </div>
@@ -205,7 +230,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-08-07T01:46:11.000Z" itemprop="dateUpdated">2018-08-07 09:46:11</time>
+    最終更新：<time datetime="2018-08-20T05:34:46.000Z" itemprop="dateUpdated">2018-08-20 13:34:46</time>
 </span><br>
 
 

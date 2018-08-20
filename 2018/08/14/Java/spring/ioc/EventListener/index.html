@@ -14,25 +14,25 @@
     
     
     
-    <title>No title | stelawliet | 迁移整理中...</title>
+    <title>Spring Annotation EventListener Analysis | stelawliet | 迁移整理中...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="sky">
-<meta name="keywords" content="blog">
+    <meta name="keywords" content="event,listener">
+    <meta name="description" content="test listener  implement ApplicationEventListener&amp;lt;? extends ApplicationEvent&amp;gt; 12345678@Componentpublic class AnListener implements ApplicationListener&amp;lt;ApplicationEvent&amp;gt; &amp;#123;    @Override">
+<meta name="keywords" content="event,listener">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
-<meta property="og:url" content="http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/index.html">
+<meta property="og:title" content="Spring Annotation EventListener Analysis">
+<meta property="og:url" content="http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="sky">
+<meta property="og:description" content="test listener  implement ApplicationEventListener&amp;lt;? extends ApplicationEvent&amp;gt; 12345678@Componentpublic class AnListener implements ApplicationListener&amp;lt;ApplicationEvent&amp;gt; &amp;#123;    @Override">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-10T14:14:49.000Z">
+<meta property="og:updated_time" content="2018-08-14T13:52:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="sky">
+<meta name="twitter:title" content="Spring Annotation EventListener Analysis">
+<meta name="twitter:description" content="test listener  implement ApplicationEventListener&amp;lt;? extends ApplicationEvent&amp;gt; 12345678@Componentpublic class AnListener implements ApplicationListener&amp;lt;ApplicationEvent&amp;gt; &amp;#123;    @Override">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -125,7 +125,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis"></div>
+        <div class="flex-col header-title ellipsis">Spring Annotation EventListener Analysis</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -147,11 +147,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title"></h1>
+        <h1 class="title">Spring Annotation EventListener Analysis</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-08-10T14:14:21.000Z" itemprop="datePublished" class="page-time">
-  2018-08-10
+                <time datetime="2018-08-14T12:28:02.000Z" itemprop="datePublished" class="page-time">
+  2018-08-14
 </time>
 
 
@@ -167,14 +167,21 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#summary"><span class="post-toc-number">1.</span> <span class="post-toc-text">summary</span></a></li></ol>
+        </nav>
+    </aside>
 
-<article id="post-Java/spring/ioc/IOC"
+
+<article id="post-Java/spring/ioc/EventListener"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title"></h1>
+        <h1 class="post-card-title">Spring Annotation EventListener Analysis</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-08-10 22:14:21" datetime="2018-08-10T14:14:21.000Z"  itemprop="datePublished">2018-08-10</time>
+            <time class="post-time" title="2018-08-14 20:28:02" datetime="2018-08-14T12:28:02.000Z"  itemprop="datePublished">2018-08-14</time>
 
             
 
@@ -187,7 +194,43 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <p>test listener</p>
+<ol>
+<li><p><code>implement ApplicationEventListener&lt;? extends ApplicationEvent&gt;</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnListener</span> <span class="keyword">implements</span> <span class="title">ApplicationListener</span>&lt;<span class="title">ApplicationEvent</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">   <span class="comment">//listener &lt;? extends ApplicationEvent&gt;</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onApplicationEvent</span><span class="params">(ApplicationEvent event)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"receive a "</span>+event);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="2">
+<li><p>test publishEvent</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testLi</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    AnnotationConfigApplicationContext </span><br><span class="line">       context = getContext();</span><br><span class="line">    context.publishEvent(</span><br><span class="line">       <span class="keyword">new</span> ApplicationEvent(<span class="string">"my application event"</span>)&#123;&#125;);</span><br><span class="line">    context.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h4><p> 3、ApplicationListener：监听容器中发布的事件。事件驱动模型开发；<br> <code>public interface ApplicationListener&lt;E extends ApplicationEvent&gt;</code></p>
+<p>监听 ApplicationEvent 及其下面的子事件；</p>
+<p>步骤：</p>
+<ol>
+<li><p>实现监听器</p>
+<pre><code>1. ApplicationListener实现类来监听某个事件（ApplicationEvent及其子类）
+</code></pre><ol start="2">
+<li><p>@EventListener;</p>
+<p>原理：使用EventListenerMethodProcessor处理器来解析方法上的@EventListener；</p>
+</li>
+</ol>
+</li>
+<li><p>把监听器加入到容器；</p>
+</li>
+<li><p>只要容器中有相关事件的发布，我们就能监听到这个事件；</p>
+</li>
+</ol>
+<blockquote>
+<p>ContextRefreshedEvent：容器刷新完成（所有bean都完全创建）会发布这个事件；<br>ContextClosedEvent：关闭容器会发布这个事件；</p>
+</blockquote>
+<ol start="4">
+<li><p>使用ioc容器发布事件：</p>
+<p>applicationContext.publishEvent()；</p>
+</li>
+</ol>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -195,12 +238,12 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-08-10T14:14:49.000Z" itemprop="dateUpdated">2018-08-10 22:14:49</time>
+    最終更新：<time datetime="2018-08-14T13:52:37.000Z" itemprop="dateUpdated">2018-08-14 21:52:37</time>
 </span><br>
 
 
         
-        <a href="/2018/08/10/Java/spring/ioc/IOC/" target="_blank" rel="external">http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/</a>
+        <a href="/2018/08/14/Java/spring/ioc/EventListener/" target="_blank" rel="external">http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/</a>
         
     </div>
     
@@ -217,6 +260,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/event/">event</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/listener/">listener</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -225,7 +270,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/&title=《Spring Annotation EventListener Analysis》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -235,22 +280,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/&title=stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/&title=《Spring Annotation EventListener Analysis》 — stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Annotation EventListener Analysis》 — stelawliet&url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -273,18 +318,18 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/08/11/Java/spring/ioc/Transaction/" id="post-prev" class="post-nav-link">
+      <a href="/2018/08/15/Java/spring/springboot/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Spring Transaction</h4>
+        <h4 class="title">[no title]</h4>
       </a>
     </div>
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/08/10/Java/spring/ioc/Aop实现分析/" id="post-next" class="post-nav-link">
+      <a href="/2018/08/14/Linux/server/Tomcat/TomcatUtils/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">AOP @EnableAspectJAutoProxy解析</h4>
+        <h4 class="title">WrapperTomcat</h4>
       </a>
     </div>
   
@@ -377,7 +422,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/&title=《Spring Annotation EventListener Analysis》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -387,22 +432,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/&title=《Spring Annotation EventListener Analysis》 — stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Spring Annotation EventListener Analysis》 — stelawliet&url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/10/Java/spring/ioc/IOC/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/14/Java/spring/ioc/EventListener/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -413,7 +458,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aQXLDIAwF0Nz/0ukBMthfCHcG/LzKJHatx0KVQJ9PfH1/ruqdv0+N7rn++60LAwNjW8b38rp+5SjEPND8vTdLiYGB8QLGKIjR54T0RJoefo+BgYERFHBVdr4QGBgYGKsYc6k5vx8DAwMjaSarpLxAzIvLBb04BgbGhox81/3/Pz9yvoGBgbEV41u8cl41HbeiwsDAOJqRJ7jrLbZq2zl3IHoTDwYGxtGMuTRX3TjLDyxbg2IYGBjHMebGufKnkmXKy8ohDwMD42jGqqGuajva4U3uCGJgYGzLyEuxTmu6tri8aVwxMDCOY1Q3wpL0uirFl5M+BgbGaxjV/atV1drc2NnN+QYGBsZxjM4WWxWQLFy5cMTAwHgBIx+teGIso1qSDjtyDAyM4xj5kUA1HSdHAtUliGpbDAyM4xitpjHePps7Ll0wbIGBgXEEozNCUS348rSbLygGBgZGJ9UmweWjGIUmFgMD4zjG9QvmXpwXmp1hCwwMjLcx8seSgKqN6xw42jvEwMA4jjE3bFFNoJ3rwZkRDAyMTRj5UMXcEEY+eJE3wK2wMDAwNmH0N7/y4rJaSrb6bwwMjIMYcymyOhJRTbKrml4MDIyTGNXgVh1SVktADAwMjOogRRJc/n1nmTAwMDAS0lzV2RkL++Q/YGBgvJIxlxDXjmss+7+BgYGxFWPVKGoytFFN5REYAwPjaEb+WL987ATRH/LAwMDYkPEHKWED8a5iBkkAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aQW7jMBAEwPz/01lgr7uOumfIOAFKJ0OQZRYNkIPmfHzE1+ff69X9V9e/zyRvaMdw4MLDw8MbDb0dYvI5v7MZz8ME4eHh4V3jfb0Q5z+Zr9LJxOXPvLyPh4eH91Ze8rpkUr5+Mim48fDw8H4X7zO4EkAxxMV04+Hh4d3jteVyEhDMNoz9FOPh4eHd5rUHYD/h88XzPTw8PLzFqXp++NRuM8mGcWC0eHh4eBd4m6g04SXvz9sC2qM1PDw8vNu8TXCQH1zlLVxJk0HU1IWHh4d3lJcs/bPQNt9aZgdgUVGOh4eHd423iQD21LzJoD5sw8PDw7vAa9sCzrYCbNq5kg0GDw8P7x4vX44399vtYRMfP2TVeHh4eAverDhuF/p9S0F7Bw8PD+8erw1V2yP8fHdKyvf8+WFmjIeHh1fy9sXxpgFrFjEkY8DDw8O7zcuX4HZwbws18PDw8I7yNkFAfr8dVj5BUYyLh4eHd42XBAfJtjE77E/auerCGg8PD+8Cb1+PtxOUF/Gz8v2hMwIPDw9vzWvj1LaTax8Ez/4xPDw8vO/k7X9+uC+NCu6HN+Dh4eFd4yWFctsWkIQaZxsOiqwFDw8P7xAvCR02gUUbE+ftWVFPBB4eHt4hXt4EkMP2pfPszQ/TgYeHh3eIlxev+TPt29rlPmlWwMPDw/t+Xh4lbFqj8rJ4tjnh4eHh3eC1jFmUkG8n7RiSQzs8PDy8s7x9kJpHD6eC43wzw8PDw7vBayvSTWNWG17MfjffTvDw8PA2vFMF8SaeaNu/8mgDDw8P7x5vUwrvp2mzgz2MEw8PD++tvHxA7Xfzo6/28AwPDw/vJ/Bmke7su7N2q/+EEXh4eHgXeLPF/VRIMTv6irYHPDw8vAu8/QFYG9q2g9s3ZuHh4eEd4v0BuMZzqIx4VcYAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
