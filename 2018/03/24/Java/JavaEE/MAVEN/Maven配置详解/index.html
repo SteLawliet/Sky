@@ -14,7 +14,7 @@
     
     
     
-    <title>No title | stelawliet | 迁移整理中...</title>
+    <title>stelawliet | 迁移整理中...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,14 +24,14 @@
     <meta name="description" content="MAVEN2的配置文件有两个settings.xml和pom.xml settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下 pom.xml：描述项目的配置文件，放在每个项目的根目录下 settings.xml localRepository：本地仓">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
+<meta property="og:title" content="stelawliet">
 <meta property="og:url" content="http://io.stelawliet.top/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/index.html">
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="MAVEN2的配置文件有两个settings.xml和pom.xml settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下 pom.xml：描述项目的配置文件，放在每个项目的根目录下 settings.xml localRepository：本地仓">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2018-03-24T08:11:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
+<meta name="twitter:title" content="stelawliet">
 <meta name="twitter:description" content="MAVEN2的配置文件有两个settings.xml和pom.xml settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下 pom.xml：描述项目的配置文件，放在每个项目的根目录下 settings.xml localRepository：本地仓">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -326,7 +326,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-03-24T08:11:21.000Z" itemprop="dateUpdated">2018-03-24 16:11:21</time>
+    Last updated: <time datetime="2018-03-24T08:11:21.000Z" itemprop="dateUpdated">2018-03-24 16:11:21</time>
 </span><br>
 
 
@@ -486,7 +486,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -508,7 +508,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -518,7 +518,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/&title=stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -528,7 +528,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

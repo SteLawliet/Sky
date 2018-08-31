@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -164,14 +164,14 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Java/JavaSE/java基本数据与运算"
+            <article id="post-Java/concurrent/java.util.concurrent"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-02 15:42:23" datetime="2018-07-02T07:42:23.000Z"  itemprop="datePublished">2018-07-02</time>
+        <time class="post-time" title="2018-07-07 10:47:03" datetime="2018-07-07T02:47:03.000Z"  itemprop="datePublished">2018-07-07</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/Java/">Java</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/">concurrent</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/并发编程/">并发编程</a></li></ul></li></ul></li></ul>
 
 
 
@@ -182,7 +182,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/02/Java/JavaSE/java基本数据与运算/">java基本类型与运算</a>
+      <a class="post-title-link" href="/2018/07/07/Java/concurrent/java.util.concurrent/">java.util.concurrent了解</a>
     </h3>
   
 
@@ -192,17 +192,18 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        基本数据类型
+        volatile与内存可见性
+多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(根据 Java 虚拟机规范的规定，volatile 变量依然有共享内存的拷贝，但是由于它特殊的操作顺序性规定——从工作内 存中读写数据前，必须先将主内存中的数据同步到...
     
 
-        <a href="/2018/07/02/Java/JavaSE/java基本数据与运算/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/07/07/Java/concurrent/java.util.concurrent/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javase/">javase</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/位运算/">位运算</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atomic/">atomic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/volatile/">volatile</a></li></ul>
 
     </div>
     
@@ -211,11 +212,11 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/Untitled"
+            <article id="post-Java/faceEx/阿里面试"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-01 15:41:09" datetime="2018-07-01T07:41:09.000Z"  itemprop="datePublished">2018-07-01</time>
+        <time class="post-time" title="2018-07-06 16:53:14" datetime="2018-07-06T08:53:14.000Z"  itemprop="datePublished">2018-07-06</time>
 
         
 
@@ -227,7 +228,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/01/MD/Untitled/">No title</a>
+      <a class="post-title-link" href="/2018/07/06/Java/faceEx/阿里面试/">No title</a>
     </h3>
   
 
@@ -237,16 +238,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ThisCrackLicenseId-{ 
-“licenseId”:”ThisCrackLicenseId”, 
-“licenseeName”:”idea”, 
-“assigneeName”:””, 
-“assigneeEmail”:”idea@163.com“, 
-“licenseRestr...
+        1 
+JDK 是基于接口实现，而 CGLIB 继承代理类。。。
+就是这样会一直问下去，如果聊的差不多了就开始问一些零散的问题：
+
+JMM 内存模型，如何划分的？分别存储什么内容？线程安全与否？
+类加载机制，谈到双亲委派模型后会问到哪些违反了双亲委派模型？为什么？为什么要双亲委派？好处是什么？
+...
     
 
-        <a href="/2018/07/01/MD/Untitled/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/07/06/Java/faceEx/阿里面试/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -255,57 +257,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-welcome"
+            <article id="post-algorithm/boolean过滤器"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-06-25 00:15:52" datetime="2018-06-24T16:15:52.000Z"  itemprop="datePublished">2018-06-25</time>
+        <time class="post-time" title="2018-07-05 21:16:23" datetime="2018-07-05T13:16:23.000Z"  itemprop="datePublished">2018-07-05</time>
 
         
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/25/welcome/">No title</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        关于分页3个方面的改进
-
-前端不仅内容分页.对定位页码的标签再进行逻辑分页.参考[goooooogle]
-抽取分页逻辑封装成包装分页bean.
-使用aop拦截web层pageQuery方法的调用.获取前端传入的分页参数.然后对dao层的查询方法进行动态代理.对sql后面进行limit和分页参数...
-    
-
-        <a href="/2018/06/25/welcome/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-hexo/hexo配置"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-06-24 23:20:38" datetime="2018-06-24T15:20:38.000Z"  itemprop="datePublished">2018-06-24</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">algorithm</a></li></ul>
 
 
 
@@ -316,7 +275,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/24/hexo/hexo配置/">hexo配置</a>
+      <a class="post-title-link" href="/2018/07/05/algorithm/boolean过滤器/">boolean filter</a>
     </h3>
   
 
@@ -326,18 +285,19 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        安装主题安装安装需确认你的 Hexo 版本在 3.0 以上，以及 Node 版本为 6.x 以上，在 Hexo 根目录，执行以下命令。
-1git clone git@github.com:yscoder/hexo-theme-indigo.git themes/indigo
+        布尔过滤器可以实现存储压缩大量数据的集合结构,使用二进制0和1组成的数组上标记记录
+e.g
+int[] arr = new int[5];以java 的int数组举例.java中每个int是4个字节.每个字节是8位.所以一个int在计算机内部由8个0或1表示.所以上面举例的arr长度为5个in...
     
 
-        <a href="/2018/06/24/hexo/hexo配置/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/07/05/algorithm/boolean过滤器/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/indigo/">indigo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/themes/">themes</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/boolean过滤器/">boolean过滤器</a></li></ul>
 
     </div>
     
@@ -346,14 +306,54 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-hexo/hexo写作"
+            <article id="post-2018-07-05"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-06-24 23:20:38" datetime="2018-06-24T15:20:38.000Z"  itemprop="datePublished">2018-06-24</time>
+        <time class="post-time" title="2018-07-05 19:09:33" datetime="2018-07-05T11:09:33.000Z"  itemprop="datePublished">2018-07-05</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/07/05/2018-07-05/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        # 
+
+    
+
+        <a href="/2018/07/05/2018-07-05/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java/JavaSE/API note/IO"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-05 18:51:24" datetime="2018-07-05T10:51:24.000Z"  itemprop="datePublished">2018-07-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/io/">io</a></li></ul></li></ul>
 
 
 
@@ -364,7 +364,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/24/hexo/hexo写作/">hexo写作</a>
+      <a class="post-title-link" href="/2018/07/05/Java/JavaSE/API note/IO/">IO</a>
     </h3>
   
 
@@ -374,20 +374,25 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        写作你可以执行下列命令来创建一篇新文章。
-1$ hexo new [layout] &lt;title&gt;
-&lt;more!&gt;
-您可以在命令中指定文章的布局（layout），默认为 post，可以通过修改 _config.yml 中的 default_layout 参数来指定默认布...
+        OutputStream
+java.io.OutputStream抽象类是所有字节输出流的超类.
+
+void wirte(int b)写入的内容是由int b的二进制
+
+eg.  写入b 为 97时文本内容打开为a 
+
+
+void wirte(byte[] bytes,int off,int ...
     
 
-        <a href="/2018/06/24/hexo/hexo写作/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/07/05/Java/JavaSE/API note/IO/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/indigo/">indigo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/themes/">themes</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
 
     </div>
     
@@ -396,14 +401,55 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-hexo/hello-world"
+            <article id="post-Java/JavaSE/API note/集合细节"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-06-24 21:59:25" datetime="2018-06-24T13:59:25.000Z"  itemprop="datePublished">2018-06-24</time>
+        <time class="post-time" title="2018-07-05 17:30:36" datetime="2018-07-05T09:30:36.000Z"  itemprop="datePublished">2018-07-05</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/07/05/Java/JavaSE/API note/集合细节/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        List
+ArrayListvoid contains() 实现
+12345678910111213141516 public boolean contains(Object o) &#123;        return indexOf(o) &gt;= 0; &#125;public in...
+    
+
+        <a href="/2018/07/05/Java/JavaSE/API note/集合细节/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java/concurrent/线程协同"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-05 16:27:43" datetime="2018-07-05T08:27:43.000Z"  itemprop="datePublished">2018-07-05</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/api/">api</a></li></ul></li></ul>
 
 
 
@@ -414,7 +460,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/24/hexo/hello-world/">Hello World</a>
+      <a class="post-title-link" href="/2018/07/05/Java/concurrent/线程协同/">wait&amp;sleep - notify&amp;notifyAll</a>
     </h3>
   
 
@@ -424,17 +470,22 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+        线程的状态
+new(新建)刚创建线程对象new Thread(),还没有调用start();
+runnable(可运行)可能在运行中,也可能是即将获得cpu
+blocked(阻塞) 
+执行同步代码时锁被其他线程占用则进入blocked
+执行wait方法时把锁释放了-&gt;等待notify/n...
     
 
-        <a href="/2018/06/24/hexo/hello-world/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/07/05/Java/concurrent/线程协同/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/多线程/">多线程</a></li></ul>
 
     </div>
     
@@ -443,14 +494,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-hexo/hexo博客搭建"
+            <article id="post-Java/JavaSE/BigDataNote"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-06-24 21:59:25" datetime="2018-06-24T13:59:25.000Z"  itemprop="datePublished">2018-06-24</time>
+        <time class="post-time" title="2018-07-05 11:54:11" datetime="2018-07-05T03:54:11.000Z"  itemprop="datePublished">2018-07-05</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/blog/">blog</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/note/">note</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/note/todo/">todo</a></li></ul></li></ul>
 
 
 
@@ -461,7 +512,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/24/hexo/hexo博客搭建/">hexo博客坑与技巧</a>
+      <a class="post-title-link" href="/2018/07/05/Java/JavaSE/BigDataNote/">bigData note</a>
     </h3>
   
 
@@ -471,152 +522,141 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        文章图片预览1234&lt;img src=&quot;https://your_picture_url.jpg&quot; width=&quot;auto&quot;&gt;&lt;!--more--&gt;第1行正文内容第2行正文内容
-&lt;!--more--&gt; 放的位置你自己调...
+        
+类加载器的细节
+
+双亲委派好处
+
+内部类final的设计
+
+方法区详细结构
+
+lock和synchronized的区别
+
+线程锁的区别
+
+thread join
+
+集合详细结构实现
+
+lambda
+
+linked
+
+1y+len*x
+
+
+
+
     
 
-        <a href="/2018/06/24/hexo/hexo博客搭建/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/07/05/Java/JavaSE/BigDataNote/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java/JavaSE/Thread&amp;Runnable"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-04 20:03:06" datetime="2018-07-04T12:03:06.000Z"  itemprop="datePublished">2018-07-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/note/">note</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/07/04/Java/JavaSE/Thread&Runnable/">BigDataNote</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+
+
+lambda函数式接口
+
+多泛型
+
+1234@FunctionalInterfaceinterface Function&lt;R,T&gt;()&#123;    R r = getValue(T t);&#125;
+
+
+
+    
+
+        <a href="/2018/07/04/Java/JavaSE/Thread&Runnable/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-algorithm/tree/栈遍历树"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-04 17:19:12" datetime="2018-07-04T09:19:12.000Z"  itemprop="datePublished">2018-07-04</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">algorithm</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/dataStructure/">dataStructure</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/dataStructure/stack/">stack</a></li></ul></li></ul></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/07/04/algorithm/tree/栈遍历树/">栈实现树的非递归遍历</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        栈实现树的非递归遍历相对于中间根结点的位置分3种遍历
+中左右 先序preOrder
+左中右 中序inOrder
+左右中 后序aftOrder
+preOrder(Node head)123      1   2    5 -&gt;3  4  6  7
+
+if head是否为空 ，否return...
+    
+
+        <a href="/2018/07/04/algorithm/tree/栈遍历树/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/study/">study</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stack/">stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tree/">tree</a></li></ul>
 
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Snake"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-06-23 12:00:48" datetime="2018-06-23T04:00:48.000Z"  itemprop="datePublished">2018-06-23</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/23/Snake/">No title</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        java swing贪吃蛇身体定位方格对象X
-1234567891011121314151617181920class Point &#123;        public int x;        public int y;        public Point(int x, int y...
-    
-
-        <a href="/2018/06/23/Snake/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java/JVM/类加载0"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-06-22 08:58:59" datetime="2018-06-22T00:58:59.000Z"  itemprop="datePublished">2018-06-22</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/JVM/">JVM</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/22/Java/JVM/类加载0/">类加载</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        类的加载7个阶段加载-&gt;验证-&gt;准备-&gt;解析-&gt;初始化-&gt;使用-&gt;卸载
-java的绑定
-
-静态绑定,在编译期就确定了final,static,private和构造方法的调用绑定
-动态绑定,即运行时绑定,在运行时根据具体的对象类型绑定.
-
-加载
-加载需要完成以...
-    
-
-        <a href="/2018/06/22/Java/JVM/类加载0/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类初始化/">类初始化</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/类的加载/">类的加载</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-MD/other/报道证"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-06-21 17:49:33" datetime="2018-06-21T09:49:33.000Z"  itemprop="datePublished">2018-06-21</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/06/21/MD/other/报道证/">No title</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-    
-
-        <a href="/2018/06/21/MD/other/报道证/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
     </div>
     
 </article>
@@ -628,7 +668,7 @@ java的绑定
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
     </div>
 </nav>
 
@@ -650,7 +690,7 @@ java的绑定
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

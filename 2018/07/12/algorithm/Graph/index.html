@@ -20,19 +20,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="algorithm,图的遍历,prim,kruskal,最小生成树,拓扑排序">
-    <meta name="description" content="图的序列化表示1 --&amp;gt; 2 |   / 7 /  临接表法   临接矩阵  数组生成图建立图的java对象: HashMap&amp;lt;Integer,Node&amp;gt; NodeMap 所有结点的Map HashSet&amp;lt;Edge&amp;gt; edgeSet 所有边的Set   结点 Node   Object value 结点的值 int in 表示有in个结点指向this int out表">
-<meta name="keywords" content="algorithm,图的遍历,prim,kruskal,最小生成树,拓扑排序">
+    <meta name="keywords" content="图的遍历,prim,kruskal,最小生成树,拓扑排序,algorithm">
+    <meta name="description" content="图的序列化表示 临接表法  临接矩阵   a(i,j)=1时表示俩点相连    i\j 0 1 2 3     0 0 1 0 0   1 1 0 1 0   2 0 1 0 0   3 0 0 0 0    由于是无向图,矩阵是基于对角线对称的,所以数据有一半的可以省略,可以把矩阵优化为下三角的部分,从左到右一行一行的放入大小为(n*n+1)/2的一维数组中 123456  (i) 0 1 2">
+<meta name="keywords" content="图的遍历,prim,kruskal,最小生成树,拓扑排序,algorithm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="图">
 <meta property="og:url" content="http://io.stelawliet.top/2018/07/12/algorithm/Graph/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="图的序列化表示1 --&amp;gt; 2 |   / 7 /  临接表法   临接矩阵  数组生成图建立图的java对象: HashMap&amp;lt;Integer,Node&amp;gt; NodeMap 所有结点的Map HashSet&amp;lt;Edge&amp;gt; edgeSet 所有边的Set   结点 Node   Object value 结点的值 int in 表示有in个结点指向this int out表">
+<meta property="og:description" content="图的序列化表示 临接表法  临接矩阵   a(i,j)=1时表示俩点相连    i\j 0 1 2 3     0 0 1 0 0   1 1 0 1 0   2 0 1 0 0   3 0 0 0 0    由于是无向图,矩阵是基于对角线对称的,所以数据有一半的可以省略,可以把矩阵优化为下三角的部分,从左到右一行一行的放入大小为(n*n+1)/2的一维数组中 123456  (i) 0 1 2">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-12T13:35:54.000Z">
+<meta property="og:updated_time" content="2018-08-31T11:13:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图">
-<meta name="twitter:description" content="图的序列化表示1 --&amp;gt; 2 |   / 7 /  临接表法   临接矩阵  数组生成图建立图的java对象: HashMap&amp;lt;Integer,Node&amp;gt; NodeMap 所有结点的Map HashSet&amp;lt;Edge&amp;gt; edgeSet 所有边的Set   结点 Node   Object value 结点的值 int in 表示有in个结点指向this int out表">
+<meta name="twitter:description" content="图的序列化表示 临接表法  临接矩阵   a(i,j)=1时表示俩点相连    i\j 0 1 2 3     0 0 1 0 0   1 1 0 1 0   2 0 1 0 0   3 0 0 0 0    由于是无向图,矩阵是基于对角线对称的,所以数据有一半的可以省略,可以把矩阵优化为下三角的部分,从左到右一行一行的放入大小为(n*n+1)/2的一维数组中 123456  (i) 0 1 2">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -172,7 +172,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图的序列化表示"><span class="post-toc-number">1.</span> <span class="post-toc-text">图的序列化表示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组生成图"><span class="post-toc-number">2.</span> <span class="post-toc-text">数组生成图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#建立图的java对象"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">建立图的java对象:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2维数组生成图的结构"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2维数组生成图的结构</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#宽度优先遍历-BFS"><span class="post-toc-number">3.</span> <span class="post-toc-text">宽度优先遍历 BFS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#深度优先遍历-DFS"><span class="post-toc-number">4.</span> <span class="post-toc-text">深度优先遍历 DFS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拓扑排序"><span class="post-toc-number">5.</span> <span class="post-toc-text">拓扑排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最小生成树"><span class="post-toc-number">6.</span> <span class="post-toc-text">最小生成树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#kruskal算法"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">kruskal算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#prim算法"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">prim算法</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#图的序列化表示"><span class="post-toc-number">1.</span> <span class="post-toc-text">图的序列化表示</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数组生成图"><span class="post-toc-number">2.</span> <span class="post-toc-text">数组生成图</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#建立图的java对象"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">建立图的java对象:</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2维数组生成图的结构"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2维数组生成图的结构</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#宽度优先遍历-BFS"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">宽度优先遍历 BFS</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#深度优先遍历-DFS"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">深度优先遍历 DFS</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拓扑排序"><span class="post-toc-number">3.</span> <span class="post-toc-text">拓扑排序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#最小生成树"><span class="post-toc-number">4.</span> <span class="post-toc-text">最小生成树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#kruskal算法"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">kruskal算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#prim算法"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">prim算法</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -198,16 +198,59 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h3 id="图的序列化表示"><a href="#图的序列化表示" class="headerlink" title="图的序列化表示"></a>图的序列化表示</h3><pre><code>1 --&gt; 2
-|   /
-7 /
-</code></pre><ol>
-<li>临接表法</li>
+            <h3 id="图的序列化表示"><a href="#图的序列化表示" class="headerlink" title="图的序列化表示"></a>图的序列化表示</h3><ol>
+<li><p>临接表法</p>
+</li>
+<li><p>临接矩阵</p>
+</li>
 </ol>
-<ol start="2">
-<li>临接矩阵</li>
-</ol>
-<h3 id="数组生成图"><a href="#数组生成图" class="headerlink" title="数组生成图"></a>数组生成图</h3><h4 id="建立图的java对象"><a href="#建立图的java对象" class="headerlink" title="建立图的java对象:"></a>建立图的java对象:</h4><ul>
+<p><code>a(i,j)=1</code>时表示俩点相连</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">i\j</th>
+<th style="text-align:center">0</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+</tr>
+</tbody>
+</table>
+<p>由于是无向图,矩阵是基于对角线对称的,所以数据有一半的可以省略,可以把矩阵优化为下三角的部分,从左到右一行一行的放入大小为(n*n+1)/2的一维数组中</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  (i) <span class="number">0</span> <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">     _ _ _ _ _</span><br><span class="line">(j)<span class="number">0</span>| <span class="number">0</span>,</span><br><span class="line">   <span class="number">1</span>| <span class="number">1</span>,<span class="number">0</span>,</span><br><span class="line">   <span class="number">2</span>| <span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>,</span><br><span class="line">   <span class="number">3</span>| <span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>原本a(i,j)的值为现在<code>a[(i*i+1)/2+j]</code>的值.(a为优化后的数组)</p>
+<h3 id="数组生成图"><a href="#数组生成图" class="headerlink" title="数组生成图"></a>数组生成图</h3><p>(java中为了更方便的计算图的相关算法预先记录了相关冗余的属性,所以建立对象时没有采用以上的优化的一维数组来表示图,不过可以在序列化采用下三角矩阵的数组来存储图的信息)</p>
+<h4 id="建立图的java对象"><a href="#建立图的java对象" class="headerlink" title="建立图的java对象:"></a>建立图的java对象:</h4><ul>
 <li><code>HashMap&lt;Integer,Node&gt; NodeMap</code> 所有结点的Map</li>
 <li><code>HashSet&lt;Edge&gt; edgeSet</code> 所有边的Set</li>
 </ul>
@@ -229,7 +272,8 @@
 <li><code>Node from</code> 这条边由form结点出发</li>
 <li><code>Node to</code> 这条边是指向 to结点</li>
 </ul>
-<h4 id="2维数组生成图的结构"><a href="#2维数组生成图的结构" class="headerlink" title="2维数组生成图的结构"></a>2维数组生成图的结构</h4><p>二维数组matrix中的每个一维数组为<code>[权值,form,to]</code><br>(matrix简写为arr)<br>遍历matrix中的每个一维数组 0 -&gt; arr.length-1</p>
+<h4 id="2维数组生成图的结构"><a href="#2维数组生成图的结构" class="headerlink" title="2维数组生成图的结构"></a>2维数组生成图的结构</h4><p>前面的序列化表示关注点是图的每个顶点.下面二维数组的表示是基于每一条边的.</p>
+<p>二维数组matrix中的每个一维数组为<code>[权值,form,to]</code><br>(matrix简写为arr)<br>遍历matrix中的每个一维数组 0 -&gt; arr.length-1</p>
 <ul>
 <li><code>arr[i][0]</code> =&gt; 权重 </li>
 <li><code>arr[i][1]</code>=&gt; int form</li>
@@ -237,11 +281,12 @@
 <li>if graph.nodeMap中没有form -&gt; put(form,new Node(from))</li>
 <li>if graph.nodeMap中没有to -&gt; put(form,new Node(to))</li>
 </ul>
-<p>….. 待补充</p>
-<h3 id="宽度优先遍历-BFS"><a href="#宽度优先遍历-BFS" class="headerlink" title="宽度优先遍历 BFS"></a>宽度优先遍历 BFS</h3><p>以距离源结点的层数来遍历,距源结点近的先输出.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@program</span>: exam</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: Zhaoziqi</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span>: 2018-07-16 11:10</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Graph</span> </span>&#123;</span><br><span class="line">   <span class="comment">//顶点集合,这里简化Integer为顶点的值,可以通过每个顶点的值取得顶点Node对象</span></span><br><span class="line">    HashMap&lt;Integer, Node&gt; nodes = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">   <span class="comment">//边集合</span></span><br><span class="line">    HashSet&lt;Edge&gt; edges = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Graph</span><span class="params">(<span class="keyword">int</span>[][] arr)</span>  </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span>[] ints : arr) &#123;</span><br><span class="line">            <span class="keyword">int</span> weight = ints[<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">int</span> from = ints[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> to = ints[<span class="number">2</span>];</span><br><span class="line">            <span class="keyword">if</span> (!nodes.containsKey(from))&#123;</span><br><span class="line">                nodes.put(from,<span class="keyword">new</span> Node(from));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (!nodes.containsKey(to))&#123;</span><br><span class="line">                nodes.put(to,<span class="keyword">new</span> Node(to));</span><br><span class="line">            &#125;</span><br><span class="line">            Node f = nodes.get(from);</span><br><span class="line">            Node t = nodes.get(to);</span><br><span class="line">            f.nodeList.add(t);</span><br><span class="line">            f.out++;</span><br><span class="line">            t.in++;</span><br><span class="line">            edges.add(<span class="keyword">new</span> Edge(weight,f,t));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="宽度优先遍历-BFS"><a href="#宽度优先遍历-BFS" class="headerlink" title="宽度优先遍历 BFS"></a>宽度优先遍历 BFS</h4><p>以距离源结点的层数来遍历,距源结点近的先输出.</p>
 <p>1.利用队列实现<br>2.从头结点开始依次按照相同广度添加到队列中.然后弹出,打印<br>3.每弹出一个节点,把该节点所有没有进过队列的临接点放入队列<br>4.直到队列变空</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BfsForeachGraph</span><span class="params">(Node head)</span></span>&#123;</span><br><span class="line">   <span class="comment">//避免重复遍历打印,使用打印遍历过的加入set中</span></span><br><span class="line">   HashSet&lt;Node&gt; set = <span class="keyword">new</span> HashSet();</span><br><span class="line">   Queue&lt;Node&gt; queue  = <span class="keyword">new</span> LinkedList();</span><br><span class="line">   queue.add(head);</span><br><span class="line">   set.add(head);</span><br><span class="line">   <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">      Node node = queue.poll();</span><br><span class="line">      System.out.println(node.value);</span><br><span class="line">      <span class="comment">//node.nextList为当前node指向的所有结点的集合</span></span><br><span class="line">      <span class="keyword">for</span>(Node next : node.nextList)&#123;</span><br><span class="line">         <span class="comment">//检查是否已经打印过</span></span><br><span class="line">         <span class="keyword">if</span>(!set.contains(next))&#123;</span><br><span class="line">            queue.add(next);</span><br><span class="line">            set.add(next);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="深度优先遍历-DFS"><a href="#深度优先遍历-DFS" class="headerlink" title="深度优先遍历 DFS"></a>深度优先遍历 DFS</h3><p>从头结点开始一直走下去.直到所有的路走完才依次退回上一个结点.退回如果有其他分支后也一直走下去.直到所有的路走完才依次退回上一个结点.(走过的结点不走)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Vertex v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   visited[V] = <span class="literal">true</span>;</span><br><span class="line">   Enqueue(V,Q);<span class="comment">//入队</span></span><br><span class="line">   <span class="keyword">while</span>(!Enqueque.isEmpty())&#123;</span><br><span class="line">      </span><br><span class="line">   &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//迭代</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BfsForeachGraph</span><span class="params">(Node head)</span></span>&#123;</span><br><span class="line">   <span class="comment">//避免重复遍历打印,使用打印遍历过的加入set中</span></span><br><span class="line">   HashSet&lt;Node&gt; set = <span class="keyword">new</span> HashSet();</span><br><span class="line">   Queue&lt;Node&gt; queue  = <span class="keyword">new</span> LinkedList();</span><br><span class="line">   queue.add(head);</span><br><span class="line">   set.add(head);</span><br><span class="line">   <span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">      Node node = queue.poll();</span><br><span class="line">      System.out.println(node.value);</span><br><span class="line">      <span class="comment">//node.nextList为当前node指向的所有结点的集合</span></span><br><span class="line">      <span class="keyword">for</span>(Node next : node.nextList)&#123;</span><br><span class="line">         <span class="comment">//检查是否已经打印过</span></span><br><span class="line">         <span class="keyword">if</span>(!set.contains(next))&#123;</span><br><span class="line">            queue.add(next);</span><br><span class="line">            set.add(next);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归</span></span><br><span class="line"><span class="comment">//待改进</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BfsForeachGraph</span><span class="params">(Node head)</span></span>&#123;</span><br><span class="line">   HashSet&lt;Node&gt; set = <span class="keyword">new</span> LinkedHashSet();</span><br><span class="line">   set.add(head);</span><br><span class="line">   Queue&lt;Node&gt; queue  = <span class="keyword">new</span> LinkedList();</span><br><span class="line">   queue.add(head);</span><br><span class="line">   System.out.println(node.value);</span><br><span class="line">   BFS(head,set);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(Node node,HashSet&lt;Node&gt; set)</span></span>&#123;</span><br><span class="line">   <span class="keyword">for</span>(Node next : node.nextList)&#123;</span><br><span class="line">         <span class="comment">//检查是否已经打印过</span></span><br><span class="line">         <span class="keyword">if</span>(!set.contains(next))&#123;</span><br><span class="line">            set.add(next);</span><br><span class="line">            System.out.println(node.value);</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="深度优先遍历-DFS"><a href="#深度优先遍历-DFS" class="headerlink" title="深度优先遍历 DFS"></a>深度优先遍历 DFS</h4><p>从头结点开始一直走下去.直到所有的路走完才依次退回上一个结点.退回如果有其他分支后也一直走下去.直到所有的路走完才依次退回上一个结点.(走过的结点不走)</p>
 <ol>
 <li>利用栈实现</li>
 <li>从源结点开始把结点按照深度放入栈,然后弹出</li>
@@ -253,15 +298,14 @@
 <li><code>Stack&lt;Node&gt; stack</code> 准备一个存储Node的栈</li>
 <li><code>HashSet&lt;Node&gt; set</code> 准备一个存储Node的Set用来判断是否遍历打印过</li>
 <li>添加head到set和stack中,打印头结点的val</li>
-<li><p>.while - stack为空</p>
-<ol>
+<li>.while - stack为空<ol>
 <li>pop出stack顶 =&gt; Node cur</li>
 <li>for each cur的nextList =&gt;Node  next ,判断next是否在set中添加过<ol>
 <li>true - continue;<blockquote>
 <p>在set中添加过说明已经在前面被遍历打印过</p>
 </blockquote>
 </li>
-<li>false :<ol>
+<li>false :</li>
 <li>先添加cur到栈中</li>
 <li>然后添加next到栈中</li>
 <li>set中添加next进行标记.然后打印next的val</li>
@@ -271,9 +315,7 @@
 </ol>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Node head)</span></span>&#123;</span><br><span class="line">   Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">   Set&lt;Node&gt; set = <span class="keyword">new</span> HashSet();</span><br><span class="line">   stack.add(head);</span><br><span class="line">   set.add(head);</span><br><span class="line">   System.out.println(head.value);</span><br><span class="line">   <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">      Node node = stack.pop();</span><br><span class="line">      <span class="keyword">for</span>(Node next : node.NextList)&#123;</span><br><span class="line">         <span class="keyword">if</span>(!set.contanins(next))&#123;</span><br><span class="line">            set.add(next);</span><br><span class="line">            System.out.println(next.value);</span><br><span class="line">            stack.push(node);</span><br><span class="line">            srack.push(next);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Node head)</span></span>&#123;</span><br><span class="line">   Stack&lt;Node&gt; stack = <span class="keyword">new</span> Stack();</span><br><span class="line">   Set&lt;Node&gt; set = <span class="keyword">new</span> HashSet();</span><br><span class="line">   stack.add(head);</span><br><span class="line">   set.add(head);</span><br><span class="line">   System.out.println(head.value);</span><br><span class="line">   <span class="keyword">while</span>(!stack.isEmpty())&#123;</span><br><span class="line">      Node node = stack.pop();</span><br><span class="line">      <span class="keyword">for</span>(Node next : node.NextList)&#123;</span><br><span class="line">         <span class="keyword">if</span>(!set.contanins(next))&#123;</span><br><span class="line">            set.add(next);</span><br><span class="line">            System.out.println(next.value);</span><br><span class="line">            stack.push(node);</span><br><span class="line">            srack.push(next);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">         &#125;</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//递归</span></span><br><span class="line">Set&lt;Node&gt; set = <span class="keyword">new</span> LinkedHashSet();</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DFS</span><span class="params">(Node head)</span></span>&#123;</span><br><span class="line">   System.out.println(head.value);</span><br><span class="line">   set.add(head);</span><br><span class="line">   <span class="keyword">for</span>(Node next : node.NextList)&#123;</span><br><span class="line">      <span class="keyword">if</span>(!set.contanins(next))&#123;</span><br><span class="line">         DFS(next);</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h3><p>具体实现</p>
 <p><code>HashMap&lt;Node,Integer&gt; inMap</code> 记录所有结点的入度</p>
 <p><code>Queue&lt;Node&gt; zeroInQueue</code> 记录所有0入度的结点</p>
@@ -306,7 +348,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-07-12T13:35:54.000Z" itemprop="dateUpdated">2018-07-12 21:35:54</time>
+    Last updated: <time datetime="2018-08-31T11:13:40.000Z" itemprop="dateUpdated">2018-08-31 19:13:40</time>
 </span><br>
 
 
@@ -386,9 +428,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/07/14/Linux/server/Tomcat/Tomcat嵌入式/" id="post-prev" class="post-nav-link">
+      <a href="/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">嵌入式 Tomcat</h4>
+        <h4 class="title">Tomcat</h4>
       </a>
     </div>
   
@@ -468,7 +510,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

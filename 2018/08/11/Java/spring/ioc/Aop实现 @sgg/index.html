@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="aop,enableAspectJAutoProxy,aspect">
-    <meta name="description" content="AOP：【动态代理】   指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；   1、导入aop模块；Spring AOP：(spring-aspects)  2、定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx）  3、定义一个日志切面类（LogAspects）：切面类里面的方法需要动态感">
+    <meta name="description" content="AOP:   指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；  导入aop模块；Spring AOP：(spring-aspects) 定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx） 定义一个日志切面类(LogAspects)：切面类里面的方法需要动态感知MathCalculator">
 <meta name="keywords" content="aop,enableAspectJAutoProxy,aspect">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AOP @EnableAspectJAutoProxy@解析">
 <meta property="og:url" content="http://io.stelawliet.top/2018/08/11/Java/spring/ioc/Aop实现 @sgg/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="AOP：【动态代理】   指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；   1、导入aop模块；Spring AOP：(spring-aspects)  2、定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx）  3、定义一个日志切面类（LogAspects）：切面类里面的方法需要动态感">
+<meta property="og:description" content="AOP:   指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；  导入aop模块；Spring AOP：(spring-aspects) 定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx） 定义一个日志切面类(LogAspects)：切面类里面的方法需要动态感知MathCalculator">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-13T09:03:35.000Z">
+<meta property="og:updated_time" content="2018-08-25T07:10:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AOP @EnableAspectJAutoProxy@解析">
-<meta name="twitter:description" content="AOP：【动态代理】   指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；   1、导入aop模块；Spring AOP：(spring-aspects)  2、定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx）  3、定义一个日志切面类（LogAspects）：切面类里面的方法需要动态感">
+<meta name="twitter:description" content="AOP:   指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；  导入aop模块；Spring AOP：(spring-aspects) 定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx） 定义一个日志切面类(LogAspects)：切面类里面的方法需要动态感知MathCalculator">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -169,6 +169,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AOP"><span class="post-toc-number">1.</span> <span class="post-toc-text">AOP:</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-Java/spring/ioc/Aop实现 @sgg"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -191,19 +198,26 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <p>AOP：【动态代理】</p>
+            <h3 id="AOP"><a href="#AOP" class="headerlink" title="AOP:"></a>AOP:</h3><hr>
 <p>  指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；</p>
-<p>  1、导入aop模块；Spring AOP：(spring-aspects)<br>  2、定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx）<br>  3、定义一个日志切面类（LogAspects）：切面类里面的方法需要动态感知MathCalculator.div运行到哪里然后执行；<br>  通知方法：<br>  前置通知(@Before)：logStart：在目标方法(div)运行之前运行<br>  后置通知(@After)：logEnd：在目标方法(div)运行结束之后运行（无论方法正常结束还是异常结束）<br>  返回通知(@AfterReturning)：logReturn：在目标方法(div)正常返回之后运行<br>  异常通知(@AfterThrowing)：logException：在目标方法(div)出现异常以后运行<br>  环绕通知(@Around)：动态代理，手动推进目标方法运行（joinPoint.procced()）<br>  4、给切面类的目标方法标注何时何地运行（通知注解）；<br>  5、将切面类和业务逻辑类（目标方法所在类）都加入到容器中;<br>  6、必须告诉Spring哪个类是切面类(给切面类上加一个注解：@Aspect)<br>  [7]、给配置类中加 @EnableAspectJAutoProxy 【开启基于注解的aop模式】<br>  在Spring中很多的 @EnableXXX;</p>
-<p>  三步：</p>
+<ol>
+<li>导入aop模块；Spring AOP：(spring-aspects)</li>
+<li>定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx）</li>
+<li>定义一个日志切面类(LogAspects)：切面类里面的方法需要动态感知MathCalculator.div运行到哪里然后执行；<br>  通知方法：<br>  前置通知(@Before)：logStart：在目标方法(div)运行之前运行<br>  后置通知(@After)：logEnd：在目标方法(div)运行结束之后运行（无论方法正常结束还是异常结束）<br>  返回通知(@AfterReturning)：logReturn：在目标方法(div)正常返回之后运行<br>  异常通知(@AfterThrowing)：logException：在目标方法(div)出现异常以后运行<br>  环绕通知(@Around)：动态代理，手动推进目标方法运行（joinPoint.procced()）</li>
+<li>给切面类的目标方法标注何时何地运行(通知注解)@PointCut</li>
+<li>将切面类和业务逻辑类（目标方法所在类）都加入到容器中;</li>
+<li>必须告诉Spring哪个类是切面类(给切面类上加一个注解：@Aspect)</li>
+<li><p>给配置类中加 @EnableAspectJAutoProxy 【开启基于注解的aop模式】<br>  在Spring中很多的 @EnableXXX;</p>
+<p>三步：</p>
 <blockquote>
 <ol>
-<li>将业务逻辑组件和切面类都加入到容器中；告诉Spring哪个是切面类（@Aspect）<ol start="2">
+<li>将业务逻辑组件和切面类都加入到容器中；告诉Spring哪个是切面类（@Aspect）</li>
 <li>在切面类上的每一个通知方法上标注通知注解，告诉Spring何时何地运行（切入点表达式）</li>
 <li>开启基于注解的aop模式；@EnableAspectJAutoProxy</li>
 </ol>
+</blockquote>
 </li>
 </ol>
-</blockquote>
 <p>  AOP原理：</p>
 <p>【看给容器中注册了什么组件，这个组件什么时候工作，这个组件的功能是什么？】<br>  <code>@EnableAspectJAutoProxy</code>；</p>
 <ol>
@@ -289,7 +303,6 @@ implements SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware
 5. 以后容器中获取到的就是这个组件的代理对象，执行目标方法的时候，代理对象就会执行通知方法的流程；
 </code></pre></li>
 </ol>
-<p>​           </p>
 <pre><code>   3. 目标方法执行  ；
     容器中保存了组件的代理对象（cglib增强后的对象），这个对象里面保存了详细信息（比如增强器，目标对象，xxx）；
 1. CglibAopProxy.intercept();拦截目标方法的执行
@@ -359,7 +372,7 @@ implements SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-08-13T09:03:35.000Z" itemprop="dateUpdated">2018-08-13 17:03:35</time>
+    Last updated: <time datetime="2018-08-25T07:10:56.000Z" itemprop="dateUpdated">2018-08-25 15:10:56</time>
 </span><br>
 
 
@@ -521,7 +534,7 @@ implements SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

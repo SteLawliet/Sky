@@ -14,35 +14,21 @@
     
     
     
-    <title>No title | stelawliet | 迁移整理中...</title>
+    <title>stelawliet | 迁移整理中...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="&amp;lt;转&amp;gt;IDEA用maven创建springMVC项目和配置（XML配置和Java配置）转自http://blog.csdn.net/cquwel 这段时间在学习javaweb的一些知识，然后接触到了springmvc框架。框架的创建和配置一直是新手入门的一个难题，所以我就写一下我的配置过程，以供参考，另外因为spring4的新特性可以用java来配置，网上相关资料较少，所以我参考了很多">
+    <meta name="description" content="5、基于XML 的配置 5.1、配置web.xml  idea创建的web.xml这个文件版本比较低，所以我们要找一个新的。把我的文件直接全部覆盖复制进去就可以了。 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UT">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
+<meta property="og:title" content="stelawliet">
 <meta property="og:url" content="http://io.stelawliet.top/2018/01/06/Java/spring/idea spring配置/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="&amp;lt;转&amp;gt;IDEA用maven创建springMVC项目和配置（XML配置和Java配置）转自http://blog.csdn.net/cquwel 这段时间在学习javaweb的一些知识，然后接触到了springmvc框架。框架的创建和配置一直是新手入门的一个难题，所以我就写一下我的配置过程，以供参考，另外因为spring4的新特性可以用java来配置，网上相关资料较少，所以我参考了很多">
+<meta property="og:description" content="5、基于XML 的配置 5.1、配置web.xml  idea创建的web.xml这个文件版本比较低，所以我们要找一个新的。把我的文件直接全部覆盖复制进去就可以了。 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UT">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302135957733?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302140219703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302140524645?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302141623473?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302142210523?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302142259445?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302142450812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302143418310?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302143611593?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302143744109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302144254258?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302144448230?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302144717687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="http://img.blog.csdn.net/20170302144951018?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170302151721579?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170302151751783?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170302152844445?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
@@ -51,11 +37,11 @@
 <meta property="og:image" content="http://img.blog.csdn.net/20170302152950495?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170302153144853?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20170302155407825?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-01-06T15:03:09.000Z">
+<meta property="og:updated_time" content="2018-08-25T08:47:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="&amp;lt;转&amp;gt;IDEA用maven创建springMVC项目和配置（XML配置和Java配置）转自http://blog.csdn.net/cquwel 这段时间在学习javaweb的一些知识，然后接触到了springmvc框架。框架的创建和配置一直是新手入门的一个难题，所以我就写一下我的配置过程，以供参考，另外因为spring4的新特性可以用java来配置，网上相关资料较少，所以我参考了很多">
-<meta name="twitter:image" content="http://img.blog.csdn.net/20170302135957733?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:title" content="stelawliet">
+<meta name="twitter:description" content="5、基于XML 的配置 5.1、配置web.xml  idea创建的web.xml这个文件版本比较低，所以我们要找一个新的。把我的文件直接全部覆盖复制进去就可以了。 1234567891011121314151617181920212223242526272829303132333435363738&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UT">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20170302151721579?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -154,7 +140,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -190,13 +176,6 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#lt-转-gt-IDEA用maven创建springMVC项目和配置（XML配置和Java配置）"><span class="post-toc-number">1.</span> <span class="post-toc-text">&lt;转&gt;IDEA用maven创建springMVC项目和配置（XML配置和Java配置）</span></a></li></ol>
-        </nav>
-    </aside>
-
 
 <article id="post-Java/spring/idea spring配置"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -217,116 +196,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="lt-转-gt-IDEA用maven创建springMVC项目和配置（XML配置和Java配置）"><a href="#lt-转-gt-IDEA用maven创建springMVC项目和配置（XML配置和Java配置）" class="headerlink" title="&lt;转&gt;IDEA用maven创建springMVC项目和配置（XML配置和Java配置）"></a>&lt;转&gt;IDEA用maven创建springMVC项目和配置（XML配置和Java配置）</h1><p>转自<a href="http://blog.csdn.net/cquwel" target="_blank" rel="noopener">http://blog.csdn.net/cquwel</a></p>
-<p>这段时间在学习javaweb的一些知识，然后接触到了springmvc框架。框架的创建和配置一直是新手入门的一个难题，所以我就写一下我的配置过程，以供参考，另外因为spring4的新特性可以用java来配置，网上相关资料较少，所以我参考了很多博文后，把xml和java两种配置方式都试了一下。<br>工具准备：IDEA2016.3 Java jdk 1.8<br>1、DEA创建项目<br>新建一个maven project，并且选择webapp原型。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302135957733?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure><br>然后点击next<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302140219703?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure></p>
-<p>这里的GroupId和ArtifactID随意填写，但是ArtifactID最好和你的项目一名一样然后next</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302140524645?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure>
-<p>为了快一点创建，我们添加一个属性值，如图中亮的所示，点右边的加号，name=archetypeCatalog value=internal。<br>这里我们选择使用IDEA自带的maven，下面的两个分别是你的maven配置文件和你的仓库地址，我记得idea的maven一开始是没有setting.xml的，所以你要去maven的目录里面拷一份setting.xml到你的仓库中。idea的maven在安装路径的plugins文件夹下，即X:\xxx\JetBrains\IntelliJ IDEA 2016.3.2\plugins\plugins\maven\lib\maven3\conf\setting.xml拷贝到你的用户文件夹下的.m2文件夹下，为了之后能够快速的下载依赖包，我们要加一个官方库的镜像，因为maven的官方仓库在国外，太慢了。<br>我们在你的.m2文件夹下的setting.xml中添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">      &lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;</span><br><span class="line">&lt;/mirror&gt;123456</span><br></pre></td></tr></table></figure>
-<p>具体位置如下图所示</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302141623473?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure>
-<p>这个是阿里的库，所以很快。做完之后我们回到idea，点击next，然后填写项目名，然后finish。<br>接下来idea开始创建项目，这里你要把maven自动导入打开。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302142210523?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure>
-<p>然后等待maven创建项目成功</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302142259445?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure>
-<p>这样我们的项目初始的框架就弄好了。</p>
-<p>2、添加pom依赖<br>创建好之后的项目目录如图所示<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302142450812?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure></p>
-<p>我们打开其中的pom.xml，添加我们的依赖。这里我把我的依赖全部放出来，复制到你的pom.xml的dependencies标签之间就可以了，pom文件中也会给你一个示例。<br>我的依赖如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--测试--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;junit&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;junit&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;4.12&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!--日志--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.slf4j&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;slf4j-log4j12&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.7.21&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!--J2EE--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;3.1.0&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;javax.servlet.jsp&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jsp-api&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;2.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;javax.servlet&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jstl&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.2&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!--mysql驱动包--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;5.1.35&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!--springframework--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-web&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;4.2.6.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;4.2.6.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-context&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;4.2.6.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;spring-test&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;4.2.6.RELEASE&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">      &lt;dependency&gt;</span><br><span class="line">          &lt;groupId&gt;org.springframework&lt;/groupId&gt;</span><br><span class="line">          &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;</span><br><span class="line">          &lt;version&gt;4.2.6.RELEASE&lt;/version&gt;</span><br><span class="line">      &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;com.github.stefanbirkner&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;system-rules&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.16.1&lt;/version&gt;</span><br><span class="line">      &lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.aspectj&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;aspectjweaver&lt;/artifactId&gt;</span><br><span class="line">      &lt;version&gt;1.8.9&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;!--其他需要的包--&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;3.4&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">        &lt;groupId&gt;commons-fileupload&lt;/groupId&gt;</span><br><span class="line">        &lt;artifactId&gt;commons-fileupload&lt;/artifactId&gt;</span><br><span class="line">        &lt;version&gt;1.3.1&lt;/version&gt;</span><br><span class="line">    &lt;/dependency&gt;1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283</span><br></pre></td></tr></table></figure>
-<p>一旦你复制过去之后，maven就会开始下载相应的jar文件，等待下载完成即可。可能包有点多，不过用了阿里的镜像之后还是挺快的。</p>
-<p>3、添加框架支持<br>配置完pom.xml之后，我们在idea中要添加一下框架的支持。<br>右击我们的项目文件夹，选择add framework support<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302143418310?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure></p>
-<p>然后在窗口中分别选中spring和springmvc，并且选择spring是，记得勾选springconfig.xml</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302143611593?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure>
-<p>因为我们之前下载过相应的文件，所以这里直接用我们下载好的spring文件。<br>点击ok之后，我们会发现WEB-INF文件夹下多出了两个文件<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302143744109?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure></p>
-<p>这个就是我们之后要配置的文件，先不用管。</p>
-<p>4、完善目录结构<br>首先我们在src/main文件夹下创建java文件夹，你会发现这个文件夹不能创建java的类文件和package，别急，先把必须的文件夹全部创建好。请按照下图创建文件夹<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302144254258?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure></p>
-<p>然后我们进入project structure选择文件夹的作用，在界面的右上角进入project structure<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302144448230?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure><br>然后在module中选择设置各个模块，其中java文件夹是 sources，test是Test，改完之后，点ok，文件夹会变色，那就成功了。<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302144717687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure><br>然后仔仔java文件夹中添加需要的包。最后的完整目录如下<br><figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="http://img.blog.csdn.net/20170302144951018?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvQ1FVV0VM/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="这里写图片描述" title="">
-                </div>
-                <div class="image-caption">这里写图片描述</div>
-            </figure></p>
-<p>这样我们配置前的工作就完成了，接下来就是对springmvc进行配置。我把两种配置的方法分成两部分，以供参考。</p>
-<p>5、基于XML 的配置</p>
+            <p>5、基于XML 的配置</p>
 <p>5.1、配置web.xml<br>  idea创建的web.xml这个文件版本比较低，所以我们要找一个新的。把我的文件直接全部覆盖复制进去就可以了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;</span><br><span class="line">         xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">         xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot;</span><br><span class="line">         version=&quot;3.1&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;display-name&gt;Archetype Created Web Application&lt;/display-name&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--welcome pages--&gt;</span><br><span class="line">    &lt;welcome-file-list&gt;</span><br><span class="line">        &lt;welcome-file&gt;index.jsp&lt;/welcome-file&gt;</span><br><span class="line">    &lt;/welcome-file-list&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--配置springmvc DispatcherServlet--&gt;</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line">        &lt;init-param&gt;</span><br><span class="line">            &lt;!--配置dispatcher.xml作为mvc的配置文件--&gt;</span><br><span class="line">            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">            &lt;param-value&gt;/WEB-INF/dispatcher-servlet.xml&lt;/param-value&gt;</span><br><span class="line">        &lt;/init-param&gt;</span><br><span class="line">        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">        &lt;async-supported&gt;true&lt;/async-supported&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;springMVC&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br><span class="line">    &lt;!--把applicationContext.xml加入到配置文件中--&gt;</span><br><span class="line">    &lt;context-param&gt;</span><br><span class="line">        &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">        &lt;param-value&gt;/WEB-INF/applicationContext.xml&lt;/param-value&gt;</span><br><span class="line">    &lt;/context-param&gt;</span><br><span class="line">    &lt;listener&gt;</span><br><span class="line">        &lt;listener-class&gt;org.springframework.web.context.ContextLoaderListener&lt;/listener-class&gt;</span><br><span class="line">    &lt;/listener&gt;</span><br><span class="line">&lt;/web-app&gt;1234567891011121314151617181920212223242526272829303132333435363738</span><br></pre></td></tr></table></figure>
 <p>上面代码的意思主要就是创建一个中央的控制器，都有简单的注释，如果有需要，请自行百度。</p>
@@ -414,7 +284,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-01-06T15:03:09.000Z" itemprop="dateUpdated">2018-01-06 23:03:09</time>
+    Last updated: <time datetime="2018-08-25T08:47:13.000Z" itemprop="dateUpdated">2018-08-25 16:47:13</time>
 </span><br>
 
 
@@ -574,7 +444,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -596,7 +466,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/01/06/Java/spring/idea spring配置/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/01/06/Java/spring/idea spring配置/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -606,7 +476,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/01/06/Java/spring/idea spring配置/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/01/06/Java/spring/idea spring配置/&title=stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -616,7 +486,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/01/06/Java/spring/idea spring配置/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/01/06/Java/spring/idea spring配置/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>

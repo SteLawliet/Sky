@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="首先打印出 1Object Proxy.newProxyInstance(ClassLoader loader,Interfaces interfaces,InvocationHandler handler)方法返回的代理对象 class com.sun.proxy.$Proxy0 通常打印出的类名是当前类与包的关系,但是这里从proxy的包下也找不到$Proxy类.因为代理类是运行时代动态生成的">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-19T02:05:50.000Z">
+<meta property="og:updated_time" content="2018-08-31T12:46:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDK Proxy分析">
 <meta name="twitter:description" content="首先打印出 1Object Proxy.newProxyInstance(ClassLoader loader,Interfaces interfaces,InvocationHandler handler)方法返回的代理对象 class com.sun.proxy.$Proxy0 通常打印出的类名是当前类与包的关系,但是这里从proxy的包下也找不到$Proxy类.因为代理类是运行时代动态生成的">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -217,7 +217,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> $<span class="title">Proxy0</span> <span class="keyword">extends</span> <span class="title">Proxy</span> <span class="keyword">implements</span> $<span class="title">Proxy0</span> </span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">public</span> $<span class="title">Proxy0</span>(<span class="title">InvocationHandler</span> <span class="title">var1</span>) <span class="title">throws</span>  </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(var1);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> var1)</span> <span class="keyword">throws</span>  </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">super</span>.h.invoke(<span class="keyword">this</span>, m3, <span class="keyword">new</span> Object[]&#123;var1&#125;);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (RuntimeException | Error var3) &#123;</span><br><span class="line">            <span class="keyword">throw</span> var3;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable var4) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> UndeclaredThrowableException(var4);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">static</span>&#123;</span><br><span class="line">   <span class="comment">//....</span></span><br><span class="line">   <span class="comment">//前后还有一些Method的初始化这里省略.</span></span><br><span class="line">    m3 = Class.forName(<span class="string">"com.sun.proxy.$Proxy0"</span>)</span><br><span class="line"> .getMethod(<span class="string">"update"</span>, Integer.TYPE);</span><br><span class="line">   </span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>从反编译后的源码中可以看出,当调用代理对象的方法时,会去调用<code>InvocationHandler</code>的invoke方法.</p>
 <p>在invoke方法中传入被代理对象要执行的method和相应的参数,然后通过反射来调用.在调用前后执行我们想要的方法.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(obj,method,args)-&gt; &#123;</span><br><span class="line">    System.out.println(&quot;proxy before&quot;);</span><br><span class="line">    Object res = method.invoke(finalUpdate, args);</span><br><span class="line">    System.out.println(&quot;proxy after&quot;);</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(obj,method,args)-&gt; &#123;</span><br><span class="line">    System.out.println(&quot;proxy before&quot;);</span><br><span class="line">    //这里invoke中传入的是原始对象.而不是方法中的obj.不然会产生无限递归</span><br><span class="line">    Object res = method.invoke(finalUpdate, args);</span><br><span class="line">    System.out.println(&quot;proxy after&quot;);</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p><code>InvocationHandler</code>就是我们在生成代理对象时传入的<code>InvocationHandler</code>的实现类.</p>
 </blockquote>
@@ -232,7 +232,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-07-19T02:05:50.000Z" itemprop="dateUpdated">2018-07-19 10:05:50</time>
+    Last updated: <time datetime="2018-08-31T12:46:24.000Z" itemprop="dateUpdated">2018-08-31 20:46:24</time>
 </span><br>
 
 
@@ -394,7 +394,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

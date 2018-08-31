@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="@EnableAspectJAutoProxyorg.springframework.aop.config.internalAutoProxyCreator-&amp;gt;SmartInstantiationAwareBeanPostProcessor-&amp;gt;BeanPostProcessor  @author Rod Johnson  debug 1234AbstractAutoProxyCreat">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-11T14:11:43.000Z">
+<meta property="og:updated_time" content="2018-08-25T06:57:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AOP @EnableAspectJAutoProxy解析">
 <meta name="twitter:description" content="@EnableAspectJAutoProxyorg.springframework.aop.config.internalAutoProxyCreator-&amp;gt;SmartInstantiationAwareBeanPostProcessor-&amp;gt;BeanPostProcessor  @author Rod Johnson  debug 1234AbstractAutoProxyCreat">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -206,6 +206,10 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">AbstractAutoProxyCreator</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setBeanFactory</span><span class="params">(BeanFactory beanFactory)</span></span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">postProcessBeforeInstantiation</span><span class="params">(Class&lt;?&gt; beanClass, String beanName)</span> </span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Object <span class="title">postProcessAfterInitialization</span><span class="params">(@Nullable Object bean, String beanName)</span></span></span><br></pre></td></tr></table></figure>
 <p>doCreateBean(beanName,mdbToUse,args);</p>
 <p>isInfrastructureClass</p>
+<blockquote>
+<p>判断是否是基础类/? 实现aop的相关类 </p>
+<p>Pointcut(),Advisor</p>
+</blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * Return whether the given bean class represents an infrastructure class</span></span><br><span class="line"><span class="comment">	 * that should never be proxied.</span></span><br><span class="line"><span class="comment">	 * &lt;p&gt;The default implementation considers Advices, Advisors and</span></span><br><span class="line"><span class="comment">	 * AopInfrastructureBeans as infrastructure classes.</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> beanClass the class of the bean</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span> whether the bean represents an infrastructure class</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> org.aopalliance.aop.Advice</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> org.springframework.aop.Advisor</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> org.springframework.aop.framework.AopInfrastructureBean</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@see</span> #shouldSkip</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">isInfrastructureClass</span><span class="params">(Class&lt;?&gt; beanClass)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> retVal = Advice.class.isAssignableFrom(beanClass) ||</span><br><span class="line">				Pointcut.class.isAssignableFrom(beanClass) ||</span><br><span class="line">				Advisor.class.isAssignableFrom(beanClass) ||</span><br><span class="line">				AopInfrastructureBean.class.isAssignableFrom(beanClass);</span><br><span class="line">		<span class="keyword">if</span> (retVal &amp;&amp; logger.isTraceEnabled()) &#123;</span><br><span class="line">			logger.trace(<span class="string">"Did not attempt to auto-proxy infrastructure class ["</span> + beanClass.getName() + <span class="string">"]"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> retVal;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>AopUtils 根据指定的切面表达式判断匹配的增强器</p>
 <p>eligibleAdvisors</p>
@@ -213,7 +217,7 @@
 <p>创建AOP代理对象</p>
 <p>DefaultAopProxyFactory</p>
 <p><code>public AopProxy createAopProxy(AdvisedSupport config)</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> AopProxy <span class="title">createAopProxy</span><span class="params">(AdvisedSupport config)</span> <span class="keyword">throws</span> AopConfigException </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config)) &#123;</span><br><span class="line">			Class&lt;?&gt; targetClass = config.getTargetClass();</span><br><span class="line">			<span class="keyword">if</span> (targetClass == <span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> AopConfigException(<span class="string">"TargetSource cannot determine target class: "</span> +</span><br><span class="line">						<span class="string">"Either an interface or a target is required for proxy creation."</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (targetClass.isInterface() || Proxy.isProxyClass(targetClass)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> JdkDynamicAopProxy(config);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ObjenesisCglibAopProxy(config);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> JdkDynamicAopProxy(config);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> AopProxy <span class="title">createAopProxy</span><span class="params">(AdvisedSupport config)</span> <span class="keyword">throws</span> AopConfigException </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (config.isOptimize() || config.isProxyTargetClass() || hasNoUserSuppliedProxyInterfaces(config)) &#123;</span><br><span class="line">			Class&lt;?&gt; targetClass = config.getTargetClass();</span><br><span class="line">			<span class="keyword">if</span> (targetClass == <span class="keyword">null</span>) &#123;</span><br><span class="line">				<span class="keyword">throw</span> <span class="keyword">new</span> </span><br><span class="line">               AopConfigException(<span class="string">"TargetSource cannot determine target class: "</span> +</span><br><span class="line">						<span class="string">"Either an interface or a target is required for proxy creation."</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (targetClass.isInterface() || Proxy.isProxyClass(targetClass)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> JdkDynamicAopProxy(config);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> ObjenesisCglibAopProxy(config);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">new</span> JdkDynamicAopProxy(config);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>拦截器链的调用</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ReflectiveMethodInvocation.proceed();</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>&#123;</span><br><span class="line"> invokeJoinpoint();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -224,7 +228,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-08-11T14:11:43.000Z" itemprop="dateUpdated">2018-08-11 22:11:43</time>
+    Last updated: <time datetime="2018-08-25T06:57:57.000Z" itemprop="dateUpdated">2018-08-25 14:57:57</time>
 </span><br>
 
 
@@ -306,7 +310,7 @@
     <div class="waves-block waves-effect prev">
       <a href="/2018/08/10/Java/spring/ioc/IOC Refresh Analysis/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">Spring IOC  Analysis</h4>
+        <h4 class="title">Spring IOC Refresh Analysis</h4>
       </a>
     </div>
   
@@ -386,7 +390,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

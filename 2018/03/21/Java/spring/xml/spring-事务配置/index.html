@@ -14,7 +14,7 @@
     
     
     
-    <title>No title | stelawliet | 迁移整理中...</title>
+    <title>stelawliet | 迁移整理中...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,14 +24,14 @@
     <meta name="description" content="事务xml配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns:xsi=&quot;http:">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
-<meta property="og:url" content="http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/index.html">
+<meta property="og:title" content="stelawliet">
+<meta property="og:url" content="http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/index.html">
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="事务xml配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns:xsi=&quot;http:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-21T12:53:58.000Z">
+<meta property="og:updated_time" content="2018-08-29T13:40:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
+<meta name="twitter:title" content="stelawliet">
 <meta name="twitter:description" content="事务xml配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns:xsi=&quot;http:">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -175,7 +175,7 @@
     </aside>
 
 
-<article id="post-Java/spring/spring-事务配置"
+<article id="post-Java/spring/xml/spring-事务配置"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -195,7 +195,11 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h3 id="事务xml配置"><a href="#事务xml配置" class="headerlink" title="事务xml配置"></a>事务xml配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span> <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span> <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span> <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd "</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定spring读取db.properties配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:db.properties"</span>  /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 事务核心管理器,封装了所有事务操作. 依赖于连接池 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"transactionManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 事务模板对象 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"transactionTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.transaction.support.TransactionTemplate"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"transactionManager"</span> <span class="attr">ref</span>=<span class="string">"transactionManager"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 配置事务通知 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:advice</span> <span class="attr">id</span>=<span class="string">"txAdvice"</span> <span class="attr">transaction-manager</span>=<span class="string">"transactionManager"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 以方法为单位,指定方法应用什么事务属性</span></span><br><span class="line"><span class="comment">			isolation:隔离级别</span></span><br><span class="line"><span class="comment">			propagation:传播行为</span></span><br><span class="line"><span class="comment">			read-only:是否只读</span></span><br><span class="line"><span class="comment">		 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"save*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"persist*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"update*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"modify*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"delete*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"remove*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"get*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"find*"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"true"</span> /&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">tx:method</span> <span class="attr">name</span>=<span class="string">"transfer"</span> <span class="attr">isolation</span>=<span class="string">"REPEATABLE_READ"</span> <span class="attr">propagation</span>=<span class="string">"REQUIRED"</span> <span class="attr">read-only</span>=<span class="string">"false"</span> /&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">tx:attributes</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tx:advice</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 配置织入 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:config</span>  &gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置切点表达式 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:pointcut</span> <span class="attr">expression</span>=<span class="string">"execution(* cn.itcast.service.*ServiceImpl.*(..))"</span> <span class="attr">id</span>=<span class="string">"txPc"</span>/&gt;</span></span><br><span class="line">	<span class="comment">&lt;!-- 配置切面 : 通知+切点</span></span><br><span class="line"><span class="comment">		 	advice-ref:通知的名称</span></span><br><span class="line"><span class="comment">		 	pointcut-ref:切点的名称</span></span><br><span class="line"><span class="comment">	 --&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">aop:advisor</span> <span class="attr">advice-ref</span>=<span class="string">"txAdvice"</span> <span class="attr">pointcut-ref</span>=<span class="string">"txPc"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">aop:config</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 1.将连接池 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbcUrl"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.jdbcUrl&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driverClass&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.user&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 2.Dao--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"accountDao"</span> <span class="attr">class</span>=<span class="string">"cn.itcast.dao.AccountDaoImpl"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 3.Service--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"cn.itcast.service.AccountServiceImpl"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ad"</span> <span class="attr">ref</span>=<span class="string">"accountDao"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"tt"</span> <span class="attr">ref</span>=<span class="string">"transactionTemplate"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
+<p>TransactionDefinition         </p>
+<p>事务隔离级别的常量<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="keyword">static</span> <span class="keyword">int</span> ISOLATION_DEFAULT                     -- 采用数据库的默认隔离级别             </span><br><span class="line"></span><br><span class="line"><span class="number">2</span>. <span class="keyword">static</span> <span class="keyword">int</span> ISOLATION_READ_UNCOMMITTED             </span><br><span class="line"></span><br><span class="line"><span class="number">3</span>. <span class="keyword">static</span> <span class="keyword">int</span> ISOLATION_READ_COMMITTED             </span><br><span class="line"></span><br><span class="line"><span class="number">4</span>. <span class="keyword">static</span> <span class="keyword">int</span> ISOLATION_REPEATABLE_READ             </span><br><span class="line"></span><br><span class="line"><span class="number">5</span>.  <span class="keyword">static</span> <span class="keyword">int</span> ISOLATION_SERIALIZABLE</span><br></pre></td></tr></table></figure></p>
+<p>事务的传播行为常量 </p>
+<p>propagation</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">PROPAGATION_REQUIRED（默认值）   </span><br><span class="line"><span class="comment">-- A中有事务,使用A中的事务.如果没有B就会开启一个新的事务,将A包含进来.(保证A,B在同一个事务中)，默认值！</span></span><br><span class="line">PROPAGATION_MANDATORY            </span><br><span class="line"><span class="comment">-- A中有事务,使用A中的事务.如果A没有事务.抛出异常.                            PROPAGATION_REQUIRES_NEW（记）</span></span><br><span class="line"><span class="comment">-- A中有事务,将A中的事务挂起.B创建一个新的事务.(保证A,B没有在一个事务中)               </span></span><br><span class="line">PROPAGATION_NOT_SUPPORTED       </span><br><span class="line"><span class="comment">-- A中有事务,将A中的事务挂起.               </span></span><br><span class="line">PROPAGATION_NEVER             </span><br><span class="line"><span class="comment">-- A中有事务,抛出异常.                            </span></span><br><span class="line">PROPAGATION_NESTED（记）</span><br><span class="line"><span class="comment">-- 嵌套事务.当A执行之后,就会在这个位置设置一个保存点.</span></span><br><span class="line">如果B没有问题.执行通过.如果B出现异常,运行客户根据需求回滚(选择回滚到保存点或者是最初始状态)</span><br><span class="line">先解释什么是事务的传播行为：解决的是业务层之间的方法调用！！                                       </span><br><span class="line">PROPAGATION_SUPPORTS            </span><br><span class="line"><span class="comment">-- A中有事务,使用A中的事务.如果A中没有事务.那么B也不使用事务.</span></span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -203,12 +207,12 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-03-21T12:53:58.000Z" itemprop="dateUpdated">2018-03-21 20:53:58</time>
+    Last updated: <time datetime="2018-08-29T13:40:53.000Z" itemprop="dateUpdated">2018-08-29 21:40:53</time>
 </span><br>
 
 
         
-        <a href="/2018/03/21/Java/spring/spring-事务配置/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/</a>
+        <a href="/2018/03/21/Java/spring/xml/spring-事务配置/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/</a>
         
     </div>
     
@@ -233,7 +237,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -243,22 +247,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/&title=stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/&title=stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -281,7 +285,7 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/03/21/Java/spring/spring-事务注解配置/" id="post-prev" class="post-nav-link">
+      <a href="/2018/03/21/Java/spring/xml/spring-事务注解配置/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
         <h4 class="title">[no title]</h4>
       </a>
@@ -363,7 +367,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -385,7 +389,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -395,22 +399,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/&title=stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务配置/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务配置/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -421,7 +425,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrklEQVR42u3aUW7DIBQEwN7/0q3Ur0ip492HcVJp+IpSFzNUArqPr6+4ff+2x8+P7fn75999/v6553wMFzc8PDy80dCP2rVDPHo+n6Z8zHh4eHi7eflmkC/6ryfxqIf284kFDw8P7628/DWvl+/Z9OHh4eH9d97rg2x7KJ8FInh4eHjv5bWL+HrckDzfTjEeHh7ePbyVRfldn7fX9/Dw8PBGVfVZELBSPJtFG4ejxcPDw9vAW4lK8yNyws7fleCLWcfDw8MreesxRB4WJBM6Cx0Oe8DDw8PbxluJWVcijH2BBR4eHt5u3iyGuLgEVR7xo60FDw8PbxsvWbhnlabZlYI8CD4ZJx4eHt6beHWnF5W48g3j8Kd4eHh4t/Bm0Wq76LdXCpKJi7IWPDw8vIt4+QaQl//bCwGzMtjJRODh4eFt4LVRQnuwbg/l62//43fx8PDwNvDastPrjvIXz57MpxUPDw9vHy8vNeWw2aTMrg6c/HuAh4eHdzsvDw5Wiv15MNGGznh4eHg7eOvH5TxBnS3xbRyMh4eHdw+vvTK1vsQXIeyoLIeHh4d3J6/tYrbotxvJVWU5PDw8vBXebIhtW7oy1e5jj8/j4eHhbeO1BapZ4SqPYpMwosin8fDw8C7ltWX4ffFrsgHk4OhviIeHhzfitRekckA+TbM4IxoVHh4e3i28qw7Ks0N5AsjjYDw8PLwdvIQ0K2utH9Pbq131DQg8PDy8Ee+7bO3ynRzT21JZcUDHw8PD28Cri/ELlwxmm8dKUIKHh4e3j5dsBnkk0Ya861cTiqsDeHh4eJfy2s0g3wZW4ob2GTw8PLxP481KULMLWLNCFx4eHt4n89on2x7azekkjMDDw8PbwGvDiDaETZCzgOPkGzw8PLwNvJUC2CyQTTDrMTEeHh7eBt4PcRMNAUM4b8QAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQXKEMAwEQP7/6eQBW7AjyUo4NKdUEoybgy1Gvq74+vm4kv+pXsk418aFh4eHN5768yM/7/38+flZd///PELzFeDh4eGt8apT6TGeX9Pda83ng4eHh/dOXq9QTsaZbCp4eHh47+flC31+V3UEPDw8vP/lJWFEtZh+nu5k0V/JWvDw8PAWukjv+Xmlv4eHh4c37qpXo9V8k+iNU54tHh4e3gKv2vKvBrXPsUKPl88TDw8Pb4OXHzxNWlbVMLcXBOcHZ/Hw8PC2eXnMOm/nzw/Flg+q4uHh4S3wesMlW0Xy4k5tP9G3Ah4eHt6Al3/8bxwvqBbcx3p9eHh4eINnVYvXXlmcLO5J3FB+6Xh4eHgLvDwezY8O9O6dP/12q8DDw8M7yksOVOVBbXWcnNFsjOHh4eEt8E7lGXm8W225zTcqPDw8vL/hVYvg5HXkzbBeEnt7Fx4eHt6f8JKOUjVWyJf4/BWUDwrg4eHhjXnVcrbajpq0tarl9W0MgYeHh3eUV41Zq4VvDstD22rIi4eHh7fBS0rtPK49NemVUxJ4eHh4Y141hJ0synlDK//Nl7/i4eHhLfAmceqk+O5FEqNiGg8PD+8ob/KwXr/pVLAbbVp4eHh4a7xqi+ts4NsrvqMQBA8PD2+NV20yXYMrX/SrxxQKVT8eHh7eIV7vWFW1iVXF542xL18MeHh4eEd5vQnlIUK+3M+3nC9fDHh4eHgDXu/4VO/3kyK+15bDw8PD2+CN9pM4cu2dn61uM9fh7RIPDw8vnXqyuPdIeXiRt7uicfDw8PDWePMH59FGoX01aK3h4eHhvYfXO8b6iuOqeHh4eP/ES+KDaqSbl+NfDqfmmS4eHh7emNdreuWL9fNdvVcTzQ0PDw9vgVf9yK+WyPkICfvAQQE8PDy8Pu8XLtfkKeEkt2UAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

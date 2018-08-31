@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -164,14 +164,14 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-sql/SQL面试语法"
+            <article id="post-Java/JavaEE/远程web管理tomcat部署"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-12-26 15:17:26" datetime="2017-12-26T07:17:26.000Z"  itemprop="datePublished">2017-12-26</time>
+        <time class="post-time" title="2018-03-24 16:40:04" datetime="2018-03-24T08:40:04.000Z"  itemprop="datePublished">2018-03-24</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/">sql</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/sql/mysql/">mysql</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/javaee/">javaee</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/javaee/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/javaee/server/tomcat/">tomcat</a></li></ul></li></ul></li></ul></li></ul>
 
 
 
@@ -182,7 +182,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/26/sql/SQL面试语法/">SQL面试语法汇总</a>
+      <a class="post-title-link" href="/2018/03/24/Java/JavaEE/远程web管理tomcat部署/">web管理tomcat项目配置</a>
     </h3>
   
 
@@ -192,20 +192,18 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        DDL—数据定义语言(Create，Alter，Drop，DECLARE) 
-DML—数据操纵语言(Select，Delete，Update，Insert) 
-DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK)
-首先,简要介绍基础语句：1、创建数据库Create ...
+        1.配置web管理帐号密码权限vim tomcat/conf/tomcat-users.xml编辑tomcat配置路径下的tomcat-users.xml;
+123456&lt;role rolename="tomcat"/&gt;&lt;role rolename="manager"/&gt...
     
 
-        <a href="/2017/12/26/sql/SQL面试语法/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/03/24/Java/JavaEE/远程web管理tomcat部署/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
 
     </div>
     
@@ -214,11 +212,11 @@ DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK)
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/JavaEE/java1年经验之谈"
+            <article id="post-Java/JavaEE/MAVEN/Maven配置详解"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-12-15 14:39:45" datetime="2017-12-15T06:39:45.000Z"  itemprop="datePublished">2017-12-15</time>
+        <time class="post-time" title="2018-03-24 16:10:23" datetime="2018-03-24T08:10:23.000Z"  itemprop="datePublished">2018-03-24</time>
 
         
 
@@ -230,7 +228,7 @@ DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK)
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/15/Java/JavaEE/java1年经验之谈/">No title</a>
+      <a class="post-title-link" href="/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/">No title</a>
     </h3>
   
 
@@ -240,23 +238,13 @@ DCL—数据控制语言(GRANT，REVOKE，COMMIT，ROLLBACK)
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        java后端工作一年浅谈经验转载 2017年08月27日 18:53:17
-
-标签：
-java /
-程序员 /
-经验 /
-技术
-
-
-**185
-
-1.引言
-　　毕业已经一年有余，这一年里特别感谢技术管理人员的器重，以及同事的帮忙，学到了不少东西。这一年里走过一些弯路，也碰到一些难题，也受到过做...
+        MAVEN2的配置文件有两个settings.xml和pom.xml
+settings.xml：保存的是本地所有项目所共享的全局配置信息，默认在maven安装目录的conf目录下，如果没有安装maven而是用的m2eclipse插件，那么也可以把这个配置文件放在.m2目录下
+pom.xml：描...
     
 
-        <a href="/2017/12/15/Java/JavaEE/java1年经验之谈/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/03/24/Java/JavaEE/MAVEN/Maven配置详解/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -265,11 +253,11 @@ java /
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-JavaScript/emmt"
+            <article id="post-Java/spring/xml/spring-aop注解"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-12-06 00:49:22" datetime="2017-12-05T16:49:22.000Z"  itemprop="datePublished">2017-12-06</time>
+        <time class="post-time" title="2018-03-21 21:08:01" datetime="2018-03-21T13:08:01.000Z"  itemprop="datePublished">2018-03-21</time>
 
         
 
@@ -281,7 +269,7 @@ java /
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/12/06/JavaScript/emmt/">No title</a>
+      <a class="post-title-link" href="/2018/03/21/Java/spring/xml/spring-aop注解/">No title</a>
     </h3>
   
 
@@ -291,16 +279,14 @@ java /
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
-                
-                    
-                    
-                
-                原创新闻](http://www.iteye.com/images/news/ori.gif?1448702...
+        目标对象（被增强1.xml中配置目标对象
+&lt;bean name=&quot;userService&quot; class=&quot;cn.itcast.service.UserServiceImpl&quot; &gt;&lt;/bean&gt;
+2.
+123456789101112...
     
 
-        <a href="/2017/12/06/JavaScript/emmt/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/03/21/Java/spring/xml/spring-aop注解/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -309,11 +295,11 @@ java /
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/JavaEE/class文件路径"
+            <article id="post-Java/spring/xml/spring-aop配置xml"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-28 13:34:42" datetime="2017-11-28T05:34:42.000Z"  itemprop="datePublished">2017-11-28</time>
+        <time class="post-time" title="2018-03-21 21:00:37" datetime="2018-03-21T13:00:37.000Z"  itemprop="datePublished">2018-03-21</time>
 
         
 
@@ -325,7 +311,7 @@ java /
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/28/Java/JavaEE/class文件路径/">No title</a>
+      <a class="post-title-link" href="/2018/03/21/Java/spring/xml/spring-aop配置xml/">No title</a>
     </h3>
   
 
@@ -335,13 +321,11 @@ java /
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Class.getResource和ClassLoader.getResource的使用
-参考
-Class.getResource(String path)12path不以’/&apos;开头时，默认是从此类所在的包下取资源；path  以’/&apos;开头时，则是从ClassPath根下获...
+        xml配置123456789101112131415161718192021&lt;!-- 准备工作: 导入aop(约束)命名空间 --&gt;&lt;!-- 1.配置目标对象 --&gt;	&lt;bean name="userService" class="cn.itcast.servic...
     
 
-        <a href="/2017/11/28/Java/JavaEE/class文件路径/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/03/21/Java/spring/xml/spring-aop配置xml/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -350,11 +334,11 @@ Class.getResource(String path)12path不以’/&apos;开头时，默认是从此�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-JavaScript/js"
+            <article id="post-Java/spring/xml/spring-事务注解配置"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-24 23:12:59" datetime="2017-11-24T15:12:59.000Z"  itemprop="datePublished">2017-11-24</time>
+        <time class="post-time" title="2018-03-21 20:36:37" datetime="2018-03-21T12:36:37.000Z"  itemprop="datePublished">2018-03-21</time>
 
         
 
@@ -366,7 +350,7 @@ Class.getResource(String path)12path不以’/&apos;开头时，默认是从此�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/24/JavaScript/js/">No title</a>
+      <a class="post-title-link" href="/2018/03/21/Java/spring/xml/spring-事务注解配置/">No title</a>
     </h3>
   
 
@@ -376,13 +360,11 @@ Class.getResource(String path)12path不以’/&apos;开头时，默认是从此�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ssssyoki2017 年 11 月 21 日
-这一次，彻底弄懂 JavaScript 执行机制本文的目的就是要保证你彻底弄懂javascript的执行机制，如果读完本文还不懂，可以揍我。
-不论你是javascript新手还是老鸟，不论是面试求职，还是日常开发工作，我们经常会遇到这样的情况：...
+        xml配置12345678910111213141516171819202122232425262728293031323334353637&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;beans xmlns:xsi="http://www.w...
     
 
-        <a href="/2017/11/24/JavaScript/js/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/03/21/Java/spring/xml/spring-事务注解配置/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -391,11 +373,11 @@ Class.getResource(String path)12path不以’/&apos;开头时，默认是从此�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-JavaScript/JavaScript复习"
+            <article id="post-Java/spring/xml/spring-事务配置"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-21 17:22:48" datetime="2017-11-21T09:22:48.000Z"  itemprop="datePublished">2017-11-21</time>
+        <time class="post-time" title="2018-03-21 20:30:12" datetime="2018-03-21T12:30:12.000Z"  itemprop="datePublished">2018-03-21</time>
 
         
 
@@ -407,7 +389,7 @@ Class.getResource(String path)12path不以’/&apos;开头时，默认是从此�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/21/JavaScript/JavaScript复习/">No title</a>
+      <a class="post-title-link" href="/2018/03/21/Java/spring/xml/spring-事务配置/">No title</a>
     </h3>
   
 
@@ -417,25 +399,11 @@ Class.getResource(String path)12path不以’/&apos;开头时，默认是从此�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
-JavaScript内置对象
-
-switch
-
-Java SDF
-
-​
-
-
-javascript 事件
-
-Event 对象Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
-事件通常与函数结合使用，函数不会在事件发生前被执行！
-事件句柄　(...
+        事务xml配置123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566&lt;?xml version=...
     
 
-        <a href="/2017/11/21/JavaScript/JavaScript复习/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/03/21/Java/spring/xml/spring-事务配置/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -444,11 +412,11 @@ Event 对象Event 对象代表事件的状态，比如事件在其中发生的�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-JavaScript/html复习"
+            <article id="post-JavaScript/webpack报错总结"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-19 19:48:56" datetime="2017-11-19T11:48:56.000Z"  itemprop="datePublished">2017-11-19</time>
+        <time class="post-time" title="2018-02-27 15:51:37" datetime="2018-02-27T07:51:37.000Z"  itemprop="datePublished">2018-02-27</time>
 
         
 
@@ -460,7 +428,7 @@ Event 对象Event 对象代表事件的状态，比如事件在其中发生的�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/19/JavaScript/html复习/">No title</a>
+      <a class="post-title-link" href="/2018/02/27/JavaScript/webpack报错总结/">No title</a>
     </h3>
   
 
@@ -470,13 +438,17 @@ Event 对象Event 对象代表事件的状态，比如事件在其中发生的�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        html复习
-&lt;a&gt; target
-1234567891011&lt;html&gt;  &lt;head&gt;    &lt;!--html注释--&gt;    &lt;title&gt;this is a title&lt;/title&gt;    &lt;meta ht...
+        1.在项目根目录下 npm init
+2.webpack-dev-server的版本问题。
+保持webpack和webpack-dev-server版本兼容
+在package.josn中修改
+
+“webpack”: “2.2.0”  
+“webpack-dev-server”: “2.2.0”...
     
 
-        <a href="/2017/11/19/JavaScript/html复习/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/02/27/JavaScript/webpack报错总结/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -485,11 +457,11 @@ Event 对象Event 对象代表事件的状态，比如事件在其中发生的�
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/JavaEE/day22test"
+            <article id="post-Java/spring/idea spring配置"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-14 19:39:35" datetime="2017-11-14T11:39:35.000Z"  itemprop="datePublished">2017-11-14</time>
+        <time class="post-time" title="2018-01-06 23:01:47" datetime="2018-01-06T15:01:47.000Z"  itemprop="datePublished">2018-01-06</time>
 
         
 
@@ -501,7 +473,7 @@ Event 对象Event 对象代表事件的状态，比如事件在其中发生的�
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/14/Java/JavaEE/day22test/">No title</a>
+      <a class="post-title-link" href="/2018/01/06/Java/spring/idea spring配置/">No title</a>
     </h3>
   
 
@@ -511,27 +483,13 @@ Event 对象Event 对象代表事件的状态，比如事件在其中发生的�
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
-
-
-
-
-
-
-day22
-
-
-
-body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 1...
+        5、基于XML 的配置
+5.1、配置web.xml  idea创建的web.xml这个文件版本比较低，所以我们要找一个新的。把我的文件直接全部覆盖复制进去就可以了。
+1234567891011121314151617181920212223242526272829303132333435363...
     
 
-        <a href="/2017/11/14/Java/JavaEE/day22test/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/01/06/Java/spring/idea spring配置/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -540,11 +498,11 @@ body {
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/副本"
+            <article id="post-Java/spring/xml/spring xml约束"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-14 02:23:52" datetime="2017-11-13T18:23:52.000Z"  itemprop="datePublished">2017-11-14</time>
+        <time class="post-time" title="2018-01-06 23:01:29" datetime="2018-01-06T15:01:29.000Z"  itemprop="datePublished">2018-01-06</time>
 
         
 
@@ -556,7 +514,7 @@ body {
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/14/MD/副本/">副本</a>
+      <a class="post-title-link" href="/2018/01/06/Java/spring/xml/spring xml约束/">No title</a>
     </h3>
   
 
@@ -566,12 +524,13 @@ body {
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        DDEEEEEEEEEEEEEEEEFFFFFFFFFFFFFF
+        spring配置文件最全约束转载  2016年09月12日 22:05:30
+&lt;?xml version=”1.0” encoding=”utf-8”?&gt;
 
     
 
-        <a href="/2017/11/14/MD/副本/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/01/06/Java/spring/xml/spring xml约束/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -580,11 +539,11 @@ body {
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-MD/test"
+            <article id="post-Java/spring/xml/spring-xml"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2017-11-14 02:23:52" datetime="2017-11-13T18:23:52.000Z"  itemprop="datePublished">2017-11-14</time>
+        <time class="post-time" title="2018-01-06 22:45:58" datetime="2018-01-06T14:45:58.000Z"  itemprop="datePublished">2018-01-06</time>
 
         
 
@@ -596,7 +555,7 @@ body {
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2017/11/14/MD/test/">No title</a>
+      <a class="post-title-link" href="/2018/01/06/Java/spring/xml/spring-xml/">No title</a>
     </h3>
   
 
@@ -606,16 +565,11 @@ body {
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        AAABBB
-SASSA
-SAS
-SDSDSD
-SDSD
-
+        
     
 
-        <a href="/2017/11/14/MD/test/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/01/06/Java/spring/xml/spring-xml/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -628,7 +582,7 @@ SDSD
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/21/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/23/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/21/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/23/">下一页</a>
     </div>
 </nav>
 
@@ -650,7 +604,7 @@ SDSD
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -164,14 +164,14 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Java/spring/ioc/Aop实现 @sgg"
+            <article id="post-Java/framework/mybatis/useGenerateKeys"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-08-11 22:37:59" datetime="2018-08-11T14:37:59.000Z"  itemprop="datePublished">2018-08-11</time>
+        <time class="post-time" title="2018-08-22 21:12:28" datetime="2018-08-22T13:12:28.000Z"  itemprop="datePublished">2018-08-22</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/">framework</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/annotation/">annotation</a></li></ul></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/">framework</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/mybatis/">mybatis</a></li></ul></li></ul></li></ul>
 
 
 
@@ -182,7 +182,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/11/Java/spring/ioc/Aop实现 @sgg/">AOP @EnableAspectJAutoProxy@解析</a>
+      <a class="post-title-link" href="/2018/08/22/Java/framework/mybatis/useGenerateKeys/">新增回写主键useGenerateKeys</a>
     </h3>
   
 
@@ -192,356 +192,12 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        AOP：【动态代理】
-  指在程序运行期间动态的将某段代码切入到指定方法指定位置进行运行的编程方式；
-  1、导入aop模块；Spring AOP：(spring-aspects)  2、定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行...
+        useGenerateKeys
+insert1234567891011&lt;insert id="insertUser"         parameterType="model.User"         useGeneratedKeys="true"         keyColumn=...
     
 
-        <a href="/2018/08/11/Java/spring/ioc/Aop实现 @sgg/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aspect/">aspect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/enableAspectJAutoProxy/">enableAspectJAutoProxy</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java/spring/ioc/Transaction"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-08-11 22:32:58" datetime="2018-08-11T14:32:58.000Z"  itemprop="datePublished">2018-08-11</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/11/Java/spring/ioc/Transaction/">Spring Annotation Transaction Analysis</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        Aop transaction Configuration
-@EnableTransactionManagement 开启注解事务
-@Bean DataSource  给容器注入数据
-@Bean DataSourceTransactionManager 注入事务管理器
-
-12
-Service
-...
-    
-
-        <a href="/2018/08/11/Java/spring/ioc/Transaction/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/transaction/">transaction</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java/spring/ioc/IOC Refresh Analysis"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-08-10 22:14:21" datetime="2018-08-10T14:14:21.000Z"  itemprop="datePublished">2018-08-10</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/10/Java/spring/ioc/IOC Refresh Analysis/">Spring IOC  Analysis</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        [TOC]
-refresh()基于(org.springframework.context 4.3.12.RELEASE)
-
-@author Rod Johnsonclass  org.springframework.context.support.AbstractApplicationCon...
-    
-
-        <a href="/2018/08/10/Java/spring/ioc/IOC Refresh Analysis/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/abstractApplicationContext/">abstractApplicationContext</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ioc/">ioc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/refresh/">refresh</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java/spring/ioc/Aop实现分析"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-08-10 20:48:17" datetime="2018-08-10T12:48:17.000Z"  itemprop="datePublished">2018-08-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/">framework</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/annotation/">annotation</a></li></ul></li></ul></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/10/Java/spring/ioc/Aop实现分析/">AOP @EnableAspectJAutoProxy解析</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        @EnableAspectJAutoProxyorg.springframework.aop.config.internalAutoProxyCreator-&gt;SmartInstantiationAwareBeanPostProcessor-&gt;BeanPostProcessor
-
-...
-    
-
-        <a href="/2018/08/10/Java/spring/ioc/Aop实现分析/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aop/">aop</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aspect/">aspect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/enableAspectJAutoProxy/">enableAspectJAutoProxy</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Linux/command/SCP"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-08-10 09:19:47" datetime="2018-08-10T01:19:47.000Z"  itemprop="datePublished">2018-08-10</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/command/">command</a></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/10/Linux/command/SCP/">scp</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        SCP
-123scp [-1246BCpqrv] [-c cipher] [-F ssh_config] [-i identity_file][-l limit] [-o ssh_option] [-P port] [-S program][[user@]host1:]file1 [...] ...
-    
-
-        <a href="/2018/08/10/Linux/command/SCP/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scp/">scp</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java/spring/ioc/AutoWired"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-08-09 21:00:17" datetime="2018-08-09T13:00:17.000Z"  itemprop="datePublished">2018-08-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/">framework</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/annotation/">annotation</a></li></ul></li></ul></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/09/Java/spring/ioc/AutoWired/">Autowired</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        自动装配;   Spring利用依赖注入（DI），完成对IOC容器中中各个组件的依赖关系赋值；
-
-@Autowired：自动注入:
-
-默认优先按照类型去容器中找对应的组件:applicationContext.getBean(BookDao.class);找到就赋值
-如果找到多个相同类型的组件...
-    
-
-        <a href="/2018/08/09/Java/spring/ioc/AutoWired/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/autowired/">autowired</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/inject/">inject</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/resource/">resource</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java/spring/ioc/ComponentRegister"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-08-09 21:00:17" datetime="2018-08-09T13:00:17.000Z"  itemprop="datePublished">2018-08-09</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/">framework</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/annotation/">annotation</a></li></ul></li></ul></li></ul></li></ul>
-
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/09/Java/spring/ioc/ComponentRegister/">组件注册</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        @Controller/@Service/@Repository/@Component包扫描+组件标注注解[自己写的类]详见@Configuration
-@Bean[导入的第三方包里面的组件]详见@Configuration
-12345@Conditional(LinuxCondition.c...
-    
-
-        <a href="/2018/08/09/Java/spring/ioc/ComponentRegister/" class="post-more waves-effect waves-button">
-            続きを読む…
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Import/">Import</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/component-register/">component register</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/factoryBean/">factoryBean</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-algorithm/LinkedList/Untitled"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-08-09 20:20:01" datetime="2018-08-09T12:20:01.000Z"  itemprop="datePublished">2018-08-09</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/09/algorithm/LinkedList/Untitled/">No title</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
-    
-
-        <a href="/2018/08/09/algorithm/LinkedList/Untitled/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/08/22/Java/framework/mybatis/useGenerateKeys/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
@@ -550,14 +206,56 @@ refresh()基于(org.springframework.context 4.3.12.RELEASE)
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/spring/annotation/Aware"
+            <article id="post-Linux/net/ip private"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-08-08 22:41:54" datetime="2018-08-08T14:41:54.000Z"  itemprop="datePublished">2018-08-08</time>
+        <time class="post-time" title="2018-08-21 22:26:57" datetime="2018-08-21T14:26:57.000Z"  itemprop="datePublished">2018-08-21</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/interface/">interface</a></li></ul></li></ul>
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/21/Linux/net/ip private/">private ip</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        a: 10.0.0.0
+b:172.16.0.0–172.31.0.0
+c:192.168.0.0–192.168.255.0
+
+    
+
+        <a href="/2018/08/21/Linux/net/ip private/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Linux/zsh"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-21 15:27:16" datetime="2018-08-21T07:27:16.000Z"  itemprop="datePublished">2018-08-21</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/linux/shell/">shell</a></li></ul></li></ul></li></ul>
 
 
 
@@ -568,7 +266,7 @@ refresh()基于(org.springframework.context 4.3.12.RELEASE)
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/08/Java/spring/annotation/Aware/">Spring Aware</a>
+      <a class="post-title-link" href="/2018/08/21/Linux/zsh/">ZSH install</a>
     </h3>
   
 
@@ -578,21 +276,19 @@ refresh()基于(org.springframework.context 4.3.12.RELEASE)
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        Aware实现了Aware接口的bean在初始化时可以注入Spring容器内部基本组件 如IOC容器，内置embeddedValue解析器
-
-ApplicationContextAware 注入IOC容器
-BeanNameAware 注入当前bean的name
-EmbeddedValueRes...
+        zsh12yum install zsh git autojump autojump-zshchsh -s /bin/zsh
+change shell1chsh -s /bin/zsh username1
+install oh My Zsh12cdsh -c &quot;$(curl -fsS...
     
 
-        <a href="/2018/08/08/Java/spring/annotation/Aware/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/08/21/Linux/zsh/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/aware/">aware</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zsh/">zsh</a></li></ul>
 
     </div>
     
@@ -601,14 +297,193 @@ EmbeddedValueRes...
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-algorithm/LinkedList/reverseLinkedList"
+            <article id="post-Java/spring/boot/embeddedTomcat"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-08-08 09:59:22" datetime="2018-08-08T01:59:22.000Z"  itemprop="datePublished">2018-08-08</time>
+        <time class="post-time" title="2018-08-19 21:13:22" datetime="2018-08-19T13:13:22.000Z"  itemprop="datePublished">2018-08-19</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">algorithm</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/linkedList/">linkedList</a></li></ul></li></ul>
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/19/Java/spring/boot/embeddedTomcat/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        缺省配置Springboot Web应用中tomcat的启动过程2017年11月27日 18:37:57
+阅读数：2183
+概述独立部署的tomcat服务器的启动过程传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :
+
+tomcat 容器本身的启动;
+tomcat容器...
+    
+
+        <a href="/2018/08/19/Java/spring/boot/embeddedTomcat/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java/spring/ioc/@Value${}解析器"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-18 22:26:58" datetime="2018-08-18T14:26:58.000Z"  itemprop="datePublished">2018-08-18</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/18/Java/spring/ioc/@Value${}解析器/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        AbstractApplicationContext
+1234567891011// Register a default embedded value resolver if no bean post-processor		// (such as a PropertyPlaceholderC...
+    
+
+        <a href="/2018/08/18/Java/spring/ioc/@Value${}解析器/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-linux cli"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-18 14:13:00" datetime="2018-08-18T06:13:00.000Z"  itemprop="datePublished">2018-08-18</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/18/linux cli/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        
+yum 
+yum list
+
+zsh
+
+linux 设置中文版man手册[https://www.jianshu.com/p/185fe0a4f426]
+
+
+下载中文man包 操作系统为centos7
+
+源码的网址：https://src.fedoraproject.org/repo/pkg...
+    
+
+        <a href="/2018/08/18/linux cli/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Java/spring/ioc/PopulateBean"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-16 22:47:54" datetime="2018-08-16T14:47:54.000Z"  itemprop="datePublished">2018-08-16</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/16/Java/spring/ioc/PopulateBean/">Spring PopulateBean</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        abstractAutoCapableBeanFactory12345678910111213141516171819202122232425262728293031323334353637/** * Abstract bean factory superclass that implemen...
+    
+
+        <a href="/2018/08/16/Java/spring/ioc/PopulateBean/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/abstractAutoCapableBeanFactory/">abstractAutoCapableBeanFactory</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ioc/">ioc</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/populate/">populate</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-TODOlist/JAVA TODA"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-16 21:19:52" datetime="2018-08-16T13:19:52.000Z"  itemprop="datePublished">2018-08-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/todo/">todo</a></li></ul>
 
 
 
@@ -619,7 +494,7 @@ EmbeddedValueRes...
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/08/08/algorithm/LinkedList/reverseLinkedList/">reverseLinkedList</a>
+      <a class="post-title-link" href="/2018/08/16/TODOlist/JAVA TODA/">No title</a>
     </h3>
   
 
@@ -629,18 +504,115 @@ EmbeddedValueRes...
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        linked1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253/** * @program: exam * @description: * @auth...
+        java –
+
+ java aop pageHelper
+ java file server
+ bt sever
+ video server
+ 
+
+
+ 
+
+csa
+
     
 
-        <a href="/2018/08/08/algorithm/LinkedList/reverseLinkedList/" class="post-more waves-effect waves-button">
-            続きを読む…
+        <a href="/2018/08/16/TODOlist/JAVA TODA/" class="post-more waves-effect waves-button">
+            Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/reverse/">reverse</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
 
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Linux/server/Tomcat/Tomcat-IBM"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-16 20:31:26" datetime="2018-08-16T12:31:26.000Z"  itemprop="datePublished">2018-08-16</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/16/Linux/server/Tomcat/Tomcat-IBM/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        Tomcat 系统架构与设计模式，第 1 部分
+工作原理系列内容：此内容是该系列 2 部分中的第 1 部分： Tomcat 系统架构与设计模式本文以 Tomcat 5 为基础，也兼顾最新的 Tomcat 6 和 Tomcat 4。Tomcat 的基本设计思路和架构是具有一定连续性的。
+Tomc...
+    
+
+        <a href="/2018/08/16/Linux/server/Tomcat/Tomcat-IBM/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Linux/git"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-08-16 20:06:59" datetime="2018-08-16T12:06:59.000Z"  itemprop="datePublished">2018-08-16</time>
+
+        
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/git/">git</a></li></ul>
+
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/08/16/Linux/git/">彻底理解Git@github</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        彻底理解Git@Github
+翻译 2016年05月25日 23:24:14
+Translated from http://maryrosecook.com/blog/post/git-from-the-inside-out.
+本文原地址：https://github.com/pysnow53...
+    
+
+        <a href="/2018/08/16/Linux/git/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
     </div>
     
 </article>
@@ -652,7 +624,7 @@ EmbeddedValueRes...
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
     </div>
 </nav>
 
@@ -674,7 +646,7 @@ EmbeddedValueRes...
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

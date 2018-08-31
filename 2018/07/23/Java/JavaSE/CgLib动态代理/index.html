@@ -21,18 +21,20 @@
     
     
     <meta name="keywords" content="cglib动态代理">
-    <meta name="description" content="sky">
+    <meta name="description" content="测试Cglib 类似JDKproxy的使用 123456789101112131415161718@Bean(&quot;proxyUserServiceCG&quot;)public UserService getProxyUserServiceByCglib(   @Qualifier(&quot;userService&quot;) UserService userService)&amp;#123;    return (UserSer">
 <meta name="keywords" content="cglib动态代理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CGLib 动态代理">
 <meta property="og:url" content="http://io.stelawliet.top/2018/07/23/Java/JavaSE/CgLib动态代理/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="sky">
+<meta property="og:description" content="测试Cglib 类似JDKproxy的使用 123456789101112131415161718@Bean(&quot;proxyUserServiceCG&quot;)public UserService getProxyUserServiceByCglib(   @Qualifier(&quot;userService&quot;) UserService userService)&amp;#123;    return (UserSer">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-23T13:55:34.000Z">
+<meta property="og:image" content="http://io.stelawliet.top/2018/07/23/Java/JavaSE/CgLib动态代理/assets/Screen%20Shot%202018-08-31%20at%208.39.25%20PM.png">
+<meta property="og:updated_time" content="2018-08-31T13:02:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CGLib 动态代理">
-<meta name="twitter:description" content="sky">
+<meta name="twitter:description" content="测试Cglib 类似JDKproxy的使用 123456789101112131415161718@Bean(&quot;proxyUserServiceCG&quot;)public UserService getProxyUserServiceByCglib(   @Qualifier(&quot;userService&quot;) UserService userService)&amp;#123;    return (UserSer">
+<meta name="twitter:image" content="http://io.stelawliet.top/2018/07/23/Java/JavaSE/CgLib动态代理/assets/Screen%20Shot%202018-08-31%20at%208.39.25%20PM.png">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -131,7 +133,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -169,6 +171,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#类似JDKproxy的使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">类似JDKproxy的使用</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#CGlib-的CallBack的使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">CGlib 的CallBack的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#模拟事务管理"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">模拟事务管理</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-Java/JavaSE/CgLib动态代理"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -191,7 +200,27 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <p>测试Cglib</p>
+<h4 id="类似JDKproxy的使用"><a href="#类似JDKproxy的使用" class="headerlink" title="类似JDKproxy的使用"></a>类似JDKproxy的使用</h4><hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span>(<span class="string">"proxyUserServiceCG"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> UserService <span class="title">getProxyUserServiceByCglib</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">   @Qualifier(<span class="string">"userService"</span>)</span> UserService userService)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (UserService) Enhancer</span><br><span class="line">       .create(userService.getClass()</span><br><span class="line">            , userService.getClass()</span><br><span class="line">               .getInterfaces(), </span><br><span class="line">               <span class="keyword">new</span> MethodInterceptor() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object o, Method method,</span></span></span><br><span class="line"><span class="function"><span class="params">                                        Object[] objects,</span></span></span><br><span class="line"><span class="function"><span class="params">                                        MethodProxy methodProxy)</span></span></span><br><span class="line"><span class="function">                        <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">                    System.err.println(<span class="string">"cg log........"</span>);</span><br><span class="line">                    Object invoke = method.invoke(userService, objects);</span><br><span class="line">                    <span class="keyword">return</span> invoke;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+<p>对比JDk的Proxy,Cglib使用的是Enhancer的静态方法create来创建代理对象</p>
+<p><code>Enhancer.create(Class class,)</code> </p>
+<blockquote>
+<p>(“Enhance” 增强,提升)</p>
+</blockquote>
+<h4 id="CGlib-的CallBack的使用"><a href="#CGlib-的CallBack的使用" class="headerlink" title="CGlib 的CallBack的使用"></a>CGlib 的CallBack的使用</h4><h5 id="模拟事务管理"><a href="#模拟事务管理" class="headerlink" title="模拟事务管理"></a>模拟事务管理</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@program</span>: SpringYun</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>:</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: Zhaoziqi</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@create</span>: 2018-08-31 19:30</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CgInterceptor</span> <span class="keyword">implements</span> <span class="title">MethodInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">intercept</span><span class="params">(Object obj, Method method, Object[] args, MethodProxy proxy)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        logger.debug(<span class="string">"Transaction start"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            proxy.invokeSuper(obj,args);</span><br><span class="line">            logger.debug(<span class="string">"Transaction commit"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable throwable) &#123;</span><br><span class="line">            logger.debug(<span class="string">"Transaction rollback"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">       <span class="comment">//创建enhancer增强对象</span></span><br><span class="line">        Enhancer enhancer = <span class="keyword">new</span> Enhancer();</span><br><span class="line">       <span class="comment">//传入增强的逻辑.即拦截器</span></span><br><span class="line">        enhancer.setCallback(<span class="keyword">new</span> CgInterceptor());</span><br><span class="line">       <span class="comment">//设置增强的目标类</span></span><br><span class="line">       <span class="comment">//cglib是基于继承的.所以这里是setSuperclass</span></span><br><span class="line">        enhancer.setSuperclass(UserDao.class);</span><br><span class="line">       <span class="comment">//创建出代理子类.传递给父类引用</span></span><br><span class="line">        UserDao userDao = (UserDao) enhancer.create();</span><br><span class="line">        userDao.updateUser(<span class="keyword">true</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>UserDao.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDao</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">updateUser</span><span class="params">(<span class="keyword">boolean</span> error)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"update user"</span>);</span><br><span class="line">       <span class="comment">//模拟数据库访问异常.事务回滚</span></span><br><span class="line">        <span class="keyword">if</span> (error)&#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span>  Exception(<span class="string">"access Data Exception"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>public Object intercept</code> </p>
+<p><code>(Object obj, Method method, Object[] args, MethodProxy proxy)</code></p>
+<p>intercept类似jdk中的InvocationHandler,不过感觉功能上更全一些.因为MethodProxy.</p>
+<p>从下图可以看出MethodProxy中包含了目标类(父类),生成的代理类(子类)所有的信息.</p>
+<p>可以通过MethodProxy的invokeSuper()直接使用intercept中传入的代理子类调用原始父类的方法来避免无限递归</p>
+<blockquote>
+<p>jdk的InvocationHandler.invoke中必须传入原始对象的引用.来发射调用invoke</p>
+</blockquote>
+<p><img src="assets/Screen Shot 2018-08-31 at 8.39.25 PM.png" alt=""></p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -199,7 +228,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-07-23T13:55:34.000Z" itemprop="dateUpdated">2018-07-23 21:55:34</time>
+    Last updated: <time datetime="2018-08-31T13:02:24.000Z" itemprop="dateUpdated">2018-08-31 21:02:24</time>
 </span><br>
 
 
@@ -361,7 +390,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">

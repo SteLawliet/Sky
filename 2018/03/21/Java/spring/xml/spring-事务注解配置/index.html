@@ -14,7 +14,7 @@
     
     
     
-    <title>No title | stelawliet | 迁移整理中...</title>
+    <title>stelawliet | 迁移整理中...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
@@ -24,14 +24,14 @@
     <meta name="description" content="xml配置12345678910111213141516171819202122232425262728293031323334353637&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.spri">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="No title">
-<meta property="og:url" content="http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/index.html">
+<meta property="og:title" content="stelawliet">
+<meta property="og:url" content="http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/index.html">
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="xml配置12345678910111213141516171819202122232425262728293031323334353637&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.spri">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-21T12:49:03.000Z">
+<meta property="og:updated_time" content="2018-08-25T08:47:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="No title">
+<meta name="twitter:title" content="stelawliet">
 <meta name="twitter:description" content="xml配置12345678910111213141516171819202122232425262728293031323334353637&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&amp;lt;beans xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns=&quot;http://www.spri">
     
     <link rel="shortcut icon" href="/favicon.ico">
@@ -131,7 +131,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -170,12 +170,12 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#xml配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">xml配置</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#xml配置"><span class="post-toc-number">1.</span> <span class="post-toc-text">xml配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#事务注解"><span class="post-toc-number">2.</span> <span class="post-toc-text">事务注解</span></a></li></ol>
         </nav>
     </aside>
 
 
-<article id="post-Java/spring/spring-事务注解配置"
+<article id="post-Java/spring/xml/spring-事务注解配置"
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
@@ -195,8 +195,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <h4 id="xml配置"><a href="#xml配置" class="headerlink" title="xml配置"></a>xml配置</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span> <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span> <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span> <span class="attr">xmlns:tx</span>=<span class="string">"http://www.springframework.org/schema/tx"</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd "</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定spring读取db.properties配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:property-placeholder</span> <span class="attr">location</span>=<span class="string">"classpath:db.properties"</span>  /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 事务核心管理器,封装了所有事务操作. 依赖于连接池 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"transactionManager"</span> <span class="attr">class</span>=<span class="string">"org.springframework.jdbc.datasource.DataSourceTransactionManager"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 事务模板对象 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"transactionTemplate"</span> <span class="attr">class</span>=<span class="string">"org.springframework.transaction.support.TransactionTemplate"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"transactionManager"</span> <span class="attr">ref</span>=<span class="string">"transactionManager"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 开启使用注解管理aop事务 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tx:annotation-driven</span>/&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 1.将连接池 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">class</span>=<span class="string">"com.mchange.v2.c3p0.ComboPooledDataSource"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"jdbcUrl"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.jdbcUrl&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"driverClass"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.driverClass&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"user"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.user&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">value</span>=<span class="string">"$&#123;jdbc.password&#125;"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 2.Dao--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"accountDao"</span> <span class="attr">class</span>=<span class="string">"cn.itcast.dao.AccountDaoImpl"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"dataSource"</span> <span class="attr">ref</span>=<span class="string">"dataSource"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 3.Service--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">name</span>=<span class="string">"accountService"</span> <span class="attr">class</span>=<span class="string">"cn.itcast.service.AccountServiceImpl"</span> &gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"ad"</span> <span class="attr">ref</span>=<span class="string">"accountDao"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"tt"</span> <span class="attr">ref</span>=<span class="string">"transactionTemplate"</span> &gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>####事务注解</p>
-<p>Spring事务的隔离级别</p>
+<h4 id="事务注解"><a href="#事务注解" class="headerlink" title="事务注解"></a>事务注解</h4><p>Spring事务的隔离级别</p>
 <p>1、 <code>ISOLATION_DEFAULT</code>: 这是一个<code>PlatfromTransactionManager</code>默认的隔离级别，使用数据库默认的事务隔离级别。</p>
 <p>2、<code>ISOLATION_READ_UNCOMMITTED</code>:这是事务最低的隔离级别，它允许另外一个事务可以看到这个事务未提交的数据。</p>
 <p>3、<code>ISOLATION_READ_COMMITTED</code>：保证一个事务修改的数据提交后才能被另外一个事务读取。另外一个事务不能读取该事务未提交的数据。</p>
@@ -212,12 +211,12 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-03-21T12:49:03.000Z" itemprop="dateUpdated">2018-03-21 20:49:03</time>
+    Last updated: <time datetime="2018-08-25T08:47:47.000Z" itemprop="dateUpdated">2018-08-25 16:47:47</time>
 </span><br>
 
 
         
-        <a href="/2018/03/21/Java/spring/spring-事务注解配置/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/</a>
+        <a href="/2018/03/21/Java/spring/xml/spring-事务注解配置/" target="_blank" rel="external">http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/</a>
         
     </div>
     
@@ -242,7 +241,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -252,22 +251,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/&title=stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/&title=stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -299,7 +298,7 @@
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/03/21/Java/spring/spring-事务配置/" id="post-next" class="post-nav-link">
+      <a href="/2018/03/21/Java/spring/xml/spring-事务配置/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
         <h4 class="title">[no title]</h4>
       </a>
@@ -372,7 +371,7 @@
 
         <p>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
@@ -394,7 +393,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -404,22 +403,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/&title=stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/spring-事务注解配置/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/03/21/Java/spring/xml/spring-事务注解配置/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -430,7 +429,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3awW6sMAwF0P7/T79Kb1WpAq7tmOnisEIzFHJSiXhu/PUVH//+Hz/Pf39y/+3PT+7vnIzh8IGHh4fXGvrVUR3i/POrZ12N5/6v8PDw8PZ4+WKQPGbvDuWJw8PDw/soLy9888XmfiT53+Lh4eH9fd5DIXvLPhWI4OHh4X2W1yuO51Hv/d2qd8DDw8N7hzd5KX/qfH1/Dw8PD28QHGyEs8mr/8Bo8fDw8BZ486j07ObZJMIo/GLAw8PDO8rLY4VTQcO8uephIw0PDw9vgZc/OI908y20jcACDw8P7x1eUvhWr5zExL0QpNBAgIeHhzfm3X89aRRI7pMUzUkQXJ5LPDw8vCJvsn2VB6l5K0Ae6UYBBx4eHt4CLw8gqiFCHhPkS0h1mcHDw8Pb4OWF7NliN98kS64vlNR4eHh4Y141bui1XlW/PVW+4+Hh4b3D67Vb9Urn3pV56Y+Hh4f3Dq8aOkzOe9tg1YYGPDw8vA1er4mq+vi8ZaG3VFxej4eHh3eU1wsg8nK2+rqvFtAP/xI8PDy8Bd68IaDXVlUIEQZ5LB4eHt42L3nF5+FCbyi94v5h6cLDw8M7ykt+0ufNT9USuTroaqiBh4eHt8fLC+VeQ8CpCKMc+OLh4eEt8CYh7PzxSaRb3fR6mEo8PDy8MS8vbXsv4t50VKfg8v54eHh4r/CqUULeWJCHxafKdDw8PLwNXt4QMAlqk1d/oepvTRAeHh7eKd4kbsjbCPK2g6SYzotsPDw8vA1eeTM+OL9H9oKGfGrKpTYeHh5eizcpiKvRRm9DqzqGcpaMh4eH1+L1yuUqMil/q899uB4PDw/vo7xqS9Y8nK0uA3h4eHh/k5dvYuXRah52VCcXDw8Pb4+Xv9x7U5BMZW9pefgEDw8Pb4E3aWyqNhnkce0kzC0feHh4eCnvGy4EIhZtBlpzAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3awZIaMQwE0P3/nybXHDKkW7IJqXpzomBgedoq27T08xNfr9+u988/3fP0ruTVpzuPXXh4eHiLr/70ce8ZT3e+/0JJIZ5eLUqAh4eHd42XfFxSlPfIZHHPi5iUDA8PD+97eKcY+XEZDw8P7//lJUfb/ECcxx94eHh438ZLjshtcJCQ8k3letaCh4eHd6GL9D2Pr/T38PDw8NZd9bPNsE0Y8RpdeHh4eDd4m8i1+APlKEByQM+P8nh4eHg3eLPQdh9A5K21TWSMh4eHd5aXhKqzzSNvsCX3r/JpPDw8vAu8NnrYDBbM2lr5v+QPvxXw8PDwjvJmx9xTYUGOyccL6g4eHh4e3oiXj0Ntlu/9J+fxxOPuh4eHh7fmJV/iXsg7K1byuKgxHh4e3ojXbgxtEJws6FcaY3h4eHif6LmvxptyQB7vbrYKPDw8vBu8Wdv+bH78/r35GEExdIWHh4e34CVL/GxAKmfvRw1+NjsYHh4e3uIAPRxmWmwhs+KuZsrw8PDwDvHatn0bQ2zK144mPI4O4OHh4V3gJSfSpLmVjxHkx+vhGAEeHh7eBV4bvCYDAW2xZgFuXjI8PDy8s7x2kS3Gm0Yhbxv7/mUrwsPDw7vM2yDzBtvsmH5l6AoPDw9vxNsMB8wO2afaXW1kjIeHh3eW18aybUyQBxxtUaLNCQ8PD+8jvDY+2EcMbVi8Gr3Cw8PDO8TLY9lZ5HoKX282eHh4eEd5r/LahBR5E6stLh4eHt4nee1S2w6hvl/6k/LVja7NToKHh4cX8/JYIXlXGw23m03eGMPDw8O7zWs7R20EnDx/OGXBw8PD+zJeu9z/s3FVPDw8vC/jJc2tPHLNqcOhKzw8PLyjvHaxTj4tjy1mgUhUSjw8PLwLvPZHfrtJJIFsGxOvBgXw8PDw5rxfvJB9gpgG190AAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 

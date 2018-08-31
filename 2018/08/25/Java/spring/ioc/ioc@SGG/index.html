@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stelawliet">
+<meta property="og:url" content="http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-08-25T08:15:55.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="stelawliet">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394959697989910010110210">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-08-25T08:14:47.000Z" itemprop="datePublished" class="page-time">
+  2018-08-25
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Java/spring/ioc/ioc@SGG"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-08-25 16:14:47" datetime="2018-08-25T08:14:47.000Z"  itemprop="datePublished">2018-08-25</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br></pre></td><td class="code"><pre><span class="line">Spring容器的refresh()【创建刷新】;</span><br><span class="line"><span class="number">1</span>、prepareRefresh()刷新前的预处理;</span><br><span class="line">	<span class="number">1</span>）、initPropertySources()初始化一些属性设置;子类自定义个性化的属性设置方法；</span><br><span class="line">	<span class="number">2</span>）、getEnvironment().validateRequiredProperties();检验属性的合法等</span><br><span class="line">	<span class="number">3</span>）、earlyApplicationEvents= <span class="keyword">new</span> LinkedHashSet&lt;ApplicationEvent&gt;();保存容器中的一些早期的事件；</span><br><span class="line"><span class="number">2</span>、obtainFreshBeanFactory();获取BeanFactory；</span><br><span class="line">	<span class="number">1</span>）、refreshBeanFactory();刷新【创建】BeanFactory；</span><br><span class="line">			创建了一个<span class="keyword">this</span>.beanFactory = <span class="keyword">new</span> DefaultListableBeanFactory();</span><br><span class="line">			设置id；</span><br><span class="line">	<span class="number">2</span>）、getBeanFactory();返回刚才GenericApplicationContext创建的BeanFactory对象；</span><br><span class="line">	<span class="number">3</span>）、将创建的BeanFactory【DefaultListableBeanFactory】返回；</span><br><span class="line"><span class="number">3</span>、prepareBeanFactory(beanFactory);BeanFactory的预准备工作（BeanFactory进行一些设置）；</span><br><span class="line">	<span class="number">1</span>）、设置BeanFactory的类加载器、支持表达式解析器...</span><br><span class="line">	<span class="number">2</span>）、添加部分BeanPostProcessor【ApplicationContextAwareProcessor】</span><br><span class="line">	<span class="number">3</span>）、设置忽略的自动装配的接口EnvironmentAware、EmbeddedValueResolverAware、xxx；</span><br><span class="line">	<span class="number">4</span>）、注册可以解析的自动装配；我们能直接在任何组件中自动注入：</span><br><span class="line">			BeanFactory、ResourceLoader、ApplicationEventPublisher、ApplicationContext</span><br><span class="line">	<span class="number">5</span>）、添加BeanPostProcessor【ApplicationListenerDetector】</span><br><span class="line">	<span class="number">6</span>）、添加编译时的AspectJ；</span><br><span class="line">	<span class="number">7</span>）、给BeanFactory中注册一些能用的组件；</span><br><span class="line">		environment【ConfigurableEnvironment】、</span><br><span class="line">		systemProperties【Map&lt;String, Object&gt;】、</span><br><span class="line">		systemEnvironment【Map&lt;String, Object&gt;】</span><br><span class="line"><span class="number">4</span>、postProcessBeanFactory(beanFactory);BeanFactory准备工作完成后进行的后置处理工作；</span><br><span class="line">	<span class="number">1</span>）、子类通过重写这个方法来在BeanFactory创建并预准备完成以后做进一步的设置</span><br><span class="line">======================以上是BeanFactory的创建及预准备工作==================================</span><br><span class="line"><span class="number">5</span>、invokeBeanFactoryPostProcessors(beanFactory);执行BeanFactoryPostProcessor的方法；</span><br><span class="line">	BeanFactoryPostProcessor：BeanFactory的后置处理器。在BeanFactory标准初始化之后执行的；</span><br><span class="line">	两个接口：BeanFactoryPostProcessor、BeanDefinitionRegistryPostProcessor</span><br><span class="line">	<span class="number">1</span>）、执行BeanFactoryPostProcessor的方法；</span><br><span class="line">		先执行BeanDefinitionRegistryPostProcessor</span><br><span class="line">		<span class="number">1</span>）、获取所有的BeanDefinitionRegistryPostProcessor；</span><br><span class="line">		<span class="number">2</span>）、看先执行实现了PriorityOrdered优先级接口的BeanDefinitionRegistryPostProcessor、</span><br><span class="line">			postProcessor.postProcessBeanDefinitionRegistry(registry)</span><br><span class="line">		<span class="number">3</span>）、在执行实现了Ordered顺序接口的BeanDefinitionRegistryPostProcessor；</span><br><span class="line">			postProcessor.postProcessBeanDefinitionRegistry(registry)</span><br><span class="line">		<span class="number">4</span>）、最后执行没有实现任何优先级或者是顺序接口的BeanDefinitionRegistryPostProcessors；</span><br><span class="line">			postProcessor.postProcessBeanDefinitionRegistry(registry)</span><br><span class="line">			</span><br><span class="line">		</span><br><span class="line">		再执行BeanFactoryPostProcessor的方法</span><br><span class="line">		<span class="number">1</span>）、获取所有的BeanFactoryPostProcessor</span><br><span class="line">		<span class="number">2</span>）、看先执行实现了PriorityOrdered优先级接口的BeanFactoryPostProcessor、</span><br><span class="line">			postProcessor.postProcessBeanFactory()</span><br><span class="line">		<span class="number">3</span>）、在执行实现了Ordered顺序接口的BeanFactoryPostProcessor；</span><br><span class="line">			postProcessor.postProcessBeanFactory()</span><br><span class="line">		<span class="number">4</span>）、最后执行没有实现任何优先级或者是顺序接口的BeanFactoryPostProcessor；</span><br><span class="line">			postProcessor.postProcessBeanFactory()</span><br><span class="line"><span class="number">6</span>、registerBeanPostProcessors(beanFactory);注册BeanPostProcessor（Bean的后置处理器）【 intercept bean creation】</span><br><span class="line">		不同接口类型的BeanPostProcessor；在Bean创建前后的执行时机是不一样的</span><br><span class="line">		BeanPostProcessor、</span><br><span class="line">		DestructionAwareBeanPostProcessor、</span><br><span class="line">		InstantiationAwareBeanPostProcessor、</span><br><span class="line">		SmartInstantiationAwareBeanPostProcessor、</span><br><span class="line">		MergedBeanDefinitionPostProcessor【internalPostProcessors】、</span><br><span class="line">		</span><br><span class="line">		<span class="number">1</span>）、获取所有的 BeanPostProcessor;后置处理器都默认可以通过PriorityOrdered、Ordered接口来执行优先级</span><br><span class="line">		<span class="number">2</span>）、先注册PriorityOrdered优先级接口的BeanPostProcessor；</span><br><span class="line">			把每一个BeanPostProcessor；添加到BeanFactory中</span><br><span class="line">			beanFactory.addBeanPostProcessor(postProcessor);</span><br><span class="line">		<span class="number">3</span>）、再注册Ordered接口的</span><br><span class="line">		<span class="number">4</span>）、最后注册没有实现任何优先级接口的</span><br><span class="line">		<span class="number">5</span>）、最终注册MergedBeanDefinitionPostProcessor；</span><br><span class="line">		<span class="number">6</span>）、注册一个ApplicationListenerDetector；来在Bean创建完成后检查是否是ApplicationListener，如果是</span><br><span class="line">			applicationContext.addApplicationListener((ApplicationListener&lt;?&gt;) bean);</span><br><span class="line"><span class="number">7</span>、initMessageSource();初始化MessageSource组件（做国际化功能；消息绑定，消息解析）；</span><br><span class="line">		<span class="number">1</span>）、获取BeanFactory</span><br><span class="line">		<span class="number">2</span>）、看容器中是否有id为messageSource的，类型是MessageSource的组件</span><br><span class="line">			如果有赋值给messageSource，如果没有自己创建一个DelegatingMessageSource；</span><br><span class="line">				MessageSource：取出国际化配置文件中的某个key的值；能按照区域信息获取；</span><br><span class="line">		<span class="number">3</span>）、把创建好的MessageSource注册在容器中，以后获取国际化配置文件的值的时候，可以自动注入MessageSource；</span><br><span class="line">			beanFactory.registerSingleton(MESSAGE_SOURCE_BEAN_NAME, <span class="keyword">this</span>.messageSource);	</span><br><span class="line">			MessageSource.getMessage(String code, Object[] args, String defaultMessage, Locale locale);</span><br><span class="line"><span class="number">8</span>、initApplicationEventMulticaster();初始化事件派发器；</span><br><span class="line">		<span class="number">1</span>）、获取BeanFactory</span><br><span class="line">		<span class="number">2</span>）、从BeanFactory中获取applicationEventMulticaster的ApplicationEventMulticaster；</span><br><span class="line">		<span class="number">3</span>）、如果上一步没有配置；创建一个SimpleApplicationEventMulticaster</span><br><span class="line">		<span class="number">4</span>）、将创建的ApplicationEventMulticaster添加到BeanFactory中，以后其他组件直接自动注入</span><br><span class="line"><span class="number">9</span>、onRefresh();留给子容器（子类）</span><br><span class="line">		<span class="number">1</span>、子类重写这个方法，在容器刷新的时候可以自定义逻辑；</span><br><span class="line"><span class="number">10</span>、registerListeners();给容器中将所有项目里面的ApplicationListener注册进来；</span><br><span class="line">		<span class="number">1</span>、从容器中拿到所有的ApplicationListener</span><br><span class="line">		<span class="number">2</span>、将每个监听器添加到事件派发器中；</span><br><span class="line">			getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);</span><br><span class="line">		<span class="number">3</span>、派发之前步骤产生的事件；</span><br><span class="line"><span class="number">11</span>、finishBeanFactoryInitialization(beanFactory);初始化所有剩下的单实例bean；</span><br><span class="line">	<span class="number">1</span>、beanFactory.preInstantiateSingletons();初始化后剩下的单实例bean</span><br><span class="line">		<span class="number">1</span>）、获取容器中的所有Bean，依次进行初始化和创建对象</span><br><span class="line">		<span class="number">2</span>）、获取Bean的定义信息；RootBeanDefinition</span><br><span class="line">		<span class="number">3</span>）、Bean不是抽象的，是单实例的，是懒加载；</span><br><span class="line">			<span class="number">1</span>）、判断是否是FactoryBean；是否是实现FactoryBean接口的Bean；</span><br><span class="line">			<span class="number">2</span>）、不是工厂Bean。利用getBean(beanName);创建对象</span><br><span class="line">				<span class="number">0</span>、getBean(beanName)； ioc.getBean();</span><br><span class="line">				<span class="number">1</span>、doGetBean(name, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">false</span>);</span><br><span class="line">				<span class="number">2</span>、先获取缓存中保存的单实例Bean。如果能获取到说明这个Bean之前被创建过（所有创建过的单实例Bean都会被缓存起来）</span><br><span class="line">					从<span class="keyword">private</span> <span class="keyword">final</span> Map&lt;String, Object&gt; singletonObjects = <span class="keyword">new</span> ConcurrentHashMap&lt;String, Object&gt;(<span class="number">256</span>);获取的</span><br><span class="line">				<span class="number">3</span>、缓存中获取不到，开始Bean的创建对象流程；</span><br><span class="line">				<span class="number">4</span>、标记当前bean已经被创建</span><br><span class="line">				<span class="number">5</span>、获取Bean的定义信息；</span><br><span class="line">				<span class="number">6</span>、【获取当前Bean依赖的其他Bean;如果有按照getBean()把依赖的Bean先创建出来；】</span><br><span class="line">				<span class="number">7</span>、启动单实例Bean的创建流程；</span><br><span class="line">					<span class="number">1</span>）、createBean(beanName, mbd, args);</span><br><span class="line">					<span class="number">2</span>）、Object bean = resolveBeforeInstantiation(beanName, mbdToUse);让BeanPostProcessor先拦截返回代理对象；</span><br><span class="line">						【InstantiationAwareBeanPostProcessor】：提前执行；</span><br><span class="line">						先触发：postProcessBeforeInstantiation()；</span><br><span class="line">						如果有返回值：触发postProcessAfterInitialization()；</span><br><span class="line">					<span class="number">3</span>）、如果前面的InstantiationAwareBeanPostProcessor没有返回代理对象；调用<span class="number">4</span>）</span><br><span class="line">					<span class="number">4</span>）、Object beanInstance = doCreateBean(beanName, mbdToUse, args);创建Bean</span><br><span class="line">						 <span class="number">1</span>）、【创建Bean实例】；createBeanInstance(beanName, mbd, args);</span><br><span class="line">						 	利用工厂方法或者对象的构造器创建出Bean实例；</span><br><span class="line">						 <span class="number">2</span>）、applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);</span><br><span class="line">						 	调用MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition(mbd, beanType, beanName);</span><br><span class="line">						 <span class="number">3</span>）、【Bean属性赋值】populateBean(beanName, mbd, instanceWrapper);</span><br><span class="line">						 	赋值之前：</span><br><span class="line">						 	<span class="number">1</span>）、拿到InstantiationAwareBeanPostProcessor后置处理器；</span><br><span class="line">						 		postProcessAfterInstantiation()；</span><br><span class="line">						 	<span class="number">2</span>）、拿到InstantiationAwareBeanPostProcessor后置处理器；</span><br><span class="line">						 		postProcessPropertyValues()；</span><br><span class="line">						 	=====赋值之前：===</span><br><span class="line">						 	<span class="number">3</span>）、应用Bean属性的值；为属性利用setter方法等进行赋值；</span><br><span class="line">						 		applyPropertyValues(beanName, mbd, bw, pvs);</span><br><span class="line">						 <span class="number">4</span>）、【Bean初始化】initializeBean(beanName, exposedObject, mbd);</span><br><span class="line">						 	<span class="number">1</span>）、【执行Aware接口方法】invokeAwareMethods(beanName, bean);执行xxxAware接口的方法</span><br><span class="line">						 		BeanNameAware\BeanClassLoaderAware\BeanFactoryAware</span><br><span class="line">						 	<span class="number">2</span>）、【执行后置处理器初始化之前】applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);</span><br><span class="line">						 		BeanPostProcessor.postProcessBeforeInitialization（）;</span><br><span class="line">						 	<span class="number">3</span>）、【执行初始化方法】invokeInitMethods(beanName, wrappedBean, mbd);</span><br><span class="line">						 		<span class="number">1</span>）、是否是InitializingBean接口的实现；执行接口规定的初始化；</span><br><span class="line">						 		<span class="number">2</span>）、是否自定义初始化方法；</span><br><span class="line">						 	<span class="number">4</span>）、【执行后置处理器初始化之后】applyBeanPostProcessorsAfterInitialization</span><br><span class="line">						 		BeanPostProcessor.postProcessAfterInitialization()；</span><br><span class="line">						 <span class="number">5</span>）、注册Bean的销毁方法；</span><br><span class="line">					<span class="number">5</span>）、将创建的Bean添加到缓存中singletonObjects；</span><br><span class="line">				ioc容器就是这些Map；很多的Map里面保存了单实例Bean，环境信息。。。。；</span><br><span class="line">		所有Bean都利用getBean创建完成以后；</span><br><span class="line">			检查所有的Bean是否是SmartInitializingSingleton接口的；如果是；就执行afterSingletonsInstantiated()；</span><br><span class="line"><span class="number">12</span>、finishRefresh();完成BeanFactory的初始化创建工作；IOC容器就创建完成；</span><br><span class="line">		<span class="number">1</span>）、initLifecycleProcessor();初始化和生命周期有关的后置处理器；LifecycleProcessor</span><br><span class="line">			默认从容器中找是否有lifecycleProcessor的组件【LifecycleProcessor】；如果没有<span class="keyword">new</span> DefaultLifecycleProcessor();</span><br><span class="line">			加入到容器；</span><br><span class="line">			</span><br><span class="line">			写一个LifecycleProcessor的实现类，可以在BeanFactory</span><br><span class="line">				<span class="function"><span class="keyword">void</span> <span class="title">onRefresh</span><span class="params">()</span></span>;</span><br><span class="line">				<span class="function"><span class="keyword">void</span> <span class="title">onClose</span><span class="params">()</span></span>;	</span><br><span class="line">		<span class="number">2</span>）、	getLifecycleProcessor().onRefresh();</span><br><span class="line">			拿到前面定义的生命周期处理器（BeanFactory）；回调onRefresh()；</span><br><span class="line">		<span class="number">3</span>）、publishEvent(<span class="keyword">new</span> ContextRefreshedEvent(<span class="keyword">this</span>));发布容器刷新完成事件；</span><br><span class="line">		<span class="number">4</span>）、liveBeansView.registerApplicationContext(<span class="keyword">this</span>);</span><br><span class="line">	</span><br><span class="line">	======总结===========</span><br><span class="line">	<span class="number">1</span>）、Spring容器在启动的时候，先会保存所有注册进来的Bean的定义信息；</span><br><span class="line">		<span class="number">1</span>）、xml注册bean；&lt;bean&gt;</span><br><span class="line">		<span class="number">2</span>）、注解注册Bean；<span class="meta">@Service</span>、<span class="meta">@Component</span>、<span class="meta">@Bean</span>、xxx</span><br><span class="line">	<span class="number">2</span>）、Spring容器会合适的时机创建这些Bean</span><br><span class="line">		<span class="number">1</span>）、用到这个bean的时候；利用getBean创建bean；创建好以后保存在容器中；</span><br><span class="line">		<span class="number">2</span>）、统一创建剩下所有的bean的时候；finishBeanFactoryInitialization()；</span><br><span class="line">	<span class="number">3</span>）、后置处理器；BeanPostProcessor</span><br><span class="line">		<span class="number">1</span>）、每一个bean创建完成，都会使用各种后置处理器进行处理；来增强bean的功能；</span><br><span class="line">			AutowiredAnnotationBeanPostProcessor:处理自动注入</span><br><span class="line">			AnnotationAwareAspectJAutoProxyCreator:来做AOP功能；</span><br><span class="line">			xxx....</span><br><span class="line">			增强的功能注解：</span><br><span class="line">			AsyncAnnotationBeanPostProcessor</span><br><span class="line">			....</span><br><span class="line">	<span class="number">4</span>）、事件驱动模型；</span><br><span class="line">		ApplicationListener；事件监听；</span><br><span class="line">		ApplicationEventMulticaster；事件派发：</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-08-25T08:15:55.000Z" itemprop="dateUpdated">2018-08-25 16:15:55</time>
+</span><br>
+
+
+        
+        <a href="/2018/08/25/Java/spring/ioc/ioc@SGG/" target="_blank" rel="external">http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/08/25/Java/spring/ioc/BeanPostProcessor/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">BeanPostProcessor</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/08/24/Linux/shell0/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/08/25/Java/spring/ioc/ioc@SGG/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aUa4CIQwFUPe/ad8CDPPuhdFk4PBl1AkcTZrS9vWK1/tjfX56/c3RU6NnX99YGBgYj2W8L1dyuNHGyffbfYc7YmBgHMAYHeI6XCavkzCah+nh+xgYGBjxIa7fyT/FwMDAuIvRHncFj4GBgZFcJpOjtKW6Nrm84S6OgYHxQEZedf/966/0NzAwMB7FeJfrOsjOHeu6tRmdCgMDY2tGHuDy5KwdyJgLuBgYGOcwkivrXOjMqfkoRvEbY2BgbMqYG6FoC2p5Oa9oOWBgYGzNSA7RBsc2oZxrSNT9BwwMjIcz2jGIlWGv9aRw8v/BwMB4LCMPiHMX2pXRijzpxMDAOIHRFuDWh8PmLqvDb2JgYBzGWG9Gtilj8s4/iSMGBsbWjLas34bOlUJ/O8yBgYGxN2N9FCNJ5pKN8xIbBgbGOYwkvObINgVs8XWGi4GBsRGjHZhoB7nasFsnmhgYGMcw8qtsm8CtrIiHgYGxNWOliB8V6+P2523DYRgYGFszkofbcn8+WFaX+0dFNwwMjK0Z7bVzrlW5sqJhCwwMjGMYbTuzPfRdT72SuI6BgfFwxlzxKym6rRTO8lYEBgbGCYw2LUs2zgNrknTee+nFwMB4LuM3A175r1iPhWFgYBzDaANfu9n61fef0I+BgYGxXNWbGxrLGxIYGBgY7QW17k4El+GvBFwMDIxHMdYvn3PBdD1BxMDAOIGRP9aW3u49xPW+GBgYmzL+AFdZ+ggeY8Y5AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
