@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>grep 过滤文本 | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="grep">
+    <meta name="description" content="grep 基于行匹配的文本搜索工具，并不仅仅支持单独的某个文件开始过滤，也可以基于某个目录下的所有文件开始一个文件一个文件的开始过滤每行内容，如果你想找某个关键内容或者IP的话，但是不知道在哪个文件，这个时候grep一样可以派上用场，前提是查找的目录不要太大，当前服务器负载不是特别高。 #分两类：​            基本正则表达式：BRE​            扩展正则表达式：ERE 字符">
+<meta name="keywords" content="grep">
+<meta property="og:type" content="article">
+<meta property="og:title" content="grep 过滤文本">
+<meta property="og:url" content="http://io.stelawliet.top/2018/10/07/Linux/command/grep/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="grep 基于行匹配的文本搜索工具，并不仅仅支持单独的某个文件开始过滤，也可以基于某个目录下的所有文件开始一个文件一个文件的开始过滤每行内容，如果你想找某个关键内容或者IP的话，但是不知道在哪个文件，这个时候grep一样可以派上用场，前提是查找的目录不要太大，当前服务器负载不是特别高。 #分两类：​            基本正则表达式：BRE​            扩展正则表达式：ERE 字符">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-07T13:10:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="grep 过滤文本">
+<meta name="twitter:description" content="grep 基于行匹配的文本搜索工具，并不仅仅支持单独的某个文件开始过滤，也可以基于某个目录下的所有文件开始一个文件一个文件的开始过滤每行内容，如果你想找某个关键内容或者IP的话，但是不知道在哪个文件，这个时候grep一样可以派上用场，前提是查找的目录不要太大，当前服务器负载不是特别高。 #分两类：​            基本正则表达式：BRE​            扩展正则表达式：ERE 字符">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">grep 过滤文本</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">grep 过滤文本</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-07T09:34:21.000Z" itemprop="datePublished" class="page-time">
+  2018-10-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/command/">command</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Linux/command/grep"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">grep 过滤文本</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-07 17:34:21" datetime="2018-10-07T09:34:21.000Z"  itemprop="datePublished">2018-10-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/command/">command</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>grep 基于行匹配的文本搜索工具，并不仅仅支持单独的某个文件开始过滤，也可以基于某个目录下的所有文件开始一个文件一个文件的开始过滤每行内容，如果你想找某个关键内容或者IP的话，但是不知道在哪个文件，这个时候grep一样可以派上用场，前提是查找的目录不要太大，当前服务器负载不是特别高。</p>
+<p>#分两类：<br>​            基本正则表达式：BRE<br>​            扩展正则表达式：ERE</p>
+<p>字符匹配选线以及使用介绍<br>.　　　 　匹配任意单个字符<br>　　cat /etc/passwd | grep “roo.”         查看/etc/passwd目录下 显示包含roo后面加任意单个字符的行<br>[]　　　　    匹配指定范围内的任意单个字符<br>　 　cat /etc/passwd | grep [bin]        查看/etc/passwd目录下 显示包含b、i、n其中任意一个字母的行<br>[^]              匹配指定范围外的任意单个字符<br>　　cat /etc/passwd | grep [^bin]        查看/etc/passwd目录下 显示除b、i、n三个字母之外任意的字符全部是要找的字符<br>[:alnum:]    任意字母和数字<br>　　cat /etc/passwd | grep [[:alnum:]]        查看/etc/passwd目录下 显示包含任意字母和数字的行<br>[:alpha:]     代表任何英文字母大小写 例[a-z][A-Z]<br>　　cat /etc/passwd | grep [[:alpha:]]        查看/etc/passwd目录下 显示包含任意大小写字母的行<br>[:lower:]     小写字母[a-z][:upper:] 大写字母[A-Z]<br>　　cat /etc/passwd | grep [[:lower:]]        查看/etc/passwd目录下 显示包含任意小写字母的行      [:upper:] 同样的使用方式<br>[:blank:] 　 空白字符（空格和制表符）<br>[:space:] 　 水平和垂直的空白字符<br>[:cntrl:] 　   不可打印的控制字符 （退格、删除…）<br>[:digit:]   　 十进制数字<br>[:xdigit:]     十六进制数字<br>[:graph:]     可打印的非空白字符<br>[:print:]      可打印字符<br>[:punct:]     标点符号<br>下面几个命令概都类似 只是用虚拟机上的/etc/passwd这个目录来举例做简单的示范， 几个匹配字符还可以进行组合，接下来会进行举例。</p>
+<p>匹配次数选项<br>+             匹配前面的字符至少一次<br>　　cat  /etc/passwd | grep  [“o”+]         查看/etc/passwd 目录下每行包含o后面的全部内容<br>.<em>             任意长度的任意字符<br>　　cat  /etc/passwd | grep  o.</em>         查看/etc/passwd 目录下每行包含o后面的全部内容<br>\?             匹配其前面的字符0或1次</p>
+<ul>
+<li>匹配前面的字符0到无穷次 尽可能长的匹配<br>{n}        匹配前面的字符n次 n代表任意一个数字<br>{m,n}    匹配前面的字符至少m次 至多n次<br>{n,}       匹配前面的字符至少n次<br>　　cat /etc/passwd | grep “1{3，}“   查看/etc/passwd 目录下前面是1后面最少跟三个1的行<br>{,n}       匹配前面的字符至多n次<br>　　 cat /etc/passwd | grep “1{,3}“   查看/etc/passwd 目录下前面是1后面最少0最多跟三个1的行</li>
+</ul>
+<p>位置锚定选项<br>^             锚定行首  用于模式的最左侧<br>　　cat  /etc/passwd | grep ^”\&lt;root>“          查看/etc/passwd 目录下（用^锚定行首 用\&lt; >锚定一个单词 ）root开头的行<br>$             行尾锚定 用于模式的最右侧<br>　　cat  /etc/passwd | grep “[[:space:]]+”$         查看/etc/passwd 目录下结尾是空白的行 注意区分 没有用到下面一行的命令<br>\&lt;  >      锚定一个单词的词首词尾<br>^$           空行  ^[[:space:]]*$ 空白行</p>
+<p>扩展正则表达式<br>扩展正则表达式去正则表达式的区别是扩展正则表达式中新添加了几个与正则表达式有区别的新内容<br>？             0次或者1次<br>{m}         匹配m次   m是正常数字</p>
+<ul>
+<li>1次或者多次<br>{m，n}    至少m  至多n次  m和n都是数字 但是n要大于m<br>　　#用法是一样的 就不在举例说明</li>
+</ul>
+<p>grep命令<br>作用：作为强大的文本搜索工具，它能使用这则表达式搜索文本，并把匹配的打印出来。</p>
+<p>选项<br>-v   　　  显示不被pattern匹配到的行<br>　　cat /etc/passwd | grep -v root                显示/etc/passwd 目录下不包含root的行<br>-i     　　 忽略字符大小写<br>　　cat /etc/passwd | grep -i ROOT           显示/etc/passwd 目录下包含root的行  不区分大小写<br>-o   　　  仅显示匹配到的字符串<br>　　cat /etc/passwd | grep -o root             仅显示/etc/passwd 目录能匹配到的几个root   别的不会显示<br>-c  　　   统计匹配到的行数<br>　　cat /etc/passwd | grep -c root             仅显示/etc/passwd 目录下有几行能匹配到root  如只有两行包含root  那结果只会显示”2“<br>-e    　　 同时实现多个选项间的逻辑or关系<br>　　grep -e “cat” -e “dog”  查找文件下面有没有cat 或dog这两个字符串 有一个显示一个 有两个显示一双<br>-n   　　 显示匹配到的行号     （上面这几个选项常用）<br>　　cat /etc/passwd | grep -n root             结果如果只有第五行和第六行包含root  那会在这两行前面第五行前面标5 第六行前面标6<br>-F   　　 相当于fgrep<br>　　fgrep不支持正则表达式<br>-q  　　  静默模式 不输出任何信息<br>　　比如不需要查看结果，但是要判断返回值是否正确的情况下，会用到或者其他场合。<br>-E  　　  使用ERE<br>　　相当于适用egrep<br>–color   对匹配到的文本着色显示<br>　　在CentOs7系统上默认会显示颜色 7以下的系统会用到这个命令</p>
+<p> 几个组合小命令，很方便<br>利用df和grep，取出磁盘各分区利用率，并从大到小排序<br>　　df -h | grep -o “[[:digit:]]+%” | grep -o “[0-9]{1,2}“ | sort -nr</p>
+<p>将此字符串：welcome to beijing 中的每个字符去重并排序，重复次数多的排到前面<br>　　echo “welcome to beijing “ | egrep -o “[[:alpha:]]” | sort | uniq -c | sort -nr</p>
+<p>递归查找字符串，在当前目录下。<br>　　grep -r  “需检索的字符串”   ./*</p>
+<p>配置文件中空格和#过滤去除.举例redis.conf</p>
+<p>cat redis.conf | grep -Ev “^$|^#” &gt; redis.conf</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-07T13:10:02.000Z" itemprop="dateUpdated">2018-10-07 21:10:02</time>
+</span><br>
+
+
+        
+        <a href="/2018/10/07/Linux/command/grep/" target="_blank" rel="external">http://io.stelawliet.top/2018/10/07/Linux/command/grep/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/grep/">grep</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/&title=《grep 过滤文本》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/&title=《grep 过滤文本》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/07/Linux/command/grep/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《grep 过滤文本》 — stelawliet&url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/07/Untitled 2/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/04/Linux/docker/阿里云内网push/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">docker ecs push</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/&title=《grep 过滤文本》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/&title=《grep 过滤文本》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/07/Linux/command/grep/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《grep 过滤文本》 — stelawliet&url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/07/Linux/command/grep/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNklEQVR42u3ayw7CMAxE0f7/TxeJFRJNOjMujzq3K1Qg5HRhHNvbJl/783p9/Xpn/q3RVVk5vGDAgHFbhv5jo5/X11Qezfz+kAoDBowFGFmQ1WFKKNfXhAEDBoxsOSX508MrDBgwYFQYegKnvwsDBgwYCqP+Y/r9H5/FYcCAcUNG1hj4zuuP9zdgwIDx94zdvJSAqyR5bvA92RUMGDBaM9wyWVaSu/bfwMhwYcCA0YJRGe26qtCfJYsH/xswYMBozZgv7RbmKg3Ok+2O1oEBA8YCjGyjbkKpPzK9/bnp0xwwYMC4OWOezBnLzc/K5taNkTIYMGC0ZrghstI8yAbIjIgKAwaMpox6aazSyMyaDQfvwoABYxlGNnNVb1K6ZTip3AYDBox2jKyJWC+iZcW7YcCFAQNGa4a+oSw4ukMbJ2W198/DgAGjNcM9TOqhUA+1WcqotB9gwIDRiaEU6yvDYe54h96EgAEDxjoMJRTqyVwW3d1hC+M5wYABowVDP5Rmg1/6UVYP+gf3YcCA0ZRRKZwZz0kexcjSShgwYMCoj1BkTVBjHRgwYLRmuJuoFNrsTcitAhgwYPRm7OaVFffdAKqPdBykhjBgwGjHcIOdEr/rzYMMCQMGjN4MPchmKaCSSmaPCQYMGKsx9DbkPPzpjcnscHsybAEDBozlGUqiliWOF3weBgwYMMxRMH3AIptlgwEDxpoMN73L2plKCuiGdRgwYKzAyI6ObkE/O5petT4MGDBuy3gAcuqtY6505pYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

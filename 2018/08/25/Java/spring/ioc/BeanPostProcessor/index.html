@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="stelawliet">
 <meta property="og:description" content="BeanPostProcessor summay Interface BeanPostProcessor 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768/** * Factory hook t">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-25T13:59:34.000Z">
+<meta property="og:updated_time" content="2018-09-04T14:38:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BeanPostProcessor">
 <meta name="twitter:description" content="BeanPostProcessor summay Interface BeanPostProcessor 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768/** * Factory hook t">
@@ -167,6 +167,13 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#BeanFactoryPostProcessor"><span class="post-toc-number">1.</span> <span class="post-toc-text">BeanFactoryPostProcessor</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#BeanDefinitionRegistryPostProcessor"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">BeanDefinitionRegistryPostProcessor</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-Java/spring/ioc/BeanPostProcessor"
   class="post-article article-type-post fade" itemprop="blogPost">
@@ -194,7 +201,7 @@
 <p>任何bean 初始化回调（如InitializingBean的{@code afterPropertiesSet} <em>或自定义init方法）后，将此BeanPostProcessor应用于给定的新bean实例<i>。 bean已经填充了属性值。 </i></em>返回的bean实例可能是原始实例的包装器。 </p>
 <p>对于FactoryBean，将为FactoryBean <em>实例和FactoryBean创建的对象（从Spring 2.0开始）调用此回调。 </em>后处理器可以通过相应的 bean instanceof FactoryBean检查来决定是应用于FactoryBean还是创建*对象。 与所有其他BeanPostProcessor回调相比，</p>
 <p>在<em> {@link InstantiationAwareBeanPostProcessor＃postProcessBeforeInstantiation}方法</em>触发的短路后，也会调用此回调。</p>
-
+<h2 id="BeanFactoryPostProcessor"><a href="#BeanFactoryPostProcessor" class="headerlink" title="BeanFactoryPostProcessor"></a>BeanFactoryPostProcessor</h2><h3 id="BeanDefinitionRegistryPostProcessor"><a href="#BeanDefinitionRegistryPostProcessor" class="headerlink" title="BeanDefinitionRegistryPostProcessor"></a>BeanDefinitionRegistryPostProcessor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Extension to the standard &#123;@link BeanFactoryPostProcessor&#125; SPI, allowing for</span><br><span class="line"> * the registration of further bean definitions &lt;i&gt;before&lt;/i&gt; regular</span><br><span class="line"> * BeanFactoryPostProcessor detection kicks in. In particular,</span><br><span class="line"> * BeanDefinitionRegistryPostProcessor may register further bean definitions</span><br><span class="line"> * which in turn define BeanFactoryPostProcessor instances.</span><br><span class="line"> *</span><br><span class="line"> * @author Juergen Hoeller</span><br><span class="line"> * @since 3.0.1</span><br><span class="line"> * @see org.springframework.context.annotation.ConfigurationClassPostProcessor</span><br><span class="line"> */</span><br><span class="line">public interface BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProcessor &#123;</span><br><span class="line"></span><br><span class="line">   /**</span><br><span class="line">    * Modify the application context&apos;s internal bean definition registry after its</span><br><span class="line">    * standard initialization. All regular bean definitions will have been loaded,</span><br><span class="line">    * but no beans will have been instantiated yet. This allows for adding further</span><br><span class="line">    * bean definitions before the next post-processing phase kicks in.</span><br><span class="line">    * @param registry the bean definition registry used by the application context</span><br><span class="line">    * @throws org.springframework.beans.BeansException in case of errors</span><br><span class="line">    */</span><br><span class="line">   void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry registry) throws BeansException;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
         </div>
 
         <blockquote class="post-copyright">
@@ -202,7 +209,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-08-25T13:59:34.000Z" itemprop="dateUpdated">2018-08-25 21:59:34</time>
+    Last updated: <time datetime="2018-09-04T14:38:27.000Z" itemprop="dateUpdated">2018-09-04 22:38:27</time>
 </span><br>
 
 

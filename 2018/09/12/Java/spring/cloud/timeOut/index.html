@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>cloud-timout-config@ | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="spring cloud,zuul,hystrix,ribbon">
+    <meta name="description" content="spring-cloud网关中的Timeout分析link[https://deanwangpro.com/2018/04/13/zuul-hytrix-ribbon-timeout/]  Posted on 2018-04-13 |  0 Comments |  456 大家在初次使用spring-cloud的gateway的时候，肯定会被里面各种的Timeout搞得晕头转向。hytrix有设置">
+<meta name="keywords" content="spring cloud,zuul,hystrix,ribbon">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cloud-timout-config@">
+<meta property="og:url" content="http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="spring-cloud网关中的Timeout分析link[https://deanwangpro.com/2018/04/13/zuul-hytrix-ribbon-timeout/]  Posted on 2018-04-13 |  0 Comments |  456 大家在初次使用spring-cloud的gateway的时候，肯定会被里面各种的Timeout搞得晕头转向。hytrix有设置">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-12T06:25:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cloud-timout-config@">
+<meta name="twitter:description" content="spring-cloud网关中的Timeout分析link[https://deanwangpro.com/2018/04/13/zuul-hytrix-ribbon-timeout/]  Posted on 2018-04-13 |  0 Comments |  456 大家在初次使用spring-cloud的gateway的时候，肯定会被里面各种的Timeout搞得晕头转向。hytrix有设置">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">cloud-timout-config@</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">cloud-timout-config@</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-12T01:40:34.000Z" itemprop="datePublished" class="page-time">
+  2018-09-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/cloud/">cloud</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#spring-cloud网关中的Timeout分析"><span class="post-toc-number">1.</span> <span class="post-toc-text">spring-cloud网关中的Timeout分析</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#hytrix超时时间"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">hytrix超时时间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ribbon超时时间"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">ribbon超时时间</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ribbon单服务设置"><span class="post-toc-number">2.</span> <span class="post-toc-text">ribbon单服务设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#spring-cloud各种超时时间设置"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">spring cloud各种超时时间设置</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/spring/cloud/timeOut"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">cloud-timout-config@</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-12 09:40:34" datetime="2018-09-12T01:40:34.000Z"  itemprop="datePublished">2018-09-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/cloud/">cloud</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="spring-cloud网关中的Timeout分析"><a href="#spring-cloud网关中的Timeout分析" class="headerlink" title="spring-cloud网关中的Timeout分析"></a>spring-cloud网关中的Timeout分析</h3><p>link[<a href="https://deanwangpro.com/2018/04/13/zuul-hytrix-ribbon-timeout/]" target="_blank" rel="noopener">https://deanwangpro.com/2018/04/13/zuul-hytrix-ribbon-timeout/]</a></p>
+<p> Posted on 2018-04-13 |  <a href="https://deanwangpro.com/2018/04/13/zuul-hytrix-ribbon-timeout/#comments" target="_blank" rel="noopener">0 Comments </a>|  456</p>
+<p>大家在初次使用spring-cloud的gateway的时候，肯定会被里面各种的Timeout搞得晕头转向。hytrix有设置，ribbon也有。我们一开始也是乱设一桶，Github上各种项目里也没几个设置正确的。对Timeout的研究源于一次log中的warning</p>
+<blockquote>
+<p>The Hystrix timeout of 60000 ms for the command “foo” is set lower than the combination of the Ribbon read and connect timeout, 200000ms.</p>
+</blockquote>
+<h4 id="hytrix超时时间"><a href="#hytrix超时时间" class="headerlink" title="hytrix超时时间"></a>hytrix超时时间</h4><p>log出自<code>AbstractRibbonCommand.java</code>，那么索性研究一下源码。</p>
+<p>假设：</p>
+<ul>
+<li>这里gateway会请求一个serviceName=foo的服务</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getHystrixTimeout</span><span class="params">(IClientConfig config, String commandKey)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ribbonTimeout = getRibbonTimeout(config, commandKey);</span><br><span class="line">	DynamicPropertyFactory dynamicPropertyFactory = DynamicPropertyFactory.getInstance();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 获取默认的hytrix超时时间</span></span><br><span class="line">	<span class="keyword">int</span> defaultHystrixTimeout = dynamicPropertyFactory.getIntProperty(<span class="string">"hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds"</span>,</span><br><span class="line">		<span class="number">0</span>).get();</span><br><span class="line">	<span class="comment">// 获取具体服务的hytrix超时时间，这里应该是hystrix.command.foo.execution.isolation.thread.timeoutInMilliseconds</span></span><br><span class="line">	<span class="keyword">int</span> commandHystrixTimeout = dynamicPropertyFactory.getIntProperty(<span class="string">"hystrix.command."</span> + commandKey + <span class="string">".execution.isolation.thread.timeoutInMilliseconds"</span>,</span><br><span class="line">		<span class="number">0</span>).get();</span><br><span class="line">	<span class="keyword">int</span> hystrixTimeout;</span><br><span class="line">	<span class="comment">// hystrixTimeout的优先级是 具体服务的hytrix超时时间 &gt; 默认的hytrix超时时间 &gt; ribbon超时时间</span></span><br><span class="line">	<span class="keyword">if</span>(commandHystrixTimeout &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		hystrixTimeout = commandHystrixTimeout;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(defaultHystrixTimeout &gt; <span class="number">0</span>) &#123;</span><br><span class="line">		hystrixTimeout = defaultHystrixTimeout;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		hystrixTimeout = ribbonTimeout;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">// 如果默认的或者具体服务的hytrix超时时间小于ribbon超时时间就会警告</span></span><br><span class="line">	<span class="keyword">if</span>(hystrixTimeout &lt; ribbonTimeout) &#123;</span><br><span class="line">		LOGGER.warn(<span class="string">"The Hystrix timeout of "</span> + hystrixTimeout + <span class="string">"ms for the command "</span> + commandKey +</span><br><span class="line">			<span class="string">" is set lower than the combination of the Ribbon read and connect timeout, "</span> + ribbonTimeout + <span class="string">"ms."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> hystrixTimeout;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>紧接着，看一下我们的配置是什么</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">hystrix:</span><br><span class="line">  command:</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      execution:</span><br><span class="line">        isolation:</span><br><span class="line">          thread:</span><br><span class="line">            timeoutInMilliseconds: <span class="number">60000</span></span><br><span class="line">            </span><br><span class="line">ribbon:</span><br><span class="line">  ReadTimeout: <span class="number">50000</span></span><br><span class="line">  ConnectTimeout: <span class="number">50000</span></span><br><span class="line">  MaxAutoRetries: <span class="number">0</span></span><br><span class="line">  MaxAutoRetriesNextServer: <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="ribbon超时时间"><a href="#ribbon超时时间" class="headerlink" title="ribbon超时时间"></a>ribbon超时时间</h4><p>这里ribbon的超时时间是50000ms，那么为什么log中写的ribbon时间是200000ms?</p>
+<p>继续分析源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getRibbonTimeout</span><span class="params">(IClientConfig config, String commandKey)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> ribbonTimeout;</span><br><span class="line">	<span class="comment">// 这是比较异常的情况，不说</span></span><br><span class="line">	<span class="keyword">if</span> (config == <span class="keyword">null</span>) &#123;</span><br><span class="line">		ribbonTimeout = RibbonClientConfiguration.DEFAULT_READ_TIMEOUT + RibbonClientConfiguration.DEFAULT_CONNECT_TIMEOUT;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	   <span class="comment">// 这里获取了四个参数，ReadTimeout，ConnectTimeout，MaxAutoRetries， MaxAutoRetriesNextServer</span></span><br><span class="line">		<span class="keyword">int</span> ribbonReadTimeout = getTimeout(config, commandKey, <span class="string">"ReadTimeout"</span>,</span><br><span class="line">			IClientConfigKey.Keys.ReadTimeout, RibbonClientConfiguration.DEFAULT_READ_TIMEOUT);</span><br><span class="line">		<span class="keyword">int</span> ribbonConnectTimeout = getTimeout(config, commandKey, <span class="string">"ConnectTimeout"</span>,</span><br><span class="line">			IClientConfigKey.Keys.ConnectTimeout, RibbonClientConfiguration.DEFAULT_CONNECT_TIMEOUT);</span><br><span class="line">		<span class="keyword">int</span> maxAutoRetries = getTimeout(config, commandKey, <span class="string">"MaxAutoRetries"</span>,</span><br><span class="line">			IClientConfigKey.Keys.MaxAutoRetries, DefaultClientConfigImpl.DEFAULT_MAX_AUTO_RETRIES);</span><br><span class="line">		<span class="keyword">int</span> maxAutoRetriesNextServer = getTimeout(config, commandKey, <span class="string">"MaxAutoRetriesNextServer"</span>,</span><br><span class="line">			IClientConfigKey.Keys.MaxAutoRetriesNextServer, DefaultClientConfigImpl.DEFAULT_MAX_AUTO_RETRIES_NEXT_SERVER);</span><br><span class="line">		<span class="comment">// 原来ribbonTimeout的计算方法在这里，以上文的设置为例</span></span><br><span class="line">		<span class="comment">// ribbonTimeout = (50000 + 50000) * (0 + 1) * (1 + 1) = 200000</span></span><br><span class="line">		ribbonTimeout = (ribbonReadTimeout + ribbonConnectTimeout) * (maxAutoRetries + <span class="number">1</span>) * (maxAutoRetriesNextServer + <span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ribbonTimeout;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到ribbonTimeout是一个总时间，所以从逻辑上来讲，作者希望hystrixTimeout要大于ribbonTimeout，否则hystrix熔断了以后，ribbon的重试就都没有意义了。</p>
+<h3 id="ribbon单服务设置"><a href="#ribbon单服务设置" class="headerlink" title="ribbon单服务设置"></a>ribbon单服务设置</h3><p>到这里最前面的疑问已经解开了，但是hytrix可以分服务设置timeout，ribbon可不可以? 源码走起，这里看的文件是<code>DefaultClientConfigImpl.java</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是获取配置的入口方法，如果是null，那么用默认值</span></span><br><span class="line"><span class="comment">// 所有ribbon的默认值的都在该类中设置了，可以自己看一下</span></span><br><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function">T <span class="title">get</span><span class="params">(IClientConfigKey&lt;T&gt; key, T defaultValue)</span> </span>&#123;</span><br><span class="line">    T value = get(key);</span><br><span class="line">    <span class="keyword">if</span> (value == <span class="keyword">null</span>) &#123;</span><br><span class="line">        value = defaultValue;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这是核心方法   </span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> Object <span class="title">getProperty</span><span class="params">(String key)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (enableDynamicProperties) &#123;</span><br><span class="line">        String dynamicValue = <span class="keyword">null</span>;</span><br><span class="line">        DynamicStringProperty dynamicProperty = dynamicProperties.get(key);</span><br><span class="line">        <span class="comment">// dynamicProperties其实是一个缓存，首次访问foo服务的时候会加载</span></span><br><span class="line">        <span class="keyword">if</span> (dynamicProperty != <span class="keyword">null</span>) &#123;</span><br><span class="line">            dynamicValue = dynamicProperty.get();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果缓存没有，那么就再获取一次，注意这里的getConfigKey(key)是生成key的方法</span></span><br><span class="line">        <span class="keyword">if</span> (dynamicValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">            dynamicValue = DynamicProperty.getInstance(getConfigKey(key)).getString();</span><br><span class="line">            <span class="comment">// 如果还是没有取默认值，getDefaultPropName(key)生成key的方法</span></span><br><span class="line">            <span class="keyword">if</span> (dynamicValue == <span class="keyword">null</span>) &#123;</span><br><span class="line">                dynamicValue = DynamicProperty.getInstance(getDefaultPropName(key)).getString();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dynamicValue != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> dynamicValue;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> properties.get(key);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以我们的服务为例：<br><code>getConfigKey(key)</code> returns <code>foo.ribbon.ReadTimeout</code><br><code>getDefaultPropName(key)</code> returns <code>ribbon.ReadTimeout</code></p>
+<p>一目了然，<code>{serviceName}.ribbon.{propertyName}</code>就可以了。</p>
+<h4 id="spring-cloud各种超时时间设置"><a href="#spring-cloud各种超时时间设置" class="headerlink" title="spring cloud各种超时时间设置"></a><a href="https://codeday.me/collect/20171109/97634.html" target="_blank" rel="noopener">spring cloud各种超时时间设置</a></h4><p>时间：2017-11-09 分类：<a href="https://codeday.me/category/collect" target="_blank" rel="noopener">收藏</a></p>
+<p>如果是zuul（网关）的超时时间需要设置zuul、hystrix、ribbon等三部分：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#zuul超时设置</span><br><span class="line">#默认1000</span><br><span class="line">zuul.host.socket-timeout-millis=2000</span><br><span class="line">#默认2000</span><br><span class="line">zuul.host.connect-timeout-millis=4000</span><br><span class="line"></span><br><span class="line">#熔断器启用</span><br><span class="line">feign.hystrix.enabled=true</span><br><span class="line">hystrix.command.default.execution.timeout.enabled=true</span><br><span class="line">#断路器的超时时间,下级服务返回超出熔断器时间，即便成功，消费端消息也是TIMEOUT,所以一般断路器的超时时间需要大于ribbon的超时时间。</span><br><span class="line">#服务的返回时间大于ribbon的超时时间，会触发重试</span><br><span class="line">#默认=1000，太小</span><br><span class="line">hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=60000</span><br><span class="line"></span><br><span class="line">#断路器详细设置</span><br><span class="line">#当在配置时间窗口内达到此数量的失败后，进行短路。默认20个）</span><br><span class="line">#hystrix.command.default.circuitBreaker.requestVolumeThreshold=20</span><br><span class="line">#短路多久以后开始尝试是否恢复，默认5s）</span><br><span class="line">#hystrix.command.default.circuitBreaker.sleepWindowInMilliseconds=5</span><br><span class="line">#出错百分比阈值，当达到此阈值后，开始短路。默认50%）</span><br><span class="line">#hystrix.command.default.circuitBreaker.errorThresholdPercentage=50%</span><br><span class="line">#ribbon请求连接的超时时间- 限制3秒内必须请求到服务，并不限制服务处理的返回时间</span><br><span class="line">ribbon.ConnectTimeout=3000</span><br><span class="line">#请求处理的超时时间 下级服务响应最大时间,超出时间消费方（路由也是消费方）返回timeout</span><br><span class="line">ribbon.ReadTimeout=5000</span><br><span class="line"># 单独设置某个服务的超时时间，会覆盖其他的超时时间限制，服务的名称已注册中心页面显示的名称为准，超时时间不可大于断路器的超时时间</span><br><span class="line"></span><br><span class="line">#service-a.ribbon.ReadTimeout=60000</span><br><span class="line">#service-a.ribbon.ConnectTimeout=60000</span><br><span class="line"></span><br><span class="line">#重试机制</span><br><span class="line">#该参数用来开启重试机制，默认是关闭</span><br><span class="line">spring.cloud.loadbalancer.retry.enabled=true</span><br><span class="line">#对所有操作请求都进行重试</span><br><span class="line">ribbon.OkToRetryOnAllOperations=true</span><br><span class="line">#对当前实例的重试次数</span><br><span class="line">ribbon.MaxAutoRetries=1</span><br><span class="line">#切换实例的重试次数</span><br><span class="line">ribbon.MaxAutoRetriesNextServer=1</span><br><span class="line">#根据如上配置，当访问到故障请求的时候，它会再尝试访问一次当前实例（次数由MaxAutoRetries配置），</span><br><span class="line">#如果不行，就换一个实例进行访问，如果还是不行，再换一次实例访问（更换次数由MaxAutoRetriesNextServer配置），</span><br><span class="line">#如果依然不行，返回失败信息。</span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-09-12T06:25:58.000Z" itemprop="dateUpdated">2018-09-12 14:25:58</time>
+</span><br>
+
+
+        
+        <a href="/2018/09/12/Java/spring/cloud/timeOut/" target="_blank" rel="external">http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hystrix/">hystrix</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ribbon/">ribbon</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring-cloud/">spring cloud</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zuul/">zuul</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/&title=《cloud-timout-config@》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/&title=《cloud-timout-config@》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cloud-timout-config@》 — stelawliet&url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/09/13/Java/spring/cloud/tx/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/12/Java/spring/cloud/properties/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/&title=《cloud-timout-config@》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/&title=《cloud-timout-config@》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《cloud-timout-config@》 — stelawliet&url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/12/Java/spring/cloud/timeOut/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHklEQVR42u3awW7rMAwEwPz/T+cBvRZ1din7AZFGJ6NJLU0OBEXy9YrX+2dd/yX5/u/116evJxYGBsbXMt6X63qb6+fkPck7r7+PgYFxDuM6aCYBtI2K14fOz4aBgYGRb//Ej4KBgYExY7QpXX5cDAwMjGvGyhGvi3FPX3oxMDBOYLSNgf/5/GB/AwMD40sY79FaKaIlgbs+DwYGxtaMfMu26DZ7W8KL7uIYGBibMpLAl4+FrSSC+ZUYAwPjZEYeQNtUr923KK5hYGBsypgNScwK+u3lNjkzBgbGOYzZcENbhnuuAIeBgbE3Y715OcxGl1PSm3uwGBgYX8JoS2zJS2fJ36wJgYGBsStj1rBM0sGkhXDX4AUGBsbejNk2efmsPUryg34IuxgYGNsx8kLbSvDNQ/PwqoyBgXEkY3gPvjV83zBsgYGBsREjSdfasv7szbPhDwwMjL0ZbdG/PcqsVbnUYMDAwNiOsXKs9nmd96ElgIGBsSljpTTWDmfk4xR5+wEDA+MERl7WL4Yelotr7XswMDD2ZlyvPL1rQ2pR9I8vtBgYGLsy7h3eyq+1bdL5YV8MDIytGW2Ya0NqOx3RDnZgYGCcw2iD7Oz6muen7RkwMDDOYeSX2Hac665UL+psYGBgYCzknm1yudQAwMDAOJiRNAlWhifywI2BgXEmY9YMyDGzbmrxvxgYGFszVvKu2aW3vdy2Qx4YGBgbMf4BQmNb0WX6ovUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息时间:2018-02-02 13:13来源:linux.it.net.cn 作者:IT(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息 一、CentOS7网络配置相关文件： /etc/resolv.conf             # DNS配置文件/etc/hosts">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息时间:2018-02-02 13:13来源:linux.it.net.cn 作者:IT(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息 一、CentOS7网络配置相关文件： /etc/resolv.conf             # DNS配置文件/etc/hosts">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-05T07:42:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息时间:2018-02-02 13:13来源:linux.it.net.cn 作者:IT(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息 一、CentOS7网络配置相关文件： /etc/resolv.conf             # DNS配置文件/etc/hosts">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-05T07:39:46.000Z" itemprop="datePublished" class="page-time">
+  2018-09-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-addr-show-显示网卡IP信息"><span class="post-toc-number">1.</span> <span class="post-toc-text">ip addr show                  # 显示网卡IP信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-addr-add-192-168-0-1-24-dev-eth0-设置eth0网卡IP地址192-168-0-1"><span class="post-toc-number">2.</span> <span class="post-toc-text">ip addr add 192.168.0.1/24 dev eth0 # 设置eth0网卡IP地址192.168.0.1</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-addr-del-192-168-0-1-24-dev-eth0-删除eth0网卡IP地址"><span class="post-toc-number">3.</span> <span class="post-toc-text">ip addr del 192.168.0.1/24 dev eth0 # 删除eth0网卡IP地址</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-link-show-显示网络接口信息"><span class="post-toc-number">4.</span> <span class="post-toc-text">ip link show                             # 显示网络接口信息</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-link-set-eth0-up-开启网卡"><span class="post-toc-number">5.</span> <span class="post-toc-text">ip link set eth0 up                  # 开启网卡</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-link-set-eth0-down-关闭网卡"><span class="post-toc-number">6.</span> <span class="post-toc-text">ip link set eth0 down             # 关闭网卡</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-link-set-eth0-promisc-on-开启网卡的混合模式"><span class="post-toc-number">7.</span> <span class="post-toc-text">ip link set eth0 promisc on   # 开启网卡的混合模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-link-set-eth0-promisc-offi-关闭网卡的混个模式"><span class="post-toc-number">8.</span> <span class="post-toc-text">ip link set eth0 promisc offi  # 关闭网卡的混个模式</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-link-set-eth0-txqueuelen-1200-设置网卡队列长度"><span class="post-toc-number">9.</span> <span class="post-toc-text">ip link set eth0 txqueuelen 1200    # 设置网卡队列长度</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-link-set-eth0-mtu-1400-设置网卡最大传输单元"><span class="post-toc-number">10.</span> <span class="post-toc-text">ip link set eth0 mtu 1400      # 设置网卡最大传输单元</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-route-add-192-168-4-0-24-via-192-168-0-254-dev-eth0-设置192-168-4-0网段的网关为192-168-0-254-数据走eth0接口"><span class="post-toc-number">11.</span> <span class="post-toc-text">ip route add 192.168.4.0/24  via  192.168.0.254 dev eth0 # 设置192.168.4.0网段的网关为192.168.0.254,数据走eth0接口</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-route-add-default-via-192-168-0-254-dev-eth0-设置默认网关为192-168-0-254"><span class="post-toc-number">12.</span> <span class="post-toc-text">ip route add default via  192.168.0.254  dev eth0    # 设置默认网关为192.168.0.254</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-route-del-192-168-4-0-24-删除192-168-4-0网段的网关"><span class="post-toc-number">13.</span> <span class="post-toc-text">ip route del 192.168.4.0/24    # 删除192.168.4.0网段的网关</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#ip-route-del-default-删除默认路由"><span class="post-toc-number">14.</span> <span class="post-toc-text">ip route del default    # 删除默认路由</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux/internet/centos ip"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-05 15:39:46" datetime="2018-09-05T07:39:46.000Z"  itemprop="datePublished">2018-09-05</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息<br>时间:2018-02-02 13:13来源:linux.it.net.cn 作者:IT<br>(以centos7为例)网络配置、查看ip地址、网关信息，DNS信息</p>
+<p>一、CentOS7网络配置相关文件：</p>
+<p>/etc/resolv.conf             # DNS配置文件<br>/etc/hosts                      #主机名到IP地址的映射 ,不该主机名基本不会动他。<br>/etc/sysconfig/network           #所有的网络接口和路由信息，网关只有最后一个有效。<br>/etc/sysconfig/network-script/ifcfg-<interface-name>      #每一个网络接口的配置信息</interface-name></p>
+<p>每一个网卡只能使用一个配置文件，当有多个配置文件时，后面读取的配置文件信息会覆盖前面的配置信息。所以，一个网卡最好只写一个配置文件。或者之设置一个文件开机自启动，同时/etc/sysconfig/network-script/ifcfg-<interface-name>中不要写网关信息，交给/etc/sysconfig/network来配置。</interface-name></p>
+<p>二、查看网卡名称</p>
+<p>CentOS7最小化安装后是没有 ifconfig 命令的,所以没有办法通过 ifconfig 查看网卡相关配置信息的，这个时候通过新的ip 命令来查看网卡相关配。</p>
+<p>[root@localhost~]# ip addr 或 ip addr show</p>
+<p>通过 ip 命令加参数 addr 则是查看当前网卡的配置信息, 从下图中可以看出, 当前系统的 ens33 网卡并没有 ipv4 及 ipv6, 没有 ip地址 则只能说明一个问题, 当前linux系统是没有办法上网的,lo 这块网卡每一个系统中都会有, 这个称之为回环网卡,另一片就是我的网卡名:ens33.</p>
+<p>ip addr</p>
+<p>三、CentOS7默认网卡接口配置文件</p>
+<p>CentOS7默认网络接口文件存放于 /etc/sysconfig/network-scripts/ 目录下, 有于CentOS的发行及系统升级或许可能会存在网络接口名称与之前版本不一致的情况, 这也很容易理解, 网络接口名称在linux系统中它只是一个标志, 它并不能说明什么问题, 关键是这个网络接口文件的配置参数, 我当前CentOS7的网络接口名称是 ：eno16777736，配置文件是：ifcfg-eno16777736(上一步找到的网卡名：ens33，一般情况下配置文件默认是：ifcfg-网卡名，但我的不是。如果没有，随便新建一个也行，格式：ifcfg-XXX）</p>
+<p>[root@localhost ~]# cat /etc/sysconfig/network-scripts/ifcfg-eno16777736 通过 cat 查看CentOS7最小化安装默认网卡设备配置信息, 如下:</p>
+<p>TYPE=Ethernet               # 网卡类型：为以太网<br>PROXY_METHOD=none           # 代理方式：关闭状态<br>BROWSER_ONLY=no             # 只是浏览器：否<br>BOOTPROTO=dhcp              # 网卡的引导协议：DHCP[中文名称: 动态主机配置协议]<br>DEFROUTE=yes                # 默认路由：是, 不明白的可以百度关键词 <code>默认路由</code><br>IPV4_FAILURE_FATAL=no       # 是不开启IPV4致命错误检测：否<br>IPV6INIT=yes                # IPV6是否自动初始化: 是[不会有任何影响, 现在还没用到IPV6]<br>IPV6_AUTOCONF=yes           # IPV6是否自动配置：是[不会有任何影响, 现在还没用到IPV6]<br>IPV6_DEFROUTE=yes           # IPV6是否可以为默认路由：是[不会有任何影响, 现在还没用到IPV6]<br>IPV6_FAILURE_FATAL=no       # 是不开启IPV6致命错误检测：否<br>IPV6_ADDR_GEN_MODE=stable-privacy           # IPV6地址生成模型：stable-privacy [这只一种生成IPV6的策略]<br>NAME=eno16777736            # 网络接口名称，即配置文件名后半部分。<br>UUID=f47bde51-fa78-4f79-b68f-d5dd90cfc698   # 通用唯一识别码, 每一个网卡都会有, 不能重复, 否两台linux只有一台网卡可用<br>DEVICE=ens33                # 网卡设备名称<br>ONBOOT=no                   # 是否开机启动， 要想网卡开机就启动或通过 <code>systemctl restart network</code>控制网卡,必须设置为 <code>yes</code> </p>
+<p>四、设置网络</p>
+<p>（1）配置为：开机启动、动态获取ip方式（如果你在一个局域网中，如：连接了路由或在校园网中，并且你不知道网关等网络信息时采用此配置。）：</p>
+<p> 1、vi /etc/sysconfig/network-scripts/ifcfg-eno16777736 (不会vi请先百度)，按i进入插入模式，更改 下列各值,保存退出，如下：</p>
+<pre><code>ONBOOT=yes #设置为开机启动
+BOOTPROTO=dhcp              # 网卡的引导协议：DHCP[动态主机配置协议]
+DEVICE=ens33 # 要配置的网卡名
+</code></pre><p>2、重启网络服务：</p>
+<pre><code>systemctl restart network 或者 service network restart #重启网络
+</code></pre><p>动态ip到此结束。</p>
+<p>（2）配置为：开机启动、静态ip：</p>
+<p>先找到配置相关信息，比如我的信息如下：</p>
+<p>网卡名：ens33</p>
+<p>网络接口名：eno16777736</p>
+<p>ip：      192.168.189.130</p>
+<p>网关： 192.168.189.2</p>
+<p>主 DNS：115.156.76.144</p>
+<p>备用DNS:8.8.4.4</p>
+<p>  配置方式如下：</p>
+<p>1)、 只通过一个网卡配置文件：/etc/sysconfig/network-script/ifcfg-<interface-name>来配置：</interface-name></p>
+<p>1、vi /etc/sysconfig/network-scripts/ifcfg-ens33，更改最后结果为：</p>
+<pre><code> DEVICE=ens33  #要配置的网卡
+ ONBOOT=yes    #开机自启动
+ BOOTPROTO=&quot;static&quot;  #静态ip方式
+ IPADDR=192.168.189.130 # ipv4地址
+ PREFIX=24GATEWAY0=192.168.189.2  #设置网关
+DNS1=115.156.76.144  #设置主DNS
+DNS2=8.8.4.4  #设置备用DNS
+</code></pre><p>2、重启网络服务：</p>
+<pre><code>systemctl restart network 或者 service network restart #重启网络
+</code></pre><p>2)、应用全局配置文件配置</p>
+<p>1、开启网络，再次设置网关（一般情况下重启电脑都会自动配置好网关）<br>       vi /etc/sysconfig/network ，将NETWORKING值设为yes,设置GATEWAY值为现在的网关，如下：</p>
+<pre><code>NETWORKING=yes #表示系统是否使用网络，一般设置为yes。如果设为no，则不能使用网络。 
+
+HOSTNAME=centos #设置本机的主机名，这里设置的主机名要和/etc/hosts中设置的主机名对应 
+
+GATEWAY=192.168.189.2 #设置本机连接的网关的IP地址。
+</code></pre><p>2、DNS配置</p>
+<pre><code>如果没有DNS服务就会出现无法解析域名的情况，如： ping www.baidu.com
+
+PING外网其它主机
+</code></pre><p>  解决方式一、打开 /etc/hosts 文件</p>
+<p>  [root@localhost ~]# vi /etc/hosts  输入IP与域名的对应记录, 保存退出。<br>  修改hosts文件</p>
+<pre><code>解决方式二、域名无穷无尽，只能采用配置DNS方式解决域名解析问题，NDS配置文件如下：
+
+ vi /etc/resolv.conf
+  添加如下内容：
+           nameserver 115.156.76.144  #默认域名服务器
+</code></pre><p>nameserver 8.8.8.8 #google域名服务器<br>nameserver 8.8.4.4 #google域名服务</p>
+<p>  3、 设置网卡<br>        vi /etc/sysconfig/network-scripts/ifcfg-ens33 (不会vi请先百度)</p>
+<pre><code>更改相关项的值如下：
+
+    TYPE=Ethernet
+   BOOTPROTO=static  #启用静态IP地址，也可写成 none
+   DEFROUTE=yes
+   PEERDNS=yes
+   PEERROUTES=yes
+   IPV4_FAILURE_FATAL=no
+   IPV6INIT=yes
+   IPV6_AUTOCONF=yes
+   IPV6_DEFROUTE=yes
+   IPV6_PEERDNS=yes
+   IPV6_PEERROUTES=yes
+   IPV6_FAILURE_FATAL=no
+   NAME=eno16777736  #图形界面选择网络接口时的名字，不使用网络图形化管理工具时可不写，名称随意。
+    DEVICE=ens33   #必须是网卡名，有可能和 网卡名：ifcfg-xxx不一样。
+   UUID=ae0965e7-22b9-45aa-8ec9-3f0a20a85d11
+   ONBOOT=yes  #开启自动启用网络连接
+   IPADDR0=192.168.189.130  #设置IP地址
+   PREFIX=24  #设置子网掩码  或者使用  NETMASK=255.255.255.0  或 PREFIXO0=24
+   # GATEWAY0=192.168.189.2  #设置网关，此处为局部变量设置，它会覆盖/etc/sysconfig/network中的全局设置，不建议在此配置。
+   # DNS1=115.156.76.144  #设置主DNS，此处为局部变量设置，总的DNS=/etc/resolv.conf 中的全局设置+此处的局部设置，此处可写可不写。
+   # DNS2=8.8.4.4  #设置备用DNS，同上。
+</code></pre><p>由于一般情况下我们用不到ipv6的地址等，所以可以把并重要的去掉，最终结果如下：</p>
+<pre><code>DEVICE=ens33
+ONBOOT=yes
+BOOTPROTO=&quot;static&quot;
+IPADDR=192.168.189.130
+PREFIX=24
+</code></pre><p>4、重启网络服务</p>
+<pre><code>ip link set ens33 down #ens33网卡名，每个人电脑不一样。
+
+ip link set ens33 up  
+
+systemctl restart network 或者 service network restart #重启网络
+
+静态ip到此网络就算配置完成了。
+</code></pre><p>五、安装 net-tools 工具包（不使用ifconfig命令可以不用安装，仅为学习所写）</p>
+<p>net-tools 工具包, 包含以下命令：arp, hostname, ifconfig, ipmaddr, iptunnel, mii-tool, nameif, netstat, plipconfig, rarp, route und slattach. 关于net-tools 更多的详情信息请参考:net-tools详情</p>
+<p>如果没有安装net-tools 工具包，使用ifconfig命令会有如下结果：</p>
+<p>[root@localhost ~]# ifconfig</p>
+<p>command not found</p>
+<p>ifconfig找不到 , 通过: yum whatprovides package_name 来查找包名了, 比如现在要查找 ifconfig 这个命令, 具体包含在哪个包里就可以这么做:</p>
+<pre><code>yum whatprovides ifconfig
+</code></pre><p>找到是 net-tools 这个包，然后在安装此包：</p>
+<pre><code>yum install -y net-tools
+</code></pre><p>之后就可使用ifconfig命令了</p>
+<p>ifconfig查看网卡配置信息</p>
+<p>从上图可以看出：</p>
+<p>ip: 192.168.1.111<br>子网掩码: 255.255.255.0<br>广播地址：192.168.1.255<br>六、补充命令</p>
+<p>ip  [选项]  操作对象{link|addr|route…}</p>
+<h1 id="ip-addr-show-显示网卡IP信息"><a href="#ip-addr-show-显示网卡IP信息" class="headerlink" title="ip addr show                  # 显示网卡IP信息"></a>ip addr show                  # 显示网卡IP信息</h1><h1 id="ip-addr-add-192-168-0-1-24-dev-eth0-设置eth0网卡IP地址192-168-0-1"><a href="#ip-addr-add-192-168-0-1-24-dev-eth0-设置eth0网卡IP地址192-168-0-1" class="headerlink" title="ip addr add 192.168.0.1/24 dev eth0 # 设置eth0网卡IP地址192.168.0.1"></a>ip addr add 192.168.0.1/24 dev eth0 # 设置eth0网卡IP地址192.168.0.1</h1><h1 id="ip-addr-del-192-168-0-1-24-dev-eth0-删除eth0网卡IP地址"><a href="#ip-addr-del-192-168-0-1-24-dev-eth0-删除eth0网卡IP地址" class="headerlink" title="ip addr del 192.168.0.1/24 dev eth0 # 删除eth0网卡IP地址"></a>ip addr del 192.168.0.1/24 dev eth0 # 删除eth0网卡IP地址</h1><h1 id="ip-link-show-显示网络接口信息"><a href="#ip-link-show-显示网络接口信息" class="headerlink" title="ip link show                             # 显示网络接口信息"></a>ip link show                             # 显示网络接口信息</h1><h1 id="ip-link-set-eth0-up-开启网卡"><a href="#ip-link-set-eth0-up-开启网卡" class="headerlink" title="ip link set eth0 up                  # 开启网卡"></a>ip link set eth0 up                  # 开启网卡</h1><h1 id="ip-link-set-eth0-down-关闭网卡"><a href="#ip-link-set-eth0-down-关闭网卡" class="headerlink" title="ip link set eth0 down             # 关闭网卡"></a>ip link set eth0 down             # 关闭网卡</h1><h1 id="ip-link-set-eth0-promisc-on-开启网卡的混合模式"><a href="#ip-link-set-eth0-promisc-on-开启网卡的混合模式" class="headerlink" title="ip link set eth0 promisc on   # 开启网卡的混合模式"></a>ip link set eth0 promisc on   # 开启网卡的混合模式</h1><h1 id="ip-link-set-eth0-promisc-offi-关闭网卡的混个模式"><a href="#ip-link-set-eth0-promisc-offi-关闭网卡的混个模式" class="headerlink" title="ip link set eth0 promisc offi  # 关闭网卡的混个模式"></a>ip link set eth0 promisc offi  # 关闭网卡的混个模式</h1><h1 id="ip-link-set-eth0-txqueuelen-1200-设置网卡队列长度"><a href="#ip-link-set-eth0-txqueuelen-1200-设置网卡队列长度" class="headerlink" title="ip link set eth0 txqueuelen 1200    # 设置网卡队列长度"></a>ip link set eth0 txqueuelen 1200    # 设置网卡队列长度</h1><h1 id="ip-link-set-eth0-mtu-1400-设置网卡最大传输单元"><a href="#ip-link-set-eth0-mtu-1400-设置网卡最大传输单元" class="headerlink" title="ip link set eth0 mtu 1400      # 设置网卡最大传输单元"></a>ip link set eth0 mtu 1400      # 设置网卡最大传输单元</h1><p>#ip route show 或 ip route list  或   route -n  # 查看路由(网关)信息</p>
+<h1 id="ip-route-add-192-168-4-0-24-via-192-168-0-254-dev-eth0-设置192-168-4-0网段的网关为192-168-0-254-数据走eth0接口"><a href="#ip-route-add-192-168-4-0-24-via-192-168-0-254-dev-eth0-设置192-168-4-0网段的网关为192-168-0-254-数据走eth0接口" class="headerlink" title="ip route add 192.168.4.0/24  via  192.168.0.254 dev eth0 # 设置192.168.4.0网段的网关为192.168.0.254,数据走eth0接口"></a>ip route add 192.168.4.0/24  via  192.168.0.254 dev eth0 # 设置192.168.4.0网段的网关为192.168.0.254,数据走eth0接口</h1><h1 id="ip-route-add-default-via-192-168-0-254-dev-eth0-设置默认网关为192-168-0-254"><a href="#ip-route-add-default-via-192-168-0-254-dev-eth0-设置默认网关为192-168-0-254" class="headerlink" title="ip route add default via  192.168.0.254  dev eth0    # 设置默认网关为192.168.0.254"></a>ip route add default via  192.168.0.254  dev eth0    # 设置默认网关为192.168.0.254</h1><h1 id="ip-route-del-192-168-4-0-24-删除192-168-4-0网段的网关"><a href="#ip-route-del-192-168-4-0-24-删除192-168-4-0网段的网关" class="headerlink" title="ip route del 192.168.4.0/24    # 删除192.168.4.0网段的网关"></a>ip route del 192.168.4.0/24    # 删除192.168.4.0网段的网关</h1><h1 id="ip-route-del-default-删除默认路由"><a href="#ip-route-del-default-删除默认路由" class="headerlink" title="ip route del default    # 删除默认路由"></a>ip route del default    # 删除默认路由</h1><p>#查看NDS服务器地址，使用nslookup命令，输入命令：</p>
+<p>比如：nslookup <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-09-05T07:42:56.000Z" itemprop="dateUpdated">2018-09-05 15:42:56</time>
+</span><br>
+
+
+        
+        <a href="/2018/09/05/Linux/internet/centos ip/" target="_blank" rel="external">http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/09/05/Linux/internet/mac VMware Fusion 配置ip/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mac VMware config static ip</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/05/Linux/Untitled/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/05/Linux/internet/centos ip/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKElEQVR42u3aS3LDIBAFQN3/0s4BUlLeA5wqQbNKxbJCs5jMh+uK1ydYyZN3b/793esbCwMD47WMdnN33xp78/PbikPBwMA4gJGEwoSUbC6h5nvDwMDAeH6mDdlt+MbAwMCYCbj5hpJQ+/wbDAwMjFXhsk372jR0WS2OgYHxQkbedf//n78y38DAwHgV41OupLn2nPzNhNfbXWFgYGzNyANcu/VVaWKxHwwMjE0ZbTssT+PmS9biohgGBsYBjPmLEW2IbMP0H2AMDIytGXnUGhsSzIwQplpvGBgYGzGeG2TJp3nYzY9mwW0RDAyM7RhtmVq37MsmWn6sGBgYJzDyojFv348175JxaXE0GBgY2zGSQrQdZLbhsh2O3k5iMTAwtmPMtMnGEsqZN0S3RTAwMLZjjAW+5NXzY86pXWFgYGzEaJtleet/rEAdHI5iYGBszcgbYe2mZ1LM9uAwMDBOYIytvOD8xmWLBQAMDIxXMfKrFfnm8i22f/0WiYGBcQxjvomfJ4vJcLS42IGBgXEYYyaZa4vYZWNRDAyMwxhtSZm3wNqhZlGFY2BgbMr4lKu9HtGOPJP08cr/M2BgYGzBGAt2Y6le/t2x8hgDA2Nvxqrmfj4wyIthDAwMjLHA14bFsVZaXQZjYGBgDAXfNrDmZfOVf4CBgXE8Y74xlzfgvhhwMTAwXsJISs21T7YH8QcYAwNja0ZeOiZJ3vyAIQm7g0NNDAyM9zF+ABx0apgiZi6DAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

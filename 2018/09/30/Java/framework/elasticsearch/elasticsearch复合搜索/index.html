@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>data elasticsearch | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="elasticsearch">
+    <meta name="description" content="商品搜索简单实现. 先通过key(all)字段分词匹配查询.然后再通过多个过滤器过滤最后对查询结果进行多个词条terms进行聚合, 以下的搜索语句是 通过spring data elasticsearch的NativeSearchQueryBuilder来构建出的json搜索语句 然后通过ElasticsearchTemplate来发起的搜索  想要查看NativeSearchQueryBuild">
+<meta name="keywords" content="elasticsearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="data elasticsearch">
+<meta property="og:url" content="http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="商品搜索简单实现. 先通过key(all)字段分词匹配查询.然后再通过多个过滤器过滤最后对查询结果进行多个词条terms进行聚合, 以下的搜索语句是 通过spring data elasticsearch的NativeSearchQueryBuilder来构建出的json搜索语句 然后通过ElasticsearchTemplate来发起的搜索  想要查看NativeSearchQueryBuild">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-04T10:13:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="data elasticsearch">
+<meta name="twitter:description" content="商品搜索简单实现. 先通过key(all)字段分词匹配查询.然后再通过多个过滤器过滤最后对查询结果进行多个词条terms进行聚合, 以下的搜索语句是 通过spring data elasticsearch的NativeSearchQueryBuilder来构建出的json搜索语句 然后通过ElasticsearchTemplate来发起的搜索  想要查看NativeSearchQueryBuild">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">data elasticsearch</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">data elasticsearch</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-29T17:52:55.000Z" itemprop="datePublished" class="page-time">
+  2018-09-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/spring/data/">data</a></li></ul></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Java/framework/elasticsearch/elasticsearch复合搜索"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">data elasticsearch</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-30 01:52:55" datetime="2018-09-29T17:52:55.000Z"  itemprop="datePublished">2018-09-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/spring/data/">data</a></li></ul></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>商品搜索简单实现.</p>
+<p>先通过key(all)字段分词匹配查询.<br>然后再通过多个过滤器过滤<br>最后对查询结果进行多个词条terms进行聚合,</p>
+<p>以下的搜索语句是</p>
+<p>通过spring data elasticsearch的NativeSearchQueryBuilder来构建出的json搜索语句</p>
+<p>然后通过ElasticsearchTemplate来发起的搜索</p>
+<blockquote>
+<p>想要查看NativeSearchQueryBuilder拼接的json搜索语句配置如下</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; logging:</span></span><br><span class="line"><span class="string">&gt;     level:</span></span><br><span class="line"><span class="string">&gt;       org.springframework.data.elasticsearch.core.QUERY: DEBUG</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>手机搜索示例:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre></td><td class="code"><pre><span class="line">GET /goods/docs/_search</span><br><span class="line">&#123;</span><br><span class="line">  <span class="attr">"from"</span> : <span class="number">0</span>,</span><br><span class="line">  <span class="attr">"query"</span> : &#123;</span><br><span class="line">    <span class="attr">"bool"</span> : &#123;</span><br><span class="line">      <span class="attr">"must"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"match"</span> : &#123;</span><br><span class="line">            <span class="attr">"all"</span> : &#123;</span><br><span class="line">              <span class="attr">"query"</span> : <span class="string">"手机"</span>,</span><br><span class="line">              <span class="attr">"operator"</span> : <span class="string">"OR"</span>,</span><br><span class="line">              <span class="attr">"prefix_length"</span> : <span class="number">0</span>,</span><br><span class="line">              <span class="attr">"max_expansions"</span> : <span class="number">50</span>,</span><br><span class="line">              <span class="attr">"fuzzy_transpositions"</span> : <span class="literal">true</span>,</span><br><span class="line">              <span class="attr">"lenient"</span> : <span class="literal">false</span>,</span><br><span class="line">              <span class="attr">"zero_terms_query"</span> : <span class="string">"NONE"</span>,</span><br><span class="line">              <span class="attr">"boost"</span> : <span class="number">1.0</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"filter"</span> : [</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"term"</span> : &#123;</span><br><span class="line">            <span class="attr">"specs.CPU核数.keyword"</span> : &#123;</span><br><span class="line">              <span class="attr">"value"</span> : <span class="string">"八核"</span>,</span><br><span class="line">              <span class="attr">"boost"</span> : <span class="number">1.0</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"term"</span> : &#123;</span><br><span class="line">            <span class="attr">"specs.内存.keyword"</span> : &#123;</span><br><span class="line">              <span class="attr">"value"</span> : <span class="string">"6GB"</span>,</span><br><span class="line">              <span class="attr">"boost"</span> : <span class="number">1.0</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          <span class="attr">"term"</span> : &#123;</span><br><span class="line">            <span class="attr">"specs.CPU品牌.keyword"</span> : &#123;</span><br><span class="line">              <span class="attr">"value"</span> : <span class="string">"其他"</span>,</span><br><span class="line">              <span class="attr">"boost"</span> : <span class="number">1.0</span></span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ],</span><br><span class="line">      <span class="attr">"disable_coord"</span> : <span class="literal">false</span>,</span><br><span class="line">      <span class="attr">"adjust_pure_negative"</span> : <span class="literal">true</span>,</span><br><span class="line">      <span class="attr">"boost"</span> : <span class="number">1.0</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">"version"</span> : <span class="literal">true</span>,</span><br><span class="line"> //对上面搜索出的结果进行聚合</span><br><span class="line">  "aggregations" : &#123;</span><br><span class="line">    "操作系统" : &#123;</span><br><span class="line">      "terms" : &#123;</span><br><span class="line">        "field" : "specs.操作系统.keyword",</span><br><span class="line">        "size" : 10,</span><br><span class="line">        "min_doc_count" : 1,</span><br><span class="line">        "shard_min_doc_count" : 0,</span><br><span class="line">        "show_term_doc_count_error" : false,</span><br><span class="line">         //按数量降序</span><br><span class="line">        "order" : [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"_count"</span> : <span class="string">"desc"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"_term"</span> : <span class="string">"asc"</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    "CPU核数" : &#123;</span><br><span class="line">      "terms" : &#123;</span><br><span class="line">        "field" : "specs.CPU核数.keyword",</span><br><span class="line">        "size" : 10,</span><br><span class="line">        "min_doc_count" : 1,</span><br><span class="line">        "shard_min_doc_count" : 0,</span><br><span class="line">        "show_term_doc_count_error" : false,</span><br><span class="line">        "order" : [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"_count"</span> : <span class="string">"desc"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"_term"</span> : <span class="string">"asc"</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    "电池容量（mAh）" : &#123;</span><br><span class="line">      "terms" : &#123;</span><br><span class="line">        "field" : "specs.电池容量（mAh）.keyword",</span><br><span class="line">        "size" : 10,</span><br><span class="line">        "min_doc_count" : 1,</span><br><span class="line">        "shard_min_doc_count" : 0,</span><br><span class="line">        "show_term_doc_count_error" : false,</span><br><span class="line">        "order" : [</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"_count"</span> : <span class="string">"desc"</span></span><br><span class="line">          &#125;,</span><br><span class="line">          &#123;</span><br><span class="line">            <span class="attr">"_term"</span> : <span class="string">"asc"</span></span><br><span class="line">          &#125;</span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-04T10:13:20.000Z" itemprop="dateUpdated">2018-10-04 18:13:20</time>
+</span><br>
+
+
+        
+        <a href="/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/" target="_blank" rel="external">http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/elasticsearch/">elasticsearch</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/&title=《data elasticsearch》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/&title=《data elasticsearch》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《data elasticsearch》 — stelawliet&url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/01/sql/Redis config/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">redis install config</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/22/Java/java反射泛型类型/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">反射获取泛型类型</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/&title=《data elasticsearch》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/&title=《data elasticsearch》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《data elasticsearch》 — stelawliet&url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/30/Java/framework/elasticsearch/elasticsearch复合搜索/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLklEQVR42u3ay3abUBAEQP//TyvbLALqvmMlZlKsfCwEFFr0mcfXV3y8fjvuP70/M7nL1R3v7/71iQMbGxv7IezX7dGyc8bV3dsnvLrLmytjY2Njr2MncdKeP4mc/JzDkMPGxsb+79nJzZJC5f5qbexhY2NjY5+xr66Tn3l/l7wEwsbGxv6f2UnMJA80afEno4V/0EvDxsbG/vHssxHsz/z7I/NtbGxs7B/MfpXH/NUkRUsbS7UCGxsbexH7bKSak5Kioo3PtnS5bG9hY2Njr2BPVh7PGvptBE6Wey6/i42Njb2InY9jz8qMdh1zsnCZlC7Y2NjY+9jzVs5Z7OUNqbzxVBQt2NjY2IvY7WLNPHjOmkofuRc2Njb2CvZ9DLRNpcmj51E6GQ9jY2Njb2W3zf0W37aZvmvA8KYCw8bGxl7Brk+N2/HJlSfx1o6KsbGxsbeyJwOAs8b92VpPHnvREg82Njb2IvZZSdCuyORxdf/ddjAw2lTCxsbGfhR7HiF5nLTrQXnzqG1vYWNjY29ityXEvBk0CbxkFB2VKNjY2NiL2Dn+HpyXFvNB8uTnwcbGxt7E/sSwdlI8TJaB6tDCxsbGXsHOx6ht8z1f62mLk8kw43JTCRsbG/ux7DyoWkAeivlwd/Jy3/zO2NjY2I9ltw+Xj3XbJlRecrziIypFsLGxsR/OzkuC+Xjgu5pKk2bWH0oRbGxs7BXsNkjage4oXctBbzTGwMbGxl7EzgOgbQ+dxdjZ2tBZQYWNjY29if2JdnzeDJqs4CTnX4YZNjY29lJ2e8u8CGlf5aRqiK6DjY2NvY59NujNG0bzaMzbRtGQAxsbG3sd+yze8vMnMTkpmaKmEjY2NvZSdrs60w5W8/bQ2bD2zfWxsbGxV7Bf5dEGW3vOZGBQlCvY2NjYi9jf24JvP53HXt7wOiursLGxsZ/Czlv8Z6PctqGf/ycPsOiXxMbGxn44++8UCe3KTrt2mUcdNjY2NnYbWvljtYub+evGxsbGxp40evKgOhvl5iUWNjY29lZ2vgqft37ui5C8yMnbRkX5hI2Njb2IPRmvti/oLCCLWDo6ExsbG/ux7F/V1M5Ke8ZhAAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>No title | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="@http://www.threadworld.cn 什么叫内存可见性？什么叫寄存器可见性？数据在哪里存在呢？只在内存吗？不是的。数据在内存中存在，但是当用的时候会加载到CPU的寄存器里面。内存和寄存器是两个地方，从而出现了新的名词：内存可见性和寄存器可见性。 为什么叫内存可见性呢？感觉很奇怪的名字。其实，明白以下道理就不奇怪了：数据的流动过程是：内存-&amp;gt;寄存器-&amp;gt;计算器 很多时候，数">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="No title">
+<meta property="og:url" content="http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="@http://www.threadworld.cn 什么叫内存可见性？什么叫寄存器可见性？数据在哪里存在呢？只在内存吗？不是的。数据在内存中存在，但是当用的时候会加载到CPU的寄存器里面。内存和寄存器是两个地方，从而出现了新的名词：内存可见性和寄存器可见性。 为什么叫内存可见性呢？感觉很奇怪的名字。其实，明白以下道理就不奇怪了：数据的流动过程是：内存-&amp;gt;寄存器-&amp;gt;计算器 很多时候，数">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/assets/970678838.png">
+<meta property="og:updated_time" content="2018-09-10T06:44:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="No title">
+<meta name="twitter:description" content="@http://www.threadworld.cn 什么叫内存可见性？什么叫寄存器可见性？数据在哪里存在呢？只在内存吗？不是的。数据在内存中存在，但是当用的时候会加载到CPU的寄存器里面。内存和寄存器是两个地方，从而出现了新的名词：内存可见性和寄存器可见性。 为什么叫内存可见性呢？感觉很奇怪的名字。其实，明白以下道理就不奇怪了：数据的流动过程是：内存-&amp;gt;寄存器-&amp;gt;计算器 很多时候，数">
+<meta name="twitter:image" content="http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/assets/970678838.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-09-10T05:20:24.000Z" itemprop="datePublished" class="page-time">
+  2018-09-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么叫内存可见性？什么叫寄存器可见性？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么叫内存可见性？什么叫寄存器可见性？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一句话理解什么是happens-before"><span class="post-toc-number">2.</span> <span class="post-toc-text">一句话理解什么是happens-before</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一句话理解内存屏障-内存栅栏"><span class="post-toc-number">3.</span> <span class="post-toc-text">一句话理解内存屏障/内存栅栏</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Java/concurrent/内存可见性"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-09-10 13:20:24" datetime="2018-09-10T05:20:24.000Z"  itemprop="datePublished">2018-09-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>@<a href="http://www.threadworld.cn" target="_blank" rel="noopener">http://www.threadworld.cn</a></p>
+<h1 id="什么叫内存可见性？什么叫寄存器可见性？"><a href="#什么叫内存可见性？什么叫寄存器可见性？" class="headerlink" title="什么叫内存可见性？什么叫寄存器可见性？"></a>什么叫内存可见性？什么叫寄存器可见性？</h1><p>数据在哪里存在呢？只在内存吗？不是的。数据在内存中存在，但是当用的时候会加载到CPU的寄存器里面。内存和寄存器是两个地方，从而出现了新的名词：内存可见性和寄存器可见性。</p>
+<p>为什么叫内存可见性呢？感觉很奇怪的名字。其实，明白以下道理就不奇怪了：<br>数据的流动过程是：内存-&gt;寄存器-&gt;计算器</p>
+<p>很多时候，数据从内存地址读取到寄存器里面，后面的计算过程中CPU就一直使用寄存器里面的值，即是内存地址上的值发生变化，CPU也不知道，CPU此时就是井底之蛙，而变量此时可以称为：寄存器可见性。</p>
+<p>但是当变量被volatile修饰之后，CPU就不再偷懒，只要用到数据，它都会越过寄存器，直接从内存中读取，然后再在计算器中计算，最后返回给内存，这个时候变量就不在寄存器里面停留，就当寄存器不存在一样，这就称为内存可见性。</p>
+<h1 id="一句话理解什么是happens-before"><a href="#一句话理解什么是happens-before" class="headerlink" title="一句话理解什么是happens-before"></a>一句话理解什么是happens-before</h1><p><a href="http://www.threadworld.cn/category/point20/" target="_blank" rel="noopener">http://www.threadworld.cn/category/point20/</a>)</p>
+<p>在程序运行过程中，所有的变更会先在寄存器或本地cache中完成，然后才会被拷贝到主存以<a href="http://www.threadworld.cn/archives/28.html" target="_blank" rel="noopener">跨越内存栅栏</a>，此种跨越序列或顺序称为happens-before。</p>
+<p>注：happens-before本质是顺序，重点是跨越内存栅栏</p>
+<p>通常情况下，写操作必须要happens-before读操作，即写线程需要在所有读线程跨越内存栅栏之前完成自己的跨越动作，其所做的变更才能对其他线程可见。</p>
+<h1 id="一句话理解内存屏障-内存栅栏"><a href="#一句话理解内存屏障-内存栅栏" class="headerlink" title="一句话理解内存屏障/内存栅栏"></a>一句话理解内存屏障/内存栅栏</h1><p>本文从简单入手，简单不代表肤浅，技术都是从简单发展起来的，然后变得复杂，甚至都偏离了初衷。有的人瞧不起简单，可不是什么好事啊。</p>
+<p>简单来说内存屏障（Memory Barrier，或内存栅栏，Memory Fence）就是从本地或工作内存到主存之间的拷贝动作。如下图：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/970678838.png" alt="CPU.png" title="">
+                </div>
+                <div class="image-caption">CPU.png</div>
+            </figure>
+<p>上面三种颜色的箭头，就是跨越内存栅栏。</p>
+<p>在多线程并发过程中，仅当写操作线程先跨越内存栅栏而读线程后跨越内存栅栏的情况下，写操作线程所做的变更才对其他线程可见。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-09-10T06:44:11.000Z" itemprop="dateUpdated">2018-09-10 14:44:11</time>
+</span><br>
+
+
+        
+        <a href="/2018/09/10/Java/concurrent/内存可见性/" target="_blank" rel="external">http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/09/10/Java/spring/cloud/configuration/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">configuration in cloud</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/09/05/Java/spring/dubbo/dubbo config xml/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/&title=《No title》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/&title=《No title》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《No title》 — stelawliet&url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/09/10/Java/concurrent/内存可见性/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3ay1LDMAwF0P7/T8MMKxYkvXqYwMzxqlOC4+OFrUp6veLx8TW+f/4+rr6/evJq5nwNywMPDw+vtfT7BSWY+9nuFzp/++Um4uHh4R3j5ZdBflXcn9LJzPfriS4PPDw8vEd5W0F2MmcyMx4eHt5/5PW2YCshgoeHh/csLz/E71MM+Qz5lZBcRQu5Fjw8PLxaHap5KD/1+Xh9Dw8PD69VVa8euNUyWBVQXi0eHh7eAV4vVZoXt6pJ3nlLVvSLAQ8PD2/AS6aupiSSpectWXkL1w/rxMPDwzvG65Wv8lRsPtvk+8tfDHh4eHgHePmBm2N6wXGCyYN4PDw8vHO8efBaXVCvcaG6oXh4eHjneNXAOv/fSYlrIcGBh4eHdzZ3+sqP73zpeQKi2vhVXSceHh7eFm8SBE/SBNU2haQUV/jFgIeHhzfm5cFo9VjfarRqzoCHh4d3gNcr6uejmsCtpnqj4B4PDw9vlZcHqb32qTz8rW5ZtB48PDy8Y7xeu0C1/L+VDi6E4Hh4eHgHeL0pesd072rppS3w8PDwnuXlidpJC9duahgPDw/vd3i9En5yAeRlszxVUV0hHh4e3hZvnjA9cXnMeYUcCR4eHl6Ll7+mWtCaXye9rXlT38PDw8Mb8LYC4rwAlpfB8m198148PDy8VV5yKOfJ0zwUnjd1RcU2PDw8vMO8Xmp19/teq9blZuHh4eEd4OWVsV64XL1yCk0A1YGHh4e3xPsojmqD1IlSWRJkR60DeHh4eC1e9YydpGJ7CY68WWF0neDh4eEVeXmRPr8kkl3Ml1tNHBcCazw8PLwBbxIKz1MSk/e+eR4PDw/vUV4eRueXxNZfL5/Ew8PD+2O8SdidHO7VZqzLZAQeHh7eAV6ejKiGztXk77zFCg8PD+80r1oAm4S/eWEsuXjW+s7w8PDwUt4nMxoiFhORgJUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

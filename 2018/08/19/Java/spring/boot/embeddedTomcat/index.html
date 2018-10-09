@@ -14,25 +14,25 @@
     
     
     
-    <title>stelawliet | 迁移整理中...</title>
+    <title>缺省配置Springboot Web应用中tomcat的启动过程@csdn | stelawliet | 迁移整理中...</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="缺省配置Springboot Web应用中tomcat的启动过程2017年11月27日 18:37:57 阅读数：2183 概述独立部署的tomcat服务器的启动过程传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :  tomcat 容器本身的启动; tomcat容器中所部署的web app的启动；  完成了以上两个阶段，我们才能访问到我们所开发的业务逻辑。在这种情况下，">
+    <meta name="description" content="缺省配置Springboot Web应用中tomcat的启动过程@csdn概述独立部署的tomcat服务器的启动过程传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :  tomcat 容器本身的启动; tomcat容器中所部署的web app的启动；  完成了以上两个阶段，我们才能访问到我们所开发的业务逻辑。在这种情况下，web app的部署动作，通常是由系统部署人员通过">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
-<meta property="og:title" content="stelawliet">
+<meta property="og:title" content="缺省配置Springboot Web应用中tomcat的启动过程@csdn">
 <meta property="og:url" content="http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="缺省配置Springboot Web应用中tomcat的启动过程2017年11月27日 18:37:57 阅读数：2183 概述独立部署的tomcat服务器的启动过程传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :  tomcat 容器本身的启动; tomcat容器中所部署的web app的启动；  完成了以上两个阶段，我们才能访问到我们所开发的业务逻辑。在这种情况下，">
+<meta property="og:description" content="缺省配置Springboot Web应用中tomcat的启动过程@csdn概述独立部署的tomcat服务器的启动过程传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :  tomcat 容器本身的启动; tomcat容器中所部署的web app的启动；  完成了以上两个阶段，我们才能访问到我们所开发的业务逻辑。在这种情况下，web app的部署动作，通常是由系统部署人员通过">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-19T14:55:43.000Z">
+<meta property="og:updated_time" content="2018-09-10T12:54:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="stelawliet">
-<meta name="twitter:description" content="缺省配置Springboot Web应用中tomcat的启动过程2017年11月27日 18:37:57 阅读数：2183 概述独立部署的tomcat服务器的启动过程传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :  tomcat 容器本身的启动; tomcat容器中所部署的web app的启动；  完成了以上两个阶段，我们才能访问到我们所开发的业务逻辑。在这种情况下，">
+<meta name="twitter:title" content="缺省配置Springboot Web应用中tomcat的启动过程@csdn">
+<meta name="twitter:description" content="缺省配置Springboot Web应用中tomcat的启动过程@csdn概述独立部署的tomcat服务器的启动过程传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :  tomcat 容器本身的启动; tomcat容器中所部署的web app的启动；  完成了以上两个阶段，我们才能访问到我们所开发的业务逻辑。在这种情况下，web app的部署动作，通常是由系统部署人员通过">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -125,7 +125,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis"></div>
+        <div class="flex-col header-title ellipsis">缺省配置Springboot Web应用中tomcat的启动过程@csdn</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -147,7 +147,7 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title"></h1>
+        <h1 class="title">缺省配置Springboot Web应用中tomcat的启动过程@csdn</h1>
         <h5 class="subtitle">
             
                 <time datetime="2018-08-19T13:13:22.000Z" itemprop="datePublished" class="page-time">
@@ -170,7 +170,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#缺省配置Springboot-Web应用中tomcat的启动过程"><span class="post-toc-number">1.</span> <span class="post-toc-text">缺省配置Springboot Web应用中tomcat的启动过程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.</span> <span class="post-toc-text">概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#独立部署的tomcat服务器的启动过程"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">独立部署的tomcat服务器的启动过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spring-boot-web应用启动过程和独立部署的tomcat服务器启动过程的不同点"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">spring boot web应用启动过程和独立部署的tomcat服务器启动过程的不同点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spring-boot-web应用启动过程概述"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">spring boot web应用启动过程概述</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TomcatEmbeddedServletContainerFactory作为bean定义注册到容器"><span class="post-toc-number">3.</span> <span class="post-toc-text">TomcatEmbeddedServletContainerFactory作为bean定义注册到容器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EmbeddedServletContainerAutoConfiguration"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">EmbeddedServletContainerAutoConfiguration</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#内置Tomcat-servlet容器的创建和初始化"><span class="post-toc-number">4.</span> <span class="post-toc-text">内置Tomcat servlet容器的创建和初始化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EmbeddedWebApplicationContext的方法createEmbeddedServletContainer"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">EmbeddedWebApplicationContext的方法createEmbeddedServletContainer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TomcatEmbeddedServletContainerFactory的方法getEmbeddedServletContainer"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">TomcatEmbeddedServletContainerFactory的方法getEmbeddedServletContainer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TomcatEmbeddedServletContainer的创建和初始化"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">TomcatEmbeddedServletContainer的创建和初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tomcat-StandardContxt启动过程中SCI的应用"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Tomcat StandardContxt启动过程中SCI的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EmbeddedWebApplicationContext的selfInitialize"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">EmbeddedWebApplicationContext的selfInitialize</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ServerProperties内部类SessionConfiguringInitializer"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">ServerProperties内部类SessionConfiguringInitializer</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#InitParameterConfiguringServletContextInitializer"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">InitParameterConfiguringServletContextInitializer</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#内置Tomcat-servlet容器的启动"><span class="post-toc-number">5.</span> <span class="post-toc-text">内置Tomcat servlet容器的启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动入口点"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">启动入口点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动入口点代码分析"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">启动入口点代码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内置servlet容器的启动过程"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">内置servlet容器的启动过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tomcat-Connector的启动"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Tomcat Connector的启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动入口点-1"><span class="post-toc-number">5.4.1.</span> <span class="post-toc-text">启动入口点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动入口点逻辑分析"><span class="post-toc-number">5.4.2.</span> <span class="post-toc-text">启动入口点逻辑分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Connector启动过程分析"><span class="post-toc-number">5.4.3.</span> <span class="post-toc-text">Connector启动过程分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Http11NioProtocol启动过程分析"><span class="post-toc-number">5.4.4.</span> <span class="post-toc-text">Http11NioProtocol启动过程分析</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#缺省配置Springboot-Web应用中tomcat的启动过程-csdn"><span class="post-toc-number">1.</span> <span class="post-toc-text">缺省配置Springboot Web应用中tomcat的启动过程@csdn</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#概述"><span class="post-toc-number">2.</span> <span class="post-toc-text">概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#独立部署的tomcat服务器的启动过程"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">独立部署的tomcat服务器的启动过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spring-boot-web应用启动过程和独立部署的tomcat服务器启动过程的不同点"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">spring boot web应用启动过程和独立部署的tomcat服务器启动过程的不同点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#spring-boot-web应用启动过程概述"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">spring boot web应用启动过程概述</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#TomcatEmbeddedServletContainerFactory作为bean定义注册到容器"><span class="post-toc-number">3.</span> <span class="post-toc-text">TomcatEmbeddedServletContainerFactory作为bean定义注册到容器</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EmbeddedServletContainerAutoConfiguration"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">EmbeddedServletContainerAutoConfiguration</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#内置Tomcat-servlet容器的创建和初始化"><span class="post-toc-number">4.</span> <span class="post-toc-text">内置Tomcat servlet容器的创建和初始化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#EmbeddedWebApplicationContext的方法createEmbeddedServletContainer"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">EmbeddedWebApplicationContext的方法createEmbeddedServletContainer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TomcatEmbeddedServletContainerFactory的方法getEmbeddedServletContainer"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">TomcatEmbeddedServletContainerFactory的方法getEmbeddedServletContainer</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TomcatEmbeddedServletContainer的创建和初始化"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">TomcatEmbeddedServletContainer的创建和初始化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tomcat-StandardContxt启动过程中SCI的应用"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Tomcat StandardContxt启动过程中SCI的应用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#EmbeddedWebApplicationContext的selfInitialize"><span class="post-toc-number">4.4.1.</span> <span class="post-toc-text">EmbeddedWebApplicationContext的selfInitialize</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#ServerProperties内部类SessionConfiguringInitializer"><span class="post-toc-number">4.4.2.</span> <span class="post-toc-text">ServerProperties内部类SessionConfiguringInitializer</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#InitParameterConfiguringServletContextInitializer"><span class="post-toc-number">4.4.3.</span> <span class="post-toc-text">InitParameterConfiguringServletContextInitializer</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#内置Tomcat-servlet容器的启动"><span class="post-toc-number">5.</span> <span class="post-toc-text">内置Tomcat servlet容器的启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动入口点"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">启动入口点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#启动入口点代码分析"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">启动入口点代码分析</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内置servlet容器的启动过程"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">内置servlet容器的启动过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Tomcat-Connector的启动"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Tomcat Connector的启动</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动入口点-1"><span class="post-toc-number">5.4.1.</span> <span class="post-toc-text">启动入口点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#启动入口点逻辑分析"><span class="post-toc-number">5.4.2.</span> <span class="post-toc-text">启动入口点逻辑分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Connector启动过程分析"><span class="post-toc-number">5.4.3.</span> <span class="post-toc-text">Connector启动过程分析</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Http11NioProtocol启动过程分析"><span class="post-toc-number">5.4.4.</span> <span class="post-toc-text">Http11NioProtocol启动过程分析</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -179,7 +179,7 @@
   class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title"></h1>
+        <h1 class="post-card-title">缺省配置Springboot Web应用中tomcat的启动过程@csdn</h1>
         <div class="post-meta">
             <time class="post-time" title="2018-08-19 21:13:22" datetime="2018-08-19T13:13:22.000Z"  itemprop="datePublished">2018-08-19</time>
 
@@ -194,9 +194,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="缺省配置Springboot-Web应用中tomcat的启动过程"><a href="#缺省配置Springboot-Web应用中tomcat的启动过程" class="headerlink" title="缺省配置Springboot Web应用中tomcat的启动过程"></a>缺省配置Springboot Web应用中tomcat的启动过程</h1><p>2017年11月27日 18:37:57</p>
-<p>阅读数：2183</p>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="独立部署的tomcat服务器的启动过程"><a href="#独立部署的tomcat服务器的启动过程" class="headerlink" title="独立部署的tomcat服务器的启动过程"></a>独立部署的tomcat服务器的启动过程</h2><p>传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :</p>
+            <h1 id="缺省配置Springboot-Web应用中tomcat的启动过程-csdn"><a href="#缺省配置Springboot-Web应用中tomcat的启动过程-csdn" class="headerlink" title="缺省配置Springboot Web应用中tomcat的启动过程@csdn"></a>缺省配置Springboot Web应用中tomcat的启动过程@csdn</h1><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><h2 id="独立部署的tomcat服务器的启动过程"><a href="#独立部署的tomcat服务器的启动过程" class="headerlink" title="独立部署的tomcat服务器的启动过程"></a>独立部署的tomcat服务器的启动过程</h2><p>传统意义上一个独立部署和运行的tomcat服务器的启动可以理解成两个阶段 :</p>
 <ol>
 <li>tomcat 容器本身的启动;</li>
 <li>tomcat容器中所部署的web app的启动；</li>
@@ -287,7 +285,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-08-19T14:55:43.000Z" itemprop="dateUpdated">2018-08-19 22:55:43</time>
+    Last updated: <time datetime="2018-09-10T12:54:11.000Z" itemprop="dateUpdated">2018-09-10 20:54:11</time>
 </span><br>
 
 
@@ -317,7 +315,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=《缺省配置Springboot Web应用中tomcat的启动过程@csdn》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -327,7 +325,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=《缺省配置Springboot Web应用中tomcat的启动过程@csdn》 — stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -337,7 +335,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《缺省配置Springboot Web应用中tomcat的启动过程@csdn》 — stelawliet&url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
@@ -365,9 +363,9 @@
 <nav class="post-nav flex-row flex-justify-between">
   
     <div class="waves-block waves-effect prev">
-      <a href="/2018/08/21/Linux/zsh/" id="post-prev" class="post-nav-link">
+      <a href="/2018/08/21/Linux/oh-my-zsh/" id="post-prev" class="post-nav-link">
         <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">ZSH install</h4>
+        <h4 class="title">oh-my-zsh install</h4>
       </a>
     </div>
   
@@ -469,7 +467,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=《缺省配置Springboot Web应用中tomcat的启动过程@csdn》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -479,7 +477,7 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=stelawliet&source=sky" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&title=《缺省配置Springboot Web应用中tomcat的启动过程@csdn》 — stelawliet&source=sky" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
@@ -489,7 +487,7 @@
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&via=http://io.stelawliet.top" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《缺省配置Springboot Web应用中tomcat的启动过程@csdn》 — stelawliet&url=http://io.stelawliet.top/2018/08/19/Java/spring/boot/embeddedTomcat/&via=http://io.stelawliet.top" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
