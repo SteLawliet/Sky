@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="《大型网站技术架构 核心原理与案例分析》读书笔记一、大型网站架构演化1、大型网站特点 高并发，大流量 高可用 海量数据 用户分布广泛，网络情况复杂 安全环境恶劣 需求快速变更，发布频繁 渐进式发展  2、大型网站架构发展历程 文件服务器，数据库服务器，应用服务器分离 应用服务器增加本地缓存，本地缓存优先，增加分布式缓存服务器 使用应用程序服务器集群提高网站的并发，由负载均衡服务器统一调度分发 使用">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stelawliet">
+<meta property="og:url" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="《大型网站技术架构 核心原理与案例分析》读书笔记一、大型网站架构演化1、大型网站特点 高并发，大流量 高可用 海量数据 用户分布广泛，网络情况复杂 安全环境恶劣 需求快速变更，发布频繁 渐进式发展  2、大型网站架构发展历程 文件服务器，数据库服务器，应用服务器分离 应用服务器增加本地缓存，本地缓存优先，增加分布式缓存服务器 使用应用程序服务器集群提高网站的并发，由负载均衡服务器统一调度分发 使用">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180427204706775-1992842060.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180428183626810-21491605.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180429140726720-1787741691.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180430192430442-528993084.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180430204840852-1488166578.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180430204849048-370706648.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180430204855751-1581454047.png">
+<meta property="og:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180430204900921-1757321043.png">
+<meta property="og:updated_time" content="2018-10-16T17:32:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="stelawliet">
+<meta name="twitter:description" content="《大型网站技术架构 核心原理与案例分析》读书笔记一、大型网站架构演化1、大型网站特点 高并发，大流量 高可用 海量数据 用户分布广泛，网络情况复杂 安全环境恶劣 需求快速变更，发布频繁 渐进式发展  2、大型网站架构发展历程 文件服务器，数据库服务器，应用服务器分离 应用服务器增加本地缓存，本地缓存优先，增加分布式缓存服务器 使用应用程序服务器集群提高网站的并发，由负载均衡服务器统一调度分发 使用">
+<meta name="twitter:image" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/assets/1089532-20180427204706775-1992842060.png">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-16T17:31:58.000Z" itemprop="datePublished" class="page-time">
+  2018-10-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#《大型网站技术架构-核心原理与案例分析》读书笔记"><span class="post-toc-number">1.</span> <span class="post-toc-text">《大型网站技术架构 核心原理与案例分析》读书笔记</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、大型网站架构演化"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">一、大型网站架构演化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、大型网站特点"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">1、大型网站特点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、大型网站架构发展历程"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">2、大型网站架构发展历程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、网站架构的价值观和设计误区"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">3、网站架构的价值观和设计误区</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、大型网站架构模式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">二、大型网站架构模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、分层"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1、分层</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、分割"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">2、分割</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、分布式"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">3、分布式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、集群"><span class="post-toc-number">1.2.4.</span> <span class="post-toc-text">4、集群</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、缓存"><span class="post-toc-number">1.2.5.</span> <span class="post-toc-text">5、缓存</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6、异步"><span class="post-toc-number">1.2.6.</span> <span class="post-toc-text">6、异步</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#7、冗余"><span class="post-toc-number">1.2.7.</span> <span class="post-toc-text">7、冗余</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#8、自动化"><span class="post-toc-number">1.2.8.</span> <span class="post-toc-text">8、自动化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#9、架构模式在新浪微博的应用"><span class="post-toc-number">1.2.9.</span> <span class="post-toc-text">9、架构模式在新浪微博的应用</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、大型网站核心结构要素"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">三、大型网站核心结构要素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、性能。系统吞吐量几个重要参数：QPS（TPS）、并发数、响应时间"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">1、性能。系统吞吐量几个重要参数：QPS（TPS）、并发数、响应时间</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、高可用"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">2、高可用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、伸缩性"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">3、伸缩性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、扩展性"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">4、扩展性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、安全性"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">5、安全性</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、网站的高性能架构"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">四、网站的高性能架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、网站性能测试"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">1、网站性能测试</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、Web前端性能优化"><span class="post-toc-number">1.4.2.</span> <span class="post-toc-text">2、Web前端性能优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、应用服务器性能优化"><span class="post-toc-number">1.4.3.</span> <span class="post-toc-text">3、应用服务器性能优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、存储性能优化"><span class="post-toc-number">1.4.4.</span> <span class="post-toc-text">4、存储性能优化</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#五、网站的高可用架构"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">五、网站的高可用架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、高可用的应用层服务"><span class="post-toc-number">1.5.1.</span> <span class="post-toc-text">1、高可用的应用层服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、高可用的基础公共服务"><span class="post-toc-number">1.5.2.</span> <span class="post-toc-text">2、高可用的基础公共服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、高可用的数据服务"><span class="post-toc-number">1.5.3.</span> <span class="post-toc-text">3、高可用的数据服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、高可用的软件质量保障"><span class="post-toc-number">1.5.4.</span> <span class="post-toc-text">4、高可用的软件质量保障</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、网站运行监控"><span class="post-toc-number">1.5.5.</span> <span class="post-toc-text">5、网站运行监控</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#六、网站的伸缩性架构"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">六、网站的伸缩性架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、网站的伸缩性设计通过以下两种方式实现"><span class="post-toc-number">1.6.1.</span> <span class="post-toc-text">1、网站的伸缩性设计通过以下两种方式实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、应用服务器的伸缩性设计"><span class="post-toc-number">1.6.2.</span> <span class="post-toc-text">2、应用服务器的伸缩性设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、分布式缓存的伸缩性设计"><span class="post-toc-number">1.6.3.</span> <span class="post-toc-text">3、分布式缓存的伸缩性设计</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、数据存储服务器的负载均衡"><span class="post-toc-number">1.6.4.</span> <span class="post-toc-text">4、数据存储服务器的负载均衡</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#七、网站的可扩展架构"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">七、网站的可扩展架构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#八、网站的安全架构"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">八、网站的安全架构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、攻击与防御"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">1、攻击与防御</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、信息加密技术"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">2、信息加密技术</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#九、十、十一皆为案例分析，此处略"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">九、十、十一皆为案例分析，此处略</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#十二、秒杀系统架构设计"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">十二、秒杀系统架构设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、应对策略"><span class="post-toc-number">1.10.1.</span> <span class="post-toc-text">1、应对策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、秒杀系统架构设计"><span class="post-toc-number">1.10.2.</span> <span class="post-toc-text">2、秒杀系统架构设计</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#十三、大型网站典型故障案例分析，内容略"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">十三、大型网站典型故障案例分析，内容略</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#十四、架构师领导艺术"><span class="post-toc-number">1.12.</span> <span class="post-toc-text">十四、架构师领导艺术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、关注人而不是产品"><span class="post-toc-number">1.12.1.</span> <span class="post-toc-text">1、关注人而不是产品</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、发掘人的优秀"><span class="post-toc-number">1.12.2.</span> <span class="post-toc-text">2、发掘人的优秀</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3、共享美好蓝图"><span class="post-toc-number">1.12.3.</span> <span class="post-toc-text">3、共享美好蓝图</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4、共同参与架构"><span class="post-toc-number">1.12.4.</span> <span class="post-toc-text">4、共同参与架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5、学会妥协"><span class="post-toc-number">1.12.5.</span> <span class="post-toc-text">5、学会妥协</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6、成就他人"><span class="post-toc-number">1.12.6.</span> <span class="post-toc-text">6、成就他人</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#十五、网站架构师职场攻略"><span class="post-toc-number">1.13.</span> <span class="post-toc-text">十五、网站架构师职场攻略</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-hadoop/zookeeper/分布式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-17 01:31:58" datetime="2018-10-16T17:31:58.000Z"  itemprop="datePublished">2018-10-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="《大型网站技术架构-核心原理与案例分析》读书笔记"><a href="#《大型网站技术架构-核心原理与案例分析》读书笔记" class="headerlink" title="《大型网站技术架构 核心原理与案例分析》读书笔记"></a><a href="https://www.cnblogs.com/wangzhongqiu/p/8964771.html" target="_blank" rel="noopener">《大型网站技术架构 核心原理与案例分析》读书笔记</a></h1><h2 id="一、大型网站架构演化"><a href="#一、大型网站架构演化" class="headerlink" title="一、大型网站架构演化"></a>一、大型网站架构演化</h2><h3 id="1、大型网站特点"><a href="#1、大型网站特点" class="headerlink" title="1、大型网站特点"></a>1、大型网站特点</h3><ul>
+<li>高并发，大流量</li>
+<li>高可用</li>
+<li>海量数据</li>
+<li>用户分布广泛，网络情况复杂</li>
+<li>安全环境恶劣</li>
+<li>需求快速变更，发布频繁</li>
+<li>渐进式发展</li>
+</ul>
+<h3 id="2、大型网站架构发展历程"><a href="#2、大型网站架构发展历程" class="headerlink" title="2、大型网站架构发展历程"></a>2、大型网站架构发展历程</h3><ul>
+<li>文件服务器，数据库服务器，应用服务器分离</li>
+<li>应用服务器增加本地缓存，本地缓存优先，增加分布式缓存服务器</li>
+<li>使用应用程序服务器集群提高网站的并发，由负载均衡服务器统一调度分发</li>
+<li>使用分布式文件系统和分布式数据库系统</li>
+<li>使用CDN网络加速和反向代理服务器：基本原理都是缓存，CDN部署在网络提供商的机房，是用户在请求网络服务时，可以从距离自己最近的网络提供商机房获取数据。而反向代理是部署在中心机房，当用户的请求到达中心机房后，首先访问的是反向代理服务器，如果反向代理服务器中缓存这用户请求的资源，就将其直接返回给用户，目的都是尽早返回数据给用户，加快用户访问速度，减轻后端服务器的压力。</li>
+<li>使用Nosql和搜索服务器</li>
+<li>业务拆分，根据不同的产品，不同的业务，将一个网站拆分成不同的应用，每个应用独立部署维护，各个应用之间通过消息中间件或者访问同一个数据存储系统来构成一个相互关联的完整系统</li>
+<li>分布式服务，将公用的业务提取出来，独立部署，为其他应用服务器提供可复用的共用业务服务（可以通过dubbo和zookeeper集群实现）</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/1089532-20180427204706775-1992842060.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<h3 id="3、网站架构的价值观和设计误区"><a href="#3、网站架构的价值观和设计误区" class="headerlink" title="3、网站架构的价值观和设计误区"></a>3、网站架构的价值观和设计误区</h3><ul>
+<li>架构的选取随网站所需灵活应对</li>
+<li>主要驱动力量是网站的业务发展</li>
+<li>不可一味追随大公司的架构设计，照搬照抄</li>
+<li>网站技术是为了业务存在的，不可为了技术而技术</li>
+<li>不要企图使用技术解决一切问题。技术是用来解决业务问题的，同样业务问题也可以采用业务手段，通过修改业务架构来解决</li>
+</ul>
+<h2 id="二、大型网站架构模式"><a href="#二、大型网站架构模式" class="headerlink" title="二、大型网站架构模式"></a>二、大型网站架构模式</h2><h3 id="1、分层"><a href="#1、分层" class="headerlink" title="1、分层"></a>1、分层</h3><p>将系统在横向纬度上分成几个部分，每个部分负责单一职责，通过上层对下层的依赖和调用组成一个完整的系统。网络的7层通讯协议，计算机硬件、操作系统、应用软件，都采用了分层的思想。将网站系统分为应用层、服务层、数据层，三层结构分别部署在不同的服务器上</p>
+<ul>
+<li>应用层：负责具体业务和视图展示</li>
+<li>服务层：为应用层提供服务支持，如用户管理服务、购物车服务</li>
+<li>数据层：提供数据存储访问服务，如数据库、缓存、文件、搜索引擎等</li>
+</ul>
+<h3 id="2、分割"><a href="#2、分割" class="headerlink" title="2、分割"></a>2、分割</h3><p>在纵向方面对系统进行划分，比如应用层，可以将不同业务分割，将购物、论坛、搜索、广告分割成不同的应用，由独立的团队负责。部署在不同的服务器上。</p>
+<h3 id="3、分布式"><a href="#3、分布式" class="headerlink" title="3、分布式"></a>3、分布式</h3><p>分层和分割的目的就是为了切分后的模块便于分布式部署，将不同的模块部署在不同的服务器上。同时，分布式也带来了很多问题，</p>
+<ul>
+<li>不同服务器之间的通信对网络依赖很大</li>
+<li>保持数据一致性比较困难</li>
+<li>网站依赖错综复杂，开发维护困难</li>
+</ul>
+<p>​    常见的分布式方案有以下几种</p>
+<ul>
+<li>分布式应用和服务。</li>
+<li>分布式静态资源</li>
+<li>分布式数据和存储</li>
+<li>分布式计算</li>
+<li>分布式文件系统</li>
+<li>分布式锁</li>
+<li>分布式配置。支持网站线上服务配置实时更新</li>
+</ul>
+<h3 id="4、集群"><a href="#4、集群" class="headerlink" title="4、集群"></a>4、集群</h3><p>虽然分布式已经将各个应用分开部署，但是对于用户集中访问的模块，还需要独立部署服务器集群化，即多台服务器部署相同应用构成一个集群，通过负载均衡设备共同对外提供服务。并且支持线性扩展，发生故障时的失效转移。即使是访问量很小的分布式应用和服务也至少要部署两台构成小的集群，提高系统的可用性</p>
+<h3 id="5、缓存"><a href="#5、缓存" class="headerlink" title="5、缓存"></a>5、缓存</h3><p>缓存是改善软件性能的第一手段。大型网站很多方面都使用了缓存设计：</p>
+<ul>
+<li>CDN，即内容分发网络。在这里缓存网站的一下静态资源（较少变化的数据），可以就近以最快速度返回给用户。如视频网站和门户网站会将用户访问量大的热点内容缓存在CDN</li>
+<li>反向代理。当用户的请求到达数据中心时，最先访问到的是反向代理服务器，这里缓存网站的静态资源，无需继续将请求转发给应用服务器，直接返回给用户</li>
+<li>本地缓存。在应用服务器本地缓存这热点数据，应用程序可以在本地内存中直接访问，无需访问数据层</li>
+<li>分布式缓存。将数据存储在专门的分布式缓存集群中，应用服务器通过网络通讯访问缓存数据。</li>
+</ul>
+<p>​      缓存同时也存在着缓存击穿、缓存雪崩、缓存热点不集中的问题</p>
+<h3 id="6、异步"><a href="#6、异步" class="headerlink" title="6、异步"></a>6、异步</h3><p>在单一服务器内部可通过多线程共享内存队列的方式实现异步，在分布式系统中，多个服务器集群通过分布式消息队列实现异步。异步架构是典型的生产者-消费者模式。使用异步消息队列能够带来如下好处：</p>
+<ul>
+<li>提高系统可用性</li>
+<li>提高系统响应速度</li>
+<li>消除并发访问高峰。消息队列能够把突然增加的访问请求数据放入到队列中，等待消费者处理，不会对网站造成太大压力</li>
+</ul>
+<h3 id="7、冗余"><a href="#7、冗余" class="headerlink" title="7、冗余"></a>7、冗余</h3><p>为了提高系统的可用性，防止某些服务器宕机的情况下系统依然可以继续服务，需要一定的服务器冗余运行、数据冗余备份。数据库除了定期备份实现冷备份之外，还需要主从分离，实时同步实现热备份。为了抵御海啸、地震等不可抗力，还需要在全球范围内部署灾备数据中心。</p>
+<h3 id="8、自动化"><a href="#8、自动化" class="headerlink" title="8、自动化"></a>8、自动化</h3><p>发布过程自动化：自动化代码管理，自动化测试，自动化安全测试，自动化部署。系统运行过程中还有：自动化监控、自动化报警、自动化失效转移、自动化失效恢复、自动化降级、自动化资源分配。</p>
+<h3 id="9、架构模式在新浪微博的应用"><a href="#9、架构模式在新浪微博的应用" class="headerlink" title="9、架构模式在新浪微博的应用"></a>9、架构模式在新浪微博的应用</h3><p>新浪微博系统分为三层：</p>
+<ul>
+<li>最下层是基础服务层，提供数据库、缓存、搜索、存储等基础服务</li>
+<li>中间层是平台服务和应用服务层，微博的核心是微博、用户、关系，这些服务被分割成独立的模块，通过依赖调用和对共享基础服务构成微博的业务基础</li>
+<li>API层，是微博的业务层，包括网站、app、第三方应用，通过调用API集成到微博系统中，共同组成一个生态系统</li>
+</ul>
+<p>微博的发布，早起使用<strong>同步推模式</strong>，用户发表微博后会立即将这条微博插入到数据库所有粉丝的订阅列表中，用户量比较大时，会引起大量的数据库写操作，超出负载，导致系统性能下降。后来改用<strong>异步推拉</strong>方式，用户发表微博之后立刻写到消息队列中然后立刻返回，消息队列消费者将微博推送给当前在线粉丝的订阅列表中，非在线用户等登录后在根据关注列表拉取微博订阅列表</p>
+<p>由于微博频繁刷新，微博使用多级缓存策略，热门微博和明星微博缓存在所有的微博服务器上，在线用户的微博和近期微博缓存在分布式缓存集群中</p>
+<h2 id="三、大型网站核心结构要素"><a href="#三、大型网站核心结构要素" class="headerlink" title="三、大型网站核心结构要素"></a>三、大型网站核心结构要素</h2><h3 id="1、性能。系统吞吐量几个重要参数：QPS（TPS）、并发数、响应时间"><a href="#1、性能。系统吞吐量几个重要参数：QPS（TPS）、并发数、响应时间" class="headerlink" title="1、性能。系统吞吐量几个重要参数：QPS（TPS）、并发数、响应时间"></a>1、性能。系统吞吐量几个重要参数：QPS（TPS）、并发数、响应时间</h3><p>​        <strong>QPS（TPS）：</strong>每秒钟request/事务 数量</p>
+<p>​        <strong>并发数：</strong> 系统同时处理的request/事务数</p>
+<p>​        <strong>响应时间：</strong>  一般取平均响应时间</p>
+<p>​        QPS（TPS）= 并发数/平均响应时间</p>
+<h3 id="2、高可用"><a href="#2、高可用" class="headerlink" title="2、高可用"></a>2、高可用</h3><p>指的是网站可以保证大部分时间系统都是可用的，一些知名大型网站可以得到99.99%的时间都是可用的。高可用的设计目标是当有部分服务器宕机时，整体的服务或者应用依然可用。</p>
+<ul>
+<li>保证网站高可用的主要手段就是冗余，应用部署在多台服务器上同时提供访问，数据存储在多个服务器上互相备份，任何一台服务器宕机都不会影响应用的整体可用。</li>
+<li>网站的高可用还需要软件开发过程的质量保证，通过预发布验证、自动化测试、自动化发布、灰度发布等手段，减少将故障引入线上环境的可能。</li>
+</ul>
+<h3 id="3、伸缩性"><a href="#3、伸缩性" class="headerlink" title="3、伸缩性"></a>3、伸缩性</h3><p>衡量的主要指标就是是否可以用多台服务构架集群，是否容易向集群中添加新的服务器，加入的新的服务器是否可以提供和原来服务器无差别的服务，集群可容纳的总服务器数量是否有限制。</p>
+<ul>
+<li>应用服务器，通过使用合适的负载均衡设备，就可以向集群中不断加入服务器</li>
+<li>缓存服务器集群，加入新的服务器可能会导致缓存路由失效，如果对缓存的依赖严重，可能会导致系统崩溃。</li>
+<li>关系数据库。虽然支持主从复制，主从热备，但是很难做到大规模集群的可伸缩性。因此关系型数据库的可伸缩性方案必须在数据库之外实现，通过路由分区等手段，将多个部署的数据库服务器集成一个集群。</li>
+<li>NoSql数据库。由于其先天就是为了海量数据而生的，因此对可伸缩性的支持非常好。</li>
+</ul>
+<h3 id="4、扩展性"><a href="#4、扩展性" class="headerlink" title="4、扩展性"></a>4、扩展性</h3><p>衡量的主要标准就是网站增加新的业务产品时，是否会对现有产品产生影响，不需要改动或很少改动既有业务就可以上线新产品，不同产品之间很少的耦合，一个产品改动对其他产品没有影响。</p>
+<p>网站的可扩展架构的主要手段是事件驱动架构和分布式服务</p>
+<ul>
+<li>事件驱动，通常利用消息队列实现，把消息的生产者和消费者分开，这样可以透明的增加新的生产者和消费者</li>
+<li>分布式服务则是将业务和可复用服务拆分开，通过分布式服务调用可复用服务。可复用服务升级变更的时候，也可以通过提供多版本服务实现透明升级，不需要强制应用同步变更。</li>
+</ul>
+<h3 id="5、安全性"><a href="#5、安全性" class="headerlink" title="5、安全性"></a>5、安全性</h3><p>网站的安全架构需要保证网站不受恶意访问和攻击、保护网站的重要数据不被窃取。</p>
+<h2 id="四、网站的高性能架构"><a href="#四、网站的高性能架构" class="headerlink" title="四、网站的高性能架构"></a>四、网站的高性能架构</h2><h3 id="1、网站性能测试"><a href="#1、网站性能测试" class="headerlink" title="1、网站性能测试"></a>1、网站性能测试</h3><p>性能测试指标。主要指标有响应时间、并发数、吞吐量、性能计数器</p>
+<p>​        <img src="assets/1089532-20180428183626810-21491605.png" alt="img"></p>
+<h3 id="2、Web前端性能优化"><a href="#2、Web前端性能优化" class="headerlink" title="2、Web前端性能优化"></a>2、Web前端性能优化</h3><p><strong>浏览器访问优化</strong></p>
+<ul>
+<li>减少http请求。合并css、JavaScript、图片，将浏览器一次访问需要的资源合并成一个文件</li>
+<li>使用浏览器缓存。通过设置http头部中的Cache-Control和Expires属性，设置浏览器缓存。将css、javascript、图片等静态资源通过浏览器缓存起来，如果需要静态资源及时应用到客户端浏览器，可通过改变文件名实现。</li>
+<li>启用压缩。在服务端对文件进行压缩，在浏览器端对文件进行解压缩，有效减少通讯传输的数据量，会对服务器和浏览器产生一定的压力，通信宽带良好，服务器资源不足的情况下，不适合采用</li>
+<li>减少cookie传输，cookie包含在每次请求和响应中，太大的cookie会影响数据传输。深入了解，<a href="http://www.cnblogs.com/wangzhongqiu/p/8970935.html" target="_blank" rel="noopener">cookie和session的区别</a></li>
+</ul>
+<p><strong>CDN加速</strong></p>
+<p>CDN，内容分发网络，本质上也是缓存，而且将缓存在里用户最近的地方。部署在网络运行商的机房，CDN缓存的是一些静态资源</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/1089532-20180429140726720-1787741691.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p><strong>反向代理</strong></p>
+<ul>
+<li>反向代理服务器位于网站机房一侧，代理网站web服务器接受http请求。具有保护网站安全的作用</li>
+<li>代理服务器可以通过配置缓存功能加速web请求，当用户第一次请求静态内容的时候，就被缓存在反向代理服务器上</li>
+<li>也可以实现负载均衡的功能</li>
+</ul>
+<h3 id="3、应用服务器性能优化"><a href="#3、应用服务器性能优化" class="headerlink" title="3、应用服务器性能优化"></a>3、应用服务器性能优化</h3><p><strong>分布式缓存</strong></p>
+<ul>
+<li>合理使用缓存，频繁修改的数据不适合缓存，读写比在2:1之上，缓存才有意义</li>
+<li>没有热点访问的数据，不适合做缓存</li>
+<li>数据不一致，数据库修改了数据并不会立即修改缓存，存在时间差</li>
+<li>分布式缓存服务器，提高缓存的可用性</li>
+<li>缓存预热，启动时就把热点数据放入缓存中。热点数据是利用LRU（最近最久未用算法）对不断访问的数据筛选淘汰出来的</li>
+<li>缓存穿透，大量请求不存在的数据，绕过缓存直达数据库。一个简单的策略：将不存在的数据也缓存起来</li>
+<li>分布式缓存架构：一种是需要同步更新的分布式缓存，规模较大时，缓存更新数据需要同步到所有缓存服务器，代价惊人。另一种是以memcache为代表的互不通信的分布式缓存架构，应用程序通过一致性hash等路由算法选择缓存服务器远程访问缓存数据，缓存服务器之间不通信，集群规模可以很容易的扩容，具有良好的可伸缩性。</li>
+</ul>
+<p><strong>异步操作，可以晚点做的事情都应该晚点做</strong></p>
+<p><strong>使用集群</strong></p>
+<p><strong>代码优化</strong></p>
+<ul>
+<li>多线程充分利用多CPU和解决IO阻塞问题，利用多线程IO阻塞与执行充分利用CPU资源。同时需要解决线程安全问题，将对象设计成无状态对象，使用局部变量，在修改共同资源时加锁</li>
+<li>资源复用。尽量复用开销很大的资源，比如数据库连接、线程、复杂对象</li>
+<li>优化数据结构，比如hash表，要尽量减少hash冲突，hashcode越散列，冲突越少，读写性能也就越好，目前比较好的字符串Hash散列算法有Time33算法和指纹加密算法md5结合使用。先对字符串指纹加密，对加密后的字符串进行Time33。</li>
+<li>垃圾回收，JVM调优，尽量减少Full GC ，甚至从不进行Full GC</li>
+</ul>
+<h3 id="4、存储性能优化"><a href="#4、存储性能优化" class="headerlink" title="4、存储性能优化"></a>4、存储性能优化</h3><p>SSD固态硬盘vs机械硬盘</p>
+<ul>
+<li>机械硬盘，每次访问数据，都需要移动磁头臂，顺序访问和随机访问性能差别很大</li>
+<li>SSD固态硬盘，没有机械装置，数据存储在可持久记忆的硅晶体上，可以像内存一样随机访问</li>
+</ul>
+<p>B+树vs LSM树</p>
+<p>为了改善数据访问特性，文件系统和数据库系统会对数据排序后存储，加快数据检索速度，需要保证新的数据插入、更新、删除后依然有序。</p>
+<ul>
+<li>传统关系型数据库通常采用B+树</li>
+<li>目前许多NoSQL产品采用LSM树最为主要数据结构，可以看做是一个n阶合并树</li>
+</ul>
+<h2 id="五、网站的高可用架构"><a href="#五、网站的高可用架构" class="headerlink" title="五、网站的高可用架构"></a>五、网站的高可用架构</h2><h3 id="1、高可用的应用层服务"><a href="#1、高可用的应用层服务" class="headerlink" title="1、高可用的应用层服务"></a>1、高可用的应用层服务</h3><ul>
+<li>负载均衡服务器通过心跳检测机制发现故障服务器失去响应，就会把它从服务器列表中剔除，而将请求发送到其他服务器上。</li>
+<li>服务器集群的session管理，分布式缓存服务器，负载均衡服务器通过hash算法总是将来源于同一ip的请求分发到同一台服务器上</li>
+</ul>
+<h3 id="2、高可用的基础公共服务"><a href="#2、高可用的基础公共服务" class="headerlink" title="2、高可用的基础公共服务"></a>2、高可用的基础公共服务</h3><p>使用类似负载均衡的失效转移策略实现高可用的基础服务，此外，还有几点基于实践的高可用基础服务的策略：</p>
+<ul>
+<li>分级管理。把基础服务分为核心服务和非核心服务，低级别的服务需要部署在不同的虚拟机上进行隔离，高优先级的服务需要部署在不同的物理机上进行隔离、而核心服务和数据甚至要部署在不同地域的数据中心进行隔离</li>
+<li>超时设置。</li>
+<li>异步调用。应用对服务的调用通过消息队列等异步方式完成</li>
+<li>服务降级。在网站访问的高峰期，系统压力增大，性能下降，严重会导致系统宕机。为了核心应用正常运转，需要对服务进行降级。有两种方式：1 是拒绝低优先级应用的调用或者随机拒绝部分请求调用。2 是关闭不重要的服务，比如双十一最繁忙时段关闭“评价、确认收货”等功能</li>
+<li>幂等性设计。重复调用和调用一次产生的效果相同，即服务具有幂等性</li>
+</ul>
+<h3 id="3、高可用的数据服务"><a href="#3、高可用的数据服务" class="headerlink" title="3、高可用的数据服务"></a>3、高可用的数据服务</h3><p>保证数据高可用的主要手段是数据备份和失效转移机制。</p>
+<ul>
+<li>通过强化CAP理论中的A（可用性）、P（分区容错性，跨网络分区的伸缩性），而在某种程度上放弃C（一致性）。根据BASE理论，保证最终一致性，和用户一致性。</li>
+<li>数据备份分为冷备、异步热备、同步热备。异步热备下，存储服务器分为主和从，写入操作在主服务操作成功之后立即返回成功，然后通过异步线程同步到从服务。同步热备，等待所有存储服务写入成功之后，再通知应用程序写操作成功。</li>
+<li>失效转移由三部分组成。失效确认、访问转移、数据恢复。失效确认通过心跳检测或应用程序失败报告完成</li>
+</ul>
+<h3 id="4、高可用的软件质量保障"><a href="#4、高可用的软件质量保障" class="headerlink" title="4、高可用的软件质量保障"></a>4、高可用的软件质量保障</h3><ul>
+<li>网站发布，发布过程中每次关闭的都是集群中的一小部分，并保证发布完成后立即可以访问。具体过程：先关闭负载均衡服务器上的一下部分服务器路由，关闭这些服务器，部署新的代码，启动这些服务，打开负载均衡的路由，重复操作直到集群中所有的机器发布完成。</li>
+<li>自动化测试，自动化测试工具ThoughtWorks开发的Selenium，运行在浏览器中，模拟用户操作进行测试。</li>
+<li>预发布验证，预发布机器是位于负载均衡路由之外的机器。一旦启动时发现错误，立刻失败抛出异常，停止启动让工程师介入排查错误，而不是启动后执行错误的操作。需要快速失败机制</li>
+<li>代码版本控制。</li>
+<li>自动化发布。火车发布模型来实现自动化发布</li>
+<li>灰度发布。每天只上线一小部分服务器，一旦发现有问题，回滚一小部分服务即可，不需要回滚所有服务</li>
+</ul>
+<h3 id="5、网站运行监控"><a href="#5、网站运行监控" class="headerlink" title="5、网站运行监控"></a>5、网站运行监控</h3><p><strong>监控数据采集</strong></p>
+<ul>
+<li>用户行为日志采集，分为服务端日志采集和客户端浏览器日志采集</li>
+<li>服务器性能监控，开源性能监控工具Ganglia，支持大规模服务器集群，支持以图形的方式在浏览器展示实时的性能曲线</li>
+<li>运行数据报告</li>
+</ul>
+<p><strong>监控管理</strong></p>
+<ul>
+<li>系统报警</li>
+<li>失效转移</li>
+<li>自动优雅降级</li>
+</ul>
+<h2 id="六、网站的伸缩性架构"><a href="#六、网站的伸缩性架构" class="headerlink" title="六、网站的伸缩性架构"></a>六、网站的伸缩性架构</h2><h3 id="1、网站的伸缩性设计通过以下两种方式实现"><a href="#1、网站的伸缩性设计通过以下两种方式实现" class="headerlink" title="1、网站的伸缩性设计通过以下两种方式实现"></a>1、网站的伸缩性设计通过以下两种方式实现</h3><ul>
+<li>根据功能从横向和纵向进行物理分离实现伸缩</li>
+<li>分离之后的单一功能通过集群实现伸缩，集群内多台服务器部署相同应用，提供相同的功能</li>
+</ul>
+<h3 id="2、应用服务器的伸缩性设计"><a href="#2、应用服务器的伸缩性设计" class="headerlink" title="2、应用服务器的伸缩性设计"></a>2、应用服务器的伸缩性设计</h3><ul>
+<li>负载均衡服务器实现http请求的分发</li>
+<li>http重定向负载均衡，这种方式比较简单，但是一次用户请求需要请求两次服务器，重定向服务器自身的处理能力可能成为瓶颈，实践中这种方案不常用</li>
+<li>DNS域名解析负载均衡，控制权在域名服务商那里，无法提供更强大的管理。DNS是多级解析，修改之后较长时间才能生效。实践中，利用域名解析作为第一级负载均衡手段，即域名解析得到的是一组负载均衡服务器的ip地址</li>
+<li>反向代理负载均衡，反向代理服务器转发请求在http协议层面，叫做应用层负载均衡，方向代理服务器的性能有可能会成为瓶颈</li>
+<li>数据链路层负载均衡，指在通讯协议的数据链路层修改修改mac地址进行负载均衡。分发过程中不修改ip地址，只修改目的mac地址，通过配置真实物理机集群所有机器虚拟ip和负载均衡服务器ip相同，真实处理用户请求的服务器可直接将数据返回给用户浏览器，避免负载均衡服务器网卡带宽成为瓶颈。目前linux平台最好的数据链路层负载均衡产品是LVS（Linux  Virtual Server）</li>
+<li>负载均衡算法。轮询（Round Robin）、加权轮询、随机（Random）、最少连接（Least Connections）、原地址散列（Source Hashing）</li>
+</ul>
+<h3 id="3、分布式缓存的伸缩性设计"><a href="#3、分布式缓存的伸缩性设计" class="headerlink" title="3、分布式缓存的伸缩性设计"></a>3、分布式缓存的伸缩性设计</h3><p>Memcached分布式缓存集群，一致性hash算法来保证新缓存服务器加入集群后不会影响集群的稳定性</p>
+<h3 id="4、数据存储服务器的负载均衡"><a href="#4、数据存储服务器的负载均衡" class="headerlink" title="4、数据存储服务器的负载均衡"></a>4、数据存储服务器的负载均衡</h3><ul>
+<li>关系型数据库的伸缩性设计。通过数据复制主从分离，根据不同的业务分割数据分库，如果及时这样单张表还是很大，就需要进行单表分片。目前支持数据分片的关系型数据库产品主要有Amoeba和Cobar</li>
+<li>Cobar服务器集群的伸缩：是无状态的服务器，可以通过简单的负载均衡的手段实现</li>
+<li>Mysql服务器集群的伸缩：集群中添加新服务器，需要利用一致性hash算法，进行尽量少的数据移动来保证扩容后数据一致，Mysql数据同步以Schema为单位，使用Mysql的同步机制。不支持join操作</li>
+<li>Nosql数据库的伸缩性设计。应用最广泛的Apache的Hbase</li>
+</ul>
+<h2 id="七、网站的可扩展架构"><a href="#七、网站的可扩展架构" class="headerlink" title="七、网站的可扩展架构"></a>七、网站的可扩展架构</h2><p>1、用分布式消息队列降低系统耦合性</p>
+<p>2、利用分布式服务打造可复用的业务平台。分布式服务架构需要支持如下特点：</p>
+<ul>
+<li>负载均衡。对于热门服务，需要部署在一个集群上，负载均衡</li>
+<li>失效转移</li>
+<li>高效的远程通信</li>
+<li>整合异构系统，整合不同的语言，不同的平台</li>
+<li>版本管理，需要支持服务多版本发布，服务发布者先升级接口发布新版本的服务，同时提供旧版本服务供请求者调用</li>
+<li>实时监控</li>
+</ul>
+<p>3、分布式服务架构框架设计。常用的Dubbo，他的远程通信模块支持多种通讯协议和数据序列化协议，使用NIO通讯框架，具有较高的网络通讯性能。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/1089532-20180430192430442-528993084.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>4、可扩展的数据结构</p>
+<p>传统的关系型数据库设计之初，需要指定表的字段、数据类型等，比较僵硬，不利于以后的扩展。虽然可以通过预设冗余字段来解决，但是也是一种较糟糕的设计。</p>
+<p>许多Nosql数据库使用的ColoumFamily（列族）设计就是一个解决方案，无需指定字段，可以在数据写入时再指定，通过这种方式，数据表可以包括数百万的字段</p>
+<p>5、利用开放平台建设网站生态圈</p>
+<h2 id="八、网站的安全架构"><a href="#八、网站的安全架构" class="headerlink" title="八、网站的安全架构"></a>八、网站的安全架构</h2><h3 id="1、攻击与防御"><a href="#1、攻击与防御" class="headerlink" title="1、攻击与防御"></a>1、攻击与防御</h3><ul>
+<li>xss攻击，跨站点脚本攻击，通过篡改网页，注入恶意的html脚本，在用户浏览网页时，控制用户浏览器进行恶意操作的一种攻击行为。XSS攻击者一般都是通过在请求中嵌入恶意脚本达到攻击的目的，需要对请求进行过滤和消毒处理。</li>
+<li>sql注入攻击，通过在http请求中嵌入恶意sql命令，通过正则匹配对请求参数进行消毒处理</li>
+</ul>
+<h3 id="2、信息加密技术"><a href="#2、信息加密技术" class="headerlink" title="2、信息加密技术"></a>2、信息加密技术</h3><ul>
+<li>单向散列加密，md5、sha等。通过对明文和salt利用单向散列加密算法得出密文，数据库中存储加密之后的密文。输入的微小变化都会导致输出的完全不同</li>
+<li>对称加密。加密和解密使用同一个秘钥，使用场合有通信加密、cookie加密。常用算法有DES算法、RC算法</li>
+<li>非对称加密。加密和解密使用的不是用一个秘钥，一个是公钥，一个是私钥。使用场合有信息安全传输、数字签名等场合。常用算法有RSA算法，https传输中浏览器使用的数字证书实质上就是非对称加密公钥。</li>
+</ul>
+<h2 id="九、十、十一皆为案例分析，此处略"><a href="#九、十、十一皆为案例分析，此处略" class="headerlink" title="九、十、十一皆为案例分析，此处略"></a>九、十、十一皆为案例分析，此处略</h2><h2 id="十二、秒杀系统架构设计"><a href="#十二、秒杀系统架构设计" class="headerlink" title="十二、秒杀系统架构设计"></a>十二、秒杀系统架构设计</h2><h3 id="1、应对策略"><a href="#1、应对策略" class="headerlink" title="1、应对策略"></a>1、应对策略</h3><ul>
+<li>秒杀系统独立部署</li>
+<li>秒杀商品页面静态化</li>
+<li>租借秒杀活动网络宽带</li>
+</ul>
+<h3 id="2、秒杀系统架构设计"><a href="#2、秒杀系统架构设计" class="headerlink" title="2、秒杀系统架构设计"></a>2、秒杀系统架构设计</h3><p><strong>控制秒杀按钮的点亮</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/1089532-20180430204840852-1488166578.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/1089532-20180430204849048-370706648.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/1089532-20180430204855751-1581454047.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="assets/1089532-20180430204900921-1757321043.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<h2 id="十三、大型网站典型故障案例分析，内容略"><a href="#十三、大型网站典型故障案例分析，内容略" class="headerlink" title="十三、大型网站典型故障案例分析，内容略"></a>十三、大型网站典型故障案例分析，内容略</h2><h2 id="十四、架构师领导艺术"><a href="#十四、架构师领导艺术" class="headerlink" title="十四、架构师领导艺术"></a>十四、架构师领导艺术</h2><h3 id="1、关注人而不是产品"><a href="#1、关注人而不是产品" class="headerlink" title="1、关注人而不是产品"></a>1、关注人而不是产品</h3><p>一定要坚信：一群优秀的人做一件他们热爱的事，一定能取得成功。</p>
+<p>领导的真谛：寻找一个值得共同奋斗的目标，营造一个让大家都能最大限度发挥自我价值的工作氛围。</p>
+<p>没有懒惰的员工，只有没被激发出来的激情。所有强迫员工加班的管理者都应该为自己的无能感到羞愧。</p>
+<h3 id="2、发掘人的优秀"><a href="#2、发掘人的优秀" class="headerlink" title="2、发掘人的优秀"></a>2、发掘人的优秀</h3><p>是事情成就了人，而不是人成就了事。</p>
+<p>发掘人的优秀比发掘优秀的人更有意义。</p>
+<h3 id="3、共享美好蓝图"><a href="#3、共享美好蓝图" class="headerlink" title="3、共享美好蓝图"></a>3、共享美好蓝图</h3><p>架构师要和项目组全体成员共同描绘一个蓝图，这个蓝图是真个团队能够认同的，是团队共同奋斗的目标。这个蓝图应该是表述清楚的、形象的、简单的。</p>
+<h3 id="4、共同参与架构"><a href="#4、共同参与架构" class="headerlink" title="4、共同参与架构"></a>4、共同参与架构</h3><p>不要只有架构师一人拥有架构，让其他人参与架构的设计和维护</p>
+<h3 id="5、学会妥协"><a href="#5、学会妥协" class="headerlink" title="5、学会妥协"></a>5、学会妥协</h3><p>不要企图在项目中证明自己是正确的，一定要记住，你是来做软件的，不是来做老大的。架构师越早被项目组遗忘，越表示架构非常成功；项目组越离不开架构师，越表示架构还有很多缺陷。</p>
+<h3 id="6、成就他人"><a href="#6、成就他人" class="headerlink" title="6、成就他人"></a>6、成就他人</h3><p>想要成就自己，先要成就他人</p>
+<h2 id="十五、网站架构师职场攻略"><a href="#十五、网站架构师职场攻略" class="headerlink" title="十五、网站架构师职场攻略"></a>十五、网站架构师职场攻略</h2><p>1、发现问题，寻找突破</p>
+<p>所谓问题，就是体验不能满足期望，就会觉得出了问题。消除问题有两个方法：降低期望、改善体验</p>
+<p>2、提出问题，寻求支持</p>
+<ul>
+<li>把“我的问题”变成“我们的问题”</li>
+<li>给上司提封闭式问题，给下属提开放式问题</li>
+<li>指出问题，而不是批评人</li>
+<li>用赞同的方式提出问题</li>
+</ul>
+<p>3、解决问题，达成绩效</p>
+<p>作者：<a href="http://www.cnblogs.com/wangzhongqiu/" target="_blank" rel="noopener">leon66666</a></p>
+<p>出处：<a href="http://www.cnblogs.com/wangzhongqiu/" target="_blank" rel="noopener">http://www.cnblogs.com/wangzhongqiu/</a></p>
+<p>本文版权归作者和博客园共有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利.</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-16T17:32:24.000Z" itemprop="dateUpdated">2018-10-17 01:32:24</time>
+</span><br>
+
+
+        
+        <a href="/2018/10/17/hadoop/zookeeper/分布式/" target="_blank" rel="external">http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/17/hadoop/zookeeper/cnblog/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/分布式/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqUlEQVR42u3aUXLjIBAE0Nz/0skBsnJ1D4zjrXr6csmy4PEBuJmvr/j6frh+f/v02/Zz/v4LFx4eHt6lrj818LuZpzuvn08AeX8ehwAPDw9vjZdP6MlUniDbtl4/83gfDw8P7wN4SWPJ9jfBJ1twPDw8vP+L95p6El4kb8bDw8P7W17e6WQbfRLjtpv4a1kLHh4eXszLT5E+5/PK+R4eHh7e8al6HhYkEe15yFv3Fg8PD2+BN4tcTwLfZOE5fwYPDw9vj5cXWrVhbjKt51FvO3x4eHh4e7z2MCnZHJ/caePdaOHBw8PDu8pLJve8oGqv1KA9BsPDw8N7D+/kOD8pNWipycJTHIDh4eHhLfPyF82Kn85ji6h1PDw8vAVe3nz9iqDr7ba+jS3w8PDw9nhtudWsK20JwrUBwsPDw7vKm033eSA7i3Fv/QoPDw9vg9eGue10Pzs8ywsFonbx8PDwrvLOA4WksdkCcBJeRDt0PDw8vBHv1qa2LSyYlS+0A4GHh4f3Tl4btraLQd7WrMV//GPAw8PDW+OdTOt5hJGXAuTlAo8t4uHh4S3wZkf+s8z4JCyeBcF4eHh4d3l5bHprim/j2pOjMjw8PLxtXr4MnN+flQi08TEeHh7eBq/98XnpQF4KMBusKKXGw8PDu8RrD71OSqbyaf1134qiKzw8PLy38JKt7Sy6LQ7+yzKsxy01Hh4e3ht5+QIwG6x22UguPDw8vD3e7GiqLhi9VN2Qb/3x8PDw9njtVPs6DshjhbbYKy/Mmi0keHh4eC1vFr/mTZ4M4oVIFw8PD2+NdzIptw3vrWB4eHh4n8xrw998yNp4NzoAw8PDw/tT3skzs8GaHcXh4eHhbfNOmsm7kgxQHoVEreDh4eEt8No/+e2Wug1kb4XCeHh4eAu8HwIUac60Xa71AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

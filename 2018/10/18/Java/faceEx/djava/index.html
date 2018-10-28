@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>mshi | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="一）美图面试（2技术+1HR）  : 大数据研发 一面（1个小时）：（1）聊项目，题主看过HDFS源码，面试官就跟我扯了很久 这个。（2）聊hadoop,namenode的职能呀， 2.0与1.0的区别， HA的实现方法。 zookeeper源码我也看过, balabala(3) 对MR 了解多少，具体讲解一下MR 。 我看过 MR google 原文， balabala 。(4) Java基础,">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mshi">
+<meta property="og:url" content="http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="一）美图面试（2技术+1HR）  : 大数据研发 一面（1个小时）：（1）聊项目，题主看过HDFS源码，面试官就跟我扯了很久 这个。（2）聊hadoop,namenode的职能呀， 2.0与1.0的区别， HA的实现方法。 zookeeper源码我也看过, balabala(3) 对MR 了解多少，具体讲解一下MR 。 我看过 MR google 原文， balabala 。(4) Java基础,">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-18T03:35:35.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mshi">
+<meta name="twitter:description" content="一）美图面试（2技术+1HR）  : 大数据研发 一面（1个小时）：（1）聊项目，题主看过HDFS源码，面试官就跟我扯了很久 这个。（2）聊hadoop,namenode的职能呀， 2.0与1.0的区别， HA的实现方法。 zookeeper源码我也看过, balabala(3) 对MR 了解多少，具体讲解一下MR 。 我看过 MR google 原文， balabala 。(4) Java基础,">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mshi</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mshi</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-18T03:35:11.000Z" itemprop="datePublished" class="page-time">
+  2018-10-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Java/faceEx/djava"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mshi</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-18 11:35:11" datetime="2018-10-18T03:35:11.000Z"  itemprop="datePublished">2018-10-18</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>一）美图面试（2技术+1HR）  : 大数据研发</p>
+<p>一面（1个小时）：<br>（1）聊项目，题主看过HDFS源码，面试官就跟我扯了很久 这个。<br>（2）聊hadoop,namenode的职能呀， 2.0与1.0的区别， HA的实现方法。 zookeeper源码我也看过, balabala<br>(3) 对MR 了解多少，具体讲解一下MR 。 我看过 MR google 原文， balabala 。<br>(4) Java基础,JVM 了解多少 。 深入扯淡了一波 jvm<br>(5) 进程，线程。 Java是如何实现线程的 。 讲了一下操作系统进程线程<br>(6) Java线程同步和锁。 疯狂BB Java各种锁<br>(7) 除了技术平时喜欢看什么书，巴拉巴拉扯了一堆 。 面试官推荐我看《三体》 ==</p>
+<p>二面 (30分钟 )：<br>(1)项目相关的东西 。 继续扯淡<br>(2)对美图公司的看法，评价<br>(3)讲解一下Paxos 协议 。 巴拉巴拉很仔细的讲了<br>(4) 有哪些 应用使用了这些 分布式一致性协议。 zookeeper</p>
+<p>三面HR面(20多分钟):<br>记不清了， 只记得。<br>（1）你的期望工资是多少： 楼主说少了，很后悔<br>（2）有没有对象 ： =-=。<br>体验很棒，2轮技术面试官都非常好，HR声音超级棒。</p>
+<p>（二）百度面试（3技术）： 研发工程师</p>
+<p>一面:（1个小时）<br>（1）自我介绍<br>（2）面向对象的特点<br>（3）java继承有哪几种？顶级类是什么？<br>（4）Object类都有什么方法？<br>（5）1 ==与equals的区别<br>2 修改equals的时候为何要修改hashcode()<br>3 如果让你设计一个类作为hashMap的key，你会注意什么 （就是设计hashcode时候会注意什么）<br>4 equals相等hashcode一定相等吗？ hashcode相等，equals一定相等吗<br>（6）wait() 与sleep()什么区别？<br>（7）1 刚才讲到了hashMap,那你就讲一下hashMap的具体实现。<br>2 你会如何做的线程安全的hashMap<br>3 了解过jdk1.8吗？ 对于hashMap底层进行修改过。（链改成了红黑树）<br>4 那么当数量达到多少时候，会改成红黑树？<br>5 底层中扩容的方法叫什么？<br>（8）1 写单例模式， 需要lazy loading的<br>我写了2个，其中一个双重判断，然后面试问我：<br>2 很多人在写双重判断的时候会加入双重上锁，为什么呢？<br>回答后面试官又问我<br>3 知道jdk 1.5之后添加的一种实现单例模式的讨巧方法吗？<br>4 enum 如何实现单例模式？<br>（9）1.快排会吗？ 讲一下思想</p>
+<ol start="2">
+<li>如何判断是否越界 ？<br>3 手写快排</li>
+<li><p>如果让你优化快速排序，你会如何优化（回答：递归-》非递归，基数随机选择或者选择中间数作为基础） 面试官回：可以用三位中位数<br>（10）jvm了解吗？<br>xmx xms xmn 这三个参数代表我对于虚拟机做了什么限制吗？ （控制内存大小）<br>（11）Linux了解吗？<br>我说我用ubuntu作为操作系统的， 面试官就直接跳过了这个问答。<br>（12）设计一个图书馆管理系统的表？<br>（13）Spring的IOC,AOP底层实现原理？<br>（14） 你有什么问题没？<br>二面（1个小时）：</p>
+<p>  迟点补。。。</p>
+</li>
+</ol>
+<p>三面（1个小时）：</p>
+<pre><code>迟点补。。。
+</code></pre><p>百度面试体验非常棒， 虽然笔试系统比较糟糕。  面试的话： 每次都会打电话约第二天面试时间，而且是准时开始面试，如果迟到面试官还会给你打电话问情况（2面我就迟到），总之三次面试都是到了酒店直接面，面试官全程nice脸，面试难度也挺大的，一直都是问到你不会为止，尤其是三面面试官，感觉上知天文下晓地理，无所不知，献上小弟膝盖。 3轮面试是分开面试的 一共面试了一周时间。</p>
+<p>（三）招银科技：java研发</p>
+<p>一面：<br>你做大数据，会java吗？ 会的。<br>（1）自我介绍<br>（2）抽象类和接口的区别。 他们的应用场景<br>（3）1. equals 和 == 的区别<br>2..为什么重写equals 的时候需要重写hashcode<br>(4）1.java 中的锁 有什么<br>2.sychronized 锁static方法和锁普通方法的区别</p>
+<ol start="3">
+<li>wait 和notify<br>（5）java集合了解情况?<br>(6) 1.java IO了解吗？<br>2.InputStream 和reader流的区别<br>3.给一个JDK编码的，以UTF-8编码输出的方法<br>(7) 往一个hashMap中添加一个元素的具体步骤<br>(8) jvm 运行时的数据区<br>(9) jvm中哪些对象是需要被回收的<br>GC roots都有什么<br>(10) java调用jdbc连接数据库的具体步骤<br>(11) preStatement和Statement的区别<br>(12) Spring是如何实现事务的<br>（13）Hadoop 中的MapReduce的具体步骤</li>
+</ol>
+<p>面试还好，全程笑嘻嘻，然后MMP</p>
+<p>（四）今日头条 ：大数据研发</p>
+<p>一面：<br>（1）说一下TCP的全双工模式<br>（2）TCP一端如果发送完数据之后，这一端关闭连接，另一端能感知到吗<br>（3）说一下HTTP2.0与1.0的区别<br>（4）说一下HTTP1.0的报文头<br>（5）实现两个线程，一个线程只输出A，另外一个线程只输出B， 让他们交替输出AB<br>（6）设计一个Hash Table<br>（7）你这个HASHTABLE会扩容吗？ 假设这个时候已经使用了1G内存，只剩下一点点内存，你如何扩容<br>（8）大数据解决问题：<br>给你大量 id-&gt;ip, ip属于一个国家，请你设计大数据解决方法，统计出 对应国家数大于3的Iid</p>
+<p>一面就GG， 头条是6. 也是在被头条GG之后题主奋发图强，最后才找到工作。。感谢头条。。</p>
+<p>头条面试压力不小：不给你BB机会上来就是一堆问题，面试官全程平淡脸。。。。。</p>
+<p>（五）华为面试  ：  云计算开发</p>
+<p>  一面（半个小时）：</p>
+<pre><code>讲了项目，然后就是围绕项目问了一堆知识，主要是分布式系统以及一致性相关的知识，个人感觉相对比较简单。
+</code></pre><p> 二面（半个小时）：</p>
+<pre><code>    面试官全程打字，我就只能没话找话全程BB，吹嘘自己。。。。。
+
+
+
+华为面试体验比较糟糕，水平一般（可能是问我比较一般），而且从早上一直弄到了很晚，疯狂延迟，一共才2面。（等了6-7来个小时，一共面1小时不到。。。。服，大写的服。）
+</code></pre><p>（六）京东面试（2轮技术面+1HR） ： JAVA研发</p>
+<p>一面（半个小时）：</p>
+<pre><code>JAVA虚拟机的知识
+
+类加载
+
+== equals之类的
+</code></pre><p>二面（半个小时）：</p>
+<pre><code>自我介绍
+
+项目
+
+假如给你一家京东线下店，你会如何摆放商品，从而提高商品销售量。  （题主就疯狂想提高顾客与商品接触机会呀，牛奶与尿布关联呀，balabala ）。  结果是要收集各种数据，大数据分析（offline 处理（MR），online处理 （spark））等等等。。
+</code></pre><p> 三面（15分钟）：</p>
+<pre><code>这我是真地铁上面试的， 扯淡。。。。
+</code></pre><p>玄学东。面试等待时间挺短，但是面试比较玄学，尤其是二面，面试官疯狂打字，我写我的思路，基本没有交集，最后还给offer了</p>
+<p>（七）腾讯面试    云计算研发</p>
+<p>   一面（30分钟）：</p>
+<pre><code>掏出笔试。。。我也是无奈。。。
+
+单例
+
+手写搜索题代码
+
+。。。。
+
+二面：
+
+GG
+</code></pre><p>腾讯面试体验还好，等待时间较短，面试官很nice,也很厉害。</p>
+<p>（八）美团面试   研发</p>
+<p>一面（40-50分钟）：</p>
+<pre><code>自我介绍
+
+项目
+
+几道java题目
+</code></pre><p>二面（40分钟）：</p>
+<pre><code>自我介绍
+
+项目
+
+手写堆排序
+</code></pre><p>然后GG</p>
+<pre><code>对于美团，还是有很多想法的。  首先面试等待时间较少这点不错，面试安排的还可以。  但是说起面试官技术，实在不敢恭维，面试阵仗很大，但是很多面试官。。。。 一面面试官，水平还好，人挺nice的，我全程怼，他还让我过了。 二面面试官，年纪略大的一个大哥，跟他说了我的项目你没有背景可能不懂，非说我不懂你就要给我讲懂，wqnmlgb, 你都没有背景跟你详细个锤子，全程思维跟不上，还硬让我说懂，跟他仔细的&amp;慢慢的说了还质疑我项目可行不可行，是不是我做的。  最后手写的堆排序，还要自己拿过去看了好久，发呆了好久，看完让我走。  堆排序难道不是一眼看完？    当然也可能是我那天状态不好，代码没写清楚&amp;表达的不好，就导致了这样的局面。    美团面试官是让我有些难受，但是总体还是好的。
+</code></pre><p>（九）阿里面试： 算法工程师 &amp; 网易：大数据平台研发</p>
+<p>算法工程师就是一个坑，一面面了2个小时，已经忘记了自己在讲什么。    不建议选算法工程师。。。   </p>
+<p>网易是直系师兄面试我，同一实验室，知根知底，全程挑我不会的问，最后一面就GG，结束后微信指导了我一下，但是面完网易我已经决定结束秋招， 伤心了。。。。。</p>
+<p>（十）51信用卡：JAVA研发  （三面技术面+HR面）</p>
+<p>一面（30分钟）</p>
+<pre><code>一些java基础知识跟之前类似
+</code></pre><p>二面（30分钟）</p>
+<pre><code>自我介绍
+
+项目
+
+github之前做的东西， jvm,spring,mybaits
+</code></pre><p>三面（1个小时）</p>
+<pre><code>自我介绍
+
+项目
+
+生产者消费者，出现死锁，已经多线程的知识疯狂多线程各种锁
+
+单向链表求倒数第N个元素（2个指针）
+
+成环咋办（2个指针弄喽）， 环的起点，终点如何求（弄喽）
+
+然后大谈51的前身今世，各种技术扯淡
+</code></pre><p>HR面（15分钟）</p>
+<pre><code>三面结束后马上HR面，疯狂扯淡一堆，然后就搞定了。
+</code></pre><p>51的面试非常棒，三面官是个浙大的个性大哥，长发披肩，须发茂盛，人很好。  51还给报销酒店住宿，来回车费，还送娃娃，各种贴心，各种有钱。  51非常的有钱！！！！</p>
+<p>有些面试详情我记不太清楚了， 想到再补充。  总之呢，首先最重要的是基础知识扎实，编程能力扎实，项目内容背的熟练 有了这3点就简单狠多了，基础一定要扎实。  然后就是面试的时候各种造航母 了，  疯狂BB&amp;不要脸是成功的一半。</p>
+<p>面试体验分档：</p>
+<p>一档：百度，51，美图</p>
+<p>二档：京东，头条，招银，美团，腾讯，阿里，网易</p>
+<p>空一档</p>
+<p>四档：华为</p>
+<hr>
+<p>作者：凉拌灰土<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/cnh294141800/article/details/79376883" target="_blank" rel="noopener">https://blog.csdn.net/cnh294141800/article/details/79376883</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-18T03:35:35.000Z" itemprop="dateUpdated">2018-10-18 11:35:35</time>
+</span><br>
+
+
+        
+        <a href="/2018/10/18/Java/faceEx/djava/" target="_blank" rel="external">http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/&title=《mshi》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/&title=《mshi》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mshi》 — stelawliet&url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/19/paper/raft/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">raft</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/18/sql/MySQL Transaction/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Transaction 实践测试</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/&title=《mshi》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/&title=《mshi》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mshi》 — stelawliet&url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/18/Java/faceEx/djava/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3ay26DMBAF0Pz/T6fbSlHIvQNphX1YVRFgHxZTz+PxiK/ny/X79+M7X596vf/12cc3LgwMjNsykoVnC+TvSdb98FEwMDA2YCSh8Hhzx3cef4I8oL/9HQMDAyM+Dh6/8/gNyVoYGBgYbcBNNnT8/jyUY2BgYCRJbBJM8zrYv+XiGBgYN2TkW/n7v7/S38DAwLgV41le55PbPKEtdoWBgbE0Iw9wp9LL4IDYBlwMDIx9GHnSmBTI2kJb3hz9AMPAwFiaMSvQ55tICmqztujb/xsYGBiLMpKAmJf125ZAErgvqxFiYGDckHHV2MS1gTv5NBgYGPsw8iB7wQJlLzLZCQYGxg6MYWFrRJ0dH6OyHQYGxgaMNr08U4Zry23RR8HAwFiaMSvuz0Yx2kJ/vhYGBsbajHbYoj3MJbBZeoyBgbEPY9ZubItlsyR2OGyBgYGxNGMWu5Km5ix05qk1BgbG2oy2WXimcNYG1mKADAMDY2nGbDjsVPm+nJRI2BgYGLsx8oSzTW7bYlx90MTAwNiAkT/8jUJ/u5MPnVgMDIxFGfmxb5Z8tsMZ9VMYGBiLMp7ldaaslpf+6+MjBgbG0ozZIEU+AJHcnx8Bh8MWGBgYSzDakawE1obvWcDFwMDYjdGWt840Es4c+z4MW2BgYGCMZhtmSW/dPMDAwMCIk8/8yNgW4C4OuBgYGDdktO3JPOlNGgxtFRADA2M3Rv5YGxaLFLTcw7CpiYGBcT/GD167+ggcivGtAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

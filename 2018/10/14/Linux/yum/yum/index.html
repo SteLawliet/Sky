@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>yum install | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="yumyum  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495➜  ~ yum --">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yum install">
+<meta property="og:url" content="http://io.stelawliet.top/2018/10/14/Linux/yum/yum/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="yumyum  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495➜  ~ yum --">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-14T03:16:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="yum install">
+<meta name="twitter:description" content="yumyum  1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495➜  ~ yum --">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">yum install</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">yum install</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-14T02:42:19.000Z" itemprop="datePublished" class="page-time">
+  2018-10-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#yum"><span class="post-toc-number">1.</span> <span class="post-toc-text">yum</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux/yum/yum"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">yum install</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-14 10:42:19" datetime="2018-10-14T02:42:19.000Z"  itemprop="datePublished">2018-10-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/">linux</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/linux/shell/">shell</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="yum"><a href="#yum" class="headerlink" title="yum"></a>yum</h2><p>yum </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ yum --help</span><br><span class="line">已加载插件：fastestmirror</span><br><span class="line">Usage: yum [options] COMMAND</span><br><span class="line"></span><br><span class="line">List of Commands:</span><br><span class="line"></span><br><span class="line">check          检查 RPM 数据库问题</span><br><span class="line">check-update   检查是否有可用的软件包更新</span><br><span class="line">clean          删除缓存数据</span><br><span class="line">deplist        列出软件包的依赖关系</span><br><span class="line">distribution-synchronization 已同步软件包到最新可用版本</span><br><span class="line">downgrade      降级软件包</span><br><span class="line">erase          从系统中移除一个或多个软件包</span><br><span class="line">fs             Acts on the filesystem data of the host, mainly for removing docs/lanuages for minimal hosts.</span><br><span class="line">fssnapshot     Creates filesystem snapshots, or lists/deletes current snapshots.</span><br><span class="line">groups         显示或使用、组信息</span><br><span class="line">help           显示用法提示</span><br><span class="line">history        显示或使用事务历史</span><br><span class="line">info           显示关于软件包或组的详细信息</span><br><span class="line">install        向系统中安装一个或多个软件包</span><br><span class="line">list           列出一个或一组软件包</span><br><span class="line">load-transaction 从文件名中加载一个已存事务</span><br><span class="line">makecache      创建元数据缓存</span><br><span class="line">provides       查找提供指定内容的软件包</span><br><span class="line">reinstall      覆盖安装软件包</span><br><span class="line">repo-pkgs      将一个源当作一个软件包组，这样我们就可以一次性安装/移除全部软件包。</span><br><span class="line">repolist       显示已配置的源</span><br><span class="line">search         在软件包详细信息中搜索指定字符串</span><br><span class="line">shell          运行交互式的 yum shell</span><br><span class="line">swap           Simple way to swap packages, instead of using shell</span><br><span class="line">update         更新系统中的一个或多个软件包</span><br><span class="line">update-minimal Works like upgrade, but goes to the 'newest' package match which fixes a problem that affects your system</span><br><span class="line">updateinfo     Acts on repository update information</span><br><span class="line">upgrade        更新软件包同时考虑软件包取代关系</span><br><span class="line">version        显示机器和/或可用的源版本。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line">  -h, --help            显示此帮助消息并退出</span><br><span class="line">  -t, --tolerant        忽略错误</span><br><span class="line">  -C, --cacheonly       完全从系统缓存运行，不升级缓存</span><br><span class="line">  -c [config file], --config=[config file]</span><br><span class="line">                        配置文件路径</span><br><span class="line">  -R [minutes], --randomwait=[minutes]</span><br><span class="line">                        命令最长等待时间</span><br><span class="line">  -d [debug level], --debuglevel=[debug level]</span><br><span class="line">                        调试输出级别</span><br><span class="line">  --showduplicates      在 list/search 命令下，显示源里重复的条目</span><br><span class="line">  -e [error level], --errorlevel=[error level]</span><br><span class="line">                        错误输出级别</span><br><span class="line">  --rpmverbosity=[debug level name]</span><br><span class="line">                        RPM 调试输出级别</span><br><span class="line">  -q, --quiet           静默执行</span><br><span class="line">  -v, --verbose         详尽的操作过程</span><br><span class="line">  -y, --assumeyes       回答全部问题为是</span><br><span class="line">  --assumeno            回答全部问题为否</span><br><span class="line">  --version             显示 Yum 版本然后退出</span><br><span class="line">  --installroot=[path]  设置安装根目录</span><br><span class="line">  --enablerepo=[repo]   启用一个或多个软件源(支持通配符)</span><br><span class="line">  --disablerepo=[repo]  禁用一个或多个软件源(支持通配符)</span><br><span class="line">  -x [package], --exclude=[package]</span><br><span class="line">                        采用全名或通配符排除软件包</span><br><span class="line">  --disableexcludes=[repo]</span><br><span class="line">                        禁止从主配置，从源或者从任何位置排除</span><br><span class="line">  --disableincludes=[repo]</span><br><span class="line">                        disable includepkgs for a repo or for everything</span><br><span class="line">  --obsoletes           更新时处理软件包取代关系</span><br><span class="line">  --noplugins           禁用 Yum 插件</span><br><span class="line">  --nogpgcheck          禁用 GPG 签名检查</span><br><span class="line">  --disableplugin=[plugin]</span><br><span class="line">                        禁用指定名称的插件</span><br><span class="line">  --enableplugin=[plugin]</span><br><span class="line">                        启用指定名称的插件</span><br><span class="line">  --skip-broken         忽略存在依赖关系问题的软件包</span><br><span class="line">  --color=COLOR         配置是否使用颜色</span><br><span class="line">  --releasever=RELEASEVER</span><br><span class="line">                        在 yum 配置和 repo 文件里设置 $releasever 的值</span><br><span class="line">  --downloadonly        仅下载而不更新</span><br><span class="line">  --downloaddir=DLDIR   指定一个其他文件夹用于保存软件包</span><br><span class="line">  --setopt=SETOPTS      设置任意配置和源选项</span><br><span class="line">  --bugfix              Include bugfix relevant packages, in updates</span><br><span class="line">  --security            Include security relevant packages, in updates</span><br><span class="line">  --advisory=ADVS, --advisories=ADVS</span><br><span class="line">                        Include packages needed to fix the given advisory, in</span><br><span class="line">                        updates</span><br><span class="line">  --bzs=BZS             Include packages needed to fix the given BZ, in</span><br><span class="line">                        updates</span><br><span class="line">  --cves=CVES           Include packages needed to fix the given CVE, in</span><br><span class="line">                        updates</span><br><span class="line">  --sec-severity=SEVS, --secseverity=SEVS</span><br><span class="line">                        Include security relevant packages matching the</span><br><span class="line">                        severity, in updates</span><br><span class="line"></span><br><span class="line">  插件选项:</span><br><span class="line">➜  ~</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-14T03:16:21.000Z" itemprop="dateUpdated">2018-10-14 11:16:21</time>
+</span><br>
+
+
+        
+        <a href="/2018/10/14/Linux/yum/yum/" target="_blank" rel="external">http://io.stelawliet.top/2018/10/14/Linux/yum/yum/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/&title=《yum install》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/&title=《yum install》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《yum install》 — stelawliet&url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/14/Linux/yum/node/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">node install by yum epel</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/12/Linux/internet/cap/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">cap定理</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/&title=《yum install》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/&title=《yum install》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《yum install》 — stelawliet&url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/14/Linux/yum/yum/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aS27DMAxFUe9/0+o0RVv1PjJuYfFqFASIo+MBwd914bNezv779eW8fs9/e91xZMiQ8VjG2p7OXxIewe/vJkOGjDkMcgl+XfIrztj/owwZMmTsE7t9OOZpZfoiZMiQIYMzUkAtAZUhQ4YMXsTyNhwB/1stLkOGjAcyeJH5959vmW/IkCHjUYwVnn1yVhtSrvaRIUPG2Qwe4DiJJ3+dgCtDhow5jBogbbTVVit4kSxDhowJjDvaYWTYmQ4AfuTJkCFjGIPkkp3AWntNVydvlSFDxqEMnsz1m2u3rFnIkCHjUAZp93fWHfhaRvr6ZMiQcTajU1imbTKeXPJ22zfzDRkyZBzKSBcm+NigH2pJ6JchQ8YERqcpT4YBnYsGKaYMGTIGMNJ1iv1D0/KYPC3uHcqQIeMIBlplqOWY4TNrZfCnZQsZMmQczUgxPF1D8b40SJAhQ8ZkRj+88uWwzrKFDBky5jBIEORX56UsH0nyUC5DhoxpDH6t9HK1NBRhZMiQMYZRW5WoLWqkKxe/JI4yZMgYyUjLyHe10ngaigKuDBkyHs5Y4SEX4r8lYRq9JhkyZBzNqAU7Pp6sXaVf9MqQIeM8Rrq6SsaQtfCdBlwZMmRMY/DAh5pf4SChVgDLkCFDBg+4abHaL5uDrRAZMmSMZ6TlK08K4+mkDBkyBjBIEVtrhO3DaBq439BukyFDxgMZnYWtdwVW8gTyjQwZMo5jfABDv0HPnjdwZgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

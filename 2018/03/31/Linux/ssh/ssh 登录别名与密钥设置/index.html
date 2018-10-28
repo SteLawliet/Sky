@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="">
-    <meta name="description" content="SSH别名原创  2015年05月31日 00:07:20 在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式">
+    <meta name="description" content="SSH别名在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式添加内容： 1234567891011# 服务器1">
 <meta name="keywords" content="blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="No title">
 <meta property="og:url" content="http://io.stelawliet.top/2018/03/31/Linux/ssh/ssh 登录别名与密钥设置/index.html">
 <meta property="og:site_name" content="stelawliet">
-<meta property="og:description" content="SSH别名原创  2015年05月31日 00:07:20 在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式">
+<meta property="og:description" content="SSH别名在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式添加内容： 1234567891011# 服务器1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-30T15:16:26.000Z">
+<meta property="og:updated_time" content="2018-10-14T13:55:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="No title">
-<meta name="twitter:description" content="SSH别名原创  2015年05月31日 00:07:20 在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式">
+<meta name="twitter:description" content="SSH别名在Mac OS的终端(terminal)中，可以使用命令ssh user@host的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下~/.ssh/config这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式添加内容： 1234567891011# 服务器1">
     
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/style.css?v=1.7.2">
@@ -194,8 +194,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="SSH别名"><a href="#SSH别名" class="headerlink" title="SSH别名"></a>SSH别名</h1><p>原创  2015年05月31日 00:07:20</p>
-<p>在Mac OS的终端(terminal)中，可以使用命令<code>ssh user@host</code>的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下<code>~/.ssh/config</code>这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式添加内容：</p>
+            <h1 id="SSH别名"><a href="#SSH别名" class="headerlink" title="SSH别名"></a>SSH别名</h1><p>在Mac OS的终端(terminal)中，可以使用命令<code>ssh user@host</code>的命令来远程连接一台服务器，但是，如果要管理的服务器太多，IP地址不能全部记住的时候怎么办？这时候我们可以为每一台服务器设置一个别名（alias），使用vi命令编辑一下<code>~/.ssh/config</code>这个文件（如果目录下没有这个文件，可以新建一个），接着按下面格式添加内容：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 服务器1</span><br><span class="line">Host 别名</span><br><span class="line">    HostName IP地址</span><br><span class="line">    Port 22</span><br><span class="line">    User 用户名</span><br><span class="line"># 服务器2</span><br><span class="line">Host 别名</span><br><span class="line">    HostName IP地址</span><br><span class="line">    Port 22</span><br><span class="line">    User 用户名</span><br><span class="line">更多的服务器...1234567891011</span><br></pre></td></tr></table></figure>
 <p>添加完以上内容后，就可以使用命令<code>ssh 服务器别名</code>来连接服务器了，是不是方便很多了？</p>
 <p>另外，如果想查看当前有哪些配置了别名的服务器，可以使用命令<code>cat ~/.ssh/config | grep &quot;Host&quot;</code>来查看</p>
@@ -234,6 +233,8 @@
 <ol>
 <li>这时候服务端会使用公钥对A字符串加密，然后传输到客户端，客户端使用私钥进行解密，得到的A字符串，然后对A字符串进行md5加密，服务端判断传回来的字符串是否正确，如果正确，直接登录。</li>
 </ol>
+<p>如果还是不行修改权限</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 或 chmod g-w ~</span></span><br><span class="line">chmod 0755 ~ </span><br><span class="line"></span><br><span class="line">chmod 700 ~/.ssh </span><br><span class="line"></span><br><span class="line">chmod 600 ~/.ssh/authorized_keys </span><br><span class="line"></span><br><span class="line">sudo service sshd restart</span><br></pre></td></tr></table></figure>
 
         </div>
 
@@ -242,7 +243,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-09-30T15:16:26.000Z" itemprop="dateUpdated">2018-09-30 23:16:26</time>
+    Last updated: <time datetime="2018-10-14T13:55:35.000Z" itemprop="dateUpdated">2018-10-14 21:55:35</time>
 </span><br>
 
 

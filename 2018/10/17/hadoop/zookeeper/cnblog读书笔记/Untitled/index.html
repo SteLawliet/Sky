@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="红黑树并没有我们想象的那么难(上)红黑树并没有我们想象的那么难 上、下两篇已经完成, 希望能帮助到大家.  红黑树并没有我们想象的那么难(上): http://daoluan.net/blog/rbtree-is-not-difficult/ 红黑树并没有我们想象的那么难(下): http://daoluan.net/blog/rbtree-is-not-difficult-2/  红黑树并没有想">
+<meta name="keywords" content="blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="stelawliet">
+<meta property="og:url" content="http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="红黑树并没有我们想象的那么难(上)红黑树并没有我们想象的那么难 上、下两篇已经完成, 希望能帮助到大家.  红黑树并没有我们想象的那么难(上): http://daoluan.net/blog/rbtree-is-not-difficult/ 红黑树并没有我们想象的那么难(下): http://daoluan.net/blog/rbtree-is-not-difficult-2/  红黑树并没有想">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://zh.wikipedia.org/wiki/File:Red-black_tree_example.svg">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree0.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtre01.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree02.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree03.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree04.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree05.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree06.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree07.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree08.png">
+<meta property="og:image" content="http://daoluan.net/images/blog/2013/09/rbtree09.png">
+<meta property="og:updated_time" content="2018-10-16T17:37:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="stelawliet">
+<meta name="twitter:description" content="红黑树并没有我们想象的那么难(上)红黑树并没有我们想象的那么难 上、下两篇已经完成, 希望能帮助到大家.  红黑树并没有我们想象的那么难(上): http://daoluan.net/blog/rbtree-is-not-difficult/ 红黑树并没有我们想象的那么难(下): http://daoluan.net/blog/rbtree-is-not-difficult-2/  红黑树并没有想">
+<meta name="twitter:image" content="http://zh.wikipedia.org/wiki/File:Red-black_tree_example.svg">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis"></div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title"></h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-16T17:32:44.000Z" itemprop="datePublished" class="page-time">
+  2018-10-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#红黑树并没有我们想象的那么难-上"><span class="post-toc-number">1.</span> <span class="post-toc-text">红黑树并没有我们想象的那么难(上)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#红黑树的数据结构"><span class="post-toc-number">1.0.1.</span> <span class="post-toc-text">红黑树的数据结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二叉搜索树的插入删除操作"><span class="post-toc-number">1.0.2.</span> <span class="post-toc-text">二叉搜索树的插入删除操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#红黑树的插入"><span class="post-toc-number">1.0.3.</span> <span class="post-toc-text">红黑树的插入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#红黑树的删除"><span class="post-toc-number">1.0.4.</span> <span class="post-toc-text">红黑树的删除</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#总结"><span class="post-toc-number">1.0.5.</span> <span class="post-toc-text">总结</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-hadoop/zookeeper/cnblog读书笔记/Untitled"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title"></h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-17 01:32:44" datetime="2018-10-16T17:32:44.000Z"  itemprop="datePublished">2018-10-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="红黑树并没有我们想象的那么难-上"><a href="#红黑树并没有我们想象的那么难-上" class="headerlink" title="红黑树并没有我们想象的那么难(上)"></a>红黑树并没有我们想象的那么难(上)</h1><p>红黑树并没有我们想象的那么难 上、下两篇已经完成, 希望能帮助到大家.</p>
+<ul>
+<li>红黑树并没有我们想象的那么难(上): <a href="http://daoluan.net/blog/rbtree-is-not-difficult/" target="_blank" rel="noopener">http://daoluan.net/blog/rbtree-is-not-difficult/</a></li>
+<li>红黑树并没有我们想象的那么难(下): <a href="http://daoluan.net/blog/rbtree-is-not-difficult-2/" target="_blank" rel="noopener">http://daoluan.net/blog/rbtree-is-not-difficult-2/</a></li>
+</ul>
+<p>红黑树并没有想象的那么难, 初学者觉得晦涩难读可能是因为情况太多. 红黑树的情况可以通过归结, 通过合并来得到更少的情况, 如此可以加深对红黑树的理解. 网络上的大部分红黑树的讲解因为没有「合并」. 红黑树的五个性质:</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://zh.wikipedia.org/wiki/File:Red-black_tree_example.svg" alt="img](assets/450px-Red-black_tree_example.svg.png)" title="">
+                </div>
+                <div class="image-caption">img](assets/450px-Red-black_tree_example.svg.png)</div>
+            </figure></p>
+<blockquote>
+<p>性质1. 节点是红色或黑色。</p>
+<p>性质2. 根是黑色。</p>
+<p>性质3. 所有叶子都是黑色（叶子是NIL节点）。</p>
+<p>性质4. 每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)</p>
+<p>性质5. 从任一节点到其每个叶子的所有简单路径 都包含相同数目的黑色节点。</p>
+</blockquote>
+<h3 id="红黑树的数据结构"><a href="#红黑树的数据结构" class="headerlink" title="红黑树的数据结构"></a>红黑树的数据结构</h3><p>摘自 sgi stl 红黑树数据结构定义:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">typedef bool _Rb_tree_Color_type;</span><br><span class="line">const _Rb_tree_Color_type _S_rb_tree_red = false;</span><br><span class="line">const _Rb_tree_Color_type _S_rb_tree_black = true;</span><br><span class="line"></span><br><span class="line">struct _Rb_tree_node_base</span><br><span class="line">&#123;</span><br><span class="line">  typedef _Rb_tree_Color_type _Color_type;</span><br><span class="line">  typedef _Rb_tree_node_base* _Base_ptr;</span><br><span class="line"></span><br><span class="line">  _Color_type _M_color;</span><br><span class="line">  _Base_ptr _M_parent;</span><br><span class="line">  _Base_ptr _M_left;</span><br><span class="line">  _Base_ptr _M_right;</span><br><span class="line"></span><br><span class="line">  static _Base_ptr _S_minimum(_Base_ptr __x)</span><br><span class="line">  &#123;</span><br><span class="line">    while (__x-&gt;_M_left != 0) __x = __x-&gt;_M_left;</span><br><span class="line">    return __x;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  static _Base_ptr _S_maximum(_Base_ptr __x)</span><br><span class="line">  &#123;</span><br><span class="line">    while (__x-&gt;_M_right != 0) __x = __x-&gt;_M_right;</span><br><span class="line">    return __x;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">template &lt;class _Value&gt;</span><br><span class="line">struct _Rb_tree_node : public _Rb_tree_node_base</span><br><span class="line">&#123;</span><br><span class="line">  typedef _Rb_tree_node&lt;_Value&gt;* _Link_type;</span><br><span class="line">  _Value _M_value_field;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="二叉搜索树的插入删除操作"><a href="#二叉搜索树的插入删除操作" class="headerlink" title="二叉搜索树的插入删除操作"></a>二叉搜索树的插入删除操作</h3><p>在展开红黑树之前, 首先来看看普通二叉搜索树的插入和删除. 插入很容易理解, 比当前值大就往右走, 比当前值小就往左走. 详细展开的是删除操作.</p>
+<p>二叉树的删除操作有一个技巧, 即在查找到需要删除的节点 X; 接着我们找到要么在它的左子树中的最大元素节点 M、要么在它的右子树中的最小元素节点 M, 并交换(M,X). 此时, M 节点必然至多只有一个孩子; 最后一个步骤就是用 M 的子节点代替 M 节点就完成了. 所以, 所有的删除操作最后都会归结为删除一个至多只有一个孩子的节点, 而我们删除这个节点后, 用它的孩子替换就好了. 将会看到 sgi stl map 就是这样的策略.</p>
+<p>在红黑树删除操作讲解中, 我们假设代替 M 的节点是 N(下面的讲述不再出现 M).</p>
+<h3 id="红黑树的插入"><a href="#红黑树的插入" class="headerlink" title="红黑树的插入"></a>红黑树的插入</h3><p>插入新节点总是红色节点, 因为不会破坏性质 5, 尽可能维持所有性质.</p>
+<p>假设, 新插入的节点为 N, N 节点的父节点为 P, P 的兄弟(N 的叔父)节点为 U, P 的父亲(N 的爷爷)节点为 G. 所以有如下的印象图:</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree0.png" alt="rbtree0](assets/rbtree0.png)" title="">
+                </div>
+                <div class="image-caption">rbtree0](assets/rbtree0.png)</div>
+            </figure></p>
+<p>插入节点的关键是:</p>
+<ol>
+<li>插入新节点总是红色节点</li>
+<li>如果插入节点的父节点是黑色, 能维持性质</li>
+<li>如果插入节点的父节点是红色, 破坏了性质. 故插入算法就是通过重新着色或旋转, 来维持性质</li>
+</ol>
+<p>插入算法详解如下, 走一遍红黑树维持其性质的过程:</p>
+<p>第 0.0 种情况, N 为根节点, 直接 N-&gt;黑. over 第 0.1 种情况, N 的父节点为黑色, 这不违反红黑树的五种性质. over</p>
+<p>第 1 种情况, N,P,U 都红(G 肯定黑). 策略: G-&gt;红, N,P-&gt;黑. 此时, G 红, 如果 G 的父亲也是红, 性质又被破坏了, HACK: 可以将 GPUN 看成一个新的红色 N 节点, 如此递归调整下去; 特俗的, 如果碰巧将根节点染成了红色, 可以在算法的最后强制 root-&gt;黑.</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtre01.png" alt="rbtre01](assets/rbtre01.png)" title="">
+                </div>
+                <div class="image-caption">rbtre01](assets/rbtre01.png)</div>
+            </figure></p>
+<p>第 2 种情况, P 为红, N 为 P 右孩子, N 为红, U 为黑或缺少. 策略: 旋转变换, 从而进入下一种情况:</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree02.png" alt="rbtree02](assets/rbtree02.png)" title="">
+                </div>
+                <div class="image-caption">rbtree02](assets/rbtree02.png)</div>
+            </figure></p>
+<p>第 3 种情况, 可能由第二种变化而来, 但不是一定: P 为红, N 为 P 左孩子, N 为红. 策略: 旋转, 交换 P,G 颜色, 调整后, 因为 P 为黑色, 所以不怕 P 的父节点是红色的情况. over</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree03.png" alt="rbtree03](assets/rbtree03.png)" title="">
+                </div>
+                <div class="image-caption">rbtree03](assets/rbtree03.png)</div>
+            </figure></p>
+<p>红黑树的插入就为上面的三种情况. 你可以做镜像变换从而得到其他的情况.</p>
+<h3 id="红黑树的删除"><a href="#红黑树的删除" class="headerlink" title="红黑树的删除"></a>红黑树的删除</h3><p>假设 N 节点见上面普通二叉树删除中的定义, P 为 N 父节点, S 为 N 的兄弟节点, SL,SR 分别是 S 的左右子节点. 有如下印象图:</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree04.png" alt="rbtree04](assets/rbtree04.png)" title="">
+                </div>
+                <div class="image-caption">rbtree04](assets/rbtree04.png)</div>
+            </figure> N 没有任何的孩子!</p>
+<p>删除节点的关键是:</p>
+<ol>
+<li>如果删除的是红色节点, 不破坏性质</li>
+<li>如果删除的是黑色节点, 那么这个路径上就会少一个黑色节点, 破坏了性质. 故删除算法就是通过重新着色或旋转, 来维持性质</li>
+</ol>
+<p>删除算法详解如下, 走一遍红黑树维持其性质的过程:</p>
+<p>第 0.0 情况, N 为根节点. over 第 0.1 情况, 删除的节点为红. over 第 0.2 情况, 删除节点为黑, N 为红. <strong>策略: N-&gt;黑, 重新平衡.</strong> over</p>
+<p>第 1 情况, N,P,S,SR,SL 都黑. <strong>策略: S-&gt;红.</strong> 通过 PN,PS 的黑色节点数量相同了, 但会比其他路径多一个, 解决的方法是在 P 上从情况 0 开始继续调整. 为什么要这样呢? HANKS: 因为既然 PN,PS 路径上的黑节点数量相同而且比其他路径会少一个黑节点, 那何不将其整体看成了一个 N 节点! 这是递归原理.</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree05.png" alt="rbtree05](assets/rbtree05.png)" title="">
+                </div>
+                <div class="image-caption">rbtree05](assets/rbtree05.png)</div>
+            </figure></p>
+<p>第 2 情况, S 红, 根据红黑树性质 P,SL,SR 一定黑. <strong>策略: 旋转, 交换 P,S 颜色.</strong> 处理后关注的范围缩小, 下面的情况对应下面的框图, 算法从框图重新开始, 进入下一个情况:</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree06.png" alt="rbtree06](assets/rbtree06.png)" title="">
+                </div>
+                <div class="image-caption">rbtree06](assets/rbtree06.png)</div>
+            </figure></p>
+<p>第 2.1 情况, S,SL,SR 都黑. <strong>策略: P-&gt;黑. S-&gt;红,</strong> 因为通过 N 的路径多了一个黑节点, 通过 S 的黑节点个数不变, 所以维持了性质 5. over. 将看到, sgi stl map 源代码中将第 2.1 和第 1 情况合并成一种情况, 下节展开.</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree07.png" alt="rbtree07](assets/rbtree07.png)" title="">
+                </div>
+                <div class="image-caption">rbtree07](assets/rbtree07.png)</div>
+            </figure></p>
+<p>第 2.2.1 情况, S,SR 黑, SL 红. <strong>策略: 旋转, 变换 SL,S 颜色.</strong> 从而又进入下一种情况:</p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree08.png" alt="rbtree08](assets/rbtree08.png)" title="">
+                </div>
+                <div class="image-caption">rbtree08](assets/rbtree08.png)</div>
+            </figure> 第 2.2.2 情况, S 黑, SR 红. <strong>策略: 旋转, 交换 S,P 颜色, SR-&gt;黑色, 重新获得平衡.</strong></p>
+<p>[<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://daoluan.net/images/blog/2013/09/rbtree09.png" alt="rbtree09](assets/rbtree09.png)" title="">
+                </div>
+                <div class="image-caption">rbtree09](assets/rbtree09.png)</div>
+            </figure></p>
+<p>上面情况标号 X.X.X 并不是说这些关系是嵌套的, 只是这样展开容易理解. 此时, 解释三个地方:</p>
+<ol>
+<li>通过 N 的黑色节点数量多了一个</li>
+<li>通过 SL 的黑色节点数量不变</li>
+<li>通过 SR 的黑色节点数量不变</li>
+</ol>
+<p>红黑树删除重新调整伪代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">// 第 0.0 情况, N 为根节点. over</span><br><span class="line">if N.parent == NULL:</span><br><span class="line">    return;</span><br><span class="line"></span><br><span class="line">// 第 0.1 情况, 删除的节点为红. over</span><br><span class="line">if color == RED:</span><br><span class="line">    return;</span><br><span class="line"></span><br><span class="line">// 第 0.2 情况, 删除节点为黑, N 为红, 简单变换: N-&gt;黑, 重新平衡. over</span><br><span class="line">if color == BLACK &amp;&amp; N.color == RED:</span><br><span class="line">    N.color = BLACK;</span><br><span class="line"></span><br><span class="line">// 第 1 种情况, N,P,S,SR,SL 都黑. 策略: S-&gt;红. 通过 N,S 的黑色节点数量相同了, 但会比其他路径多一个, 解决的方法是在 P 上从情况 0 开始继续调整.</span><br><span class="line">if N,P,S,SR,SL.color == BLACK:</span><br><span class="line">    S.color = RED;</span><br><span class="line"></span><br><span class="line">    // 调整节点关系</span><br><span class="line">    N = P</span><br><span class="line">    N.parent = P.parent</span><br><span class="line">    S = P.paernt.another_child</span><br><span class="line">    SL = S.left_child</span><br><span class="line">    SR = S.right_child</span><br><span class="line">    continue;</span><br><span class="line"></span><br><span class="line">// 第 2 情况, S 红, 根据红黑树性质 P,SR,SL 一定黑. 旋转, 交换 P,S 颜色. 此时关注的范围缩小, 下面的情况对应下面的框图, 算法从框图重新开始.</span><br><span class="line">if S.color == RED:</span><br><span class="line">    rotate(P);</span><br><span class="line">    swap(P.color,S.color);</span><br><span class="line"></span><br><span class="line">    // 调整节点关系</span><br><span class="line">    S = P.another_child</span><br><span class="line">    SL = S.left_child</span><br><span class="line">    SR = S.right_child</span><br><span class="line"></span><br><span class="line">// 第 2.1 情况, S,SL,SR 都黑. 策略: P-&gt;黑. S-&gt;红, 因为通过 N 的路径多了一个黑节点, 通过 S 的黑节点个数不变, 所以维持了性质 5. over. 将看到, sgi stl map 源代码中将第 2.1 和第 1 情况合并成一种情况, 下节展开.</span><br><span class="line">if S,SL,SR.color == BLACK:</span><br><span class="line">    P.color = BLACK;</span><br><span class="line">    S.color = RED;</span><br><span class="line">    return</span><br><span class="line"></span><br><span class="line">// 第 2.2.1 情况, S,SR 黑, SL 红. 策略: 旋转, 变换 SL,S 颜色. 从而又进入下一种情况:</span><br><span class="line">if  S,SR.color == BLACK &amp;&amp; SL.color == RED:</span><br><span class="line">    rotate(P);</span><br><span class="line">    swap(S.color,SL.color);</span><br><span class="line"></span><br><span class="line">    // 调整节点关系</span><br><span class="line">    S = SL</span><br><span class="line">    SL = S.left_child</span><br><span class="line">    SR = S.right_child</span><br><span class="line"></span><br><span class="line">// 第 2.2.2 情况, S 黑, SR 红. 策略: 旋转, 交换 S,P 颜色.</span><br><span class="line">if S.color == BLACK &amp;&amp; SR.color == RED:</span><br><span class="line">    rotate(P);</span><br><span class="line">    swap(P.color,S.color);</span><br><span class="line">    return;</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>所以, 插入的情况只有三种, 删除的情况只有两种. 上面的分析, 做镜像处理, 就能得到插入删除的全部算法, 脑补吧. 从上面的分析来看, 红黑树具有以下特性: 插入删除操作都是 0(lnN), 且最多旋转三次.</p>
+<p>下节中会重点展开 sgi stl map 的源代码.</p>
+<p>参考文档: <a href="http://zh.wikipedia.org/zh-cn/%E7%BA%A2%E9%BB%91%E6%A0%91" target="_blank" rel="noopener">wikipedia</a></p>
+<p>捣乱 2013-9-25</p>
+<p><a href="http://daoluan.net/" target="_blank" rel="noopener">http://daoluan.net</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-16T17:37:32.000Z" itemprop="dateUpdated">2018-10-17 01:37:32</time>
+</span><br>
+
+
+        
+        <a href="/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/" target="_blank" rel="external">http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/17/hadoop/zookeeper/cnblog读书笔记/redis/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/17/hadoop/zookeeper/分布式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/&title=stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/&title=stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=stelawliet&url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/17/hadoop/zookeeper/cnblog读书笔记/Untitled/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3bQW7CQAwFUO5/6XbTRaUS+LbHgKqXFaJpmBek2P3j3m7x8fXruPrp1flXv/v7nb+v//7W1acfOPDw8PAGS3986eSnj2/KZLnJeu5cEw8PD2+Nl1zucRnIb1lyfnUNl+/j4eHhfQCv2sH22nQ8PDy8/8dLIoaksc5vEB4eHt6n8ZK4oQrLS0VSeNazFjw8PLyY14tQ3/t6ZX8PDw8Pb7yrXi0SGwWjt86fq+Hh4eEt8KrtbHWAIG/K54Hv5Zl4eHh4R3nJR/Ye+vk5SdlIIok75+Dh4eEt8Hpha34jJufkUUgUUuDh4eEd5SUjAknxyDeremf2ohA8PDy81/OqG/nV6DbBV8MLPDw8vG1erwxUQ4R50NBr0/Hw8PDO8qqA6qZX0vhuhBS33veDh4eH1+qW8z/1e+1vfs3q9Ud1Dw8PD+8QL2+I84d4vn3VuxF4eHh427xea9vbPKuGyNUwojBThoeHhzfd2R/9q1Jv/DRvnZvjAtVF4+Hh4R3i9Vrnye2ohrwRFQ8PD+8oL3qwth7Wk1g2KTbR4AIeHh7eMi+JX+fIydBVEl7cyVrw8PDwFnjVkdNqz94rG3mReDJThoeHh3eUl29K9QYFeoHCnBcFu3h4eHhj3mIoMCgnybcRrQoPDw/vKK/66O890POjupInXxIeHh7eGq/3MadGrJIGPX9/1IPj4eHhxbyzMUE1rq0OHBSGD/Dw8PBeyJsvIm/Nq2FHocjh4eHhHeX1tqYmg1mT7f9qK4+Hh4e3was+cKsP7upIVlJaJjcIDw8P7xRvUgx6W/v5dfLo4bIk4OHh4a3xJhtg87IxqlpJYcDDw8N7K686fJAPUfXi3WgDDA8PD++tvOrwUzXS7Q3L4uHh4b2el4QR1W2wHD9p0J8g8fDw8BZ41T/y89fVOCO/WbezBx4eHl7K+wahipxx0i3ySAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

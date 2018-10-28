@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Nginx基本命令 | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="nginx">
+    <meta name="description" content="➜  bin nginx -h 1234567891011121314151617181920212223nginx version: nginx/1.8.0Usage: nginx -?hvVtq -c filename [-g directives]Options:  -?,-h         : this help  -v            : show version and exi">
+<meta name="keywords" content="nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Nginx基本命令">
+<meta property="og:url" content="http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="➜  bin nginx -h 1234567891011121314151617181920212223nginx version: nginx/1.8.0Usage: nginx -?hvVtq -c filename [-g directives]Options:  -?,-h         : this help  -v            : show version and exi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-20T10:25:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx基本命令">
+<meta name="twitter:description" content="➜  bin nginx -h 1234567891011121314151617181920212223nginx version: nginx/1.8.0Usage: nginx -?hvVtq -c filename [-g directives]Options:  -?,-h         : this help  -v            : show version and exi">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Nginx基本命令</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Nginx基本命令</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-15T10:05:41.000Z" itemprop="datePublished" class="page-time">
+  2018-07-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/nginx/">nginx</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#nginx启动，重启，关闭命令"><span class="post-toc-number">1.</span> <span class="post-toc-text">nginx启动，重启，关闭命令</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Linux/server/nginx/Nginx基本命令"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Nginx基本命令</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-15 18:05:41" datetime="2018-07-15T10:05:41.000Z"  itemprop="datePublished">2018-07-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/nginx/">nginx</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p><code>➜  bin nginx -h</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">nginx version: nginx/1.8.0</span><br><span class="line"></span><br><span class="line">Usage: nginx -?hvVtq -c filename [-g directives]</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"></span><br><span class="line">  -?,-h         : this help</span><br><span class="line"></span><br><span class="line">  -v            : show version and exit</span><br><span class="line"></span><br><span class="line">  -V            : show version and configure options then exit</span><br><span class="line"></span><br><span class="line">  -t            : test configuration and exit</span><br><span class="line"></span><br><span class="line">  -q            : suppress non-error messages during configuration testing</span><br><span class="line"></span><br><span class="line">  -s signal     : send signal to a master process: stop, quit, reopen, reload</span><br><span class="line"></span><br><span class="line">  -p prefix     : set prefix path (default: /usr/local/Cellar/nginx/1.8.0/)</span><br><span class="line"></span><br><span class="line">  -c filename   : set configuration file (default: /usr/local/etc/nginx/nginx.conf)</span><br><span class="line"></span><br><span class="line">  -g directives : set global directives out of configuration file</span><br></pre></td></tr></table></figure>
+<h2 id="nginx启动，重启，关闭命令"><a href="#nginx启动，重启，关闭命令" class="headerlink" title="nginx启动，重启，关闭命令"></a><a href="https://www.cnblogs.com/derekchen/archive/2011/02/17/1957209.html" target="_blank" rel="noopener">nginx启动，重启，关闭命令</a></h2><p><strong>停止操作</strong>停止操作是通过向nginx进程发送信号（什么是信号请参阅linux文 章）来进行的<br>步骤1：查询nginx主进程号<br>ps -ef | grep nginx<br>在进程列表里 面找master进程，它的编号就是主进程号了。<br>步骤2：发送信号<br>从容停止Nginx：<br>kill -QUIT 主进程号<br>快速停止Nginx：<br>kill -TERM 主进程号<br>强制停止Nginx：<br>pkill -9 nginx</p>
+<p>另外， 若在nginx.conf配置了pid文件存放路径则该文件存放的就是Nginx主进程号，如果没指定则放在nginx的logs目录下。有了pid文 件，我们就不用先查询Nginx的主进程号，而直接向Nginx发送信号了，命令如下：<br>kill -信号类型 ‘/usr/nginx/logs/nginx.pid’</p>
+<p><strong>平滑重启</strong><br>如果更改了配置就要重启Nginx，要先关闭Nginx再打开？不是的，可以向Nginx 发送信号，平滑重启。<br>平滑重启命令：<br>kill -HUP 住进称号或进程号文件路径</p>
+<p>或者使用</p>
+<p>/usr/nginx/sbin/nginx -s reload</p>
+<p>注意，修改了配置文件后最好先检查一下修改过的配置文件是否正 确，以免重启后Nginx出现错误影响服务器稳定运行。判断Nginx配置是否正确命令如下：<br>nginx -t -c /usr/nginx/conf/nginx.conf</p>
+<p>或者</p>
+<p>/usr/nginx/sbin/nginx -t</p>
+<p><strong>平滑升级</strong>如果服务器正在运行的Nginx要进行升级、添加或删除模块时，我们需 要停掉服务器并做相应修改，这样服务器就要在一段时间内停止服务，Nginx可以在不停机的情况下进行各种升级动作而不影响服务器运行。<br>步骤1：<br>如 果升级Nginx程序，先用新程序替换旧程序文件，编译安装的话新程序直接编译到Nginx安装目录中。<br>步 骤2：执行命令<br>kill -USR2 旧版程序的主进程号或进程文件名<br>此时旧的Nginx主进程将会把自己的进程文件改名为.oldbin，然后执行新版 Nginx。新旧Nginx会同市运行，共同处理请求。<br>这时要逐步停止旧版 Nginx，输入命令：<br>kill -WINCH 旧版主进程号<br>慢慢旧的工作进程就都会随着任务执行完毕而退出，新版的Nginx的工作进程会逐渐取代旧版 工作进程。</p>
+<p>此 时，我们可以决定使用新版还是恢复到旧版。<br>不重载配置启动新/旧工作进程<br>kill -HUP 旧/新版主进程号<br>从容关闭旧/新进程<br>kill -QUIT 旧/新主进程号<br>如果此时报错，提示还有进程没有结束就用下面命令先关闭旧/新工作进程，再关闭主进程号：<br>kill -TERM 旧/新工作进程号</p>
+<p>这样下来，如果要恢复到旧版本，只需要上面的几个步 骤都是操作新版主进程号，如果要用新版本就上面的几个步骤都操作旧版主进程号就行了。</p>
+<p>上面就是Nginx的一些基本的操作，希望以后Nginx能有更好的方法来处理这些操作， 最好是Nginx的命令而不是向Nginx进程发送系统信号。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-10-20T10:25:19.000Z" itemprop="dateUpdated">2018-10-20 18:25:19</time>
+</span><br>
+
+
+        
+        <a href="/2018/07/15/Linux/server/nginx/Nginx基本命令/" target="_blank" rel="external">http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/&title=《Nginx基本命令》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/&title=《Nginx基本命令》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nginx基本命令》 — stelawliet&url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/17/Java/JavaSE/reflect反射注意/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">[no title]</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Tomcat</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/&title=《Nginx基本命令》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/&title=《Nginx基本命令》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Nginx基本命令》 — stelawliet&url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/07/15/Linux/server/nginx/Nginx基本命令/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3aO27DMBAFwNz/0knrIpLffiioGFVGIMkcBuDSb/nzE1+/H1dyz+edvc/371m+8PDw8AZDv3919e9Xw7qarGT68jHj4eHhneYlr0tW4N2icvWGZMx4eHh47+Hdf30+KV8W9OIY8PDw8N7M6z3bKzN4eHh4b+YlYUReJHJYsuF+KGvBw8PDi3l5F+k9n4/09/Dw8PDGXfV8wU3i16SE3JeT8mjx8PDwDvB60UCCzyPayfRFd+Lh4eGt8vIv3j0WkIewebTxz2c8PDy8A7z81fkmOC8h80OrzTQFDw8Pb8Crtr6ShT6PEiab9ajk4OHh4R3gJQ8kB6EmIUXS4so30+UTB3h4eHhFXjUgyO/pRRh5gbn/rsv+Hh4eHt4Sr9fsn4ewvW36QnSLh4eHN+BVl/gJrzcd1XHi4eHhnebNC0C+ZFcnq7r5bj6Mh4eH1+JVG13VwfWKx3IYgYeHh3eMlyzuk+i2umIf+X2Ah4eHt8SrFoNqo2sS4Cbb68szZXh4eHirvHwQ+RdsPdWLSy7/h3h4eHirvDyQ7bXKeoOrBrjN8oCHh4fX4lU3vsmv/mqbv3doIBoDHh4e3iO8vDBU75w01XoxMR4eHt4ur/dTPy8qSfibR8bldhoeHh7eAV4eK1QbUdWNe29LHRUYPDw8vMd5vTKQb5onZSlqpOHh4eE9wstDh6Rs3C/01YCjfAQBDw8P7zCv1+DvHZPqlY1ygw0PDw9vlbcVqhaW6VZ8nB9xuGyA4eHh4S3x8murNZUHH+VG1+TCw8PDK/Lmzfvqwl1956iFhoeHh3eM11uUk+mYl4ReGcPDw8N7D6/XKss36L3jBZeThYeHh/ca3iRQqMYZ1aKCh4eH9wwvCSOqjavJcdXq4aovhQEPDw9vlVf9eV9teuWTmJeH5QsPDw8vvf4AK4h9ghMPcfcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

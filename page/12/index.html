@@ -164,14 +164,14 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
-            <article id="post-Linux/server/Nginx基本命令"
+            <article id="post-algorithm/前缀树"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-15 18:05:41" datetime="2018-07-15T10:05:41.000Z"  itemprop="datePublished">2018-07-15</time>
+        <time class="post-time" title="2018-07-27 16:31:22" datetime="2018-07-27T08:31:22.000Z"  itemprop="datePublished">2018-07-27</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/server/nginx/">nginx</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/">algorithme</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/dataStructure/">dataStructure</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme/dataStructure/tree/">tree</a></li></ul></li></ul></li></ul>
 
 
 
@@ -182,7 +182,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/15/Linux/server/Nginx基本命令/">Nginx基本命令</a>
+      <a class="post-title-link" href="/2018/07/27/algorithm/前缀树/">前缀树</a>
     </h3>
   
 
@@ -192,18 +192,17 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        ➜  bin nginx -h
-1234567891011121314151617181920212223nginx version: nginx/1.8.0Usage: nginx -?hvVtq -c filename [-g directives]Options:  -?,-h     ...
+        字符串前缀树java实现1234567891011class TrieNode&#123;  private int pass;//记录包含当前节点的个数  private int end;//记录以当前节点结尾的个数  private TrieNode[] next;//记录当前结点指向的哪...
     
 
-        <a href="/2018/07/15/Linux/server/Nginx基本命令/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/27/algorithm/前缀树/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TrieNode/">TrieNode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前缀树/">前缀树</a></li></ul>
 
     </div>
     
@@ -212,14 +211,14 @@
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Linux/server/Tomcat/Tomcat Architecture"
+            <article id="post-algorithm/并查集"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-14 21:00:41" datetime="2018-07-14T13:00:41.000Z"  itemprop="datePublished">2018-07-14</time>
+        <time class="post-time" title="2018-07-27 15:24:47" datetime="2018-07-27T07:24:47.000Z"  itemprop="datePublished">2018-07-27</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/tomcat/">tomcat</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/tomcat/servlet容器/">servlet容器</a></li></ul></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithme-note/">algorithme note</a></li></ul>
 
 
 
@@ -230,7 +229,7 @@
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/">Tomcat</a>
+      <a class="post-title-link" href="/2018/07/27/algorithm/并查集/">并查集FindUion</a>
     </h3>
   
 
@@ -240,19 +239,28 @@
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        文件结构confcatalina.policy:Tomcat 安全策略文件,控制JVM相关权限,参考java.securityPermission
-catalina.porperties: Tomcat Catalina行为控制配置文件,如Common ClassLoader
-logging....
+        并查集合一些单向链表,
+每个元素往上指向该集合的头结点,头结点最后指向自己
+查Find查询俩个元素是否在一个集合
+
+分别从当前节点往上遍历直到头结点
+在遍历的时候记录所有往上遍历的结点
+头结点相等则在一个集合.
+把2记录的结点全部指向头结点
+
+
+并Union合并俩个元素所在的集合
+执行find...
     
 
-        <a href="/2018/07/14/Linux/server/Tomcat/Tomcat Architecture/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/27/algorithm/并查集/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/architecture/">architecture</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithme/">algorithme</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/uion/">uion</a></li></ul>
 
     </div>
     
@@ -261,14 +269,14 @@ logging....
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Linux/server/Tomcat/Tomcat嵌入式"
+            <article id="post-Java/spring/annotation/LifeCyle"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-14 21:00:41" datetime="2018-07-14T13:00:41.000Z"  itemprop="datePublished">2018-07-14</time>
+        <time class="post-time" title="2018-07-26 16:42:34" datetime="2018-07-26T08:42:34.000Z"  itemprop="datePublished">2018-07-26</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/">server</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/server/servlet容器/">servlet容器</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/lifecycle/">lifecycle</a></li></ul></li></ul></li></ul>
 
 
 
@@ -279,7 +287,7 @@ logging....
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/14/Linux/server/Tomcat/Tomcat嵌入式/">嵌入式 Tomcat</a>
+      <a class="post-title-link" href="/2018/07/26/Java/spring/annotation/LifeCyle/">Spring Bean LifeCycle</a>
     </h3>
   
 
@@ -289,22 +297,25 @@ logging....
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        todo
- servlet 3.0 em
+        
+bean生命周期 创建 - 初始化 -销毁
+spring提供自定义初始化和销毁方法,在容器bean
+进行到当前生命周期时会调用我们自定义的初始化和销毁方法
+Constructor @Scope:
 
-CLassPathXml 参考
-ContextLoaderListenerservlet3.0 annotation 驱动忽略web.xml创建配置
-123&lt;configuration&gt;	&lt;failOnMissingWebXml&g...
+prototype：多实例的：ioc容器启动并不会去调用方法创建对象放在容器中。
+
+每次获取的...
     
 
-        <a href="/2018/07/14/Linux/server/Tomcat/Tomcat嵌入式/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/26/Java/spring/annotation/LifeCyle/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/tomcat/">tomcat</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bean生命周期/">bean生命周期</a></li></ul>
 
     </div>
     
@@ -313,14 +324,14 @@ ContextLoaderListenerservlet3.0 annotation 驱动忽略web.xml创建配置
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-algorithm/Graph"
+            <article id="post-Java/spring/annotation/@Bean"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-12 15:34:53" datetime="2018-07-12T07:34:53.000Z"  itemprop="datePublished">2018-07-12</time>
+        <time class="post-time" title="2018-07-25 22:42:31" datetime="2018-07-25T14:42:31.000Z"  itemprop="datePublished">2018-07-25</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/">algorithm</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/algorithm/graph/">graph</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a></li></ul></li></ul>
 
 
 
@@ -331,7 +342,7 @@ ContextLoaderListenerservlet3.0 annotation 驱动忽略web.xml创建配置
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/12/algorithm/Graph/">图</a>
+      <a class="post-title-link" href="/2018/07/25/Java/spring/annotation/@Bean/">annotation-component @Bean</a>
     </h3>
   
 
@@ -341,65 +352,18 @@ ContextLoaderListenerservlet3.0 annotation 驱动忽略web.xml创建配置
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        图的序列化表示
-临接表法
-
-临接矩阵
-
-
-a(i,j)=1时表示俩点相连
-
-
-
-i\j
-0
-1
-2
-3
-
-
-
-
-0
-0
-1
-0
-0
-
-
-1
-1
-0
-1
-0
-
-
-2
-0
-1
-0
-0
-
-
-3
-0
-0
-0
-0
-
-
-
-由于是无向图,矩阵是基于对角线对称的,所以数据有一半的可以省略,可以把矩阵优化为下三...
+        @Bean给容器中注册一个Bean;类型为返回值的类型，id默认是用方法名作为id,对应&lt;bean&gt;
+1234567891011121314@Scope("prototype")@Lazy@Bean("person",initMethod="init",destroyMethod=...
     
 
-        <a href="/2018/07/12/algorithm/Graph/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/25/Java/spring/annotation/@Bean/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/kruskal/">kruskal</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/prim/">prim</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图的遍历/">图的遍历</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/拓扑排序/">拓扑排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/最小生成树/">最小生成树</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bean/">bean</a></li></ul>
 
     </div>
     
@@ -408,14 +372,14 @@ i\j
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/JavaSE/UTF-8&amp;UTF-16"
+            <article id="post-Java/spring/annotation/@Conditional"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-08 20:36:44" datetime="2018-07-08T12:36:44.000Z"  itemprop="datePublished">2018-07-08</time>
+        <time class="post-time" title="2018-07-24 22:38:22" datetime="2018-07-24T14:38:22.000Z"  itemprop="datePublished">2018-07-24</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/exknow/">exknow</a></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/">framework</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/annotation/">annotation</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/framework/spring/annotation/conditional/">conditional</a></li></ul></li></ul></li></ul></li></ul></li></ul>
 
 
 
@@ -426,7 +390,7 @@ i\j
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/08/Java/JavaSE/UTF-8&UTF-16/">认识UTF编码</a>
+      <a class="post-title-link" href="/2018/07/24/Java/spring/annotation/@Conditional/">annotation-component @Conditional</a>
     </h3>
   
 
@@ -436,17 +400,18 @@ i\j
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        
+        @Conditional在注解前添加,条件判断注解是否生效
+12345678910111213141516171819202122232425@Configurationpublic class AnnotationConfiguration &#123;   //MyConditional返...
     
 
-        <a href="/2018/07/08/Java/JavaSE/UTF-8&UTF-16/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/24/Java/spring/annotation/@Conditional/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/utf8/">utf8</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/字符编码/">字符编码</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/conditional/">conditional</a></li></ul>
 
     </div>
     
@@ -455,13 +420,15 @@ i\j
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/JavaSE/API note/Untitled 1"
+            <article id="post-Java/spring/annotation/xmind"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-08 15:47:18" datetime="2018-07-08T07:47:18.000Z"  itemprop="datePublished">2018-07-08</time>
+        <time class="post-time" title="2018-07-24 14:05:43" datetime="2018-07-24T06:05:43.000Z"  itemprop="datePublished">2018-07-24</time>
 
         
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a></li></ul></li></ul>
+
 
 
     </div>
@@ -471,7 +438,7 @@ i\j
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/08/Java/JavaSE/API note/Untitled 1/">No title</a>
+      <a class="post-title-link" href="/2018/07/24/Java/spring/annotation/xmind/">spring-annotation xmind</a>
     </h3>
   
 
@@ -482,9 +449,15 @@ i\j
 
     
         
+                
+                    
+                    
+                
+                Spring注解驱动开发
+            
     
 
-        <a href="/2018/07/08/Java/JavaSE/API note/Untitled 1/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/24/Java/spring/annotation/xmind/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
@@ -494,64 +467,14 @@ i\j
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/JavaSE/API note/file类"
+            <article id="post-Java/spring/annotation/@Configuration"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-07 18:39:23" datetime="2018-07-07T10:39:23.000Z"  itemprop="datePublished">2018-07-07</time>
+        <time class="post-time" title="2018-07-24 14:05:43" datetime="2018-07-24T06:05:43.000Z"  itemprop="datePublished">2018-07-24</time>
 
         
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/07/Java/JavaSE/API note/file类/">file类与java路径注意</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        constructors
-public File(File parent, String child)
-public File(String pathname)
-public File(String parent,String child)
-public File(URI uri) 
-通过fi...
-    
-
-        <a href="/2018/07/07/Java/JavaSE/API note/file类/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/note/">note</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-Java/JavaSE/博学谷练习/集合"
-  class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2018-07-07 11:46:09" datetime="2018-07-07T03:46:09.000Z"  itemprop="datePublished">2018-07-07</time>
-
-        
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/练习题/">练习题</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/练习题/错题集/">错题集</a></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/">spring</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/spring/annotation/">annotation</a></li></ul></li></ul>
 
 
 
@@ -562,7 +485,7 @@ public File(URI uri)
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/07/Java/JavaSE/博学谷练习/集合/">博学谷习题</a>
+      <a class="post-title-link" href="/2018/07/24/Java/spring/annotation/@Configuration/">annotation-component registration</a>
     </h3>
   
 
@@ -572,10 +495,11 @@ public File(URI uri)
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        12345678910113、下面代码运行结果是？（）HashSet&lt;String&gt;  set = new HashSet&lt;String&gt;();set.add("cba");set.add("abc");set.add("bac"); set.add("cba");  ...
+        [TOC]
+@configuration12345678910111213141516171819202122@Target(ElementType.TYPE)@Retention(RetentionPolicy.RUNTIME)@Documented@Componentpublic @int...
     
 
-        <a href="/2018/07/07/Java/JavaSE/博学谷练习/集合/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/24/Java/spring/annotation/@Configuration/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
@@ -585,14 +509,14 @@ public File(URI uri)
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/concurrent/java.util.concurrent"
+            <article id="post-TODOlist/todo"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-07 10:47:03" datetime="2018-07-07T02:47:03.000Z"  itemprop="datePublished">2018-07-07</time>
+        <time class="post-time" title="2018-07-23 21:58:16" datetime="2018-07-23T13:58:16.000Z"  itemprop="datePublished">2018-07-23</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/">concurrent</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/并发编程/">并发编程</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/todo/">todo</a></li></ul>
 
 
 
@@ -603,7 +527,7 @@ public File(URI uri)
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/07/Java/concurrent/java.util.concurrent/">java.util.concurrent了解</a>
+      <a class="post-title-link" href="/2018/07/23/TODOlist/todo/">TODO List</a>
     </h3>
   
 
@@ -613,19 +537,30 @@ public File(URI uri)
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        volatile与内存可见性
-多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(根据 Java 虚拟机规范的规定，volatile 变量依然有共享内存的拷贝，但是由于它特殊的操作顺序性规定——从工作内 存中读写数据前，必须先将主内存中的数据同步到...
+        todo    
+
+ embed tomcat
+ tomcat内嵌强化 
+ tomcat实现
+ tomcat内嵌封装
+
+
+ SNAK自动寻路算法
+ -&gt;DFS ?
+ -&gt;BFS ?
+
+
+ cglib
+ 简单使用
+ 分析
+
+
+ java collection list set map...
     
 
-        <a href="/2018/07/07/Java/concurrent/java.util.concurrent/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/23/TODOlist/todo/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/atomic/">atomic</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/synchronized/">synchronized</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/volatile/">volatile</a></li></ul>
-
     </div>
     
 </article>
@@ -633,14 +568,14 @@ public File(URI uri)
         </li>
     
         <li class="post-list-item fade">
-            <article id="post-Java/concurrent/并发编程note"
+            <article id="post-Java/JavaSE/CgLib动态代理"
   class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
-        <time class="post-time" title="2018-07-07 10:47:03" datetime="2018-07-07T02:47:03.000Z"  itemprop="datePublished">2018-07-07</time>
+        <time class="post-time" title="2018-07-23 21:54:01" datetime="2018-07-23T13:54:01.000Z"  itemprop="datePublished">2018-07-23</time>
 
         
-	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/">concurrent</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/concurrent/并发编程/">并发编程</a></li></ul></li></ul></li></ul>
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/">java</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/java/spring/">spring</a></li></ul></li></ul>
 
 
 
@@ -651,7 +586,7 @@ public File(URI uri)
 
   
     <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2018/07/07/Java/concurrent/并发编程note/">并发编程note</a>
+      <a class="post-title-link" href="/2018/07/23/Java/JavaSE/CgLib动态代理/">CGLib 动态代理</a>
     </h3>
   
 
@@ -661,19 +596,69 @@ public File(URI uri)
     <div class="post-content" id="post-content" itemprop="postContent">
 
     
-        并发性volatile多个线程共享数据时,保证内存数据可见性.相较于synchronized是一种较为轻量的同步策略.(线程每次读取修改volatile修饰的变量时都会直接在主存中操作)
-12345678910111213141516171819202122232425262728293031...
+        测试Cglib
+类似JDKproxy的使用
+123456789101112131415161718@Bean("proxyUserServiceCG")public UserService getProxyUserServiceByCglib(   @Qualifier("userServic...
     
 
-        <a href="/2018/07/07/Java/concurrent/并发编程note/" class="post-more waves-effect waves-button">
+        <a href="/2018/07/23/Java/JavaSE/CgLib动态代理/" class="post-more waves-effect waves-button">
             Continue reading...
         </a>
     </div>
     
     <div class="post-footer">
         
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/synchronized/">synchronized</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cglib动态代理/">cglib动态代理</a></li></ul>
 
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Linux/shell 总结"
+  class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2018-07-22 01:02:41" datetime="2018-07-21T17:02:41.000Z"  itemprop="datePublished">2018-07-22</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2018/07/22/Linux/shell 总结/">No title</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        【Linux】Shell脚本学习总结篇2017年06月11日 17:24:31
+阅读数：4017
+【Linux】Shell脚本学习总结篇
+
+shell学习分为下面3个部分：
+
+shell基本命令回顾
+shell基本语法学习
+awk/sed 工具学习
+
+关于shell的介绍之类的在这里不做赘述！...
+    
+
+        <a href="/2018/07/22/Linux/shell 总结/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
     </div>
     
 </article>
@@ -685,7 +670,7 @@ public File(URI uri)
     
 <nav id="page-nav">
     <div class="inner">
-    <a class="extend prev" rel="prev" href="/page/11/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/29/">29</a><a class="extend next" rel="next" href="/page/13/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/11/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="extend next" rel="next" href="/page/13/">下一页</a>
     </div>
 </nav>
 
