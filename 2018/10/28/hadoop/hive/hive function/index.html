@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>hive demo | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="hive function">
+    <meta name="description" content="functionunion1234567select t1.* from(select &quot;1&quot; as a union select&quot;2&quot; as b) t1;+-------+--+| t1.a  |+-------+--+| 1     || 2     |+-------+--+ split123456jdbc:hive2://node1:10000&amp;gt; select split (&quot;a b">
+<meta name="keywords" content="hive function">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive demo">
+<meta property="og:url" content="http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="functionunion1234567select t1.* from(select &quot;1&quot; as a union select&quot;2&quot; as b) t1;+-------+--+| t1.a  |+-------+--+| 1     || 2     |+-------+--+ split123456jdbc:hive2://node1:10000&amp;gt; select split (&quot;a b">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-29T13:02:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hive demo">
+<meta name="twitter:description" content="functionunion1234567select t1.* from(select &quot;1&quot; as a union select&quot;2&quot; as b) t1;+-------+--+| t1.a  |+-------+--+| 1     || 2     |+-------+--+ split123456jdbc:hive2://node1:10000&amp;gt; select split (&quot;a b">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">hive demo</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">hive demo</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-28T09:53:13.000Z" itemprop="datePublished" class="page-time">
+  2018-10-28
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hadoop/">hadoop</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hadoop/hive/">hive</a></li></ul></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#function"><span class="post-toc-number">1.</span> <span class="post-toc-text">function</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#union"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">union</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#split"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">split</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#explode"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">explode</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#lateral-view"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">lateral view</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#multiple-lateral-view"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">multiple lateral view</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#parse-url-tuple"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">parse_url_tuple</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#get-json-object"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">get_json_object</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#json-tuple"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">json_tuple</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#structs"><span class="post-toc-number">2.</span> <span class="post-toc-text">structs</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-hadoop/hive/hive function"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">hive demo</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-28 17:53:13" datetime="2018-10-28T09:53:13.000Z"  itemprop="datePublished">2018-10-28</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hadoop/">hadoop</a><ul class="article-category-list-child"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/hadoop/hive/">hive</a></li></ul></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="function"><a href="#function" class="headerlink" title="function"></a>function</h2><h3 id="union"><a href="#union" class="headerlink" title="union"></a>union</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> t1.* <span class="keyword">from</span>(<span class="keyword">select</span> <span class="string">"1"</span> <span class="keyword">as</span> a <span class="keyword">union</span> <span class="keyword">select</span><span class="string">"2"</span> <span class="keyword">as</span> b) t1;</span><br><span class="line">+<span class="comment">-------+--+</span></span><br><span class="line">| t1.a  |</span><br><span class="line">+<span class="comment">-------+--+</span></span><br><span class="line">| 1     |</span><br><span class="line">| 2     |</span><br><span class="line">+<span class="comment">-------+--+</span></span><br></pre></td></tr></table></figure>
+<h3 id="split"><a href="#split" class="headerlink" title="split"></a>split</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jdbc:hive2://node1:10000&gt; select split ("a b c","\\s") ;</span><br><span class="line">+<span class="comment">----------------+--+</span></span><br><span class="line">|      _c0       |</span><br><span class="line">+<span class="comment">----------------+--+</span></span><br><span class="line">| ["a","b","c"]  |</span><br><span class="line">+<span class="comment">----------------+--+</span></span><br></pre></td></tr></table></figure>
+<h3 id="explode"><a href="#explode" class="headerlink" title="explode"></a>explode</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> explode(<span class="keyword">split</span>(<span class="string">"a b c"</span>,<span class="string">' '</span>));</span><br><span class="line">+<span class="comment">------+--+</span></span><br><span class="line">| col  |</span><br><span class="line">+<span class="comment">------+--+</span></span><br><span class="line">| a    |</span><br><span class="line">| b    |</span><br><span class="line">| c    |</span><br><span class="line">+<span class="comment">------+--+</span></span><br><span class="line"></span><br><span class="line">jdbc:hive2://node1:10000&gt; select explode(array(1,2,3));</span><br><span class="line">+<span class="comment">------+--+</span></span><br><span class="line">| col  |</span><br><span class="line">+<span class="comment">------+--+</span></span><br><span class="line">| 1    |</span><br><span class="line">| 2    |</span><br><span class="line">| 3    |</span><br><span class="line">+<span class="comment">------+--+</span></span><br></pre></td></tr></table></figure>
+<h3 id="lateral-view"><a href="#lateral-view" class="headerlink" title="lateral view"></a>lateral view</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">jdbc:hive2://node1:10000&gt; select * from (select &apos;1&apos; as id) a  lateral view explode(split(&quot;a b c&quot;,&quot; &quot;)) b;</span><br><span class="line">+-------+--------+--+</span><br><span class="line">| a.id  | b.col  |</span><br><span class="line">+-------+--------+--+</span><br><span class="line">| 1     | a      |</span><br><span class="line">| 1     | b      |</span><br><span class="line">| 1     | c      |</span><br><span class="line">+-------+--------+--+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jdbc:hive2://node1:10000&gt; select a.*,b.v from (select &apos;1&apos; as k) a lateral view explode(array(1,2,3)) b as v;</span><br><span class="line">+------+------+--+</span><br><span class="line">| a.k  | b.v  |</span><br><span class="line">+------+------+--+</span><br><span class="line">| 1    | 1    |</span><br><span class="line">| 1    | 2    |</span><br><span class="line">| 1    | 3    |</span><br><span class="line">+------+------+--+</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jdbc:hive2://node1:10000&gt; select t1.*,t2.* from (select &quot;1&quot; as a union select&quot;2&quot; as a) t1 lateral view explode (split (&quot;a b c&quot;,&quot;\\s&quot;))  t2 ;</span><br><span class="line"></span><br><span class="line">+-------+---------+--+</span><br><span class="line">| t1.a  | t2.col  |</span><br><span class="line">+-------+---------+--+</span><br><span class="line">| 1     | a       |</span><br><span class="line">| 1     | b       |</span><br><span class="line">| 1     | c       |</span><br><span class="line">| 2     | a       |</span><br><span class="line">| 2     | b       |</span><br><span class="line">| 2     | c       |</span><br><span class="line">+-------+---------+--+</span><br><span class="line"></span><br><span class="line">jdbc:hive2://node1:10000&gt; select a.*,b.*from (select &apos;1&apos; as k) a lateral view  explode (map(&quot;k1&quot;,&quot;v1&quot;,&quot;k2&quot;,&quot;v2&quot;)) b as v,c;</span><br><span class="line">+------+------+------+--+</span><br><span class="line">| a.k  | b.v  | b.c  |</span><br><span class="line">+------+------+------+--+</span><br><span class="line">| 1    | k1   | v1   |</span><br><span class="line">| 1    | k2   | v2   |</span><br><span class="line">+------+------+------+--+</span><br></pre></td></tr></table></figure>
+<h4 id="multiple-lateral-view"><a href="#multiple-lateral-view" class="headerlink" title="multiple lateral view"></a>multiple lateral view</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">jdbc:hive2://node1:10000&gt; select a.*,b.v from (select array(1,2) as k) c lateral view explode(k) a lateral view  explode (array("a1","a2")) b as v;</span><br><span class="line">+<span class="comment">--------+------+--+</span></span><br><span class="line">| a.col  | b.v  |</span><br><span class="line">+<span class="comment">--------+------+--+</span></span><br><span class="line">| 1      | a1   |</span><br><span class="line">| 1      | a2   |</span><br><span class="line">| 2      | a1   |</span><br><span class="line">| 2      | a2   |</span><br><span class="line">+<span class="comment">--------+------+--+</span></span><br></pre></td></tr></table></figure>
+<p>SELECT myCol1, myCol2 FROM baseTable<br>LATERAL VIEW explode(col1) myTable1 AS myCol1<br>LATERAL VIEW explode(col2) myTable2 AS myCol2;</p>
+<hr>
+<h3 id="parse-url-tuple"><a href="#parse-url-tuple" class="headerlink" title="parse_url_tuple"></a>parse_url_tuple</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">jdbc:hive2://node1:10000&gt; select * from (select '1' as a,"2" as b) b lateral view  parse_url_tuple('http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1', 'QUERY:k1', 'QUERY:k2') a as k1,k2;</span><br><span class="line">+<span class="comment">------+------+-------+-------+--+</span></span><br><span class="line">| b.a  | b.b  | a.k1  | a.k2  |</span><br><span class="line">+<span class="comment">------+------+-------+-------+--+</span></span><br><span class="line">| 1    | 2    | v1    | v2    |</span><br><span class="line">+<span class="comment">------+------+-------+-------+--+</span></span><br><span class="line"></span><br><span class="line">jdbc:hive2://node1:10000&gt; select * from (select '1' as a union select "2" as b) b lateral view  parse_url_tuple('http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1', 'QUERY:k1', 'QUERY:k2') a as k1,k2;</span><br><span class="line"></span><br><span class="line">+<span class="comment">------+-------+-------+--+</span></span><br><span class="line">| b.a  | a.k1  | a.k2  |</span><br><span class="line">+<span class="comment">------+-------+-------+--+</span></span><br><span class="line">| 1    | v1    | v2    |</span><br><span class="line">| 2    | v1    | v2    |</span><br><span class="line">+<span class="comment">------+-------+-------+--+</span></span><br><span class="line"></span><br><span class="line">jdbc:hive2://node1:10000&gt; select * from (select '1' as a union select "2" as b) b lateral view  parse_url_tuple('http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1', 'HOST','QUERY','QUERY:k1', 'QUERY:k2') a as h1,q1,k1,k2;</span><br><span class="line">+<span class="comment">------+---------------+--------------+-------+-------+--+</span></span><br><span class="line">| b.a  |     a.h1      |     a.q1     | a.k1  | a.k2  |</span><br><span class="line">+<span class="comment">------+---------------+--------------+-------+-------+--+</span></span><br><span class="line">| 1    | facebook.com  | k1=v1&amp;k2=v2  | v1    | v2    |</span><br><span class="line">| 2    | facebook.com  | k1=v1&amp;k2=v2  | v1    | v2    |</span><br><span class="line">+<span class="comment">------+---------------+--------------+-------+-------+--+</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">jdbc:hive2://node1:10000&gt; select * from (select '1' as a union select "2" as b) b lateral view  parse_url_tuple('http://facebook.com/path1/p.php?k1=v1&amp;k2=v2#Ref1','HOST', 'PATH', 'QUERY', 'REF', 'PROTOCOL', 'FILE',  'AUTHORITY', 'USERINFO', 'QUERY:k1') c as ho, pa, qu, re, pr, fi, au, us, qk1;</span><br><span class="line"></span><br><span class="line">+<span class="comment">------+---------------+---------------+--------------+-------+-------+--+</span></span><br><span class="line">| b.a  |     c.ho      |     c.pa      |     c.qu     | c.re  | c.pr  |</span><br><span class="line">+<span class="comment">------+---------------+---------------+--------------+-------+-------+--+</span></span><br><span class="line">| 1    | facebook.com  | /path1/p.php  | k1=v1&amp;k2=v2  | Ref1  | http  |</span><br><span class="line">| 2    | facebook.com  | /path1/p.php  | k1=v1&amp;k2=v2  | Ref1  | http  |</span><br><span class="line">+<span class="comment">------+---------------+---------------+--------------+-------+-------+--+</span></span><br><span class="line"></span><br><span class="line">+<span class="comment">------+-------+---------------------------+---------------+-------+--------+--+</span></span><br><span class="line">| b.a  | c.pr  |           c.fi            |     c.au      | c.us  | c.qk1  |</span><br><span class="line">+<span class="comment">------+-------+---------------------------+---------------+-------+--------+--+</span></span><br><span class="line">| 1    | http  | /path1/p.php?k1=v1&amp;k2=v2  | facebook.com  | NULL  | v1     |</span><br><span class="line">| 2    | http  | /path1/p.php?k1=v1&amp;k2=v2  | facebook.com  | NULL  | v1     |</span><br><span class="line">+<span class="comment">------+-------+---------------------------+---------------+-------+--------+--+</span></span><br></pre></td></tr></table></figure>
+<h3 id="get-json-object"><a href="#get-json-object" class="headerlink" title="get_json_object"></a>get_json_object</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jdbc:hive2://node1:10000&gt; select get_json_object('&#123;"id":"001","name":"mei18"&#125;','$.name') as name;</span><br><span class="line">+<span class="comment">--------+--+</span></span><br><span class="line">|  name  |</span><br><span class="line">+<span class="comment">--------+--+</span></span><br><span class="line">| mei18  |</span><br><span class="line">+<span class="comment">--------+--+</span></span><br></pre></td></tr></table></figure>
+<h3 id="json-tuple"><a href="#json-tuple" class="headerlink" title="json_tuple"></a>json_tuple</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jdbc:hive2://node1:10000&gt; select json_tuple('&#123;"id":"001","name":"mei18"&#125;','id','name');</span><br><span class="line">+<span class="comment">------+--------+--+</span></span><br><span class="line">|  c0  |   c1   |</span><br><span class="line">+<span class="comment">------+--------+--+</span></span><br><span class="line">| 001  | mei18  |</span><br><span class="line">+<span class="comment">------+--------+--+</span></span><br></pre></td></tr></table></figure>
+<h2 id="structs"><a href="#structs" class="headerlink" title="structs"></a>structs</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">TABLE</span> employee <span class="keyword">as</span> <span class="keyword">SELECT</span> <span class="string">'Steven'</span> <span class="keyword">AS</span> <span class="keyword">name</span>, <span class="built_in">array</span>(<span class="literal">null</span>) <span class="keyword">AS</span> work_place, named_struct(<span class="string">"sex"</span>,<span class="string">"Male"</span>,<span class="string">"age"</span>,<span class="number">30</span>) <span class="keyword">AS</span>   sex_age, <span class="keyword">map</span>(<span class="string">"Python"</span>, <span class="number">90</span>) <span class="keyword">AS</span> skills_score, <span class="keyword">map</span>(<span class="string">"R&amp;D"</span>,<span class="built_in">array</span>(<span class="string">'Developer'</span>)) <span class="keyword">AS</span> depart_title;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-10-29T13:02:05.000Z" itemprop="dateUpdated">2018-10-29 21:02:05</time>
+</span><br>
+
+
+        
+        <a href="/2018/10/28/hadoop/hive/hive function/" target="_blank" rel="external">http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive-function/">hive function</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/&title=《hive demo》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/&title=《hive demo》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hive demo》 — stelawliet&url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/28/hadoop/hive/Untitled/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">hive array map structs</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/28/Linux/CentOS7Min/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CentOS7最小化安装配置@jianshu</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/&title=《hive demo》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/&title=《hive demo》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hive demo》 — stelawliet&url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/hive function/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLklEQVR42u3azY6DMAxF4b7/SzNS1yWca8NIOIfViLYhHwtP/PP54Ov4XuT+sbzOvnl25+ZLhgwZr2WQB/Ol1yuQTZ99Z/1SZMiQsQNjHUw5bL1dfj8N9DJkyJBBwmK6ObJ1GTJkyOgE3NqRkXwqQ4YMGZ0kNg2U6/JZ7bk35OIyZMh4ISMNl//594P9DRkyZLyEcYQXX+GJ8Hr6WxkyZIxmkFIav582D3gZDoVjGTJkDGXUQhtZmgyE1Ri3HQ1lyJAxiNEZoUgTVJK+nh4KZciQMZRRO/alrc007KZBWYYMGbsxSEDsNDh5upsm0jJkyJjNSIMpD5o8xa0dLi/OuTJkyBjB4KkmD5dpOzNNX3+sIEOGjNGM9MDXSV9rGw0aBjJkyBjKuLf1yAtntZRVhgwZOzOKuW870U1/G4yFyZAhYxyj1s5Mw2ua1rb+b8iQIWMQIw1w6dgWP3ryF4RSYhkyZIxjdNoDxbeFh89ImJYhQ8Y+jM6hLX0d6ToIJkOGjKEMUm7rkGpDGPHeZMiQsQEjjdD8Yemn6ToyZMjYgVEr9wcTZyBlrRXyZMiQsQ/jCK+0rMaHOfj6P9aRIUPGaEZauK8NZHRWTtucMmTImMrgQTYNqbXjI9+DDBkydmPwMv3j0R2E5ovaoQwZMjZm8BoX4fFyHjqYypAhQ0Zp5Itviw9zXAyHyZAhYzSDNwNIuOSltPXWg4aEDBkyRjM6CWS/8VlrZxYxMmTIeB/jD0Sa8C4+AQKtAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

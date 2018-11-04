@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>hive array map structs | stelawliet | 迁移整理中...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="hive,structs">
+    <meta name="description" content="1：Array​     顾名思义就是数组，使用方式 array&amp;lt;&amp;gt; 1)：创建表 拿电影数据为例，数据的维度包括     创建movie_message表： create table movie_message(​    id int,​    title string,​    daoyan array,​    bianju array,​    leixing array,​">
+<meta name="keywords" content="hive,structs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hive array map structs">
+<meta property="og:url" content="http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/index.html">
+<meta property="og:site_name" content="stelawliet">
+<meta property="og:description" content="1：Array​     顾名思义就是数组，使用方式 array&amp;lt;&amp;gt; 1)：创建表 拿电影数据为例，数据的维度包括     创建movie_message表： create table movie_message(​    id int,​    title string,​    daoyan array,​    bianju array,​    leixing array,​">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-10-28T14:25:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hive array map structs">
+<meta name="twitter:description" content="1：Array​     顾名思义就是数组，使用方式 array&amp;lt;&amp;gt; 1)：创建表 拿电影数据为例，数据的维度包括     创建movie_message表： create table movie_message(​    id int,​    title string,​    daoyan array,​    bianju array,​    leixing array,​">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Stelawliet</h5>
+          <a href="mailto:Stelawliet@gmail.com" title="Stelawliet@gmail.com" class="mail">Stelawliet@gmail.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet" target="_blank" >
+                <i class="icon icon-lg icon-twitter"></i>
+                twitter
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://twitter.com/Stelawliet"  >
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">hive array map structs</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">hive array map structs</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-10-28T14:05:49.000Z" itemprop="datePublished" class="page-time">
+  2018-10-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-hadoop/hive/Untitled"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">hive array map structs</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-28 22:05:49" datetime="2018-10-28T14:05:49.000Z"  itemprop="datePublished">2018-10-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>1：Array<br>​     顾名思义就是数组，使用方式 array&lt;&gt;</p>
+<pre><code>1)：创建表
+拿电影数据为例，数据的维度包括
+
+
+
+ 创建movie_message表：
+</code></pre><p>create table movie_message(<br>​    id int,<br>​    title string,<br>​    daoyan array<string>,<br>​    bianju array<string>,<br>​    leixing array<string>,<br>​    zhuyan array<string>,<br>​    year int,<br>​    month int,<br>​    shichang int,<br>​    disnum int,<br>​    score float<br>)<br>comment “this table about movie’s message”<br>row format delimited fields terminated by “,”<br>collection items terminated by ‘/‘;<br>​      加载数据（可以从本地加载，也可以从hdfs装载，当然也可以从别的表中查询结果进行转载），这里从本地装载</string></string></string></string></p>
+<p>load data local inpath “/home/master/mycode/new_movies_load.csv” into table movie_message;<br>​    2)：查看array的元素<br>​      用下标进行寻找，类似于其他编程语言中的数组访问</p>
+<p>hive&gt; select leixing[0] from movie_message limit 5;<br>OK<br>剧情<br>剧情<br>剧情<br>纪录片<br>喜剧<br>Time taken: 1.116 seconds, Fetched: 5 row(s)<br>   3)：内嵌查询及统计<br>​     这里就是 写在前边的话中提到的问题，这里使用explode和lateral view关键字，应该这样写</p>
+<p>select lx,count(*) from movie_message lateral view explode(leixing) leixing as lx group by lx;<br>​       结果为：<br>传记    194<br>儿童    18<br>冒险    242<br>剧情    1490<br>动作    252<br>动画    106<br>历史    208<br>古装    9<br>同性    84<br>喜剧    618<br>奇幻    178<br>家庭    130<br>恐怖    152<br>悬念    2<br>悬疑    386<br>情色    19<br>惊悚    435<br>戏曲    11<br>战争    144<br>歌舞    40<br>武侠    1<br>灾难    11<br>爱情    404<br>犯罪    442<br>真人秀  6<br>短片    165<br>科幻    165<br>纪录片  620<br>脱口秀  10<br>舞台艺术        8<br>西部    6<br>运动    29<br>音乐    123<br>鬼怪    1<br>黑色电影        4<br>​     4)：如何保存查询结果<br>​       这里使用overwrite方法，只需在你的语句前加上即可</p>
+<p>insert overwrite local directory “you path”<br>​          也可以指定字段之间的分隔符<br>row format delimited fields terminated by “\t”<br>​          还是上边统计类型的例子，这里将其查询结果保存在本地/home/master/mycode/movie_leixing<br>insert overwrite local directory “/home/master/mycode/movie_leixing”<br>row format delimited fields terminated by “\t”<br>select lx,count(*) from movie_message lateral view explode(leixing) leixing as lx group by lx;<br>​<br>2：Map<br>​     就是<a href="key:value" target="_blank" rel="noopener">key:value</a>这样的键值对，假设我们有这样格式的数据人物A，主演了BCD电影，将于2016-05上映</p>
+<p>A       ABC:2016-05,EFG:2016-09<br>B       OPQ:2015-06,XYZ:2016-04<br>​     1)：创建表<br> create table people_movie(<br> name string,<br> movie map&lt;string,string&gt; )<br> row format delimited fields terminated by “\t”<br> collection items terminated by “,”<br> map keys terminated by “:”;<br>​           加载数据<br>load data local inpath “/home/master/map” into table people_movie;<br>​     2)：普通查看表数据<br>hive&gt; select * from people_movie;<br>OK<br>A       {“ABC”:”2016-05”,”EFG”:”2016-09”}<br>B       {“OPQ”:”2015-06”,”XYZ”:”2016-04”}<br>A       {“ABC”:”2016-05”,”EFG”:”2016-09”}<br>B       {“OPQ”:”2015-06”,”XYZ”:”2016-04”}<br>Time taken: 0.148 seconds, Fetched: 4 row(s)<br>hive&gt; select movie[‘ABC’] from people_movie;<br>OK<br>2016-05<br>NULL<br>2016-05<br>NULL<br>Time taken: 0.144 seconds, Fetched: 4 row(s)<br>​    3)：使用explode关键字查询<br>hive&gt; select explode(movie) as (m_name,m_time) from people_movie;<br>OK<br>ABC     2016-05<br>EFG     2016-09<br>OPQ     2015-06<br>XYZ     2016-04<br>ABC     2016-05<br>EFG     2016-09<br>OPQ     2015-06<br>XYZ     2016-04<br>Time taken: 0.121 seconds, Fetched: 8 row(s)<br>   4)：使用explode和lateral view结合查询<br>hive&gt; select name,mo,time from people_movie lateral view explode(movie) movie as mo,time;<br>OK<br>A       ABC     2016-05<br>A       EFG     2016-09<br>B       OPQ     2015-06<br>B       XYZ     2016-04<br>A       ABC     2016-05<br>A       EFG     2016-09<br>B       OPQ     2015-06<br>B       XYZ     2016-04<br>Time taken: 0.147 seconds, Fetched: 8 row(s)<br>3：Structs<br>​     类似于C语言中的结构体，内部数据通过X.X来获取，假设我们的数据格式是这样的，电影ABC，有1254人评价过，打分为7.4分</p>
+<p>ABC     1254:7.4<br>DEF     256:4.9<br>XYZ     456:5.4<br>​     1)：创建数据表<br>Time taken: 0.147 seconds, Fetched: 8 row(s)<br>hive&gt; create table movie_score(<br>​    &gt; name string,<br>​    &gt; info struct<a href="number:int,score:float" target="_blank" rel="noopener">number:int,score:float</a><br>​    &gt; )row format delimited fields terminated by “\t”<br>​    &gt; collection items terminated by “:”;<br>​     2)：查询表数据<br>hive&gt; select * from movie_score;<br>OK<br>ABC     {“number”:1254,”score”:7.4}<br>DEF     {“number”:256,”score”:4.9}<br>XYZ     {“number”:456,”score”:5.4}<br>Time taken: 0.103 seconds, Fetched: 3 row(s)<br>hive&gt; select info.number,info.score from movie_score;<br>OK<br>1254    7.4<br>256     4.9<br>456     5.4<br>Time taken: 0.148 seconds, Fetched: 3 row(s)<br>4：collect_set函数<br>​     这里再另外介绍一个函数collect_set()，该函数的作用是将某字段的值进行去重汇总，产生Array类型字段，假设数据格式如下：</p>
+<p>hive&gt; select * from test;<br>OK<br>1       A<br>1       C<br>1       B<br>2       B<br>2       C<br>2       D<br>3       B<br>3       C<br>3       D<br>Time taken: 0.096 seconds, Fetched: 6 row(s)<br>​      现在要统计每个id得到的等级<br> select id,collect_set(name) from test group by id;<br>​      结果为<br>Total MapReduce CPU Time Spent: 3 seconds 360 msec<br>OK<br>1       [“A”,”C”,”B”]<br>2       [“B”,”C”,”D”]<br>3       [“B”,”C”,”D”]<br>Time taken: 32.298 seconds, Fetched: 3 row(s)</p>
+<hr>
+<p>作者：Thinkgamer_gyt<br>来源：CSDN<br>原文：<a href="https://blog.csdn.net/Gamer_gyt/article/details/52169441" target="_blank" rel="noopener">https://blog.csdn.net/Gamer_gyt/article/details/52169441</a><br>版权声明：本文为博主原创文章，转载请附上博文链接！</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-10-28T14:25:17.000Z" itemprop="dateUpdated">2018-10-28 22:25:17</time>
+</span><br>
+
+
+        
+        <a href="/2018/10/28/hadoop/hive/Untitled/" target="_blank" rel="external">http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="http://io.stelawliet.top">
+            <img src="/img/avatar.jpg" alt="Stelawliet">
+            Stelawliet
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hive/">hive</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/structs/">structs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/&title=《hive array map structs》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/&title=《hive array map structs》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hive array map structs》 — stelawliet&url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/10/30/hadoop/hive/mapred mode/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mapred mode</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/28/hadoop/hive/hive function/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">hive demo</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Valine Comments -->
+    <div class="comments vcomment" id="comments"></div>
+    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+    <script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script>
+    <!-- Valine Comments script -->
+    <script>
+        var GUEST_INFO = ['nick','mail','link'];
+        var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+          return GUEST_INFO.indexOf(item) > -1
+        });
+        new Valine({
+            el: '#comments',
+            notify: 'false' == 'true',
+            verify: 'false' == 'true',
+            appId: "yg0YOBlsgCru0mqR8zfr7Xsm-gzGzoHsz",
+            appKey: "QDgspYKufF8K1YCR46v7udft",
+            avatar: "mm",
+            placeholder: "Just go go",
+            guest_info: guest_info.length == 0 ? GUEST_INFO : guest_info,
+            pageSize: "10"
+        })
+    </script>
+    <!-- Valine Comments end -->
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Stelawliet &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/&title=《hive array map structs》 — stelawliet&pic=http://io.stelawliet.top/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/&title=《hive array map structs》 — stelawliet&source=sky" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《hive array map structs》 — stelawliet&url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/&via=http://io.stelawliet.top" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://io.stelawliet.top/2018/10/28/hadoop/hive/Untitled/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOklEQVR42u3aS26EQAxF0d7/pomUUbcS4D4bouC6jBAqBU615JQ/rxe+tu/r/f792nu+t/Ln+r0nF18yZMh4LIO8eO9P7605/vTamuNNkSFDxgoMHmTvC9DHW3PyzTJkyJABAGnIJp8uQ4YMGbWAe0ziB76UJEOGDBkkXPLCGd+m9L0X5OIyZMh4IKOWlP7N/e39DRkyZPx7xhZevHBPjoy1Jugv75IhQ8ZoBkkpj5+TzyKYlPpKP06GDBmPZRAAD4u1tDZlFH8HGTJkjGOQ4n5tLIM0FXjGKkOGjHUYteYiqXrd19SUIUPGOoxaUb7WVuwMjaGgLEOGjKGMNCymh8h0hIKX5D7uZciQMZpRO6h1Kl1x1yJNlWXIkDGOkRbua0Nj6fExbhjIkCFjNCMdpOChMy2W9ZudMmTImM24b0S1uKPhOIgMGTJkxAUvXHS7eAtkyJAxlMGL/imDNwzSrUTTbTJkyBjK6BT0gwNcaYDjJMWVIUPGaEb6glrbspOm1kbQZMiQMYnRCXO11DdtYaKxDBkyZCzASF/Mj2skGe6s2S23yZAhYxCDp69p0sgbBunw2cm0iAwZMsYxtvDqtA14T5WnxB//N2TIkDGUkRbdakMV/XJbJ0zLkCFjBoMH2U5LMi26peU8GTJkrMCoFc5ISe7agYygPSBDhowlGZ2Zjs5ztAUyZMiQgcttvBnA16BinAwZMhZg8GYAf8ILcyQQx51YGTJkDGLUEkjygvvamUWMDBkynsf4AnE+iYeFYByVAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = 'sky';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
